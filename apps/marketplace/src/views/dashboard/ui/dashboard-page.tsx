@@ -1,6 +1,5 @@
 "use client"
 
-import { useAuth } from "@/shared/providers/auth-provider"
 import {
   Card,
   CardContent,
@@ -8,6 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@workspace/ui/components/card"
+
+import { useAuth } from "@/shared/providers/auth-provider"
 
 export function DashboardPage() {
   const { session } = useAuth()

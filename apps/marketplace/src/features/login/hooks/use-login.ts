@@ -4,11 +4,11 @@ import { useMutation } from "@tanstack/react-query"
 import { useRouter, useSearchParams } from "next/navigation"
 import { toast } from "sonner"
 
-import { setToken } from "@/shared/auth"
-import { useAuth } from "@/shared/providers/auth-provider"
-
 import { loginRequest } from "../api/login.api"
 import type { LoginFormValues } from "../validation"
+
+import { setToken } from "@/shared/auth"
+import { useAuth } from "@/shared/providers/auth-provider"
 
 export function useLogin() {
   const router = useRouter()

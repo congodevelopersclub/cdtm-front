@@ -1,7 +1,7 @@
+import type { LoginFormValues } from "../validation"
+
 import type { LoginResponse } from "@/entities/user"
 import { apiClient } from "@/shared/axios/client"
-
-import type { LoginFormValues } from "../validation"
 
 export async function loginRequest(
   credentials: LoginFormValues
