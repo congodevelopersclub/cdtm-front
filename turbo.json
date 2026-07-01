@@ -16,6 +16,14 @@
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "build-storybook": {
+      "dependsOn": ["^typecheck"],
+      "outputs": ["storybook-static/**"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

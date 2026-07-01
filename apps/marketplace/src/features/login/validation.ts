@@ -1,8 +1,10 @@
 import { z } from "zod"
 
-export const loginSchema = z.object({
-  email: z.email("Enter a valid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-})
+export function createLoginSchema(t: (key: string) => string) {
+  return z.object({
+    email: z.email(t("invalidEmail")),
+    password: z.string().min(8, t("passwordMin")),
+  })
+}
 
-export type LoginFormValues = z.infer<typeof loginSchema>
+export type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>

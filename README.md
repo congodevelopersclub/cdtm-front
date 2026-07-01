@@ -21,6 +21,8 @@ Built with Next.js, Feature-Sliced Design (FSD), and a shared shadcn/ui design s
 - **State:** TanStack Query (server state), Zustand (UI state)
 - **API:** Axios via `@workspace/api`, JWT auth (marketplace)
 - **Forms:** React Hook Form, Zod
+- **i18n:** next-intl (English and French; auto-detected from browser language)
+- **Documentation:** Storybook 10 (design system + app components)
 - **UI:** shadcn/ui, Tailwind CSS v4, Radix UI
 
 ## Prerequisites
@@ -41,6 +43,8 @@ Open:
 
 - Web: [http://localhost:3000](http://localhost:3000)
 - Marketplace: [http://localhost:3001](http://localhost:3001)
+
+The UI is bilingual (English / French). On first visit, the locale is chosen from your browser's `Accept-Language` header. Use the language switcher on the home page to override and persist your choice in a cookie.
 
 ## Environment variables
 
@@ -68,6 +72,8 @@ Run from the repository root:
 | `pnpm build` | Build all apps and packages |
 | `pnpm lint` | Lint all workspaces (must pass with zero errors) |
 | `pnpm typecheck` | Type-check all workspaces |
+| `pnpm storybook` | Start Storybook component workshop (port 6006) |
+| `pnpm build-storybook` | Build static Storybook catalog |
 | `pnpm format` | Format code with Prettier |
 
 ## Project structure
@@ -76,10 +82,12 @@ Run from the repository root:
 cdc-markeplace-frontend/
 ├── apps/
 │   ├── web/              # Marketing site
-│   └── marketplace/      # Authenticated marketplace app
+│   ├── marketplace/      # Authenticated marketplace app
+│   └── storybook/        # Component documentation workshop
 ├── packages/
 │   ├── ui/               # shadcn/ui design system
 │   ├── api/              # Axios client, interceptors, error types
+│   ├── i18n/             # Locale config and resolution
 │   ├── eslint-config/    # Shared ESLint configs (incl. FSD rules)
 │   └── typescript-config/
 ├── LICENSE
@@ -111,6 +119,8 @@ processes → pages → widgets → features → entities → shared
 
 For full development rules, architecture guidelines, and the pull request checklist, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
+Browse the component catalog locally with `pnpm storybook` — it documents the shared design system (`packages/ui`) and composed UI from both apps.
+
 ## Adding shadcn components
 
 Components install into the shared UI package:
@@ -127,12 +137,13 @@ import { Button } from "@workspace/ui/components/button"
 
 ## Contributing
 
-Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for full rules and architecture guidelines.
 
-1. Fork the repository
-2. Create a feature branch (`feat/my-feature`)
-3. Run `pnpm lint`, `pnpm typecheck`, and `pnpm build`
-4. Open a pull request against `main`
+**Fork (recommended)** — fork the repo on GitHub, clone your fork, add `upstream`, branch, push, and open a PR.
+
+**Direct branch (alternative)** — clone the upstream repo if you have write access, branch, push, and open a PR.
+
+Before every PR: `pnpm lint`, `pnpm typecheck`, and `pnpm build` must pass.
 
 ## License
 

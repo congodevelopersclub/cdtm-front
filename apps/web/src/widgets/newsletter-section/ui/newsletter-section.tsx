@@ -1,3 +1,7 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+
 import {
   Card,
   CardContent,
@@ -9,13 +13,13 @@ import {
 import { NewsletterSignupForm } from "@/features/newsletter-signup"
 
 export function NewsletterSection() {
+  const t = useTranslations("Newsletter")
+
   return (
     <Card className="w-full max-w-lg">
       <CardHeader>
-        <CardTitle>Stay in the loop</CardTitle>
-        <CardDescription>
-          Get product updates and marketplace news in your inbox.
-        </CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <NewsletterSignupForm />

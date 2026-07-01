@@ -1,7 +1,11 @@
 import { z } from "zod"
 
-export const newsletterSchema = z.object({
-  email: z.email("Enter a valid email address"),
-})
+export function createNewsletterSchema(t: (key: string) => string) {
+  return z.object({
+    email: z.email(t("invalidEmail")),
+  })
+}
 
-export type NewsletterFormValues = z.infer<typeof newsletterSchema>
+export type NewsletterFormValues = z.infer<
+  ReturnType<typeof createNewsletterSchema>
+>

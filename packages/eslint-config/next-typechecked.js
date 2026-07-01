@@ -16,6 +16,7 @@ export function createNextTypeCheckedConfig({ tsconfigRootDir }) {
         "eslint.config.js",
         "postcss.config.mjs",
         "next.config.ts",
+        "**/*.stories.tsx",
       ],
     },
     ...nextJsConfig,

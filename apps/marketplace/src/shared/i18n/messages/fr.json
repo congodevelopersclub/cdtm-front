@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "title": "CDC Marketplace",
+    "description": "Application produit authentifiée pour les annonces, le paiement et le tableau de bord.",
+    "signIn": "Se connecter",
+    "dashboard": "Tableau de bord"
+  },
+  "Login": {
+    "title": "Se connecter",
+    "description": "Entrez vos identifiants pour accéder à la marketplace.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Se connecter",
+    "submitting": "Connexion...",
+    "welcomeBack": "Bon retour !",
+    "error": "Impossible de se connecter"
+  },
+  "Dashboard": {
+    "title": "Tableau de bord",
+    "description": "Route marketplace protégée — le middleware JWT est actif.",
+    "signedInAs": "Connecté en tant que {email}",
+    "sessionLoading": "Chargement de la session..."
+  },
+  "LocaleSwitcher": {
+    "label": "Langue",
+    "english": "Anglais",
+    "french": "Français"
+  },
+  "Validation": {
+    "invalidEmail": "Entrez une adresse e-mail valide",
+    "passwordMin": "Le mot de passe doit contenir au moins 8 caractères"
+  }
+}

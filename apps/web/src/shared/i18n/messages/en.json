@@ -1,0 +1,28 @@
+{
+  "HomePage": {
+    "title": "Project ready!",
+    "description1": "You may now add components and start building.",
+    "description2": "We've already added the button component for you.",
+    "button": "Button",
+    "darkModeHint": "(Press {key} to toggle dark mode)"
+  },
+  "Newsletter": {
+    "title": "Stay in the loop",
+    "description": "Get product updates and marketplace news in your inbox.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Subscribe to newsletter",
+    "submitting": "Subscribing...",
+    "success": "Thanks for subscribing!",
+    "error": "Unable to subscribe. Please try again.",
+    "invalidEmail": "Enter a valid email address"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "french": "French"
+  },
+  "Validation": {
+    "invalidEmail": "Enter a valid email address"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "title": "CDC Marketplace",
+    "description": "Authenticated product app for listings, checkout, and dashboard.",
+    "signIn": "Sign in",
+    "dashboard": "Dashboard"
+  },
+  "Login": {
+    "title": "Sign in",
+    "description": "Enter your credentials to access the marketplace.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "welcomeBack": "Welcome back!",
+    "error": "Unable to sign in"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "description": "Protected marketplace route — JWT middleware is active.",
+    "signedInAs": "Signed in as {email}",
+    "sessionLoading": "Session loading..."
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "french": "French"
+  },
+  "Validation": {
+    "invalidEmail": "Enter a valid email address",
+    "passwordMin": "Password must be at least 8 characters"
+  }
+}

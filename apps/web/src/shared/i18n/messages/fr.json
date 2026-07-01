@@ -1,0 +1,28 @@
+{
+  "HomePage": {
+    "title": "Projet prêt !",
+    "description1": "Vous pouvez maintenant ajouter des composants et commencer à construire.",
+    "description2": "Nous avons déjà ajouté le composant bouton pour vous.",
+    "button": "Bouton",
+    "darkModeHint": "(Appuyez sur {key} pour basculer le mode sombre)"
+  },
+  "Newsletter": {
+    "title": "Restez informé",
+    "description": "Recevez les actualités produit et marketplace dans votre boîte mail.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "submit": "S'abonner à la newsletter",
+    "submitting": "Inscription...",
+    "success": "Merci pour votre inscription !",
+    "error": "Impossible de s'inscrire. Veuillez réessayer.",
+    "invalidEmail": "Entrez une adresse e-mail valide"
+  },
+  "LocaleSwitcher": {
+    "label": "Langue",
+    "english": "Anglais",
+    "french": "Français"
+  },
+  "Validation": {
+    "invalidEmail": "Entrez une adresse e-mail valide"
+  }
+}

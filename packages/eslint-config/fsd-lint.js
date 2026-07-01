@@ -9,6 +9,7 @@ import fsdPlugin from "eslint-plugin-fsd-lint"
 export function createFsdLintConfig({ tsconfigRootDir }) {
   return {
     files: ["src/**/*.{ts,tsx}"],
+    ignores: ["**/*.stories.tsx"],
     plugins: {
       fsd: fsdPlugin,
     },

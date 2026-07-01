@@ -6,6 +6,81 @@ Thank you for your interest in contributing. This project is open source under t
 - **Issues:** [GitHub Issues](https://github.com/congodevelopersclub/cdtm-front/issues)
 - **Pull requests:** [GitHub Pull Requests](https://github.com/congodevelopersclub/cdtm-front/pulls)
 
+## Ways to contribute
+
+Most contributors use a **fork**. Congo Developers Club members with write access may use a **direct branch** instead. Both paths require the same verification and architecture rules.
+
+### Path A — Fork workflow (recommended)
+
+For external contributors and anyone without direct write access to the upstream repo:
+
+1. **Fork on GitHub** — click **Fork** on [congodevelopersclub/cdtm-front](https://github.com/congodevelopersclub/cdtm-front)
+2. **Clone your fork** (replace `YOUR_USERNAME`):
+
+   ```bash
+   git clone git@github.com:YOUR_USERNAME/cdtm-front.git
+   cd cdtm-front
+   ```
+
+3. **Add the upstream remote** (to sync with the main repo later):
+
+   ```bash
+   git remote add upstream git@github.com:congodevelopersclub/cdtm-front.git
+   git remote -v
+   ```
+
+4. **Create a branch** from the latest `main`:
+
+   ```bash
+   git fetch upstream
+   git checkout main
+   git merge upstream/main
+   git checkout -b feat/my-feature
+   ```
+
+5. **Develop** — run `pnpm install`, make your changes, and run verification (see below)
+6. **Push to your fork**:
+
+   ```bash
+   git push origin feat/my-feature
+   ```
+
+7. **Open a pull request** on GitHub from `YOUR_USERNAME/cdtm-front:feat/my-feature` → `congodevelopersclub/cdtm-front:main`
+
+**Keep your fork in sync** before starting new work or updating an open PR:
+
+```bash
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
+```mermaid
+flowchart LR
+  fork[Fork on GitHub] --> clone[Clone your fork]
+  clone --> upstream[Add upstream remote]
+  upstream --> branch[Create feature branch]
+  branch --> code[Implement and verify]
+  code --> push[Push to origin]
+  push --> pr[Open PR to upstream main]
+```
+
+### Path B — Direct branch (alternative)
+
+For Congo Developers Club members with **write access** to the upstream repository:
+
+1. Clone upstream directly:
+
+   ```bash
+   git clone git@github.com:congodevelopersclub/cdtm-front.git
+   cd cdtm-front
+   ```
+
+2. Create a branch: `git checkout -b feat/my-feature`
+3. Push to upstream: `git push origin feat/my-feature`
+4. Open a pull request against `main` on the same repository
+
 ## Development setup
 
 ### Prerequisites
@@ -15,9 +90,25 @@ Thank you for your interest in contributing. This project is open source under t
 
 ### Install and run
 
+Clone using the URL that matches your contribution path (see [Ways to contribute](#ways-to-contribute)):
+
+**Fork (recommended):**
+
+```bash
+git clone git@github.com:YOUR_USERNAME/cdtm-front.git
+cd cdtm-front
+```
+
+**Direct branch (alternative):**
+
 ```bash
 git clone git@github.com:congodevelopersclub/cdtm-front.git
 cd cdtm-front
+```
+
+Then install dependencies and start the dev servers:
+
+```bash
 pnpm install
 pnpm dev
 ```
@@ -45,11 +136,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3001
 
 ## Development workflow
 
-1. Fork the repository on GitHub
-2. Clone your fork and create a branch from `main`
-3. Implement your changes following the architecture rules below
-4. Run the verification commands
-5. Push your branch and open a pull request
+Follow [Path A (fork)](#path-a--fork-workflow-recommended) or [Path B (direct branch)](#path-b--direct-branch-alternative) above, then apply the conventions below before opening your pull request.
 
 ### Branch naming
 
@@ -114,6 +201,8 @@ This monorepo uses **Feature-Sliced Design (FSD)**. Read these rules before addi
 | `apps/marketplace` | Authenticated product app |
 | `packages/ui` | shadcn/ui design system |
 | `packages/api` | Axios client factory, interceptors, error types |
+| `packages/i18n` | Locale config and cookie / Accept-Language resolution |
+| `apps/storybook` | Component workshop (Storybook) |
 | `packages/eslint-config` | Shared ESLint configs including FSD boundary rules |
 | `packages/typescript-config` | Shared TypeScript configs |
 
@@ -206,6 +295,57 @@ Within the same slice, relative imports are allowed (e.g. `../api/login.api`).
 
 - Axios / HTTP client — only in `api/` modules
 - Zustand — only in `src/shared/store/`
+
+## Internationalization
+
+Both apps support **English (`en`)** and **French (`fr`)** via [next-intl](https://next-intl.dev/). There is **no locale prefix in URLs** — routes stay `/`, `/login`, `/dashboard`, etc.
+
+### Locale resolution
+
+1. `NEXT_LOCALE` cookie (set by the language switcher)
+2. `Accept-Language` request header (browser / device language)
+3. Fallback: `en`
+
+Shared locale logic lives in `packages/i18n` (`@workspace/i18n`). Per-app message files live in `src/shared/i18n/messages/{locale}.json`.
+
+### Adding translations
+
+- **Client components:** `useTranslations("Namespace")`
+- **Server components / actions:** `getTranslations("Namespace")`
+- Never hardcode user-facing strings in components
+- Add keys to **both** `en.json` and `fr.json`
+- For Zod validation, use schema factories that accept a translate function (see `features/login/validation.ts`)
+
+### Language switcher
+
+The locale switcher widget sets the `NEXT_LOCALE` cookie via a Server Action (`src/shared/i18n/actions/set-locale.ts`) and refreshes the page.
+
+## Storybook
+
+The monorepo includes a centralized component workshop at [`apps/storybook/`](apps/storybook/) powered by [Storybook 10](https://storybook.js.org/docs).
+
+```bash
+pnpm storybook          # http://localhost:6006
+pnpm build-storybook    # static export → apps/storybook/storybook-static/
+```
+
+### Catalog structure
+
+| Sidebar prefix | Source |
+|----------------|--------|
+| `Design System/` | [`packages/ui/src/components/`](packages/ui/src/components/) |
+| `Web/` | [`apps/web/src/`](apps/web/src/) widgets, features, pages |
+| `Marketplace/` | [`apps/marketplace/src/`](apps/marketplace/src/) widgets, features, pages |
+
+### Conventions
+
+- Co-locate stories as `<component>.stories.tsx` next to the component
+- Use CSF3 with `tags: ['autodocs']` for generated docs
+- Use title prefixes above for sidebar grouping
+- New shadcn component → add a story before merging
+- New widget, feature, or page → add at least one default story and key state variants
+- Use shared decorators in `apps/storybook/.storybook/decorators/` — do not duplicate provider wiring in every story
+- Set `parameters.i18n.app` (`web` \| `marketplace`) and locale on app stories
 
 ## Adding a new feature
 

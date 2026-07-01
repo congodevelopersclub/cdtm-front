@@ -1,6 +1,8 @@
 "use client"
 
+import { useMemo } from "react"
 import { standardSchemaResolver } from "@hookform/resolvers/standard-schema"
+import { useTranslations } from "next-intl"
 import { useForm } from "react-hook-form"
 
 import { Button } from "@workspace/ui/components/button"
@@ -22,13 +24,20 @@ import {
 import { Input } from "@workspace/ui/components/input"
 
 import { useLogin } from "../hooks/use-login"
-import { loginSchema, type LoginFormValues } from "../validation"
+import { createLoginSchema, type LoginFormValues } from "../validation"
 
 export function LoginForm() {
+  const t = useTranslations("Login")
+  const tValidation = useTranslations("Validation")
   const { mutate, isPending } = useLogin()
 
+  const schema = useMemo(
+    () => createLoginSchema((key) => tValidation(key)),
+    [tValidation]
+  )
+
   const form = useForm<LoginFormValues>({
-    resolver: standardSchemaResolver(loginSchema),
+    resolver: standardSchemaResolver(schema),
     defaultValues: {
       email: "",
       password: "",
@@ -42,10 +51,8 @@ export function LoginForm() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle>Sign in</CardTitle>
-        <CardDescription>
-          Enter your credentials to access the marketplace.
-        </CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -55,11 +62,11 @@ export function LoginForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t("emailLabel")}</FormLabel>
                   <FormControl>
                     <Input
                       autoComplete="email"
-                      placeholder="you@example.com"
+                      placeholder={t("emailPlaceholder")}
                       type="email"
                       {...field}
                     />
@@ -73,11 +80,11 @@ export function LoginForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t("passwordLabel")}</FormLabel>
                   <FormControl>
                     <Input
                       autoComplete="current-password"
-                      placeholder="••••••••"
+                      placeholder={t("passwordPlaceholder")}
                       type="password"
                       {...field}
                     />
@@ -87,7 +94,7 @@ export function LoginForm() {
               )}
             />
             <Button className="w-full" disabled={isPending} type="submit">
-              {isPending ? "Signing in..." : "Sign in"}
+              {isPending ? t("submitting") : t("submit")}
             </Button>
           </form>
         </Form>

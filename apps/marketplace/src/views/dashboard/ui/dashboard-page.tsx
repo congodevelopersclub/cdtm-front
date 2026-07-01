@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import {
   Card,
   CardContent,
@@ -11,25 +13,24 @@ import {
 import { useAuth } from "@/shared/providers/auth-provider"
 
 export function DashboardPage() {
+  const t = useTranslations("Dashboard")
   const { session } = useAuth()
 
   return (
     <div className="flex min-h-svh items-center justify-center p-6">
       <Card className="w-full max-w-lg">
         <CardHeader>
-          <CardTitle>Dashboard</CardTitle>
-          <CardDescription>
-            Protected marketplace route — JWT middleware is active.
-          </CardDescription>
+          <CardTitle>{t("title")}</CardTitle>
+          <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent>
           {session ? (
             <p className="text-sm">
-              Signed in as <span className="font-medium">{session.email}</span>
+              {t("signedInAs", { email: session.email })}
             </p>
           ) : (
             <p className="text-muted-foreground text-sm">
-              Session loading...
+              {t("sessionLoading")}
             </p>
           )}
         </CardContent>
