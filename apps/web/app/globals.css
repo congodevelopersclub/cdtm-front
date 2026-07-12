@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@source "../**/*.{ts,tsx}";
+@source "../../../packages/ui/src/**/*.{ts,tsx}";
+
+@theme inline {
+  /* -- Polices -- */
+  --font-sans: var(--font-sans), "Inter", sans-serif;
+  --font-display: var(--font-display), "Space Grotesk", sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+
+  /* -- Variables shadcn -- */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+
+  /* -- Couleurs de marque CDC -- */
+  --color-brand-blue: #3b82f6;
+  --color-brand-green: #10b981;
+  --color-brand-purple: #8b5cf6;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* ========================================= */
+/*               MODE CLAIR                  */
+/* ========================================= */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  /* Vert CDC pour le mode clair */
+  --primary: #10b981;
+  --primary-foreground: oklch(1 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: #10b981;
+  --radius: 0.625rem;
+}
+
+/* ========================================= */
+/*               MODE SOMBRE                 */
+/* ========================================= */
+.dark {
+  --background: #000000;
+  --foreground: #c9d1d9;
+
+  /* Vert CDC pour le mode sombre */
+  --primary: #10b981;
+  --primary-foreground: #000000;
+
+  --card: #111111;
+  --card-foreground: #c9d1d9;
+  --popover: #111111;
+  --popover-foreground: #c9d1d9;
+  --secondary: #222222;
+  --secondary-foreground: #ffffff;
+  --muted: #222222;
+  --muted-foreground: #a1a1aa;
+  --accent: #222222;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #222222;
+  --input: #222222;
+  --ring: #10b981;
+}
+
+/* ========================================= */
+/*         BASE & CLASSES DE L'IA            */
+/* ========================================= */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans transition-colors duration-300;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tighter;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .glass-morphism {
+    @apply bg-background/50 backdrop-blur-md border border-border;
+  }
+
+  .heading-giant {
+    @apply text-[64px] md:text-[100px] font-bold leading-[0.85] tracking-tighter;
+  }
+
+  .mono-accent {
+    @apply font-mono text-brand-blue text-sm uppercase tracking-wider;
+  }
+}
