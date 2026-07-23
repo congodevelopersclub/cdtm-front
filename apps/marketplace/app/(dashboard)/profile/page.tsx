@@ -1,5 +1,1 @@
-import { StubPage } from "@/pages/stub"
-
-export default function Page() {
-  return <StubPage title="Profile" description="Your candidate profile and account details." />
-}
+export { ProfilePage as default } from "@/pages/profile"

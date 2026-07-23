@@ -16,6 +16,9 @@
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
+    "test": {
+      "dependsOn": ["^typecheck"]
+    },
     "storybook": {
       "cache": false,
       "persistent": true

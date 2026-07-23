@@ -6,6 +6,7 @@ import "@workspace/ui/globals.css"
 
 import { withAuth } from "./decorators/with-auth"
 import { withI18n } from "./decorators/with-i18n"
+import { withMarketplaceStyles } from "./decorators/with-marketplace-styles"
 import { withQuery } from "./decorators/with-query"
 import { withTheme } from "./decorators/with-theme"
 import { withToaster } from "./decorators/with-toaster"
@@ -54,6 +55,7 @@ const preview: Preview = {
   },
   decorators: [
     withTheme,
+    withMarketplaceStyles,
     withThemeByClassName({
       themes: {
         light: "",

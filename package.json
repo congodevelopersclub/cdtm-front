@@ -9,6 +9,7 @@
     "lint": "turbo lint",
     "format": "turbo format",
     "typecheck": "turbo typecheck",
+    "test": "turbo test",
     "storybook": "turbo storybook",
     "build-storybook": "turbo build-storybook"
   },

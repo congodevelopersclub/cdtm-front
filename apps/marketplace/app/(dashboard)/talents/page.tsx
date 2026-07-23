@@ -1,5 +1,5 @@
-import { StubPage } from "@/pages/stub"
+import { DashboardFeaturePage } from "@/pages/stub"
 
 export default function Page() {
-  return <StubPage title="Talents" description="Discover talented professionals." />
+  return <DashboardFeaturePage pageKey="talents" />
 }

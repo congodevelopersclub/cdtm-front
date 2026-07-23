@@ -1,9 +1,33 @@
+import { getTranslations } from "next-intl/server"
+
 import { SectionCards } from "./components/section-cards"
 
-export function DashboardPage() {
-  return (
-    <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-      <SectionCards />
-    </div>
-  )
+import {
+  DashboardEmptyState,
+  DashboardPageShell,
+  type DashboardTab,
+} from "@/widgets/dashboard-shell"
+
+export async function DashboardPage() {
+  const t = await getTranslations("DashboardShell")
+
+  const tabs: DashboardTab[] = [
+    {
+      value: "overview",
+      label: t("overview"),
+      content: <SectionCards />,
+    },
+    {
+      value: "activity",
+      label: t("activity"),
+      content: (
+        <DashboardEmptyState
+          title={t("activityEmptyTitle")}
+          description={t("activityEmptyDescription")}
+        />
+      ),
+    },
+  ]
+
+  return <DashboardPageShell tabs={tabs} defaultTab="overview" />
 }

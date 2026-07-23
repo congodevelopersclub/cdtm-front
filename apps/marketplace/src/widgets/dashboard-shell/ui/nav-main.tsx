@@ -3,11 +3,11 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { cn } from "@workspace/ui/lib/utils"
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from "@workspace/ui/components/sidebar"
 
@@ -26,20 +26,18 @@ export function NavMain({ items }: { items: NavItem[] }) {
 
             return (
               <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton
-                  asChild
-                  isActive={isActive}
-                  tooltip={item.title}
-                  className="h-10 w-full justify-start px-3"
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "flex h-12 w-full items-center gap-3 rounded-full px-4 text-sm transition-colors",
+                    isActive
+                      ? "bg-surface-nav-active font-medium text-sidebar-accent-foreground"
+                      : "text-sidebar-foreground hover:bg-muted/60"
+                  )}
                 >
-                  <Link
-                    href={item.href}
-                    className="flex w-full items-center gap-2.5"
-                  >
-                    <item.icon className="size-[20px] shrink-0" />
-                    <span className="truncate text-sm">{item.title}</span>
-                  </Link>
-                </SidebarMenuButton>
+                  <item.icon className="size-5 shrink-0" />
+                  <span className="truncate">{item.title}</span>
+                </Link>
               </SidebarMenuItem>
             )
           })}

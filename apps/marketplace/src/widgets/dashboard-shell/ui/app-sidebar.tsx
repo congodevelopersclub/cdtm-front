@@ -6,51 +6,46 @@ import Link from "next/link"
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarRail,
 } from "@workspace/ui/components/sidebar"
 
 import type { DashboardRole, DashboardUser } from "../config/types"
 import { getDashboardNav } from "../config/menus"
 
+import { ProfileCompletionCard } from "./components/profile-completion-card"
+import { SidebarHelpLink } from "./components/sidebar-help-link"
 import { NavMain } from "./nav-main"
-import { NavUser } from "./nav-user"
 
 type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
   role: DashboardRole
   user: DashboardUser
 }
 
-export function AppSidebar({ role, user, ...props }: AppSidebarProps) {
+export function AppSidebar({ role, ...props }: AppSidebarProps) {
   const navItems = getDashboardNav(role)
 
   return (
     <Sidebar collapsible="offcanvas" {...props}>
-      <SidebarHeader className="gap-3 px-2">
-        <SidebarMenu className="mb-5">
-          <SidebarMenuItem >
-            <SidebarMenuButton
-              asChild
-              className="h-auto justify-center data-[slot=sidebar-menu-button]:p-2!"
-            >
-              <Link
-                href="/"
-                className="flex flex-row items-center gap-2 py-1 text-center"
-              >
-                <div className="flex size-10 items-center justify-center overflow-hidden">
+      <SidebarHeader className="px-4 pt-6 pb-4">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild className="h-auto p-0 hover:bg-transparent">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center overflow-hidden">
                   <Image
                     src="/images/logo.svg"
                     alt="Congo developers club Logo"
-                    width={40}
-                    height={40}
+                    width={32}
+                    height={32}
                     className="size-full object-contain"
                   />
                 </div>
-                <span className="text-sm leading-tight font-semibold">
-                  CDC Marketplace
-                </span>
+                <span className="text-sm font-semibold">CDC Marketplace</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -58,8 +53,14 @@ export function AppSidebar({ role, user, ...props }: AppSidebarProps) {
       </SidebarHeader>
       <SidebarContent className="px-2">
         <NavMain items={navItems} />
+        <div className="mt-4 group-data-[state=collapsed]:hidden">
+          <ProfileCompletionCard />
+        </div>
       </SidebarContent>
-      <NavUser user={user} />
+      <SidebarFooter className="px-2 pb-4">
+        <SidebarHelpLink />
+      </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   )
 }
