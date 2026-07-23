@@ -6,6 +6,7 @@ export type DashboardUser = {
   name: string
   email: string
   avatar?: string
+  title?: string
 }
 
 export type NavItem = {

@@ -16,7 +16,7 @@ import type { DashboardRole, DashboardUser } from "../config/types"
 import { getDashboardNav } from "../config/menus"
 
 import { NavMain } from "./nav-main"
-import { NavProfile } from "./nav-profile"
+import { NavUser } from "./nav-user"
 
 type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
   role: DashboardRole
@@ -37,7 +37,7 @@ export function AppSidebar({ role, user, ...props }: AppSidebarProps) {
             >
               <Link
                 href="/"
-                className="flex flex-col items-center gap-2 py-1 text-center"
+                className="flex flex-row items-center gap-2 py-1 text-center"
               >
                 <div className="flex size-10 items-center justify-center overflow-hidden">
                   <Image
@@ -55,11 +55,11 @@ export function AppSidebar({ role, user, ...props }: AppSidebarProps) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        <NavProfile user={user} />
       </SidebarHeader>
       <SidebarContent className="px-2">
         <NavMain items={navItems} />
       </SidebarContent>
+      <NavUser user={user} />
     </Sidebar>
   )
 }

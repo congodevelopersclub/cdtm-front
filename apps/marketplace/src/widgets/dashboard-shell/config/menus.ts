@@ -70,6 +70,7 @@ export function getPageTitle(pathname: string, role: DashboardRole): string {
 export const MOCK_TALENT_USER = {
   name: "Christian Siku",
   email: "chrissiku5@gmail.com",
+  title: "Full Stack Developer",
   avatar:
     "https://media.licdn.com/dms/image/v2/D4D03AQFgArQdG55T_g/profile-displayphoto-shrink_400_400/B4DZTqL5NKHYAk-/0/1739095774596?e=1786579200&v=beta&t=I97Jrd7doGW-vxMWLU9g929nX0UpZt5b3MrdxWQJFQU",
 }

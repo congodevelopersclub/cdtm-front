@@ -28,6 +28,16 @@
     "english": "Anglais",
     "french": "Français"
   },
+  "SidebarNav": {
+    "settings": "Paramètres du compte",
+    "language": "Langue",
+    "english": "English",
+    "french": "Français",
+    "theme": "Thème",
+    "themeLight": "Mode clair",
+    "themeDark": "Mode sombre",
+    "logout": "Se déconnecter"
+  },
   "Validation": {
     "invalidEmail": "Entrez une adresse e-mail valide",
     "passwordMin": "Le mot de passe doit contenir au moins 8 caractères"
