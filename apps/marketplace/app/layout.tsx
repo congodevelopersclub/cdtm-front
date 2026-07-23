@@ -31,7 +31,7 @@ export default async function RootLayout({
       lang={locale}
       suppressHydrationWarning
       className={cn(
-        "antialiased",
+        "light antialiased",
         fontMono.variable,
         "font-sans",
         geist.variable

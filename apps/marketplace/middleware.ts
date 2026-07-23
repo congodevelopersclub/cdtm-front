@@ -1,13 +1,9 @@
-import { authMiddleware } from "@/shared/auth/middleware"
+import { NextResponse } from "next/server"
 
-export default authMiddleware
+export function middleware() {
+  return NextResponse.next()
+}
 
 export const config = {
-  matcher: [
-    "/dashboard/:path*",
-    "/listings/:path*",
-    "/checkout/:path*",
-    "/settings/:path*",
-    "/login",
-  ],
+  matcher: [],
 }

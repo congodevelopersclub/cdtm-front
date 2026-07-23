@@ -19,7 +19,7 @@
   },
   "Dashboard": {
     "title": "Dashboard",
-    "description": "Protected marketplace route — JWT middleware is active.",
+    "description": "Your marketplace dashboard.",
     "signedInAs": "Signed in as {email}",
     "sessionLoading": "Session loading..."
   },

@@ -19,7 +19,7 @@
   },
   "Dashboard": {
     "title": "Tableau de bord",
-    "description": "Route marketplace protégée — le middleware JWT est actif.",
+    "description": "Votre tableau de bord marketplace.",
     "signedInAs": "Connecté en tant que {email}",
     "sessionLoading": "Chargement de la session..."
   },
