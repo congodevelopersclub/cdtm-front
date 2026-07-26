@@ -18,7 +18,6 @@ import {
 import type { DashboardRole, DashboardUser } from "../config/types"
 import { getDashboardNav } from "../config/menus"
 
-import { ProfileCompletionCard } from "./components/profile-completion-card"
 import { SidebarHelpLink } from "./components/sidebar-help-link"
 import { NavMain } from "./nav-main"
 
@@ -55,9 +54,6 @@ export function AppSidebar({ role, ...props }: AppSidebarProps) {
       </SidebarHeader>
       <SidebarContent className="px-2">
         <NavMain items={navItems} />
-        <div className="mt-4 group-data-[state=collapsed]:hidden">
-          <ProfileCompletionCard />
-        </div>
       </SidebarContent>
       <SidebarFooter className="px-2 pb-4">
         <SidebarHelpLink />

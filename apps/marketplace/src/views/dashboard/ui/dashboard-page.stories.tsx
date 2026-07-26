@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { STORY_DASHBOARD_USER } from "@/widgets/dashboard-shell/storybook/fixtures"
 import { DashboardShell } from "@/widgets/dashboard-shell"
 
-import { SectionCards } from "./components/section-cards"
+import { DashboardOverviewGrid } from "./components/dashboard-overview-grid"
 import { DashboardTabbedShell } from "@/widgets/dashboard-shell/ui/components/dashboard-tabbed-shell"
 
 const meta = {
@@ -30,7 +30,7 @@ const meta = {
           {
             value: "overview",
             label: "Overview",
-            content: <SectionCards />,
+            content: <DashboardOverviewGrid />,
           },
           {
             value: "activity",

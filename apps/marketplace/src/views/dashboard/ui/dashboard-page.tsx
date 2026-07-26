@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server"
 
-import { SectionCards } from "./components/section-cards"
+import { DashboardOverviewGrid } from "./components/dashboard-overview-grid"
 
 import {
   DashboardEmptyState,
@@ -15,7 +15,7 @@ export async function DashboardPage() {
     {
       value: "overview",
       label: t("overview"),
-      content: <SectionCards />,
+      content: <DashboardOverviewGrid />,
     },
     {
       value: "activity",

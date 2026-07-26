@@ -1,3 +1,4 @@
+export { ProfileCompletionPanel } from "./ui/profile-completion-panel"
 export { getInitials } from "./lib/get-initials"
 export {
   getProfileCompletion,

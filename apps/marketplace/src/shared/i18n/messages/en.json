@@ -154,5 +154,31 @@
     "noNotificationsDescription": "When you have updates about jobs, invites, or messages they will appear here.",
     "toggleSidebar": "Toggle sidebar",
     "searchAriaLabel": "Search for jobs, skills, and people"
+  },
+  "DashboardOverview": {
+    "greeting": "Hello, {name}",
+    "profileCompletionTitle": "Profile completion",
+    "upcomingTitle": "Upcoming",
+    "platformStatsTitle": "Platform at a glance",
+    "viewProfile": "View profile",
+    "viewProfileDescription": "Update your story, skills, and experience.",
+    "statTalentsValue": "2,500+",
+    "statTalentsLabel": "Talents",
+    "statTalentsDelta": "+12% this month",
+    "statCompaniesValue": "120+",
+    "statCompaniesLabel": "Companies",
+    "statCompaniesDelta": "+8% this month",
+    "statRolesValue": "350+",
+    "statRolesLabel": "Open roles",
+    "statRolesDelta": "+15 new this week",
+    "eventOnboardingTitle": "Profile onboarding session",
+    "eventOnboardingSchedule": "Mon 3 · 10:00 AM",
+    "eventOnboardingType": "Session",
+    "eventProfileReviewTitle": "Profile review with mentor",
+    "eventProfileReviewSchedule": "Wed 5 · 2:00 PM",
+    "eventProfileReviewType": "Review",
+    "eventWorkshopTitle": "LinkedIn portfolio workshop",
+    "eventWorkshopSchedule": "Fri 7 · 11:00 AM",
+    "eventWorkshopType": "Workshop"
   }
 }

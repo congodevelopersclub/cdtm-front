@@ -154,5 +154,31 @@
     "noNotificationsDescription": "Les mises à jour concernant les emplois, invitations ou messages apparaîtront ici.",
     "toggleSidebar": "Afficher ou masquer la barre latérale",
     "searchAriaLabel": "Rechercher des emplois, compétences et personnes"
+  },
+  "DashboardOverview": {
+    "greeting": "Bonjour, {name}",
+    "profileCompletionTitle": "Complétion du profil",
+    "upcomingTitle": "À venir",
+    "platformStatsTitle": "La plateforme en un coup d'œil",
+    "viewProfile": "Voir le profil",
+    "viewProfileDescription": "Mettez à jour votre parcours, compétences et expérience.",
+    "statTalentsValue": "2 500+",
+    "statTalentsLabel": "Talents",
+    "statTalentsDelta": "+12 % ce mois",
+    "statCompaniesValue": "120+",
+    "statCompaniesLabel": "Entreprises",
+    "statCompaniesDelta": "+8 % ce mois",
+    "statRolesValue": "350+",
+    "statRolesLabel": "Offres ouvertes",
+    "statRolesDelta": "+15 nouvelles cette semaine",
+    "eventOnboardingTitle": "Session d'intégration profil",
+    "eventOnboardingSchedule": "Lun 3 · 10h00",
+    "eventOnboardingType": "Session",
+    "eventProfileReviewTitle": "Revue de profil avec mentor",
+    "eventProfileReviewSchedule": "Mer 5 · 14h00",
+    "eventProfileReviewType": "Revue",
+    "eventWorkshopTitle": "Atelier portfolio LinkedIn",
+    "eventWorkshopSchedule": "Ven 7 · 11h00",
+    "eventWorkshopType": "Atelier"
   }
 }
