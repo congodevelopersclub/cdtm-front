@@ -46,7 +46,9 @@
   "LocaleSwitcher": {
     "label": "Langue",
     "english": "Anglais",
-    "french": "Français"
+    "french": "Français",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
   },
   "SidebarNav": {
     "settings": "Paramètres du compte",
@@ -56,6 +58,8 @@
     "theme": "Thème",
     "themeLight": "Mode clair",
     "themeDark": "Mode sombre",
+    "themeLightShort": "Clair",
+    "themeDarkShort": "Sombre",
     "logout": "Se déconnecter"
   },
   "Profile": {
