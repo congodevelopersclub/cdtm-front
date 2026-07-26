@@ -1,5 +1,6 @@
 export { LoginAuthPanel as LoginForm } from "./components/login-auth-panel"
 export { LoginAuthPanel } from "./components/login-auth-panel"
+export { LoginBrandHeader } from "./components/login-brand-header"
 export { LoginMarketingPanel } from "./components/login-marketing-panel"
 export { useLinkedInAuth } from "./hooks/use-linkedin-auth"
 export { useExchangeCode } from "./hooks/use-exchange-code"

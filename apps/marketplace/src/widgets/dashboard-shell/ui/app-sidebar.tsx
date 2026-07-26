@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 import {
   Sidebar,
@@ -27,6 +28,7 @@ type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
 }
 
 export function AppSidebar({ role, ...props }: AppSidebarProps) {
+  const t = useTranslations("HomePage")
   const navItems = getDashboardNav(role)
 
   return (
@@ -45,7 +47,7 @@ export function AppSidebar({ role, ...props }: AppSidebarProps) {
                     className="size-full object-contain"
                   />
                 </div>
-                <span className="text-sm font-semibold">CDC Marketplace</span>
+                <span className="text-sm font-semibold">{t("title")}</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

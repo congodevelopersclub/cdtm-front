@@ -1,56 +1,116 @@
 "use client"
 
+import { useCallback, useEffect, useState } from "react"
+import Image from "next/image"
+import Autoplay from "embla-carousel-autoplay"
+import useEmblaCarousel from "embla-carousel-react"
 import { useTranslations } from "next-intl"
-import { IconStar } from "@tabler/icons-react"
+
+import { LOGIN_SLIDES } from "../config/login-slides"
 
 export function LoginMarketingPanel() {
   const t = useTranslations("Login")
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const stats = [
-    { value: t("statTalentsValue"), label: t("statTalentsLabel") },
-    { value: t("statCompaniesValue"), label: t("statCompaniesLabel") },
-    { value: t("statRolesValue"), label: t("statRolesLabel") },
-  ]
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true }),
+  ])
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    emblaApi.on("select", onSelect)
+    emblaApi.on("reInit", onSelect)
+
+    return () => {
+      emblaApi.off("select", onSelect)
+      emblaApi.off("reInit", onSelect)
+    }
+  }, [emblaApi, onSelect])
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      emblaApi?.scrollTo(index)
+    },
+    [emblaApi],
+  )
+
+  const activeSlide = LOGIN_SLIDES[selectedIndex] ?? LOGIN_SLIDES[0]
 
   return (
-    <div className="relative hidden flex-col justify-between overflow-hidden bg-secondary/50 p-10 lg:flex lg:p-12 xl:p-16">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 -left-24 size-72 rounded-full bg-brand-mint/10 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-16 -bottom-16 size-64 rounded-full bg-brand-orange/10 blur-3xl"
-      />
-
-      <div className="relative z-10 flex flex-col gap-8">
-        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold tracking-wide text-primary uppercase">
-          <IconStar className="size-3.5 text-brand-orange" />
-          {t("welcomeBadge")}
-        </span>
-
-        <div className="max-w-lg space-y-4">
-          <h1 className="text-4xl leading-tight font-semibold tracking-tight text-foreground xl:text-5xl">
-            {t("headline")}{" "}
-            <span className="text-primary">{t("headlineAccent")}</span>
-          </h1>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            {t("subheadline")}
-          </p>
+    <div
+      aria-roledescription="carousel"
+      className="relative hidden h-full min-h-0 overflow-hidden lg:flex"
+    >
+      <div className="absolute inset-0" ref={emblaRef}>
+        <div className="flex h-full">
+          {LOGIN_SLIDES.map((slide, index) => (
+            <div
+              key={slide.image}
+              aria-hidden={index !== selectedIndex}
+              className="relative h-full min-w-0 flex-[0_0_100%]"
+            >
+              <Image
+                src={slide.image}
+                alt=""
+                fill
+                priority={index === 0}
+                sizes="50vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="relative z-10 grid grid-cols-3 gap-6 border-t border-border/60 pt-8">
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <p className="text-2xl font-semibold tracking-tight text-foreground">
-              {stat.value}
-            </p>
-            <p className="mt-1 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-              {stat.label}
-            </p>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/80 via-black/40 to-black/80"
+      />
+
+      <div className="relative z-10 flex h-full min-h-0 w-full flex-col justify-between p-8 xl:p-12">
+        <div className="flex items-center gap-3">
+          <div className="flex size-8 items-center justify-center overflow-hidden">
+            <Image
+              src="/images/logo.svg"
+              alt=""
+              width={32}
+              height={32}
+              className="size-full object-contain"
+              priority
+            />
           </div>
-        ))}
+          <span className="text-sm font-semibold text-white">{t("platformName")}</span>
+        </div>
+
+        <div className="space-y-6">
+          <div className="flex gap-2" role="tablist" aria-label={t("platformName")}>
+            {LOGIN_SLIDES.map((slide, index) => (
+              <button
+                key={slide.image}
+                type="button"
+                role="tab"
+                aria-selected={index === selectedIndex}
+                aria-label={t("goToSlide", { number: index + 1 })}
+                onClick={() => scrollTo(index)}
+                className={`h-1 rounded-full transition-all ${index === selectedIndex ? "w-8 bg-white" : "w-4 bg-white/40 hover:bg-white/60"
+                  }`}
+              />
+            ))}
+          </div>
+
+          <div aria-live="polite" className="max-w-lg space-y-3">
+            <h2 className="text-3xl leading-tight font-semibold tracking-tight text-white xl:text-4xl">
+              {t(activeSlide.titleKey)}
+            </h2>
+            <p className="text-base leading-relaxed text-white/80">{t(activeSlide.subtitleKey)}</p>
+          </div>
+        </div>
       </div>
     </div>
   )

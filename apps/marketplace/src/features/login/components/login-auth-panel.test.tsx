@@ -24,7 +24,7 @@ describe("LoginAuthPanel", () => {
     renderWithProviders(<LoginAuthPanel />)
 
     expect(
-      screen.getByRole("button", { name: /sign in with linkedin/i })
+      screen.getByRole("button", { name: /continue with linkedin/i })
     ).toBeInTheDocument()
   })
 
@@ -34,7 +34,7 @@ describe("LoginAuthPanel", () => {
     renderWithProviders(<LoginAuthPanel />)
 
     await user.click(
-      screen.getByRole("button", { name: /sign in with linkedin/i })
+      screen.getByRole("button", { name: /continue with linkedin/i })
     )
 
     expect(window.location.href).toContain("/auth")

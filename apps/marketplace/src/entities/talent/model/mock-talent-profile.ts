@@ -33,7 +33,7 @@ When I'm not coding, I mentor junior developers and contribute to open source pr
   ],
   projects: [
     {
-      title: "CDC Marketplace Platform",
+      title: "Talent Developers Marketplace Platform",
       description:
         "Built the talent marketplace frontend with role-based dashboards, i18n support, and a reusable design system.",
       year: "2026",

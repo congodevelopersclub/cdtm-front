@@ -1,12 +1,12 @@
 {
   "HomePage": {
-    "title": "CDC Marketplace",
+    "title": "Talent Developers Marketplace",
     "description": "Application produit authentifiée pour les annonces, le paiement et le tableau de bord.",
-    "signIn": "Se connecter",
+    "signIn": "Se connecter / S'inscrire",
     "dashboard": "Tableau de bord"
   },
   "Login": {
-    "welcomeBadge": "Bienvenue sur CDC Marketplace",
+    "welcomeBadge": "Bienvenue sur Talent Developers Marketplace",
     "headline": "Trouvez des opportunités avec les",
     "headlineAccent": "entreprises leaders mondiales.",
     "subheadline": "Connectez-vous avec des entreprises de premier plan, mettez en valeur vos compétences et développez votre carrière via le réseau de talents Congo Developers Club.",
@@ -16,17 +16,26 @@
     "statCompaniesLabel": "Entreprises",
     "statRolesValue": "350+",
     "statRolesLabel": "Offres ouvertes",
-    "cardTitle": "Se connecter",
-    "cardDescription": "Utilisez votre compte LinkedIn pour accéder à la marketplace.",
-    "continueWithLinkedIn": "Se connecter avec LinkedIn",
+    "cardTitle": "Connexion",
+    "cardDescription": "Authentifiez-vous avec votre compte LinkedIn pour continuer.",
+    "continueWithLinkedIn": "Continuer avec LinkedIn",
     "redirecting": "Redirection...",
-    "newUserPrompt": "Nouveau sur CDC Marketplace ?",
-    "newUserAction": "Connectez-vous avec LinkedIn pour commencer.",
+    "newUserPrompt": "Nouveau sur Talent Developers Marketplace ?",
+    "newUserAction": "Continuer avec LinkedIn pour commencer.",
     "welcomeBack": "Bon retour !",
     "callbackLoading": "Connexion en cours...",
     "callbackError": "Impossible de finaliser la connexion. Veuillez réessayer.",
     "callbackMissingCode": "Code d'autorisation manquant. Veuillez réessayer de vous connecter.",
-    "backToLogin": "Retour à la connexion"
+    "backToLogin": "Retour à la connexion",
+    "platformName": "Talent Developers Marketplace",
+    "platformTagline": "Réseau de talents Congo Developers Club",
+    "slide1Title": "Trouvez des opportunités avec les entreprises leaders mondiales.",
+    "slide1Subtitle": "Connectez-vous avec des entreprises de premier plan et mettez en valeur vos compétences.",
+    "slide2Title": "Rejoignez une communauté de talents dynamique.",
+    "slide2Subtitle": "Plus de 2 500 talents et 120+ entreprises construisent déjà leur carrière via CDC.",
+    "slide3Title": "Votre prochaine opportunité commence ici.",
+    "slide3Subtitle": "Connectez-vous avec LinkedIn pour explorer les offres et grandir avec Talent Developers Marketplace.",
+    "goToSlide": "Aller à la diapositive {number}"
   },
   "Dashboard": {
     "title": "Tableau de bord",

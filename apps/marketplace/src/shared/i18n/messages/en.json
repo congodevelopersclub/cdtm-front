@@ -1,12 +1,12 @@
 {
   "HomePage": {
-    "title": "CDC Marketplace",
+    "title": "Talent Developers Marketplace",
     "description": "Authenticated product app for listings, checkout, and dashboard.",
-    "signIn": "Sign in",
+    "signIn": "Sign in / Sign up",
     "dashboard": "Dashboard"
   },
   "Login": {
-    "welcomeBadge": "Welcome to CDC Marketplace",
+    "welcomeBadge": "Welcome to Talent Developers Marketplace",
     "headline": "Find opportunities with the",
     "headlineAccent": "world's leading companies.",
     "subheadline": "Connect with top companies, showcase your skills, and grow your career through the Congo Developers Club talent network.",
@@ -17,16 +17,25 @@
     "statRolesValue": "350+",
     "statRolesLabel": "Open roles",
     "cardTitle": "Sign in",
-    "cardDescription": "Use your LinkedIn account to access the marketplace.",
-    "continueWithLinkedIn": "Sign in with LinkedIn",
+    "cardDescription": "Authenticate with your LinkedIn account to continue.",
+    "continueWithLinkedIn": "Continue with LinkedIn",
     "redirecting": "Redirecting...",
-    "newUserPrompt": "New to CDC Marketplace?",
-    "newUserAction": "Sign in with LinkedIn to get started.",
+    "newUserPrompt": "New to Talent Developers Marketplace?",
+    "newUserAction": "Continue with LinkedIn to get started.",
     "welcomeBack": "Welcome back!",
     "callbackLoading": "Signing you in...",
     "callbackError": "Unable to complete sign in. Please try again.",
     "callbackMissingCode": "Missing authorization code. Please try signing in again.",
-    "backToLogin": "Back to sign in"
+    "backToLogin": "Back to sign in",
+    "platformName": "Talent Developers Marketplace",
+    "platformTagline": "Congo Developers Club talent network",
+    "slide1Title": "Find opportunities with the world's leading companies.",
+    "slide1Subtitle": "Connect with top companies, showcase your skills, and grow your career.",
+    "slide2Title": "Join a thriving talent community.",
+    "slide2Subtitle": "2,500+ talents and 120+ companies already building careers through CDC.",
+    "slide3Title": "Your next role starts here.",
+    "slide3Subtitle": "Sign in with LinkedIn to explore open roles and grow with Talent Developers Marketplace.",
+    "goToSlide": "Go to slide {number}"
   },
   "Dashboard": {
     "title": "Dashboard",
