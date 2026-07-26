@@ -4,11 +4,11 @@ import { getLocale, getMessages } from "next-intl/server"
 
 import "./globals.css"
 import {
-  AuthProvider,
   QueryProvider,
   ThemeProvider,
   ToastProvider,
 } from "@/shared/providers"
+import { AuthProvider } from "@/features/auth"
 import { cn } from "@workspace/ui/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })

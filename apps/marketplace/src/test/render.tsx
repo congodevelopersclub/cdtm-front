@@ -1,5 +1,5 @@
 import type { ReactElement, ReactNode } from "react"
-import { render, type RenderOptions } from "@testing-library/react"
+import { render, type RenderOptions, type RenderResult } from "@testing-library/react"
 import { NextIntlClientProvider } from "next-intl"
 import { ThemeProvider } from "next-themes"
 
@@ -47,7 +47,7 @@ function AllProviders({
 export function renderWithProviders(
   ui: ReactElement,
   { locale = "en", withSidebar = false, ...options }: ProviderOptions & RenderOptions = {}
-) {
+): RenderResult {
   return render(ui, {
     wrapper: ({ children }) => (
       <AllProviders locale={locale} withSidebar={withSidebar}>

@@ -31,7 +31,7 @@ export function HomePage() {
         </CardHeader>
         <CardContent className="flex gap-3">
           <Button asChild>
-            <Link href="/login">{t("signIn")}</Link>
+            <Link href="/auth">{t("signIn")}</Link>
           </Button>
           <Button variant="outline" asChild>
             <Link href="/dashboard">{t("dashboard")}</Link>

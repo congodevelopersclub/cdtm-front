@@ -31,9 +31,8 @@ import {
 
 import type { DashboardUser } from "../../config/types"
 
-import { clearToken } from "@/shared/auth"
+import { useLogout } from "@/features/auth"
 import { setLocale } from "@/shared/i18n/actions/set-locale"
-import { useAuth } from "@/shared/providers/auth-provider"
 
 function getInitials(name: string) {
   return name
@@ -52,7 +51,7 @@ export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
   const t = useTranslations("SidebarNav")
   const locale = useLocale() as Locale
   const router = useRouter()
-  const { refreshSession } = useAuth()
+  const logout = useLogout()
   const { resolvedTheme, setTheme } = useTheme()
   const [isPending, startTransition] = useTransition()
 
@@ -72,9 +71,7 @@ export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
   }
 
   function handleLogout() {
-    clearToken()
-    refreshSession()
-    router.push("/login")
+    logout()
   }
 
   return (

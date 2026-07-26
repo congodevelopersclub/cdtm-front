@@ -2,14 +2,19 @@
 
 import { TooltipProvider } from "@workspace/ui/components/tooltip"
 
-import { MOCK_TALENT_USER } from "../config/menus"
+import type { DashboardUser } from "../config/types"
 
 import { DashboardShell } from "./dashboard-shell"
 
-export function DashboardLayout({ children }: { children: React.ReactNode }) {
+type DashboardLayoutProps = {
+  children: React.ReactNode
+  user: DashboardUser
+}
+
+export function DashboardLayout({ children, user }: DashboardLayoutProps) {
   return (
     <TooltipProvider>
-      <DashboardShell role="talent" user={MOCK_TALENT_USER}>
+      <DashboardShell role="talent" user={user}>
         {children}
       </DashboardShell>
     </TooltipProvider>

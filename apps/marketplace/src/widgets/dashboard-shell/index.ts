@@ -1,5 +1,6 @@
 export { DashboardShell } from "./ui/dashboard-shell"
 export { DashboardLayout } from "./ui/dashboard-layout"
+export { mapToDashboardUser } from "./lib/map-to-dashboard-user"
 export { DashboardPageShell } from "./ui/dashboard-page-shell"
 export { DashboardPanel } from "./ui/components/dashboard-panel"
 export { DashboardEmptyState } from "./ui/components/dashboard-empty-state"

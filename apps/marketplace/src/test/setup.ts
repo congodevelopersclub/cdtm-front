@@ -6,6 +6,8 @@ import { afterEach, vi } from "vitest"
 afterEach(() => {
   cleanup()
   document.cookie = ""
+  sessionStorage.clear()
+  localStorage.clear()
 })
 
 Object.defineProperty(window, "matchMedia", {
@@ -79,10 +81,17 @@ vi.mock("@/shared/i18n/actions/set-locale", () => ({
   setLocale: vi.fn(),
 }))
 
-vi.mock("@/shared/providers/auth-provider", () => ({
+vi.mock("@/features/auth", () => ({
   useAuth: () => ({
-    session: { userId: "1", email: "demo@example.com" },
+    session: { userId: "1", email: "demo@example.com", name: "Demo User" },
+    user: {
+      id: "1",
+      name: "Demo User",
+      email: "demo@example.com",
+    },
     isAuthenticated: true,
+    isLoading: false,
     refreshSession: vi.fn(),
   }),
+  useLogout: () => vi.fn(),
 }))

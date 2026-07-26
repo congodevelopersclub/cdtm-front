@@ -1,1 +1,1 @@
-export { DashboardLayout as default } from "@/widgets/dashboard-shell"
+export { AuthenticatedDashboardLayout as default } from "@/views/dashboard"
