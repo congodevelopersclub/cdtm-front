@@ -5,11 +5,11 @@ import { useTranslations } from "next-intl"
 import { useRouter, useSearchParams } from "next/navigation"
 import { toast } from "sonner"
 
-import { exchangeCodeRequest } from "../api/auth.api"
+import { exchangeCodeAction } from "../actions/exchange-code"
 
-import { getUserRequest, userQueryKey } from "@/entities/user"
+import { userQueryKey } from "@/entities/user"
 
-import { notifyAuthSessionChanged, setToken } from "@/shared/auth"
+import { notifyAuthSessionChanged } from "@/shared/auth"
 import { setUserId } from "@/shared/auth/user-id"
 import { setUserSession } from "@/shared/auth/user-session"
 
@@ -21,13 +21,11 @@ export function useExchangeCode() {
 
   return useMutation({
     mutationFn: async (code: string) => {
-      const response = await exchangeCodeRequest(code)
-      const user = await getUserRequest(response.user.id)
+      const { user } = await exchangeCodeAction(code)
 
-      return { token: response.token, user }
+      return { user }
     },
-    onSuccess: ({ token, user }) => {
-      setToken(token)
+    onSuccess: ({ user }) => {
       setUserId(user.id)
       setUserSession(user)
       queryClient.setQueryData(userQueryKey(user.id), user)

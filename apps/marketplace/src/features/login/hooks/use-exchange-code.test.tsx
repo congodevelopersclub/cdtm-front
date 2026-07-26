@@ -5,15 +5,12 @@ import { createQueryWrapper } from "@/test/query-wrapper"
 
 import { useExchangeCode } from "./use-exchange-code"
 
-const { exchangeMock, getUserMock, setTokenMock, setUserIdMock, setUserSessionMock, notifyMock } =
-  vi.hoisted(() => ({
-    exchangeMock: vi.fn(),
-    getUserMock: vi.fn(),
-    setTokenMock: vi.fn(),
-    setUserIdMock: vi.fn(),
-    setUserSessionMock: vi.fn(),
-    notifyMock: vi.fn(),
-  }))
+const { exchangeMock, setUserIdMock, setUserSessionMock, notifyMock } = vi.hoisted(() => ({
+  exchangeMock: vi.fn(),
+  setUserIdMock: vi.fn(),
+  setUserSessionMock: vi.fn(),
+  notifyMock: vi.fn(),
+}))
 
 const replaceMock = vi.fn()
 
@@ -24,17 +21,15 @@ vi.mock("sonner", () => ({
   },
 }))
 
-vi.mock("../api/auth.api", () => ({
-  exchangeCodeRequest: exchangeMock,
+vi.mock("../actions/exchange-code", () => ({
+  exchangeCodeAction: exchangeMock,
 }))
 
 vi.mock("@/entities/user", () => ({
-  getUserRequest: getUserMock,
   userQueryKey: (userId: string | null) => ["user", userId],
 }))
 
 vi.mock("@/shared/auth", () => ({
-  setToken: setTokenMock,
   notifyAuthSessionChanged: notifyMock,
 }))
 
@@ -60,15 +55,12 @@ describe("useExchangeCode", () => {
 
   it("saves user id and fetched profile after exchange", async () => {
     exchangeMock.mockResolvedValue({
-      token: "test-token",
-      user: { id: "user-1", name: "Test", email: "test@example.com" },
-    })
-
-    getUserMock.mockResolvedValue({
-      id: "user-1",
-      name: "Christian Siku",
-      email: "chrissiku5@gmail.com",
-      role: "USER",
+      user: {
+        id: "user-1",
+        name: "Christian Siku",
+        email: "chrissiku5@gmail.com",
+        role: "USER",
+      },
     })
 
     const { result } = renderHook(() => useExchangeCode(), {
@@ -81,9 +73,8 @@ describe("useExchangeCode", () => {
       expect(result.current.isSuccess).toBe(true)
     })
 
-    expect(setTokenMock).toHaveBeenCalledWith("test-token")
+    expect(exchangeMock).toHaveBeenCalledWith("mock-code")
     expect(setUserIdMock).toHaveBeenCalledWith("user-1")
-    expect(getUserMock).toHaveBeenCalledWith("user-1")
     expect(setUserSessionMock).toHaveBeenCalledWith({
       id: "user-1",
       name: "Christian Siku",

@@ -3,14 +3,19 @@ import { renderHook } from "@testing-library/react"
 
 import { useLogout } from "./use-logout"
 
-const { clearAuthStorageMock, notifyMock, replaceMock, refreshMock, removeQueriesMock } =
+const { clearAuthStorageMock, notifyMock, replaceMock, refreshMock, removeQueriesMock, logoutMock } =
   vi.hoisted(() => ({
     clearAuthStorageMock: vi.fn(),
     notifyMock: vi.fn(),
     replaceMock: vi.fn(),
     refreshMock: vi.fn(),
     removeQueriesMock: vi.fn(),
+    logoutMock: vi.fn(),
   }))
+
+vi.mock("../actions/logout", () => ({
+  logoutAction: logoutMock,
+}))
 
 vi.mock("@/shared/auth", () => ({
   clearAuthStorage: clearAuthStorageMock,
@@ -33,13 +38,15 @@ vi.mock("@tanstack/react-query", () => ({
 describe("useLogout", () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    logoutMock.mockResolvedValue(undefined)
   })
 
-  it("clears auth storage, query cache, and navigates to /auth", () => {
+  it("clears server cookie, auth storage, query cache, and navigates to /auth", async () => {
     const { result } = renderHook(() => useLogout())
 
-    result.current()
+    await result.current()
 
+    expect(logoutMock).toHaveBeenCalled()
     expect(clearAuthStorageMock).toHaveBeenCalled()
     expect(removeQueriesMock).toHaveBeenCalledWith({ queryKey: ["user"] })
     expect(notifyMock).toHaveBeenCalled()

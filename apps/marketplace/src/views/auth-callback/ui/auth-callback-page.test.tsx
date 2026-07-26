@@ -7,7 +7,7 @@ const { mutateMock } = vi.hoisted(() => ({
   mutateMock: vi.fn(),
 }))
 
-vi.mock("@/features/login/hooks/use-exchange-code", () => ({
+vi.mock("@/features/login", () => ({
   useExchangeCode: () => ({
     mutate: mutateMock,
     isPending: false,

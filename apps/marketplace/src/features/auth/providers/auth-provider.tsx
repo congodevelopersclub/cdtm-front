@@ -5,7 +5,6 @@ import { useQueryClient } from "@tanstack/react-query"
 
 import { userQueryKey, useCurrentUser } from "@/entities/user"
 import type { AuthUser } from "@/entities/user"
-import { getToken } from "@/shared/auth"
 import { AUTH_SESSION_CHANGED } from "@/shared/auth/session-events"
 import { getUserId, setUserId } from "@/shared/auth/user-id"
 import { getUserSession } from "@/shared/auth/user-session"
@@ -62,15 +61,12 @@ function toSession(user: AuthUser): Session {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const queryClient = useQueryClient()
   const [userId, setUserIdState] = React.useState<string | null>(() => resolveUserId())
-  const [hasToken, setHasToken] = React.useState(() => Boolean(getToken()))
 
   const { data: user, isLoading, isFetching, isError } = useCurrentUser(userId)
 
   const syncSessionState = React.useCallback(() => {
-    const nextHasToken = Boolean(getToken())
     const nextUserId = resolveUserId()
 
-    setHasToken(nextHasToken)
     setUserIdState(nextUserId)
 
     if (!nextUserId) {
@@ -94,7 +90,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [syncSessionState])
 
   const cachedUser = user ?? getUserSession()
-  const isAuthenticated = hasToken && Boolean(userId) && Boolean(cachedUser) && !isError
+  const isAuthenticated = Boolean(userId && cachedUser && !isError)
   const session = cachedUser ? toSession(cachedUser as AuthUser) : null
 
   return (
@@ -103,7 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         session,
         user: user ?? null,
         isAuthenticated,
-        isLoading: hasToken && Boolean(userId) && (isLoading || isFetching) && !cachedUser,
+        isLoading: Boolean(userId && (isLoading || isFetching) && !cachedUser),
         refreshSession: syncSessionState,
       }}
     >

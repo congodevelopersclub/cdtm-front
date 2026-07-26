@@ -71,7 +71,7 @@ export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
   }
 
   function handleLogout() {
-    logout()
+    void logout()
   }
 
   return (

@@ -1,23 +1,22 @@
-import { describe, expect, it, beforeEach, afterEach } from "vitest"
+import { describe, expect, it, vi, beforeEach } from "vitest"
 import { renderWithProviders, screen, userEvent } from "@/test/render"
 
 import { LoginAuthPanel } from "./login-auth-panel"
 
+const { startLinkedInAuthMock } = vi.hoisted(() => ({
+  startLinkedInAuthMock: vi.fn(),
+}))
+
+vi.mock("../hooks/use-linkedin-auth", () => ({
+  useLinkedInAuth: () => ({
+    startLinkedInAuth: startLinkedInAuthMock,
+    isRedirecting: false,
+  }),
+}))
+
 describe("LoginAuthPanel", () => {
-  const originalLocation = window.location
-
   beforeEach(() => {
-    Object.defineProperty(window, "location", {
-      configurable: true,
-      value: { ...originalLocation, href: "http://localhost:3001/auth" },
-    })
-  })
-
-  afterEach(() => {
-    Object.defineProperty(window, "location", {
-      configurable: true,
-      value: originalLocation,
-    })
+    vi.clearAllMocks()
   })
 
   it("renders LinkedIn sign-in button", () => {
@@ -28,7 +27,7 @@ describe("LoginAuthPanel", () => {
     ).toBeInTheDocument()
   })
 
-  it("redirects to LinkedIn auth URL on click", async () => {
+  it("starts LinkedIn auth on click", async () => {
     const user = userEvent.setup()
 
     renderWithProviders(<LoginAuthPanel />)
@@ -37,6 +36,6 @@ describe("LoginAuthPanel", () => {
       screen.getByRole("button", { name: /continue with linkedin/i })
     )
 
-    expect(window.location.href).toContain("/auth")
+    expect(startLinkedInAuthMock).toHaveBeenCalled()
   })
 })

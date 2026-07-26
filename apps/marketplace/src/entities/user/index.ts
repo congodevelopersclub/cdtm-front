@@ -5,5 +5,5 @@ export type {
   User,
   UserProfile,
 } from "./types"
-export { getUserRequest } from "./api/get-user"
+export { getUserAction } from "./actions/get-user"
 export { useCurrentUser, userQueryKey } from "./hooks/use-current-user"
