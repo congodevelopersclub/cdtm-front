@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 import { http, HttpResponse } from "msw"
 
-import { AuthCallbackPage } from "./auth-callback-page"
+import { AuthCallbackPage } from "@/pages/auth-callback"
 
 const meta = {
   title: "Marketplace/Pages/AuthCallbackPage",

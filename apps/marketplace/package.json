@@ -40,6 +40,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@storybook/nextjs-vite": "^10.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -52,6 +53,8 @@
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9",
     "jsdom": "^26.1.0",
+    "msw": "^2.12.4",
+    "storybook": "^10.4.0",
     "typescript": "^5",
     "vitest": "^3.2.4"
   }
