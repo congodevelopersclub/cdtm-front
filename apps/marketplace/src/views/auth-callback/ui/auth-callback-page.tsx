@@ -7,13 +7,6 @@ import { useTranslations } from "next-intl"
 import { IconLoader2 } from "@tabler/icons-react"
 
 import { Button } from "@workspace/ui/components/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card"
 
 import { useExchangeCode } from "@/features/login"
 
@@ -35,46 +28,32 @@ export function AuthCallbackPage() {
 
   if (!code) {
     return (
-      <div className="flex min-h-svh items-center justify-center p-6">
-        <Card className="w-full max-w-md rounded-3xl">
-          <CardHeader>
-            <CardTitle>{t("cardTitle")}</CardTitle>
-            <CardDescription>{t("callbackMissingCode")}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild className="w-full">
-              <Link href="/auth">{t("backToLogin")}</Link>
-            </Button>
-          </CardContent>
-        </Card>
+      <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6 text-center">
+        <p className="text-muted-foreground">{t("callbackMissingCode")}</p>
+        <Button asChild variant="outline">
+          <Link href="/auth">{t("backToLogin")}</Link>
+        </Button>
       </div>
     )
   }
 
+  const message = isError
+    ? t("callbackError")
+    : isSuccess
+      ? t("welcomeBack")
+      : t("callbackLoading")
+
   return (
-    <div className="flex min-h-svh items-center justify-center p-6">
-      <Card className="w-full max-w-md rounded-3xl">
-        <CardHeader className="items-center text-center">
-          <CardTitle>{t("cardTitle")}</CardTitle>
-          <CardDescription>
-            {isError
-              ? t("callbackError")
-              : isSuccess
-                ? t("welcomeBack")
-                : t("callbackLoading")}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col items-center gap-4">
-          {isPending ? (
-            <IconLoader2 className="size-8 animate-spin text-primary" />
-          ) : null}
-          {isError ? (
-            <Button asChild className="w-full">
-              <Link href="/auth">{t("backToLogin")}</Link>
-            </Button>
-          ) : null}
-        </CardContent>
-      </Card>
+    <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6 text-center">
+      {(isPending || isSuccess) && !isError ? (
+        <IconLoader2 className="size-8 animate-spin text-primary" />
+      ) : null}
+      <p className="text-muted-foreground">{message}</p>
+      {isError ? (
+        <Button asChild variant="outline">
+          <Link href="/auth">{t("backToLogin")}</Link>
+        </Button>
+      ) : null}
     </div>
   )
 }
