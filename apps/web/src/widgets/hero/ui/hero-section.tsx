@@ -11,6 +11,8 @@ import {
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 
+import { JOIN_URL } from "@/shared/config/site-links"
+
 const TECHNOLOGIES = [
   "TypeScript",
   "Next.js",
@@ -50,7 +52,7 @@ export function HeroSection() {
 
   return (
     <section className="border-border bg-background relative min-h-screen overflow-hidden border-b">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.12),transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgb(60_126_169/0.12),transparent_45%)]" />
 
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
         <div
@@ -63,8 +65,8 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="bg-primary/20 absolute top-[-15%] left-[-10%] h-180 w-180 rounded-full blur-[140px]" />
-      <div className="absolute right-[-10%] bottom-[-20%] h-160 w-160 rounded-full bg-emerald-500/10 blur-[140px]" />
+      <div className="bg-brand-steel-blue/20 absolute top-[-15%] left-[-10%] h-180 w-180 rounded-full blur-[140px]" />
+      <div className="bg-brand-mint/10 absolute right-[-10%] bottom-[-20%] h-160 w-160 rounded-full blur-[140px]" />
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
@@ -97,7 +99,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-screen-2xl px-4 pt-36 pb-24 md:px-8">
+      <div className="page-container relative z-10 pt-36 pb-24">
         <div className="grid items-center gap-16 lg:grid-cols-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -116,7 +118,7 @@ export function HeroSection() {
 
             <h1 className="text-foreground text-5xl leading-[0.88] font-black tracking-[-0.06em] md:text-7xl lg:text-[7rem]">
               <span className="block">{t("title_1")}</span>
-              <span className="block bg-linear-to-r from-primary via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              <span className="from-brand-steel-blue via-brand-mint to-brand-orange block bg-linear-to-r bg-clip-text text-transparent">
                 {t("title_2")}
               </span>
             </h1>
@@ -149,13 +151,13 @@ export function HeroSection() {
             </div>
 
             <div className="mt-12 flex flex-col gap-5 sm:flex-row">
-              <Link
-                href="/join"
-                className="group bg-primary text-primary-foreground inline-flex items-center justify-center gap-3 rounded-2xl px-8 py-5 text-xs font-black tracking-[0.2em] uppercase shadow-[0_20px_50px_-15px_rgba(16,185,129,0.45)] transition-all hover:scale-[1.02]"
+              <a
+                href={JOIN_URL}
+                className="group bg-primary text-primary-foreground inline-flex items-center justify-center gap-3 rounded-2xl px-8 py-5 text-xs font-black tracking-[0.2em] uppercase shadow-primary-md transition-all hover:scale-[1.02]"
               >
                 <span>{t("cta_join")}</span>
                 <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </a>
               <Link
                 href="/events"
                 className="border-border bg-background/60 inline-flex items-center justify-center rounded-2xl border px-8 py-5 text-xs font-black tracking-[0.2em] uppercase backdrop-blur-xl transition-all hover:border-primary hover:text-primary"
@@ -205,7 +207,7 @@ export function HeroSection() {
                         <span className="text-foreground font-mono text-sm font-bold tracking-[0.25em] uppercase">
                           {tech}
                         </span>
-                        <div className="bg-primary h-2 w-2 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.8)]" />
+                        <div className="bg-brand-steel-blue h-2 w-2 rounded-full shadow-primary-glow" />
                       </div>
                     ))}
                   </motion.div>

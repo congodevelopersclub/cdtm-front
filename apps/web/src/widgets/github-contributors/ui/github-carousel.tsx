@@ -38,7 +38,7 @@ export function GithubCarousel({ contributors, labels }: GithubCarouselProps) {
         {contributors.map((user, index) => (
           <div
             key={`${user.login}-${index}`}
-            className="flex-[0_0_50%] md:flex-[0_0_33%] lg:flex-[0_0_16.66%]"
+            className="flex-[0_0_50%] py-2 md:flex-[0_0_33%] lg:flex-[0_0_16.66%]"
           >
             <ContributorCard user={user} index={index} labels={labels} />
           </div>

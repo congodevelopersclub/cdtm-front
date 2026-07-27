@@ -1,10 +1,11 @@
 "use client"
 
-import Link from "next/link"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { MoveRight } from "lucide-react"
 import { useTranslations } from "next-intl"
+
+import { JOIN_URL } from "@/shared/config/site-links"
 
 export function CtaSection() {
   const t = useTranslations("cta")
@@ -28,7 +29,7 @@ export function CtaSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="border-primary/20 bg-primary/5 mb-8 inline-block rounded-full border px-5 py-2"
+          className="border-brand-orange/30 bg-brand-orange/5 mb-8 inline-block rounded-full border px-5 py-2"
         >
           <code className="text-primary font-mono text-[10px] font-bold tracking-widest uppercase">
             {t("label")}
@@ -55,14 +56,14 @@ export function CtaSection() {
               />
             ) : null}
           </AnimatePresence>
-          <Link
-            href="/join"
+          <a
+            href={JOIN_URL}
             onClick={handleTriggerEffect}
-            className="group bg-primary text-primary-foreground relative inline-flex items-center gap-3 rounded-2xl px-10 py-5 text-xs font-black tracking-[0.2em] uppercase shadow-[0_20px_50px_-15px_rgba(16,185,129,0.45)] transition-all hover:scale-[1.02]"
+            className="group bg-primary text-primary-foreground relative inline-flex items-center gap-3 rounded-2xl px-10 py-5 text-xs font-black tracking-[0.2em] uppercase shadow-primary-md transition-all hover:scale-[1.02]"
           >
             {t("button")}
             <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

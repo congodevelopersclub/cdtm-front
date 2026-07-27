@@ -2,7 +2,15 @@
   "LocaleSwitcher": {
     "label": "Langue",
     "english": "Anglais",
-    "french": "Français"
+    "french": "Français",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
+    "back_home": "Retour à l'accueil",
+    "join": "Nous rejoindre"
   },
   "nav": {
     "home": "Accueil",
@@ -12,7 +20,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "support": "Nous Soutenir",
-    "join": "Nous Rejoindre"
+    "join": "Nous Rejoindre",
+    "profile": "Profil"
   },
   "footer": {
     "description": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
@@ -22,8 +31,21 @@
     "terms": "Mentions légales",
     "cookies": "Cookies",
     "rights": "Tous droits réservés.",
-    "built_by": "Développé par",
-    "made_in": "Fait au"
+    "community_name": "Congo Developer Club",
+    "built_by_community": "Développé par la communauté Congo Developers Club",
+    "made_in": "Fait au",
+    "country": "RD Congo"
+  },
+  "Newsletter": {
+    "title": "Restez informé",
+    "description": "Recevez les dernières actualités, événements et tutoriels du Congo Developer Club.",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "submit": "S'abonner",
+    "submitting": "Inscription...",
+    "invalidEmail": "Veuillez saisir une adresse e-mail valide.",
+    "success": "Merci pour votre inscription !",
+    "error": "Une erreur est survenue. Veuillez réessayer."
   },
   "hero": {
     "badge": "La première communauté tech en RDC",
@@ -53,8 +75,7 @@
   },
   "github": {
     "title": "Top Contributeurs GitHub",
-    "subtitle": "Découvrez et suivez les développeurs congolais les plus suivis et actifs sur GitHub.",
-    "cta": "Voir sur GitHub",
+    "subtitle": "Découvrez et suivez les développeurs congolais les plus actifs au sein de notre organisation GitHub.",
     "profile": "Profil",
     "contributions": "contributions",
     "contribution_singular": "contribution"
@@ -116,7 +137,7 @@
     "label": "System.out.println(\"Rejoignez-nous\");",
     "title_1": "PRÊT À",
     "title_2": "COMMIT ?",
-    "description": "Rejoignez le Congo Developer Club et contribuez à façonner l'avenir technologique de la RDC. Push your potential.",
+    "description": "Rejoignez le Congo Developer Club et contribuez à façonner l'avenir technologique de la RDC. Révélez votre potentiel.",
     "button": "Devenir Membre"
   },
   "about": {
@@ -126,7 +147,7 @@
     "desc": "Le Congo Developer Club est né de la volonté de briser l'isolement des talents tech en RDC. Nous croyons que le code est un langage universel de progrès.",
     "quote": "Notre force réside dans notre collaboration. Chaque ligne de code écrite ensemble nous rapproche d'un Congo plus numérique et prospère.",
     "founded": "Fondé en 2022",
-    "principles": "Core Principles",
+    "principles": "Principes fondamentaux",
     "principles_title": "Nos Valeurs Fondamentales",
     "val1_title": "Objectif",
     "val1_desc": "Connecter chaque développeur congolais à des opportunités mondiales.",
@@ -204,10 +225,10 @@
     "success_desc": "Un e-mail de confirmation a été envoyé."
   },
   "blog": {
-    "badge": "tech_blog",
-    "title": "Developer Blog",
-    "subtitle": "Insights, tutorials, experiences, and updates about the tech ecosystem in DR Congo and around the world.",
-    "read_more": "Read article",
+    "badge": "blog_tech",
+    "title": "Blog des Développeurs",
+    "subtitle": "Analyses, tutoriels, retours d'expérience et actualités sur l'écosystème technologique en RDC et dans le monde.",
+    "read_more": "Lire l'article",
     "posts": [
       {
         "title": "Pourquoi la RDC devient progressivement un hub technologique en Afrique centrale",

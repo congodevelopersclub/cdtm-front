@@ -20,7 +20,7 @@ export async function GithubContributorsSection() {
 
   return (
     <section className="border-border bg-card/30 border-y py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="page-container">
         <div className="mb-12">
           <h2 className="text-foreground text-4xl font-black tracking-tighter md:text-5xl">
             {t("title")}

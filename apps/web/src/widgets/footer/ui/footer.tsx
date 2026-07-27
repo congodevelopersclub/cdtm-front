@@ -4,13 +4,14 @@ import Link from "next/link"
 import { Mail } from "lucide-react"
 import { useTranslations } from "next-intl"
 
+import { FOOTER_NAV_PATHS } from "@/shared/config/site-links"
+import { SOCIAL_LINKS } from "@/shared/config/social-links"
 import {
+  CdcLogo,
   GithubIcon,
   LinkedinIcon,
   TwitterIcon,
 } from "@/shared/ui/brand-icons"
-
-const NAV_LINKS = ["home", "about", "activities", "events", "blog"] as const
 
 const LEGAL_LINKS = [
   { key: "privacy", href: "/privacy" },
@@ -18,28 +19,12 @@ const LEGAL_LINKS = [
   { key: "cookies", href: "/cookies" },
 ] as const
 
-const SOCIAL_LINKS = [
-  {
-    href: "https://github.com/congodevelopersclub",
-    label: "GitHub",
-    icon: GithubIcon,
-  },
-  {
-    href: "https://twitter.com/congodevelopersclub",
-    label: "Twitter",
-    icon: TwitterIcon,
-  },
-  {
-    href: "https://linkedin.com/company/congodevelopersclub",
-    label: "LinkedIn",
-    icon: LinkedinIcon,
-  },
-  {
-    href: "mailto:contact@congodevelopersclub.org",
-    label: "Email",
-    icon: Mail,
-  },
-] as const
+const SOCIAL_ICONS = {
+  GitHub: GithubIcon,
+  X: TwitterIcon,
+  LinkedIn: LinkedinIcon,
+  Email: Mail,
+} as const
 
 export function Footer() {
   const tNav = useTranslations("nav")
@@ -48,14 +33,12 @@ export function Footer() {
 
   return (
     <footer className="border-border bg-card/50 border-t">
-      <div className="mx-auto max-w-screen-2xl px-4 py-16 md:px-8">
+      <div className="page-container py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Link href="/" className="mb-6 flex items-center space-x-3">
-              <div className="bg-primary text-primary-foreground flex h-10 w-10 items-center justify-center rounded font-mono text-lg font-bold italic">
-                CDC
-              </div>
-              <span className="font-display text-foreground text-lg font-extrabold tracking-tighter">
+            <Link href="/" className="mb-6 flex items-center gap-3">
+              <CdcLogo size={40} />
+              <span className="text-foreground text-lg font-extrabold tracking-tighter">
                 Congo Developer Club
               </span>
             </Link>
@@ -63,18 +46,22 @@ export function Footer() {
               {tFooter("description")}
             </p>
             <div className="flex items-center gap-3">
-              {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={label}
-                  className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-10 w-10 items-center justify-center rounded border transition-colors"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              {SOCIAL_LINKS.map(({ href, label }) => {
+                const Icon = SOCIAL_ICONS[label]
+
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="border-border bg-background text-muted-foreground hover:border-primary hover:text-primary flex h-10 w-10 items-center justify-center rounded border transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 
@@ -83,13 +70,13 @@ export function Footer() {
               {tFooter("col_nav")}
             </h3>
             <ul className="space-y-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link}>
+              {FOOTER_NAV_PATHS.map((link) => (
+                <li key={link.key}>
                   <Link
-                    href={link === "home" ? "/" : `/${link}`}
+                    href={link.path}
                     className="text-muted-foreground hover:text-primary text-sm transition-colors"
                   >
-                    {tNav(link)}
+                    {tNav(link.key)}
                   </Link>
                 </li>
               ))}
@@ -117,20 +104,11 @@ export function Footer() {
 
         <div className="border-border text-muted-foreground mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row">
           <p>
-            &copy; {currentYear} Congo Developer Club. {tFooter("rights")}
+            &copy; {currentYear} {tFooter("community_name")}. {tFooter("rights")}
           </p>
           <p>
-            {tFooter("built_by")}{" "}
-            <a
-              href="https://github.com/Tacite243"
-              target="_blank"
-              rel="noreferrer"
-              className="text-primary font-semibold hover:underline"
-            >
-              Tacite WAKILONGO
-            </a>
-            {" · "}
-            {tFooter("made_in")} DR Congo
+            {tFooter("built_by_community")} · {tFooter("made_in")}{" "}
+            {tFooter("country")}
           </p>
         </div>
       </div>

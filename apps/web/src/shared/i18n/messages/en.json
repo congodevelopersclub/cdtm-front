@@ -2,7 +2,15 @@
   "LocaleSwitcher": {
     "label": "Language",
     "english": "English",
-    "french": "French"
+    "french": "French",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or may have been moved.",
+    "back_home": "Back to home",
+    "join": "Join us"
   },
   "nav": {
     "home": "Home",
@@ -12,7 +20,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "support": "Support",
-    "join": "Join Us"
+    "join": "Join Us",
+    "profile": "Profile"
   },
   "footer": {
     "description": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
@@ -22,8 +31,21 @@
     "terms": "Legal Notice",
     "cookies": "Cookies",
     "rights": "All rights reserved.",
-    "built_by": "Built by",
-    "made_in": "Made in"
+    "community_name": "Congo Developer Club",
+    "built_by_community": "Built by the Congo Developers Club community",
+    "made_in": "Made in",
+    "country": "DR Congo"
+  },
+  "Newsletter": {
+    "title": "Stay in the loop",
+    "description": "Get the latest news, events, and tutorials from the Congo Developer Club.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Subscribe",
+    "submitting": "Subscribing...",
+    "invalidEmail": "Please enter a valid email address.",
+    "success": "Thanks for subscribing!",
+    "error": "Something went wrong. Please try again."
   },
   "hero": {
     "badge": "The first tech community in DRC",
@@ -53,8 +75,7 @@
   },
   "github": {
     "title": "Top GitHub Contributors",
-    "subtitle": "Discover and follow the most followed and active Congolese developers on GitHub.",
-    "cta": "View on GitHub",
+    "subtitle": "Discover and follow the most active Congolese developers contributing to our GitHub organization.",
     "profile": "Profile",
     "contributions": "contributions",
     "contribution_singular": "contribution"
@@ -184,13 +205,13 @@
     "title": "Our Events",
     "subtitle": "Participate in our upcoming gatherings and boost your skills with experts.",
     "days_left": "{days} days left",
-    "register": "DDetails & Registration",
+    "register": "Details & Registration",
     "quick_reg_title": "Stay informed about our upcoming sessions.",
-    "quick_reg_desc": "Inscrivez-vous à notre liste de diffusion...",
-    "form_name": "Nom",
-    "form_email": "Adresse e-mail",
-    "form_msg": "Message (Optionnel)",
-    "submit": "S’inscrire à la liste"
+    "quick_reg_desc": "Subscribe to our mailing list to stay informed about upcoming sessions.",
+    "form_name": "Name",
+    "form_email": "Email address",
+    "form_msg": "Message (Optional)",
+    "submit": "Subscribe to the list"
   },
   "event_detail": {
     "back": "Back to events",
@@ -204,10 +225,10 @@
     "success_desc": "A confirmation email has been sent."
   },
   "blog": {
-    "badge": "blog_tech",
-    "title": "Blog des Développeurs",
-    "subtitle": "Analyses, tutoriels, retours d’expérience et actualités sur l’écosystème technologique en RDC et dans le monde.",
-    "read_more": "Lire l’article",
+    "badge": "tech_blog",
+    "title": "Developer Blog",
+    "subtitle": "Insights, tutorials, experiences, and updates about the tech ecosystem in DR Congo and around the world.",
+    "read_more": "Read article",
     "posts": [
       {
         "title": "Why DR Congo is gradually becoming a tech hub in Central Africa",
