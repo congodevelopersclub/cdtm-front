@@ -1,6 +1,23 @@
 /** @type {import("eslint").Linter.Config[]} */
 export const architectureConfig = [
   {
+    files: ["src/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@/shared/axios/*"],
+              message:
+                "Client axios is removed — proxy backend calls through server actions.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: ["src/**/components/**/*.{ts,tsx}", "src/**/hooks/**/*.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
@@ -10,14 +27,20 @@ export const architectureConfig = [
             {
               name: "axios",
               message:
-                "HTTP calls belong in api modules — never import axios in components or hooks.",
+                "HTTP calls belong in server actions — never import axios in components or hooks.",
             },
           ],
           patterns: [
             {
-              group: ["@/shared/axios/*", "@workspace/api", "@workspace/api/*"],
+              group: [
+                "@/shared/axios/*",
+                "@/shared/api/server-client",
+                "@/shared/config/env.server",
+                "@workspace/api",
+                "@workspace/api/*",
+              ],
               message:
-                "Use entity/feature api modules — do not call the HTTP client from UI layers.",
+                "Use server actions — do not call the server HTTP client from UI layers.",
             },
           ],
         },
@@ -26,7 +49,7 @@ export const architectureConfig = [
   },
   {
     files: ["src/features/**/*.{ts,tsx}", "src/entities/**/*.{ts,tsx}"],
-    ignores: ["src/**/api/**"],
+    ignores: ["src/**/actions/**"],
     rules: {
       "no-restricted-imports": [
         "error",

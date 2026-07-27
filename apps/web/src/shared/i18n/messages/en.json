@@ -1,28 +1,342 @@
 {
-  "HomePage": {
-    "title": "Project ready!",
-    "description1": "You may now add components and start building.",
-    "description2": "We've already added the button component for you.",
-    "button": "Button",
-    "darkModeHint": "(Press {key} to toggle dark mode)"
-  },
-  "Newsletter": {
-    "title": "Stay in the loop",
-    "description": "Get product updates and marketplace news in your inbox.",
-    "emailLabel": "Email",
-    "emailPlaceholder": "you@example.com",
-    "submit": "Subscribe to newsletter",
-    "submitting": "Subscribing...",
-    "success": "Thanks for subscribing!",
-    "error": "Unable to subscribe. Please try again.",
-    "invalidEmail": "Enter a valid email address"
-  },
   "LocaleSwitcher": {
     "label": "Language",
     "english": "English",
     "french": "French"
   },
-  "Validation": {
-    "invalidEmail": "Enter a valid email address"
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "activities": "Activities",
+    "events": "Events",
+    "blog": "Blog",
+    "contact": "Contact",
+    "support": "Support",
+    "join": "Join Us"
+  },
+  "footer": {
+    "description": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
+    "col_nav": "Navigation",
+    "col_legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Legal Notice",
+    "cookies": "Cookies",
+    "rights": "All rights reserved.",
+    "built_by": "Built by",
+    "made_in": "Made in"
+  },
+  "hero": {
+    "badge": "The first tech community in DRC",
+    "title_1": "CODE THE",
+    "title_2": "FUTURE.",
+    "description": "Gather, train, and propel Congolese talents. Congo Developer Club is the hub where ideas become code, and code becomes impact.",
+    "cta_join": "Join the Movement",
+    "cta_actions": "Discover our actions",
+    "stats_developers": "Developers",
+    "stats_projects": "Projects",
+    "stats_events": "Events",
+    "ecosystem_title": "Tech Ecosystem",
+    "ecosystem_description": "Modern infrastructure & technologies",
+    "growth": "Community Growth"
+  },
+  "impact": {
+    "title_part1": "Building careers,",
+    "title_part2": "transforming the nation.",
+    "description": "Since our creation, our mission has been clear: to build an ecosystem where Congolese technical expertise can thrive, collaborate, and reach the highest global standards.",
+    "stat1_title": "National Hackathon 2025",
+    "stat1_desc": "300 participants, 45 innovative solutions for financial inclusion.",
+    "stat2_title": "Campus Tech Congo",
+    "stat2_desc": "500+ students guided toward qualified tech careers.",
+    "stat3_title": "Open Source Contribution",
+    "stat3_desc": "Creation and maintenance of local libraries (+10k stars).",
+    "members_count": "Active Members"
+  },
+  "github": {
+    "title": "Top GitHub Contributors",
+    "subtitle": "Discover and follow the most followed and active Congolese developers on GitHub.",
+    "cta": "View on GitHub",
+    "profile": "Profile",
+    "contributions": "contributions",
+    "contribution_singular": "contribution"
+  },
+  "events": {
+    "title": "Agenda.",
+    "view_all": "View all",
+    "more_events": "More events",
+    "register": "Register",
+    "category": "Conference",
+    "no_events": "No events currently organized.",
+    "check_back": "Check back later for new activities."
+  },
+  "news": {
+    "title": "Latest News.",
+    "tag": "Insight",
+    "read": "Read Article",
+    "view_all": "View all articles",
+    "items": [
+      {
+        "title": "Dev Leaders 2026 Program Applications Now Open",
+        "date": "Jan 14, 2026",
+        "tag": "Announcement",
+        "excerpt": "Registrations are now open to support young developers and tech entrepreneurs in the DRC."
+      },
+      {
+        "title": "Recap: \"Build For Africa\" Hackathon in Goma",
+        "date": "Feb 02, 2026",
+        "tag": "Event",
+        "excerpt": "Over 120 participants collaborated for 48 hours to design innovative local digital solutions."
+      },
+      {
+        "title": "Tutorial: Deploy a Next.js Application with Docker",
+        "date": "Feb 18, 2026",
+        "tag": "Tutorial",
+        "excerpt": "Learn how to containerize and quickly deploy your modern web applications to production."
+      },
+      {
+        "title": "Launch of Our DRC Open Source Community",
+        "date": "Mar 05, 2026",
+        "tag": "Community",
+        "excerpt": "A new initiative to connect open source enthusiasts across the country."
+      },
+      {
+        "title": "Top 5 Technologies to Learn in 2026",
+        "date": "Mar 16, 2026",
+        "tag": "Article",
+        "excerpt": "AI, cybersecurity, cloud, mobile, and data engineering are among the most in-demand skills."
+      },
+      {
+        "title": "Free Workshop: Introduction to Artificial Intelligence",
+        "date": "Mar 28, 2026",
+        "tag": "Training",
+        "excerpt": "A hands-on session for students and developers who want to discover the basics of machine learning."
+      }
+    ]
+  },
+  "cta": {
+    "label": "System.out.println(\"Join Us\");",
+    "title_1": "READY TO",
+    "title_2": "COMMIT?",
+    "description": "Join the Congo Developer Club and help shape the technological future of the DRC. Push your potential.",
+    "button": "Become a Member"
+  },
+  "about": {
+    "manifesto": "Manifesto",
+    "title_1": "One community,",
+    "title_2": "one mission.",
+    "desc": "Congo Developer Club was born from the desire to break the isolation of tech talents in the DRC. We believe that code is a universal language of progress.",
+    "quote": "Our strength lies in collaboration. Every line of code written together brings us closer to a more digital and prosperous Congo.",
+    "founded": "Founded in 2022",
+    "principles": "Core Principles",
+    "principles_title": "Our Fundamental Values",
+    "val1_title": "Purpose",
+    "val1_desc": "Connecting every Congolese developer to global opportunities.",
+    "val2_title": "Vision",
+    "val2_desc": "Building an ecosystem where tech innovation improves everyday life in the Congo.",
+    "val3_title": "Excellence",
+    "val3_desc": "Promoting the highest quality standards in software development."
+  },
+  "testimonials": {
+    "title": "What they say.",
+    "items": [
+      {
+        "name": "John Doe",
+        "role": "Fullstack Dev",
+        "quote": "CDC changed my career path completely."
+      },
+      {
+        "name": "Sarah K.",
+        "role": "UI/UX Designer",
+        "quote": "The most active community in DRC!"
+      },
+      {
+        "name": "Jean M.",
+        "role": "Mobile Dev",
+        "quote": "Incredible networking opportunities here."
+      }
+    ]
+  },
+  "activities": {
+    "badge": "Our programs and initiatives",
+    "title": "Our Activities.",
+    "subtitle": "We design pragmatic initiatives to support every stage of a developer's career, from beginner to expert.",
+    "learn_more": "Learn more",
+    "programs": [
+      {
+        "title": "CDC Mentoring",
+        "desc": "An intensive 3-month program to transform beginners into employable developers."
+      },
+      {
+        "title": "Innovate Congo",
+        "desc": "Hackathons and startup competitions to solve local problems through tech."
+      },
+      {
+        "title": "Open Source Initiative",
+        "desc": "Encouraging contributions to global and local open-source projects."
+      },
+      {
+        "title": "Tech Meetups",
+        "desc": "Monthly meetups to share knowledge and network."
+      }
+    ]
+  },
+  "events_page": {
+    "hero_badge": "agenda",
+    "title": "Our Events",
+    "subtitle": "Participate in our upcoming gatherings and boost your skills with experts.",
+    "days_left": "{days} days left",
+    "register": "DDetails & Registration",
+    "quick_reg_title": "Stay informed about our upcoming sessions.",
+    "quick_reg_desc": "Inscrivez-vous à notre liste de diffusion...",
+    "form_name": "Nom",
+    "form_email": "Adresse e-mail",
+    "form_msg": "Message (Optionnel)",
+    "submit": "S’inscrire à la liste"
+  },
+  "event_detail": {
+    "back": "Back to events",
+    "about": "About this event",
+    "register_title": "Reserve your spot",
+    "name": "Full Name",
+    "email": "Email",
+    "message": "Message (Optional)",
+    "submit": "Confirm Registration",
+    "success_title": "Registration Successful!",
+    "success_desc": "A confirmation email has been sent."
+  },
+  "blog": {
+    "badge": "blog_tech",
+    "title": "Blog des Développeurs",
+    "subtitle": "Analyses, tutoriels, retours d’expérience et actualités sur l’écosystème technologique en RDC et dans le monde.",
+    "read_more": "Lire l’article",
+    "posts": [
+      {
+        "title": "Why DR Congo is gradually becoming a tech hub in Central Africa",
+        "excerpt": "Between the rise of local startups, growing tech communities, and increasing access to digital education, DR Congo is progressively building its identity within the African tech ecosystem.",
+        "category": "Tech Ecosystem",
+        "author": "Congo Developer Club",
+        "date": "May 12, 2026",
+        "readingTime": "6 min",
+        "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+        "featured": true
+      },
+      {
+        "title": "Mastering TypeScript in 2026: A Modern Guide for React and Node.js Developers",
+        "excerpt": "Discover the latest TypeScript features, advanced typing best practices, and modern patterns used in professional applications.",
+        "category": "Web Development",
+        "author": "Grâce Mwamba",
+        "date": "April 28, 2026",
+        "readingTime": "10 min",
+        "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+        "featured": true
+      },
+      {
+        "title": "Looking Back at Our Annual Hackathon: Innovation, Energy, and Creativity",
+        "excerpt": "Dive into the electric atmosphere of our latest hackathon and discover the winning projects designed to solve local challenges through technology.",
+        "category": "Event",
+        "author": "CDC Media Team",
+        "date": "May 05, 2026",
+        "readingTime": "5 min",
+        "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+        "featured": false
+      },
+      {
+        "title": "Redux Toolkit: Common Mistakes That Make Applications Impossible to Maintain",
+        "excerpt": "Poor global state architecture can quickly turn a modern application into a real gas factory. Here are the most common mistakes and how to avoid them.",
+        "category": "Software Architecture",
+        "author": "Tacite Wakilongo",
+        "date": "May 09, 2026",
+        "readingTime": "8 min",
+        "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+        "featured": true
+      },
+      {
+        "title": "Open Source in Africa: Why Contributing Can Change Your Career",
+        "excerpt": "Contributing to open-source projects helps improve skills, collaborate internationally, and increase the visibility of African developers.",
+        "category": "Open Source",
+        "author": "Patrick Ilunga",
+        "date": "April 21, 2026",
+        "readingTime": "7 min",
+        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+        "featured": false
+      },
+      {
+        "title": "Generative AI and Software Development: Accelerator or Technical Debt?",
+        "excerpt": "AI tools significantly speed up development, but without strong fundamentals, they can also introduce fragile and hard-to-maintain architectures.",
+        "category": "Artificial Intelligence",
+        "author": "CDC Engineering",
+        "date": "May 11, 2026",
+        "readingTime": "9 min",
+        "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+        "featured": true
+      }
+    ]
+  },
+  "blog_detail": {
+    "back": "Back to blog",
+    "about": "About this article",
+    "recent": "Recent articles",
+    "join_title": "Join the CDC",
+    "join_desc": "Don’t miss any of our tutorials and articles.",
+    "subscribe": "Subscribe",
+    "share": "Share article"
+  },
+  "contact": {
+    "badge": "contact_us",
+    "title": "Let's talk tech.",
+    "desc": "Got a question? A project? Want to join us? Our team is ready to help you build the future of tech in Congo.",
+    "email": "Email",
+    "location": "Location",
+    "name": "Full Name",
+    "email_field": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send Message"
+  },
+  "support": {
+    "badge": "support_us",
+    "title": "Support the Community",
+    "subtitle": "The Congo Developer Club is a non-profit initiative. Your support allows us to organize more events, mentor young developers, and build tomorrow's tech ecosystem.",
+    "donate_title": "Make a Donation",
+    "donate_desc": "Support our actions with a one-time or regular financial contribution. Every amount helps fund our servers, meetups, or equipment.",
+    "donate_btn": "Donate",
+    "sponsor_title": "Become a Sponsor",
+    "sponsor_desc": "Associate your company with DRC's leading developer club. Sponsor our events and hackathons to gain visibility among top talents.",
+    "sponsor_btn": "Contact Us",
+    "volunteer_title": "Become a Volunteer",
+    "volunteer_desc": "Have time or skills to offer? Help us with organization, communication, or become a mentor for younger developers.",
+    "volunteer_btn": "Join the Team",
+    "why_title": "Why support us?",
+    "why_desc": "Tech is a true social and economic elevator for our country. By supporting CDC, you directly participate in the emergence of a new generation of technical leaders. You make a digital future 'Made in Congo' possible."
+  },
+  "profile": {
+    "title": "Member",
+    "title_highlight": "Space",
+    "subtitle": "Manage your profile, links, and preferences to get the most out of the community.",
+    "basic_info": "Basic Information",
+    "avatar": "Avatar",
+    "full_name": "Full Name",
+    "bio": "Short Bio",
+    "discord_title": "Discord Community",
+    "discord_desc": "Connect your Discord account to sync your community roles, display your server nickname, and unlock exclusive badges on your profile.",
+    "discord_loading": "Loading...",
+    "discord_roles": "Server Roles",
+    "discord_note": "Exact role name display requires the full Guild API.",
+    "discord_link": "Link my Discord account",
+    "links_title": "Links & Networks",
+    "portfolio": "Personal Portfolio",
+    "skills_title": "Skills",
+    "skills_desc": "This information helps us match you with projects, hackathons, or opportunities.",
+    "skills_placeholder": "Add a skill and press Enter (e.g., AWS, Figma, Python...)",
+    "pref_title": "Preferences & Goals",
+    "exp_level": "Experience Level",
+    "exp_junior": "Junior (0-2 years)",
+    "exp_mid": "Mid-level (2-5 years)",
+    "exp_senior": "Senior (5+ years)",
+    "exp_expert": "Expert/Lead",
+    "open_to_work": "I am open to professional opportunities (Job, Freelance)",
+    "open_to_mentor": "I am interested in mentoring (to share my experience)",
+    "cancel": "Cancel",
+    "save": "Save Profile",
+    "saved": "Saved"
   }
 }

@@ -30,6 +30,16 @@ export function isTokenExpired(token: string): boolean {
   return payload.exp * 1000 <= Date.now()
 }
 
+export function isAuthenticatedToken(token: string): boolean {
+  const payload = decodeJwt(token)
+
+  if (!payload) {
+    return token.length > 0
+  }
+
+  return !isTokenExpired(token)
+}
+
 export function getSessionFromToken(token: string) {
   const payload = decodeJwt(token)
 

@@ -2,13 +2,13 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 
-import "@workspace/ui/globals.css"
+import "./globals.css"
 import {
-  AuthProvider,
   QueryProvider,
   ThemeProvider,
   ToastProvider,
 } from "@/shared/providers"
+import { AuthProvider } from "@/features/auth"
 import { cn } from "@workspace/ui/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })

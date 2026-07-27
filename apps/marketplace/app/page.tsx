@@ -1,1 +1,5 @@
-export { HomePage as default } from "@/pages/home"
+import { redirect } from "next/navigation"
+
+export default function Page() {
+  redirect("/auth")
+}

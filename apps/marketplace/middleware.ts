@@ -1,13 +1,13 @@
+import type { NextRequest } from "next/server"
+
 import { authMiddleware } from "@/shared/auth/middleware"
 
-export default authMiddleware
+export function middleware(request: NextRequest) {
+  return authMiddleware(request)
+}
 
 export const config = {
   matcher: [
-    "/dashboard/:path*",
-    "/listings/:path*",
-    "/checkout/:path*",
-    "/settings/:path*",
-    "/login",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 }

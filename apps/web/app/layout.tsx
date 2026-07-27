@@ -1,8 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import {
+  Inter,
+  JetBrains_Mono,
+  Space_Grotesk,
+} from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 
-import "@workspace/ui/globals.css"
+import "./globals.css"
+import { Footer } from "@/widgets/footer"
+import { Header } from "@/widgets/header"
 import {
   AuthProvider,
   QueryProvider,
@@ -11,11 +17,25 @@ import {
 } from "@/shared/providers"
 import { cn } from "@workspace/ui/lib/utils"
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  preload: true,
+})
 
-const fontMono = Geist_Mono({
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  preload: true,
+})
+
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+  preload: false,
 })
 
 export default async function RootLayout({
@@ -32,17 +52,19 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={cn(
         "antialiased",
-        fontMono.variable,
-        "font-sans",
-        geist.variable
+        inter.variable,
+        spaceGrotesk.variable,
+        jetbrainsMono.variable
       )}
     >
-      <body>
+      <body className="font-sans">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <QueryProvider>
               <AuthProvider>
-                {children}
+                <Header />
+                <main className="min-h-svh pt-20">{children}</main>
+                <Footer />
                 <ToastProvider />
               </AuthProvider>
             </QueryProvider>

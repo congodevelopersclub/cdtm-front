@@ -51,6 +51,18 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           msw: getAbsolutePath("msw"),
+          "@/entities/talent": join(
+            monorepoRoot,
+            "apps/marketplace/src/entities/talent"
+          ),
+          "@/widgets/dashboard-shell": join(
+            monorepoRoot,
+            "apps/marketplace/src/widgets/dashboard-shell"
+          ),
+          "@/widgets/dashboard-shell/ui/components/dashboard-tabbed-shell": join(
+            monorepoRoot,
+            "apps/marketplace/src/widgets/dashboard-shell/ui/components/dashboard-tabbed-shell"
+          ),
           "@storybook/mocks/set-locale": join(__dirname, "../mocks/set-locale.ts"),
           "@storybook/mocks/subscribe-newsletter": join(
             __dirname,

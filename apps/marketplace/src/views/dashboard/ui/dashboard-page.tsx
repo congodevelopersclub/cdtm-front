@@ -1,40 +1,33 @@
-"use client"
+import { getTranslations } from "next-intl/server"
 
-import { useTranslations } from "next-intl"
+import { DashboardOverviewGrid } from "./components/dashboard-overview-grid"
 
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card"
+  DashboardEmptyState,
+  DashboardPageShell,
+  type DashboardTab,
+} from "@/widgets/dashboard-shell"
 
-import { useAuth } from "@/shared/providers/auth-provider"
+export async function DashboardPage() {
+  const t = await getTranslations("DashboardShell")
 
-export function DashboardPage() {
-  const t = useTranslations("Dashboard")
-  const { session } = useAuth()
+  const tabs: DashboardTab[] = [
+    {
+      value: "overview",
+      label: t("overview"),
+      content: <DashboardOverviewGrid />,
+    },
+    {
+      value: "activity",
+      label: t("activity"),
+      content: (
+        <DashboardEmptyState
+          title={t("activityEmptyTitle")}
+          description={t("activityEmptyDescription")}
+        />
+      ),
+    },
+  ]
 
-  return (
-    <div className="flex min-h-svh items-center justify-center p-6">
-      <Card className="w-full max-w-lg">
-        <CardHeader>
-          <CardTitle>{t("title")}</CardTitle>
-          <CardDescription>{t("description")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          {session ? (
-            <p className="text-sm">
-              {t("signedInAs", { email: session.email })}
-            </p>
-          ) : (
-            <p className="text-muted-foreground text-sm">
-              {t("sessionLoading")}
-            </p>
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  )
+  return <DashboardPageShell tabs={tabs} defaultTab="overview" />
 }
