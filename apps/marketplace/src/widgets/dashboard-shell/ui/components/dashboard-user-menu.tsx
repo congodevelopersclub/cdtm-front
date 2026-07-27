@@ -1,19 +1,13 @@
 "use client"
 
-import { useTransition } from "react"
+import { useTransition, type ReactNode } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useLocale, useTranslations } from "next-intl"
 import { useTheme } from "next-themes"
-import {
-  IconLanguage,
-  IconLogout,
-  IconMoon,
-  IconSettings,
-  IconSun,
-} from "@tabler/icons-react"
+import { IconLogout, IconMoon, IconSettings, IconSun } from "@tabler/icons-react"
 
-import { type Locale } from "@workspace/i18n"
+import { locales, type Locale } from "@workspace/i18n"
 import {
   Avatar,
   AvatarFallback,
@@ -28,11 +22,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu"
+import { cn } from "@workspace/ui/lib/utils"
 
 import type { DashboardUser } from "../../config/types"
 
 import { useLogout } from "@/features/auth"
 import { setLocale } from "@/shared/i18n/actions/set-locale"
+
+const LOCALE_FLAGS: Record<Locale, string> = {
+  en: "🇬🇧",
+  fr: "🇫🇷",
+}
+
+const LOCALE_SHORT_KEYS: Record<Locale, "shortEnglish" | "shortFrench"> = {
+  en: "shortEnglish",
+  fr: "shortFrench",
+}
 
 function getInitials(name: string) {
   return name
@@ -43,31 +48,78 @@ function getInitials(name: string) {
     .join("")
 }
 
+function LocaleFlag({ locale }: { locale: Locale }) {
+  return (
+    <span aria-hidden className="text-base leading-none">
+      {LOCALE_FLAGS[locale]}
+    </span>
+  )
+}
+
+type SegmentedButtonProps = {
+  isSelected: boolean
+  onClick: () => void
+  disabled?: boolean
+  "aria-label": string
+  children: ReactNode
+  className?: string
+}
+
+function SegmentedButton({
+  isSelected,
+  onClick,
+  disabled,
+  "aria-label": ariaLabel,
+  children,
+  className,
+}: SegmentedButtonProps) {
+  return (
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      aria-pressed={isSelected}
+      disabled={disabled}
+      onClick={(event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        onClick()
+      }}
+      className={cn(
+        "inline-flex flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm transition-colors",
+        isSelected
+          ? "bg-background font-medium text-foreground shadow-sm"
+          : "text-muted-foreground hover:text-foreground",
+        className,
+      )}
+    >
+      {children}
+    </button>
+  )
+}
+
 type DashboardUserMenuProps = {
   user: DashboardUser
 }
 
 export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
   const t = useTranslations("SidebarNav")
+  const tLocale = useTranslations("LocaleSwitcher")
   const locale = useLocale() as Locale
   const router = useRouter()
   const logout = useLogout()
   const { resolvedTheme, setTheme } = useTheme()
   const [isPending, startTransition] = useTransition()
 
-  const nextLocale = locale === "en" ? "fr" : "en"
-  const isDark = resolvedTheme === "dark"
+  const activeTheme = resolvedTheme === "dark" ? "dark" : "light"
   const subtitle = user.title ?? user.email
 
-  function handleLocaleChange() {
+  function handleLocaleChange(nextLocale: Locale) {
+    if (nextLocale === locale) return
+
     startTransition(async () => {
       await setLocale(nextLocale)
       router.refresh()
     })
-  }
-
-  function handleThemeToggle() {
-    setTheme(isDark ? "light" : "dark")
   }
 
   function handleLogout() {
@@ -81,7 +133,7 @@ export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
           type="button"
           className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <Avatar className="size-10 rounded-full sm:size-12">
+          <Avatar className="size-8 rounded-full">
             {user.avatar ? (
               <AvatarImage src={user.avatar} alt={user.name} />
             ) : null}
@@ -118,26 +170,51 @@ export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
               {t("settings")}
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem
-            disabled={isPending}
-            onSelect={(event) => {
-              event.preventDefault()
-              handleLocaleChange()
-            }}
-          >
-            <IconLanguage />
-            {nextLocale === "en" ? t("english") : t("french")}
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onSelect={(event) => {
-              event.preventDefault()
-              handleThemeToggle()
-            }}
-          >
-            {isDark ? <IconSun /> : <IconMoon />}
-            {isDark ? t("themeLight") : t("themeDark")}
-          </DropdownMenuItem>
         </DropdownMenuGroup>
+        <div className="space-y-3 px-2 py-2">
+          <div>
+            <p className="mb-1.5 px-1 text-xs font-medium text-muted-foreground">
+              {t("language")}
+            </p>
+            <div className="flex rounded-lg bg-muted p-1">
+              {locales.map((value) => (
+                <SegmentedButton
+                  key={value}
+                  isSelected={locale === value}
+                  disabled={isPending}
+                  aria-label={value === "en" ? tLocale("english") : tLocale("french")}
+                  onClick={() => handleLocaleChange(value)}
+                >
+                  <LocaleFlag locale={value} />
+                  {tLocale(LOCALE_SHORT_KEYS[value])}.
+                </SegmentedButton>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="mb-1.5 px-1 text-xs font-medium text-muted-foreground">
+              {t("theme")}
+            </p>
+            <div className="flex rounded-lg bg-muted p-1">
+              <SegmentedButton
+                isSelected={activeTheme === "light"}
+                aria-label={t("themeLight")}
+                onClick={() => setTheme("light")}
+                className="flex-1"
+              >
+                <IconSun className="size-4" />
+              </SegmentedButton>
+              <SegmentedButton
+                isSelected={activeTheme === "dark"}
+                aria-label={t("themeDark")}
+                onClick={() => setTheme("dark")}
+                className="flex-1"
+              >
+                <IconMoon className="size-4" />
+              </SegmentedButton>
+            </div>
+          </div>
+        </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           variant="destructive"

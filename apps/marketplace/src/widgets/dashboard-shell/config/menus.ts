@@ -14,30 +14,30 @@ import {
 import type { DashboardRole, NavItem } from "./types"
 
 const TALENT_NAV: NavItem[] = [
-  { title: "Dashboard", href: "/dashboard", icon: IconDashboard },
-  { title: "Jobs", href: "/jobs", icon: IconBriefcase },
-  { title: "Skills", href: "/skills", icon: IconCertificate },
-  { title: "Projects", href: "/projects", icon: IconFolder },
-  { title: "Talents", href: "/talents", icon: IconUsers },
-  { title: "Learn", href: "/learn", icon: IconBook },
+  { titleKey: "navDashboard", href: "/dashboard", icon: IconDashboard },
+  { titleKey: "navJobs", href: "/jobs", icon: IconBriefcase },
+  { titleKey: "navSkills", href: "/skills", icon: IconCertificate },
+  { titleKey: "navProjects", href: "/projects", icon: IconFolder },
+  { titleKey: "navTalents", href: "/talents", icon: IconUsers },
+  { titleKey: "navLearn", href: "/learn", icon: IconBook },
 ]
 
 const AGENCY_NAV: NavItem[] = [
-  { title: "Dashboard", href: "/dashboard", icon: IconDashboard },
-  { title: "Jobs", href: "/jobs", icon: IconBriefcase },
-  { title: "Talents", href: "/talents", icon: IconUsers },
-  { title: "Projects", href: "/projects", icon: IconFolder },
-  { title: "Analytics", href: "/analytics", icon: IconChartBar },
-  { title: "Settings", href: "/settings", icon: IconSettings },
+  { titleKey: "navDashboard", href: "/dashboard", icon: IconDashboard },
+  { titleKey: "navJobs", href: "/jobs", icon: IconBriefcase },
+  { titleKey: "navTalents", href: "/talents", icon: IconUsers },
+  { titleKey: "navProjects", href: "/projects", icon: IconFolder },
+  { titleKey: "navAnalytics", href: "/analytics", icon: IconChartBar },
+  { titleKey: "navSettings", href: "/settings", icon: IconSettings },
 ]
 
 const ADMIN_NAV: NavItem[] = [
-  { title: "Dashboard", href: "/dashboard", icon: IconDashboard },
-  { title: "Agencies", href: "/agencies", icon: IconBuildingStore },
-  { title: "Talents", href: "/talents", icon: IconUsers },
-  { title: "Moderation", href: "/moderation", icon: IconShield },
-  { title: "Reports", href: "/reports", icon: IconChartBar },
-  { title: "Settings", href: "/settings", icon: IconSettings },
+  { titleKey: "navDashboard", href: "/dashboard", icon: IconDashboard },
+  { titleKey: "navAgencies", href: "/agencies", icon: IconBuildingStore },
+  { titleKey: "navTalents", href: "/talents", icon: IconUsers },
+  { titleKey: "navModeration", href: "/moderation", icon: IconShield },
+  { titleKey: "navReports", href: "/reports", icon: IconChartBar },
+  { titleKey: "navSettings", href: "/settings", icon: IconSettings },
 ]
 
 const DASHBOARD_MENUS: Record<DashboardRole, NavItem[]> = {
@@ -57,14 +57,14 @@ export function getPageTitle(pathname: string, role: DashboardRole): string {
   )
 
   if (match) {
-    return match.title
+    return match.titleKey
   }
 
   if (pathname === "/profile" || pathname.startsWith("/profile/")) {
-    return "Profile"
+    return "navProfile"
   }
 
-  return "Dashboard"
+  return "navDashboard"
 }
 
 export const MOCK_TALENT_USER = {

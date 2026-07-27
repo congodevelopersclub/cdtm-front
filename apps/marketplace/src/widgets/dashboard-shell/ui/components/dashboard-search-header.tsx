@@ -31,7 +31,7 @@ export function DashboardSearchHeader({ user }: DashboardSearchHeaderProps) {
             type="search"
             placeholder={t("searchPlaceholder")}
             aria-label={t("searchAriaLabel")}
-            className="h-10 rounded-full border-input bg-background pl-11 text-sm shadow-none sm:h-12"
+            className="h-10 rounded-full border-input bg-background pl-11 text-sm shadow-none sm:h-10"
           />
         </div>
       </div>

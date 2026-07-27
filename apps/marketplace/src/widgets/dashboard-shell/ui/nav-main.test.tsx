@@ -15,6 +15,16 @@ describe("NavMain", () => {
     expect(dashboardLink.className).toContain("bg-surface-nav-active")
   })
 
+  it("renders translated labels in French locale", () => {
+    renderWithProviders(<NavMain items={getDashboardNav("talent")} />, {
+      locale: "fr",
+      withSidebar: true,
+    })
+
+    expect(screen.getByRole("link", { name: /tableau de bord/i })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /emplois/i })).toBeInTheDocument()
+  })
+
   it("uses pathname to determine active item", async () => {
     const navigation = await import("next/navigation")
 

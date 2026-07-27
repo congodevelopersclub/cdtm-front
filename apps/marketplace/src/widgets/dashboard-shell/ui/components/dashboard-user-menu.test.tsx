@@ -31,7 +31,7 @@ describe("DashboardUserMenu", () => {
     expect(screen.getByRole("button")).toBeInTheDocument()
   })
 
-  it("opens menu with account settings", async () => {
+  it("opens menu with account settings and preference controls", async () => {
     const user = userEvent.setup()
 
     renderWithProviders(<DashboardUserMenu user={STORY_DASHBOARD_USER} />)
@@ -39,6 +39,22 @@ describe("DashboardUserMenu", () => {
     await user.click(screen.getByRole("button"))
 
     expect(screen.getByText(/account settings/i)).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /english/i })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    )
+    expect(screen.getByRole("button", { name: /french/i })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    )
+    expect(screen.getByRole("button", { name: /light mode/i })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    )
+    expect(screen.getByRole("button", { name: /dark mode/i })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    )
     expect(screen.getByText(/log out/i)).toBeInTheDocument()
   })
 

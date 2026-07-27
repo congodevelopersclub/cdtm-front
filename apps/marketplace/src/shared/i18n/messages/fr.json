@@ -153,7 +153,19 @@
     "noNotifications": "Aucune notification pour le moment",
     "noNotificationsDescription": "Les mises à jour concernant les emplois, invitations ou messages apparaîtront ici.",
     "toggleSidebar": "Afficher ou masquer la barre latérale",
-    "searchAriaLabel": "Rechercher des emplois, compétences et personnes"
+    "searchAriaLabel": "Rechercher des emplois, compétences et personnes",
+    "navDashboard": "Tableau de bord",
+    "navJobs": "Emplois",
+    "navSkills": "Compétences",
+    "navProjects": "Projets",
+    "navTalents": "Talents",
+    "navLearn": "Apprendre",
+    "navAnalytics": "Analytique",
+    "navSettings": "Paramètres",
+    "navAgencies": "Agences",
+    "navModeration": "Modération",
+    "navReports": "Rapports",
+    "navProfile": "Profil"
   },
   "DashboardOverview": {
     "greeting": "Bonjour, {name}",

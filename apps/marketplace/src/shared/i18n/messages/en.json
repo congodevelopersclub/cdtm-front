@@ -153,7 +153,19 @@
     "noNotifications": "No notifications yet",
     "noNotificationsDescription": "When you have updates about jobs, invites, or messages they will appear here.",
     "toggleSidebar": "Toggle sidebar",
-    "searchAriaLabel": "Search for jobs, skills, and people"
+    "searchAriaLabel": "Search for jobs, skills, and people",
+    "navDashboard": "Dashboard",
+    "navJobs": "Jobs",
+    "navSkills": "Skills",
+    "navProjects": "Projects",
+    "navTalents": "Talents",
+    "navLearn": "Learn",
+    "navAnalytics": "Analytics",
+    "navSettings": "Settings",
+    "navAgencies": "Agencies",
+    "navModeration": "Moderation",
+    "navReports": "Reports",
+    "navProfile": "Profile"
   },
   "DashboardOverview": {
     "greeting": "Hello, {name}",

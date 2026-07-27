@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@workspace/ui/lib/utils"
 import {
@@ -14,6 +15,7 @@ import {
 import type { NavItem } from "../config/types"
 
 export function NavMain({ items }: { items: NavItem[] }) {
+  const t = useTranslations("DashboardShell")
   const pathname = usePathname()
 
   return (
@@ -36,7 +38,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
                   )}
                 >
                   <item.icon className="size-5 shrink-0" />
-                  <span className="truncate">{item.title}</span>
+                  <span className="truncate">{t(item.titleKey)}</span>
                 </Link>
               </SidebarMenuItem>
             )

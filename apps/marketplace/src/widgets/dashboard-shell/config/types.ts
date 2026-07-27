@@ -10,7 +10,7 @@ export type DashboardUser = {
 }
 
 export type NavItem = {
-  title: string
+  titleKey: string
   href: string
   icon: Icon
 }

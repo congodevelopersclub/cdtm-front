@@ -35,10 +35,18 @@ vi.mock("next/navigation", () => ({
 
 vi.mock("next-intl", async () => {
   const en = await import("@/shared/i18n/messages/en.json")
+  const fr = await import("@/shared/i18n/messages/fr.json")
+
+  let currentLocale: "en" | "fr" = "en"
+
+  const messagesByLocale = {
+    en: en.default,
+    fr: fr.default,
+  }
 
   return {
     useTranslations: (namespace: string) => {
-      const messages = en.default[
+      const messages = messagesByLocale[currentLocale][
         namespace as keyof typeof en.default
       ] as Record<string, string>
 
@@ -54,12 +62,17 @@ vi.mock("next-intl", async () => {
         return message
       }
     },
-    useLocale: () => "en",
+    useLocale: () => currentLocale,
     NextIntlClientProvider: ({
       children,
+      locale = "en",
     }: {
       children: React.ReactNode
-    }) => children,
+      locale?: "en" | "fr"
+    }) => {
+      currentLocale = locale
+      return children
+    },
   }
 })
 
