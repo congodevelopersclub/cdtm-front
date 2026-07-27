@@ -22,7 +22,7 @@ type EventsSectionProps = {
 function EmptyState({ message, hint }: { message: string; hint: string }) {
   return (
     <section className="bg-card/50 border-border border-y py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 text-center md:px-8">
+      <div className="page-container text-center">
         <CalendarOff className="text-muted-foreground mx-auto mb-4 h-12 w-12" />
         <p className="text-foreground text-lg font-bold">{message}</p>
         <p className="text-muted-foreground mt-2">{hint}</p>
@@ -46,7 +46,7 @@ export function EventsSection({ events = [] }: EventsSectionProps) {
 
   return (
     <section className="bg-card/50 border-border border-y py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="page-container">
         <div className="mb-16 flex items-end justify-between">
           <div>
             <div className="text-primary mb-4 font-mono text-[10px] font-bold tracking-[0.3em] uppercase italic">
@@ -85,7 +85,7 @@ export function EventsSection({ events = [] }: EventsSectionProps) {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-primary-foreground rounded px-3 py-1 text-[10px] font-bold tracking-widest uppercase">
+                  <span className="bg-brand-orange text-accent-foreground rounded px-3 py-1 text-[10px] font-bold tracking-widest uppercase">
                     {t("category")}
                   </span>
                 </div>

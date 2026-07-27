@@ -1,8 +1,4 @@
-import {
-  Inter,
-  JetBrains_Mono,
-  Space_Grotesk,
-} from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 
@@ -17,25 +13,11 @@ import {
 } from "@/shared/providers"
 import { cn } from "@workspace/ui/lib/utils"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-  preload: true,
-})
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  preload: true,
-})
-
-const jetbrainsMono = JetBrains_Mono({
+const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  display: "swap",
-  preload: false,
 })
 
 export default async function RootLayout({
@@ -51,13 +33,12 @@ export default async function RootLayout({
       lang={locale}
       suppressHydrationWarning
       className={cn(
-        "antialiased",
-        inter.variable,
-        spaceGrotesk.variable,
-        jetbrainsMono.variable
+        "antialiased font-sans",
+        fontMono.variable,
+        geist.variable
       )}
     >
-      <body className="font-sans">
+      <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <QueryProvider>

@@ -16,7 +16,7 @@ export function TestimonialsSection() {
 
   return (
     <section className="bg-background border-border border-t py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="page-container">
         <div className="mb-16">
           <div className="text-primary mb-4 font-mono text-[10px] font-bold tracking-[0.3em] uppercase italic">
             /testimonials

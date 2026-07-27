@@ -38,7 +38,7 @@ export function NewsSection() {
 
   return (
     <section className="bg-background border-border border-t py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="page-container">
         <div className="mb-12 flex items-end justify-between">
           <div>
             <div className="text-primary mb-4 font-mono text-[10px] font-bold tracking-[0.3em] uppercase italic">
@@ -77,7 +77,7 @@ export function NewsSection() {
           <div className="text-muted-foreground mb-4 text-xs font-bold tracking-widest uppercase">
             {featured.date}
           </div>
-          <span className="bg-primary/10 text-primary mb-4 inline-block rounded px-3 py-1 text-[10px] font-bold tracking-widest uppercase">
+          <span className="bg-brand-mint/15 text-brand-mint mb-4 inline-block rounded px-3 py-1 text-[10px] font-bold tracking-widest uppercase">
             {featured.tag}
           </span>
           <h3 className="text-foreground mb-4 text-2xl font-black tracking-tight md:text-3xl">

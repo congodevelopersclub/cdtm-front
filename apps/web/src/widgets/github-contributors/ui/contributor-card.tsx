@@ -33,7 +33,7 @@ export function ContributorCard({ user, index, labels }: ContributorCardProps) {
         href={user.html_url}
         target="_blank"
         rel="noreferrer"
-        className="group bg-card border-border hover:border-primary block rounded-xl border p-6 text-center transition-all hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.2)]"
+        className="group bg-card border-border hover:border-primary block rounded-xl border p-6 text-center transition-all hover:-translate-y-1 hover:shadow-primary-hover"
       >
         <div className="relative mb-4 inline-block">
           {/* eslint-disable-next-line @next/next/no-img-element */}

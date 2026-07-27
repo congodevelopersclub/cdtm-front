@@ -12,17 +12,9 @@ import { cn } from "@workspace/ui/lib/utils"
 
 import { ThemeToggle } from "./theme-toggle"
 
+import { CdcLogo } from "@/shared/ui/brand-icons"
+import { JOIN_URL, NAV_PATHS } from "@/shared/config/site-links"
 import { LocaleSwitcher } from "@/shared/ui/locale-switcher"
-
-const NAV_PATHS = [
-  { key: "home", path: "/" },
-  { key: "about", path: "/about" },
-  { key: "activities", path: "/activities" },
-  { key: "events", path: "/events" },
-  { key: "blog", path: "/blog" },
-  { key: "contact", path: "/contact" },
-  { key: "support", path: "/support" },
-] as const
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,24 +28,22 @@ export function Header() {
 
   return (
     <nav className="border-border bg-background/80 fixed top-0 z-50 w-full border-b backdrop-blur-md transition-colors duration-300">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <Link href="/" className="group flex items-center space-x-3">
-            <div className="bg-primary text-primary-foreground flex h-12 w-12 rotate-3 items-center justify-center rounded font-mono text-xl leading-none font-bold italic transition-transform group-hover:rotate-0">
-              CDC
-            </div>
-            <span className="font-display text-foreground text-xl font-extrabold tracking-tighter lg:text-2xl">
+      <div className="page-container">
+        <div className="flex h-20 items-center justify-between gap-4">
+          <Link href="/" className="group flex min-w-0 items-center gap-3">
+            <CdcLogo className="transition-transform group-hover:scale-105" size={48} priority />
+            <span className="text-foreground hidden truncate text-xl font-extrabold tracking-tighter md:block lg:text-2xl">
               Congo Developer Club
             </span>
           </Link>
 
-          <div className="hidden items-center space-x-8 md:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
                 className={cn(
-                  "text-xs font-semibold tracking-widest uppercase transition-colors hover:text-foreground",
+                  "text-[10px] font-semibold tracking-widest uppercase transition-colors hover:text-foreground xl:text-xs",
                   pathname === link.path
                     ? "text-primary"
                     : "text-muted-foreground"
@@ -63,16 +53,16 @@ export function Header() {
               </Link>
             ))}
 
-            <div className="border-border ml-2 flex items-center space-x-4 border-l pl-6">
+            <div className="border-border ml-2 flex items-center gap-4 border-l pl-6">
               <LocaleSwitcher />
 
               <ThemeToggle />
 
               <Button
                 asChild
-                className="text-xs font-bold tracking-widest uppercase shadow-[0_0_20px_-5px_rgba(16,185,129,0.4)] active:scale-95"
+                className="text-xs font-bold tracking-widest uppercase shadow-primary-sm active:scale-95"
               >
-                <Link href="/join">{t("join")}</Link>
+                <a href={JOIN_URL}>{t("join")}</a>
               </Button>
 
               <Link
@@ -84,7 +74,8 @@ export function Header() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
+            <LocaleSwitcher compact />
             <ThemeToggle />
             <button
               type="button"
@@ -104,26 +95,36 @@ export function Header() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-background border-border space-y-4 border-b p-6 md:hidden"
+            className="bg-background border-border space-y-4 border-b p-6 lg:hidden"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
                 onClick={() => setIsOpen(false)}
-                className="hover:text-primary block text-base font-semibold tracking-widest uppercase transition-colors"
+                className={cn(
+                  "block text-base font-semibold tracking-widest uppercase transition-colors",
+                  pathname === link.path
+                    ? "text-primary"
+                    : "hover:text-primary"
+                )}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="border-border border-t pt-4">
-              <LocaleSwitcher />
+            <div className="border-border flex flex-col gap-3 border-t pt-4">
+              <Button asChild className="w-full">
+                <a href={JOIN_URL} onClick={() => setIsOpen(false)}>
+                  {t("join")}
+                </a>
+              </Button>
+              <Button asChild className="w-full" variant="outline">
+                <Link href="/profile" onClick={() => setIsOpen(false)}>
+                  <User className="mr-2 h-4 w-4" />
+                  {t("profile")}
+                </Link>
+              </Button>
             </div>
-            <Button asChild className="w-full">
-              <Link href="/join" onClick={() => setIsOpen(false)}>
-                {t("join")}
-              </Link>
-            </Button>
           </motion.div>
         ) : null}
       </AnimatePresence>
