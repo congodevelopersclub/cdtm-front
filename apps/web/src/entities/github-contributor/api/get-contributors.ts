@@ -126,9 +126,13 @@ export async function getContributors(): Promise<GitHubContributor[]> {
       }
     }
 
-    return Array.from(merged.values()).sort(
-      (a, b) => b.totalContributions - a.totalContributions
-    )
+    return Array.from(merged.values()).sort((a, b) => {
+      if (b.totalContributions !== a.totalContributions) {
+        return b.totalContributions - a.totalContributions
+      }
+
+      return a.login.localeCompare(b.login)
+    })
   } catch {
     return []
   }

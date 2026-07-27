@@ -1,4 +1,16 @@
 {
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
+    "home": {
+      "title": "Accueil",
+      "description": "Rejoignez le Congo Developer Club — le hub où les talents tech congolais se retrouvent, se forment et construisent l'avenir."
+    },
+    "notFound": {
+      "title": "Page introuvable",
+      "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Langue",
     "english": "Anglais",
@@ -14,14 +26,9 @@
   },
   "nav": {
     "home": "Accueil",
-    "about": "À Propos",
     "activities": "Activités",
-    "events": "Événements",
-    "blog": "Blog",
     "contact": "Contact",
-    "support": "Nous Soutenir",
-    "join": "Nous Rejoindre",
-    "profile": "Profil"
+    "join": "Nous Rejoindre"
   },
   "footer": {
     "description": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
@@ -35,17 +42,6 @@
     "built_by_community": "Développé par la communauté Congo Developers Club",
     "made_in": "Fait au",
     "country": "RD Congo"
-  },
-  "Newsletter": {
-    "title": "Restez informé",
-    "description": "Recevez les dernières actualités, événements et tutoriels du Congo Developer Club.",
-    "emailLabel": "Adresse e-mail",
-    "emailPlaceholder": "vous@exemple.com",
-    "submit": "S'abonner",
-    "submitting": "Inscription...",
-    "invalidEmail": "Veuillez saisir une adresse e-mail valide.",
-    "success": "Merci pour votre inscription !",
-    "error": "Une erreur est survenue. Veuillez réessayer."
   },
   "hero": {
     "badge": "La première communauté tech en RDC",
@@ -78,7 +74,12 @@
     "subtitle": "Découvrez et suivez les développeurs congolais les plus actifs au sein de notre organisation GitHub.",
     "profile": "Profil",
     "contributions": "contributions",
-    "contribution_singular": "contribution"
+    "contribution_singular": "contribution",
+    "tooltips": {
+      "rank": "Position au classement selon le total des contributions sur tous les dépôts de l'organisation.",
+      "profile": "Ouvre le profil GitHub public de ce contributeur dans un nouvel onglet.",
+      "contributions": "Total des contributions (commits, pull requests, etc.) cumulées sur tous les dépôts du Congo Developers Club."
+    }
   },
   "events": {
     "title": "Agenda.",
@@ -140,22 +141,6 @@
     "description": "Rejoignez le Congo Developer Club et contribuez à façonner l'avenir technologique de la RDC. Révélez votre potentiel.",
     "button": "Devenir Membre"
   },
-  "about": {
-    "manifesto": "Manifesto",
-    "title_1": "Une communauté,",
-    "title_2": "une mission.",
-    "desc": "Le Congo Developer Club est né de la volonté de briser l'isolement des talents tech en RDC. Nous croyons que le code est un langage universel de progrès.",
-    "quote": "Notre force réside dans notre collaboration. Chaque ligne de code écrite ensemble nous rapproche d'un Congo plus numérique et prospère.",
-    "founded": "Fondé en 2022",
-    "principles": "Principes fondamentaux",
-    "principles_title": "Nos Valeurs Fondamentales",
-    "val1_title": "Objectif",
-    "val1_desc": "Connecter chaque développeur congolais à des opportunités mondiales.",
-    "val2_title": "Vision",
-    "val2_desc": "Créer un écosystème où l'innovation tech améliore la vie quotidienne au Congo.",
-    "val3_title": "Excellence",
-    "val3_desc": "Promouvoir les standards de qualité les plus élevés dans le développement logiciel."
-  },
   "testimonials": {
     "title": "Ce qu'ils en disent.",
     "items": [
@@ -175,189 +160,5 @@
         "quote": "Des opportunités de networking incroyables ici."
       }
     ]
-  },
-  "activities": {
-    "badge": "Nos programmes et initiatives",
-    "title": "Nos Activités.",
-    "subtitle": "Nous concevons des initiatives pragmatiques pour accompagner chaque étape du parcours d’un développeur, du débutant à l’expert.",
-    "learn_more": "En savoir plus",
-    "programs": [
-      {
-        "title": "Mentorat CDC",
-        "desc": "Un programme intensif de 3 mois pour transformer les débutants en développeurs employables."
-      },
-      {
-        "title": "Innovate Congo",
-        "desc": "Des hackathons et concours de startups pour résoudre les problèmes locaux grâce à la technologie."
-      },
-      {
-        "title": "Initiative Open Source",
-        "desc": "Encourager les contributions aux projets open source locaux et internationaux."
-      },
-      {
-        "title": "Rencontres Tech",
-        "desc": "Des rencontres mensuelles pour partager les connaissances et développer son réseau."
-      }
-    ]
-  },
-  "events_page": {
-    "hero_badge": "agenda",
-    "title": "Nos Événements",
-    "subtitle": "Participez à nos prochaines rencontres et boostez vos compétences.",
-    "register": "Détails & Inscription",
-    "days_left": "{days} jours restants",
-    "quick_reg_title": "Restez informé des prochaines sessions.",
-    "quick_reg_desc": "Inscrivez-vous à notre liste de diffusion...",
-    "form_name": "Nom",
-    "form_email": "Email",
-    "form_msg": "Message (Optionnel)",
-    "submit": "S'inscrire à la liste"
-  },
-  "event_detail": {
-    "back": "Retour aux événements",
-    "about": "À propos de cet événement",
-    "register_title": "Réservez votre place",
-    "name": "Nom complet",
-    "email": "Adresse e-mail",
-    "message": "Message (Optionnel)",
-    "submit": "Confirmer l’inscription",
-    "success_title": "Inscription réussie !",
-    "success_desc": "Un e-mail de confirmation a été envoyé."
-  },
-  "blog": {
-    "badge": "blog_tech",
-    "title": "Blog des Développeurs",
-    "subtitle": "Analyses, tutoriels, retours d'expérience et actualités sur l'écosystème technologique en RDC et dans le monde.",
-    "read_more": "Lire l'article",
-    "posts": [
-      {
-        "title": "Pourquoi la RDC devient progressivement un hub technologique en Afrique centrale",
-        "excerpt": "Entre l’émergence des startups locales, la montée des communautés tech et l’accès croissant aux formations numériques, la RDC construit progressivement son identité dans l’écosystème technologique africain.",
-        "category": "Écosystème Tech",
-        "author": "Congo Developer Club",
-        "date": "12 Mai 2026",
-        "readingTime": "6 min",
-        "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-        "featured": true
-      },
-      {
-        "title": "Maîtriser TypeScript en 2026 : Guide moderne pour développeurs React et Node.js",
-        "excerpt": "Découvrez les nouveautés TypeScript, les meilleures pratiques de typage avancé et les patterns modernes utilisés dans les applications professionnelles.",
-        "category": "Développement Web",
-        "author": "Grâce Mwamba",
-        "date": "28 Avril 2026",
-        "readingTime": "10 min",
-        "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-        "featured": true
-      },
-      {
-        "title": "Retour sur notre Hackathon annuel : innovation, énergie et créativité",
-        "excerpt": "Plongez dans l’ambiance électrique de notre dernier hackathon et découvrez les projets gagnants imaginés pour résoudre des problèmes locaux grâce à la technologie.",
-        "category": "Événement",
-        "author": "CDC Media Team",
-        "date": "05 Mai 2026",
-        "readingTime": "5 min",
-        "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-        "featured": false
-      },
-      {
-        "title": "Redux Toolkit : erreurs fréquentes qui rendent les applications impossibles à maintenir",
-        "excerpt": "Une mauvaise architecture d’état global peut rapidement transformer une application moderne en véritable usine à gaz. Voici les erreurs les plus fréquentes et comment les éviter.",
-        "category": "Architecture Logicielle",
-        "author": "Tacite Wakilongo",
-        "date": "09 Mai 2026",
-        "readingTime": "8 min",
-        "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
-        "featured": true
-      },
-      {
-        "title": "Open Source en Afrique : pourquoi contribuer change une carrière",
-        "excerpt": "Contribuer à des projets open source permet d’améliorer ses compétences, collaborer à l’international et renforcer la visibilité des développeurs africains.",
-        "category": "Open Source",
-        "author": "Patrick Ilunga",
-        "date": "21 Avril 2026",
-        "readingTime": "7 min",
-        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
-        "featured": false
-      },
-      {
-        "title": "IA générative et développement logiciel : accélérateur ou dette technique ?",
-        "excerpt": "Les outils d’IA accélèrent considérablement le développement, mais sans maîtrise des fondamentaux, ils peuvent aussi introduire des architectures fragiles et difficiles à maintenir.",
-        "category": "Intelligence Artificielle",
-        "author": "CDC Engineering",
-        "date": "11 Mai 2026",
-        "readingTime": "9 min",
-        "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
-        "featured": true
-      }
-    ]
-  },
-  "blog_detail": {
-    "back": "Retour au blog",
-    "about": "À propos de cet article",
-    "recent": "Articles récents",
-    "join_title": "Rejoindre le CDC",
-    "join_desc": "Ne manquez aucun de nos tutoriels et articles.",
-    "subscribe": "S'abonner",
-    "share": "Partager l'article"
-  },
-  "contact": {
-    "badge": "contact_us",
-    "title": "Discutons Tech.",
-    "desc": "Une question ? Un projet ? Envie de nous rejoindre ? Notre équipe est à votre écoute pour construire ensemble l'avenir de la tech au Congo.",
-    "email": "Email",
-    "location": "Localisation",
-    "name": "Nom complet",
-    "email_field": "Adresse e-mail",
-    "subject": "Sujet",
-    "message": "Message",
-    "submit": "Envoyer le message"
-  },
-  "support": {
-    "badge": "nous_soutenir",
-    "title": "Soutenir la Communauté",
-    "subtitle": "Le Congo Developer Club est une initiative à but non lucratif. Votre soutien nous permet d'organiser plus d'événements, d'accompagner de jeunes développeurs et de bâtir l'écosystème tech de demain.",
-    "donate_title": "Faire un don",
-    "donate_desc": "Soutenez nos actions par une contribution financière ponctuelle ou régulière. Chaque montant aide à financer nos serveurs, l'organisation de meetups ou le matériel.",
-    "donate_btn": "Faire un don",
-    "sponsor_title": "Devenir Sponsor",
-    "sponsor_desc": "Associez votre entreprise au premier club de développeurs de RDC. Sponsorisez nos événements et hackathons et gagnez en visibilité auprès des meilleurs talents.",
-    "sponsor_btn": "Nous Contacter",
-    "volunteer_title": "Devenir Bénévole",
-    "volunteer_desc": "Vous avez du temps ou des compétences à offrir ? Aidez-nous dans l'organisation, la communication, ou devenez mentor pour les plus jeunes développeurs.",
-    "volunteer_btn": "Rejoindre l'équipe",
-    "why_title": "Pourquoi nous soutenir ?",
-    "why_desc": "La tech est un véritable ascenseur social et économique pour notre pays. En soutenant le CDC, vous participez directement à l'émergence d'une nouvelle génération de leaders techniques. Vous rendez possible un avenir numérique 'Made in Congo'."
-  },
-  "profile": {
-    "title": "Espace",
-    "title_highlight": "Membre",
-    "subtitle": "Gérez votre profil, vos liens et vos préférences pour tirer le meilleur de la communauté.",
-    "basic_info": "Informations de Base",
-    "avatar": "Avatar",
-    "full_name": "Nom Complet",
-    "bio": "Bio Courte",
-    "discord_title": "Communauté Discord",
-    "discord_desc": "Connectez votre compte Discord pour synchroniser vos rôles communautaires, afficher votre pseudo serveur, et débloquer les badges exclusifs sur votre profil.",
-    "discord_loading": "Chargement...",
-    "discord_roles": "Rôles Serveur",
-    "discord_note": "L'affichage exact du nom des rôles nécessite l'API Guilde complète.",
-    "discord_link": "Lier mon compte Discord",
-    "links_title": "Liens & Réseaux",
-    "portfolio": "Portfolio Personnel",
-    "skills_title": "Compétences",
-    "skills_desc": "Ces informations nous aident à vous faire correspondre avec des projets, hackathons, ou opportunités.",
-    "skills_placeholder": "Ajouter une compétence et appuyez sur Entrée (ex: AWS, Figma, Python...)",
-    "pref_title": "Préférences & Objectifs",
-    "exp_level": "Niveau d'Expérience",
-    "exp_junior": "Junior (0-2 ans)",
-    "exp_mid": "Intermédiaire (2-5 ans)",
-    "exp_senior": "Senior (5+ ans)",
-    "exp_expert": "Expert/Lead",
-    "open_to_work": "Je suis ouvert(e) aux opportunités professionnelles (Job, Freelance)",
-    "open_to_mentor": "Je suis intéressé(e) par le mentorat (pour partager mon expérience)",
-    "cancel": "Annuler",
-    "save": "Sauvegarder le profil",
-    "saved": "Sauvegardé"
   }
 }

@@ -8,12 +8,6 @@ export async function GithubContributorsSection() {
   const t = await getTranslations("github")
   const contributors = await getContributors()
 
-  const labels = {
-    profile: t("profile"),
-    contributions: t("contributions"),
-    contribution_singular: t("contribution_singular"),
-  }
-
   if (contributors.length === 0) {
     return null
   }
@@ -27,7 +21,7 @@ export async function GithubContributorsSection() {
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl">{t("subtitle")}</p>
         </div>
-        <GithubCarousel contributors={contributors} labels={labels} />
+        <GithubCarousel contributors={contributors} />
       </div>
     </section>
   )

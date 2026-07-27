@@ -3,19 +3,19 @@
 import Autoplay from "embla-carousel-autoplay"
 import useEmblaCarousel from "embla-carousel-react"
 
+import {
+  TooltipProvider,
+} from "@workspace/ui/components/tooltip"
+
 import { ContributorCard } from "./contributor-card"
 
-import type {
-  GitHubContributor,
-  GitHubContributorLabels,
-} from "@/entities/github-contributor"
+import type { GitHubContributor } from "@/entities/github-contributor"
 
 type GithubCarouselProps = {
   contributors: GitHubContributor[]
-  labels: GitHubContributorLabels
 }
 
-export function GithubCarousel({ contributors, labels }: GithubCarouselProps) {
+export function GithubCarousel({ contributors }: GithubCarouselProps) {
   const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
@@ -33,17 +33,19 @@ export function GithubCarousel({ contributors, labels }: GithubCarouselProps) {
   )
 
   return (
-    <div className="overflow-hidden" ref={emblaRef}>
-      <div className="flex gap-6">
-        {contributors.map((user, index) => (
-          <div
-            key={`${user.login}-${index}`}
-            className="flex-[0_0_50%] py-2 md:flex-[0_0_33%] lg:flex-[0_0_16.66%]"
-          >
-            <ContributorCard user={user} index={index} labels={labels} />
-          </div>
-        ))}
+    <TooltipProvider delayDuration={200}>
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="-ml-6 flex touch-pan-y">
+          {contributors.map((user, index) => (
+            <div
+              key={user.login}
+              className="min-w-0 flex-[0_0_50%] py-2 pl-6 md:flex-[0_0_33%] lg:flex-[0_0_16.66%]"
+            >
+              <ContributorCard user={user} rank={index + 1} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </TooltipProvider>
   )
 }

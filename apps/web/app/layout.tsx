@@ -5,12 +5,8 @@ import { getLocale, getMessages } from "next-intl/server"
 import "./globals.css"
 import { Footer } from "@/widgets/footer"
 import { Header } from "@/widgets/header"
-import {
-  AuthProvider,
-  QueryProvider,
-  ThemeProvider,
-  ToastProvider,
-} from "@/shared/providers"
+import { ThemeProvider } from "@/shared/providers"
+import { createRootMetadata } from "@/shared/lib/metadata"
 import { cn } from "@workspace/ui/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -19,6 +15,10 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export async function generateMetadata() {
+  return createRootMetadata()
+}
 
 export default async function RootLayout({
   children,
@@ -41,14 +41,9 @@ export default async function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            <QueryProvider>
-              <AuthProvider>
-                <Header />
-                <main className="min-h-svh pt-20">{children}</main>
-                <Footer />
-                <ToastProvider />
-              </AuthProvider>
-            </QueryProvider>
+            <Header />
+            <main className="min-h-svh pt-20">{children}</main>
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
