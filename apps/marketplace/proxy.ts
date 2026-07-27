@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server"
 
 import { authMiddleware } from "@/shared/auth/middleware"
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   return authMiddleware(request)
 }
 
