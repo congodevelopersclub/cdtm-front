@@ -1,4 +1,51 @@
 {
+  "Metadata": {
+    "siteName": "Talent Developers Marketplace",
+    "defaultDescription": "Connect with top companies, showcase your skills, and grow your career through the Congo Developers Club talent network.",
+    "auth": {
+      "title": "Sign in",
+      "description": "Authenticate with LinkedIn to access the Talent Developers Marketplace."
+    },
+    "authCallback": {
+      "title": "Signing in",
+      "description": "Completing your sign in to Talent Developers Marketplace."
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Your Talent Developers Marketplace dashboard."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "View and manage your talent profile on Talent Developers Marketplace."
+    },
+    "talents": {
+      "title": "Talents",
+      "description": "Browse and discover Congolese tech talents on Talent Developers Marketplace."
+    },
+    "talentProfile": {
+      "description": "{name} — {role} on Talent Developers Marketplace."
+    },
+    "talentNotFound": {
+      "title": "Talent not found",
+      "description": "This talent profile may have been removed or the link is incorrect."
+    },
+    "jobs": {
+      "title": "Jobs",
+      "description": "Explore job invites, applications, and saved roles on Talent Developers Marketplace."
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "Manage and showcase your skills on Talent Developers Marketplace."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Showcase your projects and portfolio on Talent Developers Marketplace."
+    },
+    "learn": {
+      "title": "Learn",
+      "description": "Explore courses, learning paths, and certificates on Talent Developers Marketplace."
+    }
+  },
   "HomePage": {
     "title": "Talent Developers Marketplace",
     "description": "Authenticated product app for listings, checkout, and dashboard.",

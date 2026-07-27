@@ -11,6 +11,7 @@ import {
   ThemeProvider,
   ToastProvider,
 } from "@/shared/providers"
+import { createRootMetadata } from "@/shared/lib/metadata"
 import { cn } from "@workspace/ui/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -19,6 +20,10 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export async function generateMetadata() {
+  return createRootMetadata()
+}
 
 export default async function RootLayout({
   children,

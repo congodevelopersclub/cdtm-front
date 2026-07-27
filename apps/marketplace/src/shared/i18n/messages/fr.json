@@ -1,4 +1,51 @@
 {
+  "Metadata": {
+    "siteName": "Talent Developers Marketplace",
+    "defaultDescription": "Connectez-vous avec des entreprises de premier plan, mettez en valeur vos compétences et développez votre carrière via le réseau de talents Congo Developers Club.",
+    "auth": {
+      "title": "Connexion",
+      "description": "Authentifiez-vous avec LinkedIn pour accéder à Talent Developers Marketplace."
+    },
+    "authCallback": {
+      "title": "Connexion en cours",
+      "description": "Finalisation de votre connexion à Talent Developers Marketplace."
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "description": "Votre tableau de bord Talent Developers Marketplace."
+    },
+    "profile": {
+      "title": "Profil",
+      "description": "Consultez et gérez votre profil talent sur Talent Developers Marketplace."
+    },
+    "talents": {
+      "title": "Talents",
+      "description": "Parcourez et découvrez les talents tech congolais sur Talent Developers Marketplace."
+    },
+    "talentProfile": {
+      "description": "{name} — {role} sur Talent Developers Marketplace."
+    },
+    "talentNotFound": {
+      "title": "Talent introuvable",
+      "description": "Ce profil talent a peut-être été supprimé ou le lien est incorrect."
+    },
+    "jobs": {
+      "title": "Emplois",
+      "description": "Explorez les invitations, candidatures et offres enregistrées sur Talent Developers Marketplace."
+    },
+    "skills": {
+      "title": "Compétences",
+      "description": "Gérez et mettez en valeur vos compétences sur Talent Developers Marketplace."
+    },
+    "projects": {
+      "title": "Projets",
+      "description": "Présentez vos projets et votre portfolio sur Talent Developers Marketplace."
+    },
+    "learn": {
+      "title": "Apprendre",
+      "description": "Explorez les cours, parcours d'apprentissage et certificats sur Talent Developers Marketplace."
+    }
+  },
   "HomePage": {
     "title": "Talent Developers Marketplace",
     "description": "Application produit authentifiée pour les annonces, le paiement et le tableau de bord.",

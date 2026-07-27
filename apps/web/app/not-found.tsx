@@ -5,6 +5,11 @@ import { Home } from "lucide-react"
 import { Button } from "@workspace/ui/components/button"
 
 import { JOIN_URL } from "@/shared/config/site-links"
+import { createPageMetadata } from "@/shared/lib/metadata"
+
+export async function generateMetadata() {
+  return createPageMetadata("notFound")
+}
 
 export default async function NotFound() {
   const t = await getTranslations("NotFound")

@@ -1,4 +1,16 @@
 {
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
+    "home": {
+      "title": "Accueil",
+      "description": "Rejoignez le Congo Developer Club — le hub où les talents tech congolais se retrouvent, se forment et construisent l'avenir."
+    },
+    "notFound": {
+      "title": "Page introuvable",
+      "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Langue",
     "english": "Anglais",

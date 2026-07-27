@@ -1,4 +1,16 @@
 {
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
+    "home": {
+      "title": "Home",
+      "description": "Join the Congo Developer Club — the hub where Congolese tech talents gather, train, and build the future."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist or may have been moved."
+    }
+  },
   "LocaleSwitcher": {
     "label": "Language",
     "english": "English",
