@@ -67,6 +67,13 @@ export type ProfilesPagination = {
   to: number
 }
 
+export type ProfilesQuery = {
+  page: number
+  search?: string
+  category?: string
+  verified?: boolean
+}
+
 export type ProfilesResult = {
   profiles: TalentProfile[]
   pagination: ProfilesPagination

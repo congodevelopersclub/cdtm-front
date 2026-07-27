@@ -26,32 +26,12 @@ export function ProfileTabs({ profile }: ProfileTabsProps) {
 
   return (
     <Tabs defaultValue="story" className="w-full">
-      <TabsList variant="line" className="h-auto w-full justify-start gap-6 border-b border-border bg-transparent p-0 pb-0">
-        <TabsTrigger
-          value="story"
-          className="rounded-none px-0 pb-3 after:bg-brand-orange data-active:text-foreground"
-        >
-          {t("myStory")}
-        </TabsTrigger>
-        <TabsTrigger
-          value="skills"
-          className="rounded-none px-0 pb-3 after:bg-brand-orange data-active:text-foreground"
-        >
-          {t("skills")}
-        </TabsTrigger>
-        <TabsTrigger
-          value="projects"
-          className="rounded-none px-0 pb-3 after:bg-brand-orange data-active:text-foreground"
-        >
-          {t("projects")}
-        </TabsTrigger>
+      <TabsList variant="line" className="w-full">
+        <TabsTrigger value="story">{t("myStory")}</TabsTrigger>
+        <TabsTrigger value="skills">{t("skills")}</TabsTrigger>
+        <TabsTrigger value="projects">{t("projects")}</TabsTrigger>
         {showExperienceTab ? (
-          <TabsTrigger
-            value="experience"
-            className="rounded-none px-0 pb-3 after:bg-brand-orange data-active:text-foreground"
-          >
-            {t("experienceTab")}
-          </TabsTrigger>
+          <TabsTrigger value="experience">{t("experienceTab")}</TabsTrigger>
         ) : null}
       </TabsList>
       <TabsContent value="story">

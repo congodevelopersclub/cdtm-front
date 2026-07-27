@@ -52,7 +52,7 @@ describe("getProfilesAction", () => {
       },
     })
 
-    const result = await getProfilesAction(1)
+    const result = await getProfilesAction({ page: 1 })
 
     expect(getMock).toHaveBeenCalledWith("/profiles?page=1")
     expect(result.profiles).toHaveLength(1)

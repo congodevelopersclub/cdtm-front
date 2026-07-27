@@ -1,13 +1,22 @@
 "use server"
 
+import { buildProfilesRequestPath } from "../lib/build-profiles-request-path"
 import { mapApiProfileToTalentProfile } from "../lib/map-api-profile"
-import type { ApiProfilesPaginatedResponse, ProfilesResult } from "../model/api-types"
+import type {
+  ApiProfilesPaginatedResponse,
+  ProfilesQuery,
+  ProfilesResult,
+} from "../model/api-types"
 
 import { createServerApiClient } from "@/shared/api/server-client"
 
-export async function getProfilesAction(page: number): Promise<ProfilesResult> {
+export async function getProfilesAction(
+  query: ProfilesQuery
+): Promise<ProfilesResult> {
   const apiClient = createServerApiClient()
-  const { data } = await apiClient.get<ApiProfilesPaginatedResponse>(`/profiles?page=${page}`)
+  const { data } = await apiClient.get<ApiProfilesPaginatedResponse>(
+    buildProfilesRequestPath(query)
+  )
 
   return {
     profiles: data.data.map(mapApiProfileToTalentProfile),

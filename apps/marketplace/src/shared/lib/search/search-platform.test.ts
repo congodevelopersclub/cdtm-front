@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import type { SearchResult } from "./types"
-import { searchPlatform } from "./search-platform"
+import { matchesSearchQuery, searchPlatform } from "./search-platform"
 
 const INDEX: SearchResult[] = [
   {
@@ -67,5 +67,34 @@ describe("searchPlatform", () => {
     const results = searchPlatform("christian", INDEX)
 
     expect(results[0]?.id).toBe("person-christian")
+  })
+})
+
+describe("matchesSearchQuery", () => {
+  it("returns true for empty query", () => {
+    expect(
+      matchesSearchQuery("", {
+        title: "Demo Talent",
+        keywords: ["react"],
+      })
+    ).toBe(true)
+  })
+
+  it("matches title and keyword fields", () => {
+    expect(
+      matchesSearchQuery("react", {
+        title: "Demo Talent",
+        subtitle: "Developer",
+        keywords: ["typescript"],
+      })
+    ).toBe(false)
+
+    expect(
+      matchesSearchQuery("react", {
+        title: "Demo Talent",
+        subtitle: "React Developer",
+        keywords: ["typescript"],
+      })
+    ).toBe(true)
   })
 })

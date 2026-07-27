@@ -26,13 +26,13 @@ export function DashboardTabbedShell({
     <Tabs defaultValue={defaultTab} className="w-full">
       <TabsList
         variant="line"
-        className="-mx-1 h-auto w-full justify-start gap-4 overflow-x-auto border-b border-border bg-transparent p-0 px-1 pb-0 scrollbar-none sm:gap-6"
+        className="-mx-1 w-full gap-4 overflow-x-auto px-1 scrollbar-none sm:gap-6"
       >
         {tabs.map((tab) => (
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="shrink-0 rounded-none px-0 pb-3 whitespace-nowrap after:bg-brand-orange data-active:text-foreground"
+            className="shrink-0 whitespace-nowrap"
           >
             {tab.label}
           </TabsTrigger>

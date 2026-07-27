@@ -3,23 +3,36 @@ import { Skeleton } from "@workspace/ui/components/skeleton"
 
 export function TalentCardSkeleton() {
   return (
-    <Card className="flex flex-col gap-5 rounded-3xl border border-border bg-card p-5 shadow-none">
-      <Skeleton className="ml-auto h-6 w-24 rounded-full" />
-      <div className="flex items-start gap-4">
-        <Skeleton className="size-16 shrink-0 rounded-full" />
-        <div className="flex flex-1 flex-col gap-2">
-          <Skeleton className="h-6 w-3/5" />
-          <Skeleton className="h-4 w-2/5" />
+    <Card className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-white p-2 shadow-none">
+      <div className="flex min-w-0 w-full flex-row gap-3">
+        <div className="relative flex flex-col items-center gap-2 rounded-2xl bg-muted p-2">
+          <Skeleton className="absolute -top-1 -left-1 size-5 rounded-full" />
+          <Skeleton className="size-16 shrink-0 rounded-full lg:size-18" />
+          <div className="flex flex-row items-center justify-center gap-1">
+            <Skeleton className="h-7 w-16 rounded-md" />
+            <Skeleton className="size-7 rounded-md" />
+          </div>
         </div>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <Skeleton className="h-7 w-16 rounded-full" />
-        <Skeleton className="h-7 w-20 rounded-full" />
-        <Skeleton className="h-7 w-14 rounded-full" />
-      </div>
-      <div className="flex gap-2">
-        <Skeleton className="h-10 flex-1 rounded-full" />
-        <Skeleton className="h-10 flex-1 rounded-full" />
+
+        <div className="flex min-w-0 flex-1 flex-col gap-2">
+          <Skeleton className="h-6 w-full rounded-md" />
+
+          <div className="flex flex-col gap-1.5">
+            <Skeleton className="h-4 w-4/5" />
+            <Skeleton className="h-4 w-3/5" />
+          </div>
+
+          <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-4 w-20" />
+          </div>
+
+          <div className="flex min-w-0 flex-nowrap items-center gap-1 overflow-hidden">
+            <Skeleton className="h-5 w-16 shrink-0 rounded-md" />
+            <Skeleton className="h-5 w-14 shrink-0 rounded-md" />
+            <Skeleton className="h-5 w-12 shrink-0 rounded-md" />
+          </div>
+        </div>
       </div>
     </Card>
   )

@@ -3,14 +3,21 @@
 import { useQuery } from "@tanstack/react-query"
 
 import { getProfilesAction } from "../actions/get-profiles"
+import type { ProfilesQuery } from "../model/api-types"
 
-export function profilesQueryKey(page: number) {
-  return ["profiles", page] as const
+export function profilesQueryKey(query: ProfilesQuery) {
+  return [
+    "profiles",
+    query.page,
+    query.search ?? "",
+    query.category ?? "",
+    query.verified ?? null,
+  ] as const
 }
 
-export function useProfiles(page: number) {
+export function useProfiles(query: ProfilesQuery) {
   return useQuery({
-    queryKey: profilesQueryKey(page),
-    queryFn: () => getProfilesAction(page),
+    queryKey: profilesQueryKey(query),
+    queryFn: () => getProfilesAction(query),
   })
 }

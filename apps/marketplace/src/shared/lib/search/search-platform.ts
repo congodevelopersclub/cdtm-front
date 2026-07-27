@@ -81,3 +81,28 @@ export function searchPlatform(query: string, index: SearchResult[]): ScoredSear
       return left.title.localeCompare(right.title)
     })
 }
+
+export type SearchMatchFields = {
+  title?: string
+  subtitle?: string
+  keywords?: string[]
+}
+
+export function matchesSearchQuery(query: string, fields: SearchMatchFields) {
+  const tokens = tokenizeQuery(query)
+
+  if (tokens.length === 0) {
+    return true
+  }
+
+  const item: SearchResult = {
+    id: "search-match",
+    type: "person",
+    title: fields.title ?? "",
+    subtitle: fields.subtitle,
+    href: "",
+    keywords: fields.keywords ?? [],
+  }
+
+  return scoreItem(item, tokens) > 0
+}

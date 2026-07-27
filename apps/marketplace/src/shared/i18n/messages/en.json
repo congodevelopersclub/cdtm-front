@@ -224,6 +224,18 @@
     "verified": "Verified profile",
     "previous": "Previous",
     "next": "Next",
-    "pageLabel": "Talents pagination"
+    "pageLabel": "Talents pagination",
+    "searchPlaceholder": "Search by name, role, skills, or location...",
+    "searchAriaLabel": "Search talents",
+    "categoryFilterLabel": "Category",
+    "verifiedFilterLabel": "Verification status",
+    "allCategories": "All categories",
+    "allProfiles": "All profiles",
+    "verifiedOnly": "Verified only",
+    "unverifiedOnly": "Unverified only",
+    "clearFilters": "Clear filters",
+    "showingFiltered": "Showing {count} matching talents on this page",
+    "filteredEmptyTitle": "No talents match your filters",
+    "filteredEmptyDescription": "Try adjusting your search or filters."
   }
 }

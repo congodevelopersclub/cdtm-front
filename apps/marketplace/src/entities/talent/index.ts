@@ -7,7 +7,7 @@ export { mapApiProfileToTalentProfile } from "./lib/map-api-profile"
 export { useProfiles } from "./hooks/use-profiles"
 export { useProfile } from "./hooks/use-profile"
 export { getInitials } from "./lib/get-initials"
-export { formatTalentCategory } from "./model/talent-category"
+export { formatTalentCategory, TALENT_CATEGORIES } from "./model/talent-category"
 export {
   getProfileCompletion,
   type ProfileCompletion,
@@ -28,5 +28,6 @@ export type {
   ApiProfile,
   ApiProfilesPaginatedResponse,
   ProfilesPagination,
+  ProfilesQuery,
   ProfilesResult,
 } from "./model/api-types"

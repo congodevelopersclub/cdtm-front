@@ -224,6 +224,18 @@
     "verified": "Profil vérifié",
     "previous": "Précédent",
     "next": "Suivant",
-    "pageLabel": "Pagination des talents"
+    "pageLabel": "Pagination des talents",
+    "searchPlaceholder": "Rechercher par nom, rôle, compétences ou lieu...",
+    "searchAriaLabel": "Rechercher des talents",
+    "categoryFilterLabel": "Catégorie",
+    "verifiedFilterLabel": "Statut de vérification",
+    "allCategories": "Toutes les catégories",
+    "allProfiles": "Tous les profils",
+    "verifiedOnly": "Profils vérifiés",
+    "unverifiedOnly": "Profils non vérifiés",
+    "clearFilters": "Effacer les filtres",
+    "showingFiltered": "{count} talents correspondants sur cette page",
+    "filteredEmptyTitle": "Aucun talent ne correspond à vos filtres",
+    "filteredEmptyDescription": "Essayez d'ajuster votre recherche ou vos filtres."
   }
 }
