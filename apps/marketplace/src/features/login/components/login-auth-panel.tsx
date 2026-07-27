@@ -16,7 +16,7 @@ export function LoginAuthPanel() {
   const { startLinkedInAuth, isRedirecting } = useLinkedInAuth()
 
   return (
-    <div className="relative flex h-full w-full min-h-0 flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <div className="absolute top-0 right-0 z-10">
         <LoginAuthToolbar />
       </div>
