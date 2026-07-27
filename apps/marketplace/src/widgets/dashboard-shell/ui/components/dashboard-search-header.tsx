@@ -1,21 +1,20 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { IconSearch } from "@tabler/icons-react"
-
-import { Input } from "@workspace/ui/components/input"
 import { SidebarTrigger } from "@workspace/ui/components/sidebar"
 
-import type { DashboardUser } from "../../config/types"
+import type { DashboardRole, DashboardUser } from "../../config/types"
 
 import { DashboardNotifications } from "./dashboard-notifications"
+import { DashboardGlobalSearch } from "./dashboard-global-search"
 import { DashboardUserMenu } from "./dashboard-user-menu"
 
 type DashboardSearchHeaderProps = {
+  role: DashboardRole
   user: DashboardUser
 }
 
-export function DashboardSearchHeader({ user }: DashboardSearchHeaderProps) {
+export function DashboardSearchHeader({ role, user }: DashboardSearchHeaderProps) {
   const t = useTranslations("DashboardShell")
 
   return (
@@ -25,15 +24,7 @@ export function DashboardSearchHeader({ user }: DashboardSearchHeaderProps) {
           aria-label={t("toggleSidebar")}
           className="size-10 shrink-0 sm:size-12"
         />
-        <div className="relative min-w-0 flex-1">
-          <IconSearch className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-muted-foreground sm:size-5" />
-          <Input
-            type="search"
-            placeholder={t("searchPlaceholder")}
-            aria-label={t("searchAriaLabel")}
-            className="h-10 rounded-full border-input bg-background pl-11 text-sm shadow-none sm:h-10"
-          />
-        </div>
+        <DashboardGlobalSearch role={role} />
       </div>
       <div className="flex shrink-0 items-center justify-end gap-2 self-end sm:self-auto">
         <DashboardNotifications />

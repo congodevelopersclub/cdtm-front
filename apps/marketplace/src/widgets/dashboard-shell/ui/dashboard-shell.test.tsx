@@ -15,7 +15,7 @@ describe("DashboardShell", () => {
 
     expect(screen.getByText("Dashboard child content")).toBeInTheDocument()
     expect(
-      screen.getByRole("searchbox", {
+      screen.getByRole("combobox", {
         name: /search for jobs, skills, and people/i,
       })
     ).toBeInTheDocument()

@@ -80,7 +80,7 @@ export function DashboardShell({ role, user, children }: DashboardShellProps) {
     >
       <AppSidebar role={role} user={user} variant="inset" />
       <SidebarInset className="bg-background">
-        <DashboardSearchHeader user={user} />
+        <DashboardSearchHeader role={role} user={user} />
         <div className="flex flex-1 flex-col px-4 pb-6 sm:px-6 sm:pb-8">
           {children}
         </div>

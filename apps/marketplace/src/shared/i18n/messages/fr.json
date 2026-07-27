@@ -192,5 +192,16 @@
     "eventWorkshopTitle": "Atelier portfolio LinkedIn",
     "eventWorkshopSchedule": "Ven 7 · 11h00",
     "eventWorkshopType": "Atelier"
+  },
+  "DashboardSearch": {
+    "quickLinks": "Liens rapides",
+    "noResults": "Aucun résultat pour « {query} »",
+    "groupPages": "Pages",
+    "groupPeople": "Personnes",
+    "groupJobs": "Emplois",
+    "groupSkills": "Compétences",
+    "groupProjects": "Projets",
+    "groupCourses": "Apprendre",
+    "groupNotifications": "Notifications"
   }
 }

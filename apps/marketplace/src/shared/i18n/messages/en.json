@@ -192,5 +192,16 @@
     "eventWorkshopTitle": "LinkedIn portfolio workshop",
     "eventWorkshopSchedule": "Fri 7 · 11:00 AM",
     "eventWorkshopType": "Workshop"
+  },
+  "DashboardSearch": {
+    "quickLinks": "Quick links",
+    "noResults": "No results for \"{query}\"",
+    "groupPages": "Pages",
+    "groupPeople": "People",
+    "groupJobs": "Jobs",
+    "groupSkills": "Skills",
+    "groupProjects": "Projects",
+    "groupCourses": "Learn",
+    "groupNotifications": "Notifications"
   }
 }

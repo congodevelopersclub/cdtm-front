@@ -24,6 +24,19 @@ Object.defineProperty(window, "matchMedia", {
   })),
 })
 
+class ResizeObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+Object.defineProperty(globalThis, "ResizeObserver", {
+  writable: true,
+  value: ResizeObserverMock,
+})
+
+Element.prototype.scrollIntoView = vi.fn()
+
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),
