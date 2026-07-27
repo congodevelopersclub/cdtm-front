@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { Menu, User, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@workspace/ui/components/button"
@@ -55,22 +55,13 @@ export function Header() {
 
             <div className="border-border ml-2 flex items-center gap-4 border-l pl-6">
               <LocaleSwitcher />
-
               <ThemeToggle />
-
               <Button
                 asChild
                 className="text-xs font-bold tracking-widest uppercase shadow-primary-sm active:scale-95"
               >
                 <a href={JOIN_URL}>{t("join")}</a>
               </Button>
-
-              <Link
-                href="/profile"
-                className="border-border bg-card text-muted-foreground hover:border-primary flex items-center justify-center rounded border p-2 transition-colors"
-              >
-                <User className="h-5 w-5" />
-              </Link>
             </div>
           </div>
 
@@ -112,17 +103,11 @@ export function Header() {
                 {link.name}
               </Link>
             ))}
-            <div className="border-border flex flex-col gap-3 border-t pt-4">
+            <div className="border-border border-t pt-4">
               <Button asChild className="w-full">
                 <a href={JOIN_URL} onClick={() => setIsOpen(false)}>
                   {t("join")}
                 </a>
-              </Button>
-              <Button asChild className="w-full" variant="outline">
-                <Link href="/profile" onClick={() => setIsOpen(false)}>
-                  <User className="mr-2 h-4 w-4" />
-                  {t("profile")}
-                </Link>
               </Button>
             </div>
           </motion.div>

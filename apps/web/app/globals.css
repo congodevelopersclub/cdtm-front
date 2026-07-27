@@ -176,18 +176,6 @@
 }
 
 @layer utilities {
-  .glass-morphism {
-    @apply bg-background/50 backdrop-blur-md border border-border;
-  }
-
-  .heading-giant {
-    @apply text-[64px] md:text-[100px] font-bold leading-[0.85] tracking-tighter;
-  }
-
-  .mono-accent {
-    @apply font-mono text-brand-steel-blue text-sm uppercase tracking-wider;
-  }
-
   .page-container {
     @apply mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-20;
   }
