@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl"
 import { Badge } from "@workspace/ui/components/badge"
 import { Card, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
 
-import type { TalentProfile } from "@/entities/talent"
+import type { TalentProfile } from "../model/types"
 
 type ProjectsTabProps = {
   profile: TalentProfile

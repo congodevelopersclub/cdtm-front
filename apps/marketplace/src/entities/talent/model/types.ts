@@ -1,3 +1,5 @@
+import type { TalentCategory } from "./talent-category"
+
 export type TalentProfileStatus =
   | "looking_for_work"
   | "open_to_opportunities"
@@ -39,4 +41,7 @@ export type TalentProfile = {
   projects: TalentProject[]
   experience: TalentExperience[]
   socialLinks: TalentSocialLinks
+  employmentStatus?: string | null
+  showAvailabilityBadge?: boolean
+  categories?: TalentCategory[]
 }

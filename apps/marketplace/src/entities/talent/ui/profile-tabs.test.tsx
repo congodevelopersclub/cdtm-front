@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
+import { renderWithProviders, screen, userEvent } from "@/test/render"
 
 import { ProfileTabs } from "./profile-tabs"
-import { renderWithProviders, screen, userEvent } from "@/test/render"
 
 import { MOCK_TALENT_PROFILE } from "@/entities/talent"
 

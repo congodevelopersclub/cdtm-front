@@ -10,6 +10,8 @@ import {
 import type { DashboardRole, DashboardUser } from "../config/types"
 
 import { DashboardSearchHeader } from "./components/dashboard-search-header"
+import { DashboardBreadcrumbs } from "./components/dashboard-breadcrumbs"
+import { DashboardBreadcrumbProvider } from "./breadcrumb-context"
 import { AppSidebar } from "./app-sidebar"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
@@ -80,10 +82,13 @@ export function DashboardShell({ role, user, children }: DashboardShellProps) {
     >
       <AppSidebar role={role} user={user} variant="inset" />
       <SidebarInset className="bg-background">
-        <DashboardSearchHeader role={role} user={user} />
-        <div className="flex flex-1 flex-col px-4 pb-6 sm:px-6 sm:pb-8">
-          {children}
-        </div>
+        <DashboardBreadcrumbProvider>
+          <DashboardSearchHeader role={role} user={user} />
+          <DashboardBreadcrumbs role={role} />
+          <div className="flex flex-1 flex-col px-4 pb-6 pt-2 sm:px-6 sm:pb-8">
+            {children}
+          </div>
+        </DashboardBreadcrumbProvider>
       </SidebarInset>
     </SidebarProvider>
   )

@@ -1,7 +1,8 @@
-import { ProfileHeaderCard } from "./components/profile-header-card"
-import { ProfileTabs } from "./components/profile-tabs"
-
-import { MOCK_TALENT_PROFILE } from "@/entities/talent"
+import {
+  ProfileHeaderCard,
+  ProfileTabs,
+  MOCK_TALENT_PROFILE,
+} from "@/entities/talent"
 
 export function ProfilePage() {
   const profile = MOCK_TALENT_PROFILE

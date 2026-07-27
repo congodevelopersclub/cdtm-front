@@ -14,7 +14,7 @@ import { MyStoryTab } from "./my-story-tab"
 import { ProjectsTab } from "./projects-tab"
 import { SkillsTab } from "./skills-tab"
 
-import type { TalentProfile } from "@/entities/talent"
+import type { TalentProfile } from "../model/types"
 
 type ProfileTabsProps = {
   profile: TalentProfile
@@ -22,6 +22,7 @@ type ProfileTabsProps = {
 
 export function ProfileTabs({ profile }: ProfileTabsProps) {
   const t = useTranslations("Profile")
+  const showExperienceTab = profile.experience.length > 0
 
   return (
     <Tabs defaultValue="story" className="w-full">
@@ -44,12 +45,14 @@ export function ProfileTabs({ profile }: ProfileTabsProps) {
         >
           {t("projects")}
         </TabsTrigger>
-        <TabsTrigger
-          value="experience"
-          className="rounded-none px-0 pb-3 after:bg-brand-orange data-active:text-foreground"
-        >
-          {t("experienceTab")}
-        </TabsTrigger>
+        {showExperienceTab ? (
+          <TabsTrigger
+            value="experience"
+            className="rounded-none px-0 pb-3 after:bg-brand-orange data-active:text-foreground"
+          >
+            {t("experienceTab")}
+          </TabsTrigger>
+        ) : null}
       </TabsList>
       <TabsContent value="story">
         <MyStoryTab profile={profile} />
@@ -60,9 +63,11 @@ export function ProfileTabs({ profile }: ProfileTabsProps) {
       <TabsContent value="projects">
         <ProjectsTab profile={profile} />
       </TabsContent>
-      <TabsContent value="experience">
-        <ExperienceTab profile={profile} />
-      </TabsContent>
+      {showExperienceTab ? (
+        <TabsContent value="experience">
+          <ExperienceTab profile={profile} />
+        </TabsContent>
+      ) : null}
     </Tabs>
   )
 }

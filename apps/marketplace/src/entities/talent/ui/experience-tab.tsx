@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl"
 
-import type { TalentProfile } from "@/entities/talent"
+import type { TalentProfile } from "../model/types"
 
 type ExperienceTabProps = {
   profile: TalentProfile

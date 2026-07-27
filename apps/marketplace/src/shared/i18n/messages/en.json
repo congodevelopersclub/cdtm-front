@@ -83,7 +83,8 @@
     "projectsDescription": "Selected projects I've contributed to.",
     "experienceDescription": "My professional journey.",
     "noProjects": "No projects listed yet.",
-    "noExperience": "No experience listed yet."
+    "noExperience": "No experience listed yet.",
+    "noBio": "This talent has not added a bio yet."
   },
   "Validation": {
     "invalidEmail": "Enter a valid email address",
@@ -153,6 +154,7 @@
     "noNotifications": "No notifications yet",
     "noNotificationsDescription": "When you have updates about jobs, invites, or messages they will appear here.",
     "toggleSidebar": "Toggle sidebar",
+    "breadcrumbLoading": "Loading…",
     "searchAriaLabel": "Search for jobs, skills, and people",
     "navDashboard": "Dashboard",
     "navJobs": "Jobs",
@@ -203,5 +205,25 @@
     "groupProjects": "Projects",
     "groupCourses": "Learn",
     "groupNotifications": "Notifications"
+  },
+  "Talents": {
+    "directoryCount": "Directory ({total})",
+    "showingRange": "Showing {from}–{to} of {total} talents",
+    "viewProfile": "View profile",
+    "viewProfileFor": "View profile for {name}",
+    "message": "Message",
+    "skillsOverflow": "+{count} more",
+    "skillsOverflowTooltip": "More skills: {skills}",
+    "loadError": "We couldn't load talents right now.",
+    "retry": "Try again",
+    "notFound": "Talent not found",
+    "notFoundDescription": "This profile may have been removed or the link is incorrect.",
+    "backToDirectory": "Back to directory",
+    "emptyTitle": "No talents found",
+    "emptyDescription": "Try another page or check back later.",
+    "verified": "Verified profile",
+    "previous": "Previous",
+    "next": "Next",
+    "pageLabel": "Talents pagination"
   }
 }

@@ -37,6 +37,8 @@ Object.defineProperty(globalThis, "ResizeObserver", {
 
 Element.prototype.scrollIntoView = vi.fn()
 
+vi.mock("server-only", () => ({}))
+
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),

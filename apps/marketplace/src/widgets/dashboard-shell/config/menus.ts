@@ -64,6 +64,10 @@ export function getPageTitle(pathname: string, role: DashboardRole): string {
     return "navProfile"
   }
 
+  if (pathname.startsWith("/talents/")) {
+    return "navTalents"
+  }
+
   return "navDashboard"
 }
 

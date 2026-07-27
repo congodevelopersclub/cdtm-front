@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl"
 
-import type { TalentProfile } from "@/entities/talent"
+import type { TalentProfile } from "../model/types"
 
 type MyStoryTabProps = {
   profile: TalentProfile
@@ -18,9 +18,13 @@ export function MyStoryTab({ profile }: MyStoryTabProps) {
         {t("myStory")}
       </h3>
       <div className="flex flex-col gap-4 text-base leading-relaxed text-muted-foreground">
-        {paragraphs.map((paragraph) => (
-          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-        ))}
+        {paragraphs.length > 0 ? (
+          paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))
+        ) : (
+          <p>{t("noBio")}</p>
+        )}
       </div>
     </div>
   )

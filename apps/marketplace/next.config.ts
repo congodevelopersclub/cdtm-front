@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
         hostname: "static.licdn.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        pathname: "/**",
+      },
     ],
   },
 }

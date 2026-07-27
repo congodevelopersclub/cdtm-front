@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
+import { renderWithProviders, screen } from "@/test/render"
 
 import { ProfileHeaderCard } from "./profile-header-card"
-import { renderWithProviders, screen } from "@/test/render"
 
 import { MOCK_TALENT_PROFILE } from "@/entities/talent"
 

@@ -83,7 +83,8 @@
     "projectsDescription": "Projets sélectionnés auxquels j'ai contribué.",
     "experienceDescription": "Mon parcours professionnel.",
     "noProjects": "Aucun projet listé pour le moment.",
-    "noExperience": "Aucune expérience listée pour le moment."
+    "noExperience": "Aucune expérience listée pour le moment.",
+    "noBio": "Ce talent n'a pas encore ajouté de biographie."
   },
   "Validation": {
     "invalidEmail": "Entrez une adresse e-mail valide",
@@ -153,6 +154,7 @@
     "noNotifications": "Aucune notification pour le moment",
     "noNotificationsDescription": "Les mises à jour concernant les emplois, invitations ou messages apparaîtront ici.",
     "toggleSidebar": "Afficher ou masquer la barre latérale",
+    "breadcrumbLoading": "Chargement…",
     "searchAriaLabel": "Rechercher des emplois, compétences et personnes",
     "navDashboard": "Tableau de bord",
     "navJobs": "Emplois",
@@ -203,5 +205,25 @@
     "groupProjects": "Projets",
     "groupCourses": "Apprendre",
     "groupNotifications": "Notifications"
+  },
+  "Talents": {
+    "directoryCount": "Annuaire ({total})",
+    "showingRange": "Affichage de {from} à {to} sur {total} talents",
+    "viewProfile": "Voir le profil",
+    "viewProfileFor": "Voir le profil de {name}",
+    "message": "Message",
+    "skillsOverflow": "+{count} de plus",
+    "skillsOverflowTooltip": "Autres compétences : {skills}",
+    "loadError": "Impossible de charger les talents pour le moment.",
+    "retry": "Réessayer",
+    "notFound": "Talent introuvable",
+    "notFoundDescription": "Ce profil a peut-être été supprimé ou le lien est incorrect.",
+    "backToDirectory": "Retour à l'annuaire",
+    "emptyTitle": "Aucun talent trouvé",
+    "emptyDescription": "Essayez une autre page ou revenez plus tard.",
+    "verified": "Profil vérifié",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "pageLabel": "Pagination des talents"
   }
 }

@@ -13,16 +13,12 @@ import {
   IconWorld,
 } from "@tabler/icons-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@workspace/ui/components/avatar"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { Card } from "@workspace/ui/components/card"
 
-import { getInitials, type TalentProfile } from "@/entities/talent"
+import { TalentAvatar } from "./talent-avatar"
+import type { TalentProfile } from "../model/types"
 
 type ProfileHeaderCardProps = {
   profile: TalentProfile
@@ -48,6 +44,9 @@ function StatusBadge({ status }: { status: TalentProfile["status"] }) {
 
 export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
   const t = useTranslations("Profile")
+  const showAvailabilityBadge = profile.showAvailabilityBadge !== false
+  const showExperienceYears = profile.experienceYears > 0
+  const showSuperpowerSkills = profile.superpowerSkills.length > 0
 
   const socialItems = [
     { href: profile.socialLinks.website, icon: IconWorld, label: "Website" },
@@ -65,17 +64,17 @@ export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
       <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start">
         <div className="flex shrink-0 flex-col items-start gap-3">
           <div className="relative pb-1">
-            <Avatar className="size-24 rounded-full sm:size-28 lg:size-32">
-              {profile.avatar ? (
-                <AvatarImage src={profile.avatar} alt={profile.name} />
-              ) : null}
-              <AvatarFallback className="rounded-full text-xl sm:text-2xl">
-                {getInitials(profile.name)}
-              </AvatarFallback>
-            </Avatar>
-            <div className="absolute -bottom-3 left-0">
-              <StatusBadge status={profile.status} />
-            </div>
+            <TalentAvatar
+              name={profile.name}
+              avatar={profile.avatar}
+              className="size-24 rounded-full sm:size-28 lg:size-32"
+              fallbackClassName="rounded-full text-xl sm:text-2xl"
+            />
+            {showAvailabilityBadge ? (
+              <div className="absolute -bottom-3 left-0">
+                <StatusBadge status={profile.status} />
+              </div>
+            ) : null}
           </div>
           <div className="mt-4 flex items-center gap-1.5 text-sm text-muted-foreground">
             <IconMapPin className="size-4 shrink-0" />
@@ -133,28 +132,32 @@ export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
                 {profile.title}
               </p>
             </div>
-            <div className="min-w-0">
-              <p className="text-sm text-muted-foreground">{t("experience")}</p>
-              <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                {t("years", { count: profile.experienceYears })}
-              </p>
-            </div>
+            {showExperienceYears ? (
+              <div className="min-w-0">
+                <p className="text-sm text-muted-foreground">{t("experience")}</p>
+                <p className="text-xl font-semibold tracking-tight sm:text-2xl">
+                  {t("years", { count: profile.experienceYears })}
+                </p>
+              </div>
+            ) : null}
           </div>
 
-          <div className="flex min-w-0 flex-col gap-3">
-            <p className="text-sm font-medium">{t("superpowerSkills")}</p>
-            <div className="flex flex-wrap gap-2">
-              {profile.superpowerSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-sm"
-                >
-                  <span className="text-brand-orange">★</span>
-                  {skill}
-                </span>
-              ))}
+          {showSuperpowerSkills ? (
+            <div className="flex min-w-0 flex-col gap-3">
+              <p className="text-sm font-medium">{t("superpowerSkills")}</p>
+              <div className="flex flex-wrap gap-2">
+                {profile.superpowerSkills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-sm"
+                  >
+                    <span className="text-brand-orange">★</span>
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
     </Card>

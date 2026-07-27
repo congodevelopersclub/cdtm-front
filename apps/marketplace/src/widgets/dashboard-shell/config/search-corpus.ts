@@ -29,7 +29,7 @@ export const MOCK_SEARCH_TALENTS: MockTalent[] = [
     title: "Full Stack Developer",
     location: "Kinshasa, DRC",
     skills: ["React", "TypeScript", "Node.js", "Next.js"],
-    href: "/profile",
+    href: "/talents/talent-001",
   },
   {
     id: "talent-002",
@@ -37,7 +37,7 @@ export const MOCK_SEARCH_TALENTS: MockTalent[] = [
     title: "Product Designer",
     location: "Lubumbashi, DRC",
     skills: ["Figma", "UX Research", "Design Systems"],
-    href: "/talents",
+    href: "/talents/talent-002",
   },
   {
     id: "talent-003",
@@ -45,7 +45,7 @@ export const MOCK_SEARCH_TALENTS: MockTalent[] = [
     title: "Backend Engineer",
     location: "Goma, DRC",
     skills: ["Go", "PostgreSQL", "Docker", "AWS"],
-    href: "/talents",
+    href: "/talents/talent-003",
   },
   {
     id: "talent-004",
@@ -53,7 +53,7 @@ export const MOCK_SEARCH_TALENTS: MockTalent[] = [
     title: "Mobile Developer",
     location: "Kinshasa, DRC",
     skills: ["React Native", "Flutter", "Firebase"],
-    href: "/talents",
+    href: "/talents/talent-004",
   },
 ]
 

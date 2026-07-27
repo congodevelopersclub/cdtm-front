@@ -29,6 +29,21 @@ describe("DashboardGlobalSearch", () => {
     expect(screen.getByText("People")).toBeInTheDocument()
   })
 
+  it("navigates when a person result is selected", async () => {
+    const user = userEvent.setup()
+    pushMock.mockClear()
+
+    renderWithProviders(<DashboardGlobalSearch role="talent" />)
+
+    const input = screen.getByRole("combobox")
+    await user.click(input)
+    await user.type(input, "Amina")
+
+    await user.click(screen.getByText("Amina Kabila"))
+
+    expect(pushMock).toHaveBeenCalledWith("/talents/talent-002")
+  })
+
   it("navigates when a result is selected", async () => {
     const user = userEvent.setup()
     pushMock.mockClear()
