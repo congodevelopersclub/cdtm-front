@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 
@@ -23,7 +24,25 @@ import { DashboardEmptyState, DashboardPanel } from "@/widgets/dashboard-shell"
 
 import { useProfiles } from "@/entities/talent"
 
-const SKELETON_COUNT = 12
+const MOBILE_SKELETON_COUNT = 6
+const DESKTOP_SKELETON_COUNT = 8
+
+function useSkeletonCount() {
+  const [count, setCount] = useState(MOBILE_SKELETON_COUNT)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 640px)")
+    const updateCount = () => {
+      setCount(mediaQuery.matches ? DESKTOP_SKELETON_COUNT : MOBILE_SKELETON_COUNT)
+    }
+
+    updateCount()
+    mediaQuery.addEventListener("change", updateCount)
+    return () => mediaQuery.removeEventListener("change", updateCount)
+  }, [])
+
+  return count
+}
 
 export function TalentsDirectoryTab() {
   const t = useTranslations("Talents")
@@ -33,6 +52,7 @@ export function TalentsDirectoryTab() {
   const profilesQuery = toProfilesQuery(filters, page)
   const { open: isSidebarOpen } = useSidebar()
   const gridClassName = getTalentsGridClassName(isSidebarOpen)
+  const skeletonCount = useSkeletonCount()
   const { data, isLoading, isError, refetch, isFetching } =
     useProfiles(profilesQuery)
   const hasActiveFilters = hasActiveTalentsDirectoryFilters(filters)
@@ -42,7 +62,7 @@ export function TalentsDirectoryTab() {
       <div className="flex flex-col gap-6">
         <TalentsDirectoryFilters />
         <div className={gridClassName}>
-          {Array.from({ length: SKELETON_COUNT }, (_, index) => (
+          {Array.from({ length: skeletonCount }, (_, index) => (
             <TalentCardSkeleton key={index} />
           ))}
         </div>

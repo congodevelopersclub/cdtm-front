@@ -84,7 +84,7 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
         <Link
           href={`/talents/${profile.id}`}
           aria-label={t("viewProfileFor", { name: profile.name })}
-          className="flex min-w-0 w-full flex-row gap-3 rounded-2xl outline-none"
+          className="flex min-w-0 w-full flex-col gap-3 rounded-2xl outline-none sm:flex-row"
         >
           <div className="relative flex flex-col items-center gap-2 bg-muted p-2 rounded-2xl">
             {profile.verified ? (
@@ -105,11 +105,11 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
           <TalentAvatar
             name={profile.name}
             avatar={profile.avatar}
-            className="size-16 lg:size-18 rounded-full"
+            className="size-16 rounded-full lg:size-20"
             fallbackClassName="rounded-full text-base"
           />
 
-          <div className="flex flex-row items-center justify-center gap-1">
+          <div className="flex flex-wrap items-center justify-center gap-1">
             <Button size={'xs'} className="rounded-md">
               Linkedin
             </Button>
@@ -178,7 +178,7 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
             </div>
 
             {visibleSkills.length > 0 ? (
-              <div className="flex min-w-0 flex-nowrap items-center gap-1 overflow-hidden">
+              <div className="flex min-w-0 flex-wrap items-center gap-1 sm:flex-nowrap sm:overflow-hidden">
                 {visibleSkills.map((skill) => (
                   <span
                     key={skill}

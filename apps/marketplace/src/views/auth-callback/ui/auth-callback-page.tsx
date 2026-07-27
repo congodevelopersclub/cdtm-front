@@ -28,7 +28,7 @@ export function AuthCallbackPage() {
 
   if (!code) {
     return (
-      <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6 text-center">
+      <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-4 text-center sm:p-6">
         <p className="text-muted-foreground">{t("callbackMissingCode")}</p>
         <Button asChild variant="outline">
           <Link href="/auth">{t("backToLogin")}</Link>
@@ -44,7 +44,7 @@ export function AuthCallbackPage() {
       : t("callbackLoading")
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-6 text-center">
+    <div className="flex min-h-svh flex-col items-center justify-center gap-4 p-4 text-center sm:p-6">
       {(isPending || isSuccess) && !isError ? (
         <IconLoader2 className="size-8 animate-spin text-primary" />
       ) : null}

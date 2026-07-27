@@ -133,7 +133,7 @@ export function DashboardUserMenu({ user }: DashboardUserMenuProps) {
           type="button"
           className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <Avatar className="size-8 rounded-full">
+          <Avatar className="size-10 rounded-full sm:size-12">
             {user.avatar ? (
               <AvatarImage src={user.avatar} alt={user.name} />
             ) : null}

@@ -31,7 +31,7 @@ export function DashboardBreadcrumbs({ role }: DashboardBreadcrumbsProps) {
 
   return (
     <Breadcrumb className="px-4 sm:px-6">
-      <BreadcrumbList>
+      <BreadcrumbList className="flex-nowrap overflow-x-auto scrollbar-none">
         {trail.map((segment, index) => {
           return (
             <Fragment key={`${segment.kind}-${index}`}>
@@ -48,7 +48,7 @@ export function DashboardBreadcrumbs({ role }: DashboardBreadcrumbsProps) {
                   <BreadcrumbPage>{t(segment.labelKey)}</BreadcrumbPage>
                 ) : null}
                 {segment.kind === "dynamic" ? (
-                  <BreadcrumbPage>
+                  <BreadcrumbPage className="max-w-[12rem] truncate sm:max-w-none">
                     {dynamicLabel ?? t("breadcrumbLoading")}
                   </BreadcrumbPage>
                 ) : null}

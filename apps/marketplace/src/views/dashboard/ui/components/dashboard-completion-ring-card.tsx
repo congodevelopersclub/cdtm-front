@@ -27,7 +27,7 @@ export function DashboardCompletionRingCard({
         {t("profileCompletionTitle")}
       </p>
       <div
-        className="relative flex size-32 items-center justify-center rounded-full sm:size-36"
+        className="relative flex size-28 items-center justify-center rounded-full sm:size-32 lg:size-36"
         style={{
           background: `conic-gradient(var(--color-brand-orange) ${clamped * 3.6}deg, var(--color-muted) 0deg)`,
         }}

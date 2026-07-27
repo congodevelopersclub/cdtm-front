@@ -52,20 +52,26 @@ export function DashboardOverviewGrid() {
         {t("greeting", { name: firstName })}
       </h1>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
         <DashboardProfileHeroCard
           name={profile.name}
           title={profile.title}
           avatarUrl={profile.avatar}
           location={profile.location}
-          className="lg:col-span-5"
+          className="md:col-span-1 lg:col-span-5"
         />
 
-        <DashboardCompletionRingCard percent={percent} className="lg:col-span-3" />
+        <DashboardCompletionRingCard
+          percent={percent}
+          className="md:col-span-1 lg:col-span-3"
+        />
 
-        <DashboardProfileTasksCard profile={profile} className="lg:col-span-4 lg:row-span-2" />
+        <DashboardProfileTasksCard
+          profile={profile}
+          className="md:col-span-2 lg:col-span-4 lg:row-span-2"
+        />
 
-        <DashboardUpcomingCard className="lg:col-span-8" />
+        <DashboardUpcomingCard className="md:col-span-2 lg:col-span-8" />
 
         {PLATFORM_STATS.map((stat, index) => (
           <DashboardStatTile
@@ -74,7 +80,7 @@ export function DashboardOverviewGrid() {
             labelKey={stat.labelKey}
             deltaKey={stat.deltaKey}
             accent={statAccents[index]}
-            className="lg:col-span-4"
+            className="md:col-span-1 lg:col-span-4"
           />
         ))}
 
@@ -82,7 +88,7 @@ export function DashboardOverviewGrid() {
           name={profile.name}
           title={profile.title}
           avatarUrl={profile.avatar}
-          className="lg:col-span-4"
+          className="md:col-span-2 lg:col-span-4"
         />
       </div>
     </div>

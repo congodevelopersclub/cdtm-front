@@ -26,12 +26,23 @@ export function ProfileTabs({ profile }: ProfileTabsProps) {
 
   return (
     <Tabs defaultValue="story" className="w-full">
-      <TabsList variant="line" className="w-full">
-        <TabsTrigger value="story">{t("myStory")}</TabsTrigger>
-        <TabsTrigger value="skills">{t("skills")}</TabsTrigger>
-        <TabsTrigger value="projects">{t("projects")}</TabsTrigger>
+      <TabsList
+        variant="line"
+        className="-mx-1 w-full gap-4 overflow-x-auto px-1 scrollbar-none sm:gap-6"
+      >
+        <TabsTrigger value="story" className="shrink-0 whitespace-nowrap">
+          {t("myStory")}
+        </TabsTrigger>
+        <TabsTrigger value="skills" className="shrink-0 whitespace-nowrap">
+          {t("skills")}
+        </TabsTrigger>
+        <TabsTrigger value="projects" className="shrink-0 whitespace-nowrap">
+          {t("projects")}
+        </TabsTrigger>
         {showExperienceTab ? (
-          <TabsTrigger value="experience">{t("experienceTab")}</TabsTrigger>
+          <TabsTrigger value="experience" className="shrink-0 whitespace-nowrap">
+            {t("experienceTab")}
+          </TabsTrigger>
         ) : null}
       </TabsList>
       <TabsContent value="story">

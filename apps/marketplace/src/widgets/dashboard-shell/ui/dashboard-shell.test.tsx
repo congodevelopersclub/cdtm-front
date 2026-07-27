@@ -15,6 +15,9 @@ describe("DashboardShell", () => {
 
     expect(screen.getByText("Dashboard child content")).toBeInTheDocument()
     expect(
+      screen.getByText("Dashboard child content").parentElement
+    ).toHaveClass("max-w-7xl")
+    expect(
       screen.getByRole("combobox", {
         name: /search for jobs, skills, and people/i,
       })

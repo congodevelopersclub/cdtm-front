@@ -86,7 +86,9 @@ export function DashboardShell({ role, user, children }: DashboardShellProps) {
           <DashboardSearchHeader role={role} user={user} />
           <DashboardBreadcrumbs role={role} />
           <div className="flex flex-1 flex-col px-4 pb-6 pt-2 sm:px-6 sm:pb-8">
-            {children}
+            <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col 2xl:max-w-[90rem]">
+              {children}
+            </div>
           </div>
         </DashboardBreadcrumbProvider>
       </SidebarInset>

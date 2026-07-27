@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"
 
@@ -10,6 +11,7 @@ import {
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuItem,
+  useSidebar,
 } from "@workspace/ui/components/sidebar"
 
 import type { NavItem } from "../config/types"
@@ -17,6 +19,11 @@ import type { NavItem } from "../config/types"
 export function NavMain({ items }: { items: NavItem[] }) {
   const t = useTranslations("DashboardShell")
   const pathname = usePathname()
+  const { setOpenMobile } = useSidebar()
+
+  useEffect(() => {
+    setOpenMobile(false)
+  }, [pathname, setOpenMobile])
 
   return (
     <SidebarGroup className="p-0">
@@ -30,6 +37,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
               <SidebarMenuItem key={item.href}>
                 <Link
                   href={item.href}
+                  onClick={() => setOpenMobile(false)}
                   className={cn(
                     "flex h-12 w-full items-center gap-3 rounded-full px-4 text-sm transition-colors",
                     isActive

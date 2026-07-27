@@ -26,7 +26,7 @@ export function DashboardProfileCtaCard({
     <Link
       href="/profile"
       className={cn(
-        "group relative flex min-h-[160px] flex-col justify-end overflow-hidden rounded-3xl border border-border bg-card p-5 sm:min-h-[180px] sm:p-6",
+        "group relative flex min-h-[140px] flex-col justify-end overflow-hidden rounded-3xl border border-border bg-card p-5 sm:min-h-[160px] lg:min-h-[180px] sm:p-6",
         className,
       )}
     >

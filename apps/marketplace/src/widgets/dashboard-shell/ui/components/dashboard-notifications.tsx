@@ -45,7 +45,10 @@ export function DashboardNotifications() {
           ) : null}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-80 rounded-lg">
+      <DropdownMenuContent
+        align="end"
+        className="w-[min(20rem,calc(100vw-2rem))] rounded-lg"
+      >
         <DropdownMenuLabel>{t("notifications")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {MOCK_NOTIFICATIONS.length === 0 ? (

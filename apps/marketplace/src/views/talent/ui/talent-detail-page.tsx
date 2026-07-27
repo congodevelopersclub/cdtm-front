@@ -43,7 +43,7 @@ export function TalentDetailPage() {
   }
 
   return (
-    <div className="flex w-full min-w-0 max-w-full flex-col gap-6">
+    <div className="flex w-full min-w-0 flex-col gap-6">
       <ProfileHeaderCard profile={profile} />
       <ProfileTabs profile={profile} />
     </div>

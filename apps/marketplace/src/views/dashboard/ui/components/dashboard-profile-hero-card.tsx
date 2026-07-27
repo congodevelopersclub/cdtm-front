@@ -24,7 +24,7 @@ export function DashboardProfileHeroCard({
   return (
     <div
       className={cn(
-        "relative min-h-[220px] overflow-hidden rounded-3xl border border-border bg-card sm:min-h-[260px]",
+        "relative min-h-[180px] overflow-hidden rounded-3xl border border-border bg-card sm:min-h-[220px] lg:min-h-[260px]",
         className,
       )}
     >

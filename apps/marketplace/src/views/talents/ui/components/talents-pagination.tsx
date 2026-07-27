@@ -31,11 +31,11 @@ export function TalentsPagination({
   return (
     <nav
       aria-label={t("pageLabel")}
-      className="flex flex-wrap items-center justify-center gap-2"
+      className="flex flex-wrap items-center justify-center gap-1 sm:gap-2"
     >
       <Button
         variant="outline"
-        className="rounded-full"
+        className="h-8 min-w-8 rounded-full sm:h-10 sm:min-w-10"
         disabled={currentPage <= 1}
         onClick={() => goToPage(currentPage - 1)}
       >
@@ -47,7 +47,7 @@ export function TalentsPagination({
           <span
             key={`ellipsis-${index}`}
             aria-hidden="true"
-            className="inline-flex min-w-10 items-center justify-center px-2 text-sm text-muted-foreground"
+            className="inline-flex min-w-8 items-center justify-center px-1 text-sm text-muted-foreground sm:min-w-10 sm:px-2"
           >
             ...
           </span>
@@ -55,7 +55,7 @@ export function TalentsPagination({
           <Button
             key={page}
             variant={page === currentPage ? "default" : "outline"}
-            className="min-w-10 rounded-full"
+            className="h-8 min-w-8 rounded-full sm:h-10 sm:min-w-10"
             onClick={() => goToPage(page)}
           >
             {page}
@@ -65,7 +65,7 @@ export function TalentsPagination({
 
       <Button
         variant="outline"
-        className="rounded-full"
+        className="h-8 min-w-8 rounded-full sm:h-10 sm:min-w-10"
         disabled={currentPage >= lastPage}
         onClick={() => goToPage(currentPage + 1)}
       >

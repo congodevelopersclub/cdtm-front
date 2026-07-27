@@ -126,7 +126,7 @@ export function TalentsDirectoryFilters() {
           }
         >
           <SelectTrigger
-            className="w-full rounded-full sm:w-44"
+            className="w-full rounded-full sm:w-auto sm:min-w-44"
             aria-label={t("categoryFilterLabel")}
           >
             <SelectValue placeholder={t("categoryFilterLabel")} />
@@ -157,7 +157,7 @@ export function TalentsDirectoryFilters() {
           }
         >
           <SelectTrigger
-            className="w-full rounded-full sm:w-44"
+            className="w-full rounded-full sm:w-auto sm:min-w-44"
             aria-label={t("verifiedFilterLabel")}
           >
             <SelectValue placeholder={t("verifiedFilterLabel")} />

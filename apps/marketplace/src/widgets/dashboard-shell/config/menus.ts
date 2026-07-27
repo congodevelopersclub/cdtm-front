@@ -15,11 +15,11 @@ import type { DashboardRole, NavItem } from "./types"
 
 const TALENT_NAV: NavItem[] = [
   { titleKey: "navDashboard", href: "/dashboard", icon: IconDashboard },
-  { titleKey: "navJobs", href: "/jobs", icon: IconBriefcase },
-  { titleKey: "navSkills", href: "/skills", icon: IconCertificate },
-  { titleKey: "navProjects", href: "/projects", icon: IconFolder },
   { titleKey: "navTalents", href: "/talents", icon: IconUsers },
+  { titleKey: "navJobs", href: "/jobs", icon: IconBriefcase },
+  { titleKey: "navProjects", href: "/projects", icon: IconFolder },
   { titleKey: "navLearn", href: "/learn", icon: IconBook },
+  { titleKey: "navSkills", href: "/skills", icon: IconCertificate },
 ]
 
 const AGENCY_NAV: NavItem[] = [
