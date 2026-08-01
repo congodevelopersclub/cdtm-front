@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { useTranslations } from "next-intl"
+import Link from "next/link"
 
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
@@ -13,13 +13,13 @@ import {
   TooltipTrigger,
 } from "@workspace/ui/components/tooltip"
 import { cn } from "@workspace/ui/lib/utils"
+import { TalentAvatar, type TalentProfile } from "@/entities/talent"
+import { IconBrandGithub, IconBriefcase, IconMapPin } from "@tabler/icons-react"
 import { CircleCheckBigIcon } from "lucide-react"
-
+import getBadgeBackgroundColor from "@/shared/utils/get-badge-background-color"
 import { getHeadlineAccentClass } from "../../lib/get-headline-accent-class"
 import { getSkillOverflowLabel } from "../../lib/get-skill-accent-class"
-import { IconBrandGithub, IconBriefcase, IconMapPin } from "@tabler/icons-react"
 
-import { TalentAvatar, type TalentProfile } from "@/entities/talent"
 
 const MAX_VISIBLE_SKILLS = 3
 
@@ -78,14 +78,16 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
   const { primaryCategoryLabel, otherCategoryLabels }: CategoryLabels =
     getProfileCategoryLabels(profile.categories)
 
+
   return (
-    <Card className="group relative flex h-full flex-col gap-3 rounded-2xl border border-border bg-white p-2 shadow-none transition-colors hover:border-primary/30 hover:bg-muted/30 focus-within:ring-2 focus-within:ring-ring/50">
+    <Card className="group relative flex h-full flex-col gap-3 rounded-2xl border border-border bg-white p-2 shadow-none transition-colors hover:border-primary/30 hover:bg-muted/30 focus-within:ring-2 focus-within:ring-ring/50 dark:bg-muted  dark:hover:bg-muted/10">
       <TooltipProvider delayDuration={200}>
         <Link
           href={`/talents/${profile.id}`}
           aria-label={t("viewProfileFor", { name: profile.name })}
           className="flex min-w-0 w-full flex-col gap-3 rounded-2xl outline-none sm:flex-row"
         >
+          {/* left side */}
           <div className="relative flex flex-col items-center gap-2 bg-muted p-2 rounded-2xl">
             {profile.verified ? (
               <div className="absolute -top-1 -left-1">
@@ -102,24 +104,26 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
                 </Tooltip>
               </div>
             ) : null}
-          <TalentAvatar
-            name={profile.name}
-            avatar={profile.avatar}
-            className="size-16 rounded-full lg:size-20"
-            fallbackClassName="rounded-full text-base"
-          />
+            <TalentAvatar
+              name={profile.name}
+              avatar={profile.avatar}
+              className="size-16 rounded-full lg:size-20"
+              fallbackClassName="rounded-full text-base"
+            />
 
-          <div className="flex flex-wrap items-center justify-center gap-1">
-            <Button size={'xs'} className="rounded-md">
-              Linkedin
-            </Button>
+            <div className="flex flex-wrap items-center justify-center gap-1">
+              <Button size={'xs'} className="rounded-md">
+                Linkedin
+              </Button>
 
-            <Button size={'icon-xs'} className="rounded-md bg-black hover:text-black hover:bg-muted">
-              <IconBrandGithub className="size-4" />
-            </Button>
+              <Button size={'icon-xs'} className="rounded-md bg-black hover:text-black hover:bg-muted">
+                <IconBrandGithub className="size-4" />
+              </Button>
+            </div>
           </div>
-        </div>
 
+
+          {/* Right side */}
           <div className="flex min-w-0 flex-1 flex-col gap-2">
             {profile.title ? (
               <Tooltip>
@@ -128,7 +132,8 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
                     variant="secondary"
                     className={cn(
                       "h-6 w-full max-w-full min-w-0 overflow-hidden rounded-md border-0",
-                      headlineAccentClass
+                      headlineAccentClass,
+                      getBadgeBackgroundColor(profile.title)
                     )}
                   >
                     <span className="block truncate text-black">{profile.title}</span>

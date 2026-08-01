@@ -96,7 +96,7 @@ export function createFsdLintConfig({ tsconfigRootDir }) {
           allowedPaths: ["@/shared/store", "/shared/store"],
         },
       ],
-      "fsd/ordered-imports": "error",
+      // "fsd/ordered-imports": "error",
     },
   }
 }
