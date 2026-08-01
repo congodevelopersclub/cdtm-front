@@ -1,0 +1,164 @@
+{
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
+    "home": {
+      "title": "Accueil",
+      "description": "Rejoignez le Congo Developer Club — le hub où les talents tech congolais se retrouvent, se forment et construisent l'avenir."
+    },
+    "notFound": {
+      "title": "Page introuvable",
+      "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée."
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Langue",
+    "english": "Anglais",
+    "french": "Français",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
+    "back_home": "Retour à l'accueil",
+    "join": "Nous rejoindre"
+  },
+  "nav": {
+    "home": "Accueil",
+    "activities": "Activités",
+    "contact": "Contact",
+    "join": "Nous Rejoindre"
+  },
+  "footer": {
+    "description": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
+    "col_nav": "Navigation",
+    "col_legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Mentions légales",
+    "cookies": "Cookies",
+    "rights": "Tous droits réservés.",
+    "community_name": "Congo Developer Club",
+    "built_by_community": "Développé par la communauté Congo Developers Club",
+    "made_in": "Fait au",
+    "country": "RD Congo"
+  },
+  "hero": {
+    "badge": "La première communauté tech en RDC",
+    "title_1": "CODE LE",
+    "title_2": "FUTUR.",
+    "description": "Rassembler, former et propulser les talents congolais. Congo Developer Club est le hub où les idées deviennent du code et le code devient de l’impact.",
+    "cta_join": "Rejoindre le mouvement",
+    "cta_actions": "Découvrir nos actions",
+    "stats_developers": "Développeurs",
+    "stats_projects": "Projets",
+    "stats_events": "Événements",
+    "ecosystem_title": "Écosystème Tech",
+    "ecosystem_description": "Infrastructure & technologies modernes",
+    "growth": "Croissance de la communauté"
+  },
+  "impact": {
+    "title_part1": "Bâtir des carrières,",
+    "title_part2": "transformer le pays.",
+    "description": "Depuis notre création, notre mission est claire : créer un écosystème où l'expertise technique congolaise peut s'épanouir, collaborer et s'exporter au plus haut niveau mondial.",
+    "stat1_title": "Hackathon National 2025",
+    "stat1_desc": "300 participants, 45 solutions innovantes pour l'inclusion financière.",
+    "stat2_title": "Campus Tech Congo",
+    "stat2_desc": "+500 étudiants accompagnés vers des emplois qualifiés.",
+    "stat3_title": "Contribution Open Source",
+    "stat3_desc": "Initiation et maintenance de librairies locales (+10k stars).",
+    "members_count": "Membres Actifs"
+  },
+  "github": {
+    "title": "Top Contributeurs GitHub",
+    "subtitle": "Découvrez et suivez les développeurs congolais les plus actifs au sein de notre organisation GitHub.",
+    "profile": "Profil",
+    "contributions": "contributions",
+    "contribution_singular": "contribution",
+    "tooltips": {
+      "rank": "Position au classement selon le total des contributions sur tous les dépôts de l'organisation.",
+      "profile": "Ouvre le profil GitHub public de ce contributeur dans un nouvel onglet.",
+      "contributions": "Total des contributions (commits, pull requests, etc.) cumulées sur tous les dépôts du Congo Developers Club."
+    }
+  },
+  "events": {
+    "title": "Agenda.",
+    "view_all": "Voir tout",
+    "more_events": "Plus d'événements",
+    "register": "S'inscrire",
+    "category": "Conférence",
+    "no_events": "Aucune activité en cours d'organisation.",
+    "check_back": "Revenez plus tard pour de nouvelles activités."
+  },
+  "news": {
+    "title": "Dernières Nouvelles.",
+    "tag": "Actualité",
+    "read": "Lire l'article",
+    "view_all": "Voir tous les articles",
+    "items": [
+      {
+        "title": "Ouverture des candidatures au programme Dev Leaders 2026",
+        "date": "14 Jan 2026",
+        "tag": "Annonce",
+        "excerpt": "Les inscriptions sont désormais ouvertes pour accompagner les jeunes développeurs et entrepreneurs tech de la RDC."
+      },
+      {
+        "title": "Retour sur le Hackathon \"Build For Africa\" à Goma",
+        "date": "02 Fév 2026",
+        "tag": "Événement",
+        "excerpt": "Plus de 120 participants ont collaboré pendant 48h pour concevoir des solutions numériques locales innovantes."
+      },
+      {
+        "title": "Tutoriel : Déployer une application Next.js avec Docker",
+        "date": "18 Fév 2026",
+        "tag": "Tutoriel",
+        "excerpt": "Découvrez comment containeriser et déployer rapidement vos applications web modernes en production."
+      },
+      {
+        "title": "Lancement de notre communauté Open Source RDC",
+        "date": "05 Mar 2026",
+        "tag": "Communauté",
+        "excerpt": "Une nouvelle initiative pour connecter les développeurs passionnés d'open source à travers le pays."
+      },
+      {
+        "title": "Top 5 des technologies à apprendre en 2026",
+        "date": "16 Mar 2026",
+        "tag": "Article",
+        "excerpt": "IA, cybersécurité, cloud, mobile et data engineering figurent parmi les compétences les plus recherchées."
+      },
+      {
+        "title": "Workshop gratuit : Initiation à l'Intelligence Artificielle",
+        "date": "28 Mar 2026",
+        "tag": "Formation",
+        "excerpt": "Une session pratique dédiée aux étudiants et développeurs souhaitant découvrir les bases du machine learning."
+      }
+    ]
+  },
+  "cta": {
+    "label": "System.out.println(\"Rejoignez-nous\");",
+    "title_1": "PRÊT À",
+    "title_2": "COMMIT ?",
+    "description": "Rejoignez le Congo Developer Club et contribuez à façonner l'avenir technologique de la RDC. Révélez votre potentiel.",
+    "button": "Devenir Membre"
+  },
+  "testimonials": {
+    "title": "Ce qu'ils en disent.",
+    "items": [
+      {
+        "name": "John Doe",
+        "role": "Développeur Fullstack",
+        "quote": "Le CDC a complètement changé ma carrière."
+      },
+      {
+        "name": "Sarah K.",
+        "role": "Designer UI/UX",
+        "quote": "La communauté la plus active en RDC !"
+      },
+      {
+        "name": "Jean M.",
+        "role": "Développeur Mobile",
+        "quote": "Des opportunités de networking incroyables ici."
+      }
+    ]
+  }
+}
