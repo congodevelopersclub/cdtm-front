@@ -18,12 +18,16 @@ export type {
   TalentCategory,
 } from "./model/talent-category"
 export type {
+  ProfileSkill,
   TalentExperience,
   TalentProfile,
   TalentProfileStatus,
   TalentProject,
   TalentSocialLinks,
 } from "./model/types"
+export { updateProfileAction } from "./actions/update-profile"
+export type { UpdateProfileInput } from "./actions/update-profile"
+export { useUpdateProfile } from "./hooks/use-update-profile"
 export type {
   ApiProfile,
   ApiProfilesPaginatedResponse,

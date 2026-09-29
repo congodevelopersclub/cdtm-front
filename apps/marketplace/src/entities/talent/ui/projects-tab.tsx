@@ -41,6 +41,16 @@ export function ProjectsTab({ profile }: ProjectsTabProps) {
               <CardDescription className="text-sm leading-relaxed">
                 {project.description}
               </CardDescription>
+              {project.link ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  {t("viewProject")}
+                </a>
+              ) : null}
             </CardHeader>
           </Card>
         ))}

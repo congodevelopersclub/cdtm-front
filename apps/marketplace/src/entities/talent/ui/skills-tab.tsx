@@ -21,16 +21,35 @@ export function SkillsTab({ profile }: SkillsTabProps) {
           {t("allSkillsDescription")}
         </p>
       </div>
-      <div className="flex flex-wrap gap-2">
-        {profile.skills.map((skill) => (
-          <span
-            key={skill}
-            className="inline-flex items-center rounded-full bg-muted px-4 py-2 text-sm font-medium"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
+      {profile.skillDetails && profile.skillDetails.length > 0 ? (
+        <div className="grid gap-3 sm:grid-cols-2">
+          {profile.skillDetails.map((skill) => (
+            <div
+              key={skill.id}
+              className="rounded-2xl border border-border px-4 py-3"
+            >
+              <p className="font-medium">{skill.name}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {t("skillMeta", {
+                  proficiency: skill.proficiency,
+                  years: skill.yearsExperience,
+                })}
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-2">
+          {profile.skills.map((skill) => (
+            <span
+              key={skill}
+              className="inline-flex items-center rounded-full bg-muted px-4 py-2 text-sm font-medium"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

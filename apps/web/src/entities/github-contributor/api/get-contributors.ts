@@ -90,6 +90,18 @@ async function fetchRepoContributors(repoName: string) {
   )
 }
 
+export async function getProjectCount(): Promise<number> {
+  try {
+    const repos = await fetchPaginated<{ id: number }>(
+      `https://api.github.com/orgs/${GITHUB_ORG}/repos?per_page=100`
+    )
+
+    return repos.length
+  } catch {
+    return 0
+  }
+}
+
 export async function getContributors(): Promise<GitHubContributor[]> {
   try {
     const repos = await fetchOrgRepos()

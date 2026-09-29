@@ -52,11 +52,11 @@ describe("DashboardGlobalSearch", () => {
 
     const input = screen.getByRole("combobox")
     await user.click(input)
-    await user.type(input, "Jobs")
+    await user.type(input, "Projects")
 
-    await user.click(screen.getAllByText("Jobs")[0]!)
+    await user.click(screen.getAllByText("Projects")[0]!)
 
-    expect(pushMock).toHaveBeenCalledWith("/jobs")
+    expect(pushMock).toHaveBeenCalledWith("/projects")
   })
 
   it("renders French group labels", async () => {

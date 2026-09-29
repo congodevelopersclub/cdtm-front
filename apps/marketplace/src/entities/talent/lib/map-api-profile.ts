@@ -22,10 +22,17 @@ function getExperienceYears(skills: ApiProfile["skills"]) {
 }
 
 export function mapApiProfileToTalentProfile(api: ApiProfile): TalentProfile {
-  const skills = api.skills.map((skill) => skill.name)
+  const skillDetails = api.skills.map((skill) => ({
+    id: String(skill.id),
+    name: skill.name,
+    slug: skill.slug,
+    proficiency: skill.details.proficiency,
+    yearsExperience: skill.details.years_experience,
+  }))
+  const skills = skillDetails.map((skill) => skill.name)
 
   return {
-    id: api.id,
+    id: String(api.id),
     name: api.name,
     email: api.email,
     avatar: api.avatar_url ?? undefined,
@@ -37,11 +44,14 @@ export function mapApiProfileToTalentProfile(api: ApiProfile): TalentProfile {
     bio: api.bio?.trim() || "",
     superpowerSkills: getSuperpowerSkills(api.skills),
     skills,
+    skillDetails,
     projects: api.projects.map((project) => ({
       title: project.title,
       description: project.description,
       year: extractYear(project.created_at),
+      link: project.link,
     })),
+    accountStatus: api.account_status,
     experience: [],
     socialLinks: {},
     employmentStatus: api.status,
