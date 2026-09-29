@@ -38,4 +38,38 @@ describe("DashboardShell", () => {
 
     expect(document.cookie).toContain("sidebar_state=false")
   })
+
+  it("shows and hides the sidebar on a phone", async () => {
+    const user = userEvent.setup()
+    const originalWidth = window.innerWidth
+    Object.defineProperty(window, "innerWidth", {
+      configurable: true,
+      value: 390,
+    })
+
+    try {
+      renderWithProviders(
+        <DashboardShell role="talent" user={STORY_DASHBOARD_USER}>
+          <p>Dashboard child content</p>
+        </DashboardShell>
+      )
+
+      const panel = document.querySelector("[data-mobile='true']")
+      const trigger = screen.getAllByRole("button", { name: /toggle sidebar/i })[0]!
+
+      expect(panel).toHaveClass("-translate-x-full")
+
+      await user.click(trigger)
+      expect(panel).toHaveClass("translate-x-0")
+
+      await new Promise((resolve) => setTimeout(resolve, 450))
+      await user.click(trigger)
+      expect(panel).toHaveClass("-translate-x-full")
+    } finally {
+      Object.defineProperty(window, "innerWidth", {
+        configurable: true,
+        value: originalWidth,
+      })
+    }
+  })
 })
