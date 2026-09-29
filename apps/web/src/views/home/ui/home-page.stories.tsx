@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
-import { HomePage } from "./home-page"
+import { HomePage } from "./home-page.jsx"
 
 const meta = {
   title: "Web/Pages/HomePage",
