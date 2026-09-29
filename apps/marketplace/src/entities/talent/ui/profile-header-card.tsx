@@ -24,6 +24,44 @@ type ProfileHeaderCardProps = {
   profile: TalentProfile
 }
 
+function formatEmploymentStatus(
+  status: string,
+  t: (key: "fullTime" | "partTime" | "freelance") => string
+) {
+  if (status === "full-time") {
+    return t("fullTime")
+  }
+
+  if (status === "part-time") {
+    return t("partTime")
+  }
+
+  if (status === "feelance" || status === "freelance") {
+    return t("freelance")
+  }
+
+  return status
+}
+
+function formatAccountStatus(
+  status: string,
+  t: (key: "pendingValidation" | "validated" | "rejected") => string
+) {
+  if (status === "PENDING_VALIDATION") {
+    return t("pendingValidation")
+  }
+
+  if (status === "VALIDATED") {
+    return t("validated")
+  }
+
+  if (status === "REJECTED") {
+    return t("rejected")
+  }
+
+  return status
+}
+
 function StatusBadge({ status }: { status: TalentProfile["status"] }) {
   const t = useTranslations("Profile")
 
@@ -76,9 +114,25 @@ export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
               </div>
             ) : null}
           </div>
-          <div className="mt-4 flex items-center gap-1.5 text-sm text-muted-foreground">
-            <IconMapPin className="size-4 shrink-0" />
-            <span>{profile.location}</span>
+          <div className="mt-4 flex flex-col gap-1.5 text-sm text-muted-foreground">
+            {profile.location ? (
+              <div className="flex items-center gap-1.5">
+                <IconMapPin className="size-4 shrink-0" />
+                <span>{profile.location}</span>
+              </div>
+            ) : null}
+            {profile.email ? (
+              <div className="flex items-center gap-1.5">
+                <IconMail className="size-4 shrink-0" />
+                <span className="truncate">{profile.email}</span>
+              </div>
+            ) : null}
+            {profile.employmentStatus ? (
+              <span>{formatEmploymentStatus(profile.employmentStatus, t)}</span>
+            ) : null}
+            {profile.accountStatus ? (
+              <span>{formatAccountStatus(profile.accountStatus, t)}</span>
+            ) : null}
           </div>
         </div>
 
