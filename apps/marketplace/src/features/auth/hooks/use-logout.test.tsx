@@ -3,12 +3,11 @@ import { renderHook } from "@testing-library/react"
 
 import { useLogout } from "./use-logout"
 
-const { clearAuthStorageMock, notifyMock, replaceMock, refreshMock, removeQueriesMock, logoutMock } =
+const { clearAuthStorageMock, notifyMock, assignMock, removeQueriesMock, logoutMock } =
   vi.hoisted(() => ({
     clearAuthStorageMock: vi.fn(),
     notifyMock: vi.fn(),
-    replaceMock: vi.fn(),
-    refreshMock: vi.fn(),
+    assignMock: vi.fn(),
     removeQueriesMock: vi.fn(),
     logoutMock: vi.fn(),
   }))
@@ -22,13 +21,6 @@ vi.mock("@/shared/auth", () => ({
   notifyAuthSessionChanged: notifyMock,
 }))
 
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({
-    replace: replaceMock,
-    refresh: refreshMock,
-  }),
-}))
-
 vi.mock("@tanstack/react-query", () => ({
   useQueryClient: () => ({
     removeQueries: removeQueriesMock,
@@ -38,10 +30,11 @@ vi.mock("@tanstack/react-query", () => ({
 describe("useLogout", () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    logoutMock.mockResolvedValue(undefined)
+    logoutMock.mockResolvedValue("https://example.com/signed-out")
+    vi.stubGlobal("location", { assign: assignMock })
   })
 
-  it("clears server cookie, auth storage, query cache, and navigates to /auth", async () => {
+  it("clears the session after logout, then redirects to the server url", async () => {
     const { result } = renderHook(() => useLogout())
 
     await result.current()
@@ -50,7 +43,6 @@ describe("useLogout", () => {
     expect(clearAuthStorageMock).toHaveBeenCalled()
     expect(removeQueriesMock).toHaveBeenCalledWith({ queryKey: ["user"] })
     expect(notifyMock).toHaveBeenCalled()
-    expect(replaceMock).toHaveBeenCalledWith("/auth")
-    expect(refreshMock).toHaveBeenCalled()
+    expect(assignMock).toHaveBeenCalledWith("https://example.com/signed-out")
   })
 })
