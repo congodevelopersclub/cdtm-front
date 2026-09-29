@@ -119,19 +119,22 @@
     "title": "Ce qu'ils en disent.",
     "items": [
       {
-        "name": "John Doe",
+        "name": "Ir Musande Augustin",
         "role": "Développeur Fullstack",
-        "quote": "Le CDC a complètement changé ma carrière."
+        "image": "/images/testimonials/Musande_Augustin.png",
+        "quote": "Congo Developers Club a été un véritable accélérateur dans mon parcours informatique. J’y ai appris, partagé mes connaissances et rencontré des passionnés qui m’ont inspiré à aller plus loin dans mes projets. Une communauté qui favorise la croissance, la collaboration et l’innovation."
       },
       {
-        "name": "Sarah K.",
-        "role": "Designer UI/UX",
-        "quote": "La communauté la plus active en RDC !"
+        "name": "Ir Baraka Kinywa",
+        "role": "Developpeur",
+        "image": "/images/testimonials/Baraka_Kinywa.png",
+        "quote": "Congo Developers Club m’a ouvert les portes d’une première expérience professionnelle chez EvoluData en tant que développeur junior. Une opportunité qui a marqué le début de mon parcours dans la tech."
       },
       {
-        "name": "Jean M.",
-        "role": "Développeur Mobile",
-        "quote": "Des opportunités de networking incroyables ici."
+        "name": "Ir Lens Mutombo",
+        "role": "Ingenieur & Entrepreneur",
+        "image": "/images/testimonials/Lens_Mutombo.png",
+        "quote": "Congo Developper Club est la communauté tech la plus active en RDC avec des opportunités de réseautage incroyables."
       }
     ]
   }
