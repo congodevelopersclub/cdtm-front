@@ -52,13 +52,15 @@ export function TestimonialsSection() {
 
               {/* Contributor identity and role. */}
               <div className="flex items-center gap-4">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-full object-cover"
-                />
+                <div className="size-16 rounded-full bg-primary/10 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <div>
                   <h4 className="text-foreground font-bold">{item.name}</h4>
                   <p className="text-muted-foreground text-sm">{item.role}</p>
