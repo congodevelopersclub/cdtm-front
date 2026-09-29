@@ -94,18 +94,7 @@
     "contributors_description": "Une communauté des batisseurs",
     "growth": "Croissance de la communauté"
   },
-  "impact": {
-    "title_part1": "Bâtir des carrières,",
-    "title_part2": "transformer le pays.",
-    "description": "Depuis notre création, notre mission est claire : créer un écosystème où l'expertise technique congolaise peut s'épanouir, collaborer et s'exporter au plus haut niveau mondial.",
-    "stat1_title": "Hackathon National 2025",
-    "stat1_desc": "300 participants, 45 solutions innovantes pour l'inclusion financière.",
-    "stat2_title": "Campus Tech Congo",
-    "stat2_desc": "+500 étudiants accompagnés vers des emplois qualifiés.",
-    "stat3_title": "Contribution Open Source",
-    "stat3_desc": "Initiation et maintenance de librairies locales (+10k stars).",
-    "members_count": "Membres Actifs"
-  },
+  
   "github": {
     "title": "Top Contributeurs GitHub",
     "subtitle": "Découvrez et suivez les développeurs congolais les plus actifs au sein de notre organisation GitHub.",
@@ -118,59 +107,7 @@
       "contributions": "Total des contributions (commits, pull requests, etc.) cumulées sur tous les dépôts du Congo Developers Club."
     }
   },
-  "events": {
-    "title": "Agenda.",
-    "view_all": "Voir tout",
-    "more_events": "Plus d'événements",
-    "register": "S'inscrire",
-    "category": "Conférence",
-    "no_events": "Aucune activité en cours d'organisation.",
-    "check_back": "Revenez plus tard pour de nouvelles activités."
-  },
-  "news": {
-    "title": "Dernières Nouvelles.",
-    "tag": "Actualité",
-    "read": "Lire l'article",
-    "view_all": "Voir tous les articles",
-    "items": [
-      {
-        "title": "Ouverture des candidatures au programme Dev Leaders 2026",
-        "date": "14 Jan 2026",
-        "tag": "Annonce",
-        "excerpt": "Les inscriptions sont désormais ouvertes pour accompagner les jeunes développeurs et entrepreneurs tech de la RDC."
-      },
-      {
-        "title": "Retour sur le Hackathon \"Build For Africa\" à Goma",
-        "date": "02 Fév 2026",
-        "tag": "Événement",
-        "excerpt": "Plus de 120 participants ont collaboré pendant 48h pour concevoir des solutions numériques locales innovantes."
-      },
-      {
-        "title": "Tutoriel : Déployer une application Next.js avec Docker",
-        "date": "18 Fév 2026",
-        "tag": "Tutoriel",
-        "excerpt": "Découvrez comment containeriser et déployer rapidement vos applications web modernes en production."
-      },
-      {
-        "title": "Lancement de notre communauté Open Source RDC",
-        "date": "05 Mar 2026",
-        "tag": "Communauté",
-        "excerpt": "Une nouvelle initiative pour connecter les développeurs passionnés d'open source à travers le pays."
-      },
-      {
-        "title": "Top 5 des technologies à apprendre en 2026",
-        "date": "16 Mar 2026",
-        "tag": "Article",
-        "excerpt": "IA, cybersécurité, cloud, mobile et data engineering figurent parmi les compétences les plus recherchées."
-      },
-      {
-        "title": "Workshop gratuit : Initiation à l'Intelligence Artificielle",
-        "date": "28 Mar 2026",
-        "tag": "Formation",
-        "excerpt": "Une session pratique dédiée aux étudiants et développeurs souhaitant découvrir les bases du machine learning."
-      }
-    ]
-  },
+  
   "cta": {
     "label": "System.out.println(\"Rejoignez-nous\");",
     "title_1": "PRÊT À",

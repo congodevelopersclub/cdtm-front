@@ -25,6 +25,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@storybook/nextjs-vite": "^10.4.6",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
