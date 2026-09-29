@@ -9,6 +9,17 @@
     "notFound": {
       "title": "Page not found",
       "description": "The page you are looking for does not exist or may have been moved."
+    },
+    "talents": {
+      "title": "Talents",
+      "description": "Browse Congolese tech talents from the Congo Developer Club."
+    },
+    "talentNotFound": {
+      "title": "Talent not found",
+      "description": "This talent profile does not exist or may have been removed."
+    },
+    "talentProfile": {
+      "description": "{name}, {role} — public profile on Congo Developer Club."
     }
   },
   "LocaleSwitcher": {
@@ -26,9 +37,35 @@
   },
   "nav": {
     "home": "Home",
-    "activities": "Activities",
+    "talents": "Talents",
     "contact": "Contact",
     "join": "Join Us"
+  },
+  "talents": {
+    "title": "Talents",
+    "subtitle": "Meet the developers, designers, and builders in the Congo Developer Club.",
+    "directoryCount": "{total} talents",
+    "viewProfileFor": "View profile for {name}",
+    "verified": "Verified",
+    "skillsOverflowTooltip": "More skills: {skills}",
+    "loadError": "Talents could not be loaded. Please try again.",
+    "empty": "No talents to show yet.",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {lastPage}",
+    "backToDirectory": "Back to talents",
+    "role": "Role",
+    "experience": "Experience",
+    "years": "{count, plural, one {# year} other {# years}}",
+    "superpowerSkills": "Superpower skills",
+    "story": "My story",
+    "noBio": "This talent has not added a story yet.",
+    "skills": "Skills",
+    "skillsDescription": "Technologies and disciplines they work with.",
+    "noSkills": "No skills listed yet.",
+    "projects": "Projects",
+    "projectsDescription": "Work they have shipped.",
+    "noProjects": "No projects listed yet."
   },
   "footer": {
     "description": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
