@@ -1,0 +1,282 @@
+{
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
+    "home": {
+      "title": "Home",
+      "description": "Join the Congo Developer Club — the hub where Congolese tech talents gather, train, and build the future."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn how Congo Developer Club handles personal information."
+    },
+    "terms": {
+      "title": "Legal Notice",
+      "description": "Legal information and terms governing the Congo Developer Club website."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "Learn how the Congo Developer Club website uses cookies."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist or may have been moved."
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "french": "French",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or may have been moved.",
+    "back_home": "Back to home",
+    "join": "Join us"
+  },
+  "nav": {
+    "home": "Home",
+    "activities": "Activities",
+    "contact": "Contact",
+    "join": "Join Us"
+  },
+  "footer": {
+    "description": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
+    "col_nav": "Navigation",
+    "col_legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Legal Notice",
+    "cookies": "Cookies",
+    "rights": "All rights reserved.",
+    "community_name": "Congo Developer Club",
+    "built_by_community": "Built by the Congo Developers Club community",
+    "made_in": "Made in",
+    "country": "DRC"
+  },
+  "legal": {
+    "label": "Legal",
+    "lastUpdated": "Last updated: October 3, 2026",
+    "contactPrompt": "For any question about this page, contact us at",
+    "privacy": {
+      "title": "Privacy Policy",
+      "introduction": "Congo Developer Club respects your privacy. This policy explains what information may be collected through this website, why it is used, and the choices available to you.",
+      "sections": [
+        {
+          "title": "Information we collect",
+          "paragraphs": [
+            "We may receive information that you choose to provide when you contact us, register for an activity, or apply to join the community."
+          ],
+          "items": [
+            "Identity and contact details, such as your name and email address.",
+            "Professional information that you voluntarily share.",
+            "Technical data required for the security and operation of the website."
+          ]
+        },
+        {
+          "title": "How we use information",
+          "items": [
+            "To respond to your requests and communicate with you.",
+            "To organize community programs, activities, and membership.",
+            "To maintain, protect, and improve our website."
+          ]
+        },
+        {
+          "title": "Sharing and retention",
+          "paragraphs": [
+            "We do not sell your personal information. It may be shared only with service providers needed to operate our services, or when required by law. We retain information only for as long as necessary for the purpose for which it was collected."
+          ]
+        },
+        {
+          "title": "Your rights",
+          "paragraphs": [
+            "You may ask to access, correct, or delete the personal information we hold about you. You may also object to or limit certain uses of your information by contacting us."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Legal Notice",
+      "introduction": "This website presents Congo Developer Club, its mission, activities, and community initiatives. By using it, you agree to the terms below.",
+      "sections": [
+        {
+          "title": "Website publisher",
+          "paragraphs": [
+            "The website is published by Congo Developer Club, a developer community based in the Democratic Republic of the Congo. The publication team can be contacted by email."
+          ]
+        },
+        {
+          "title": "Content and availability",
+          "paragraphs": [
+            "We strive to provide accurate and current information, but cannot guarantee that every page is complete or free from errors. Content and services may be changed, suspended, or removed without notice."
+          ]
+        },
+        {
+          "title": "Intellectual property",
+          "paragraphs": [
+            "Unless otherwise stated, the website's original text, visual identity, and other content belong to Congo Developer Club. Reuse requires prior authorization, except where applicable law permits it."
+          ]
+        },
+        {
+          "title": "External links and liability",
+          "paragraphs": [
+            "Links to third-party websites are provided for convenience. Congo Developer Club does not control their content or privacy practices and is not responsible for damage resulting from their use."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "introduction": "This policy explains how cookies and similar browser storage may be used when you visit the Congo Developer Club website.",
+      "sections": [
+        {
+          "title": "What is a cookie?",
+          "paragraphs": [
+            "A cookie is a small text file stored by your browser. It can remember information between pages or visits and help a website function correctly."
+          ]
+        },
+        {
+          "title": "Cookies we use",
+          "items": [
+            "Essential cookies needed for security and basic website operation.",
+            "Preference cookies used to remember choices such as language and visual theme."
+          ]
+        },
+        {
+          "title": "Third-party services",
+          "paragraphs": [
+            "Some external services linked or embedded on the website may set their own cookies. Their use is governed by the privacy policies of those providers."
+          ]
+        },
+        {
+          "title": "Managing cookies",
+          "paragraphs": [
+            "You can review, block, or delete cookies in your browser settings. Blocking essential storage may prevent some website features from working as intended."
+          ]
+        }
+      ]
+    }
+  },
+  "hero": {
+    "badge": "The first tech community in DRC",
+    "title_1": "CODE THE",
+    "title_2": "FUTURE.",
+    "description": "Gather, train, and propel Congolese talents. Congo Developer Club is the hub where ideas become code, and code becomes impact.",
+    "cta_join": "Join the Movement",
+    "cta_actions": "Discover our actions",
+    "stats_developers": "Developers",
+    "stats_projects": "Projects",
+    "stats_events": "Events",
+    "ecosystem_title": "Tech Ecosystem",
+    "ecosystem_description": "Modern infrastructure & technologies",
+    "growth": "Community Growth"
+  },
+  "impact": {
+    "title_part1": "Building careers,",
+    "title_part2": "transforming the nation.",
+    "description": "Since our creation, our mission has been clear: to build an ecosystem where Congolese technical expertise can thrive, collaborate, and reach the highest global standards.",
+    "stat1_title": "National Hackathon 2025",
+    "stat1_desc": "300 participants, 45 innovative solutions for financial inclusion.",
+    "stat2_title": "Campus Tech Congo",
+    "stat2_desc": "500+ students guided toward qualified tech careers.",
+    "stat3_title": "Open Source Contribution",
+    "stat3_desc": "Creation and maintenance of local libraries (+10k stars).",
+    "members_count": "Active Members"
+  },
+  "github": {
+    "title": "Top GitHub Contributors",
+    "subtitle": "Discover and follow the most active Congolese developers contributing to our GitHub organization.",
+    "profile": "Profile",
+    "contributions": "contributions",
+    "contribution_singular": "contribution",
+    "tooltips": {
+      "rank": "Leaderboard position based on total contributions across all organization repositories.",
+      "profile": "Opens this contributor's public GitHub profile in a new tab.",
+      "contributions": "Total contributions (commits, pull requests, and more) summed across all Congo Developers Club repositories."
+    }
+  },
+  "events": {
+    "title": "Agenda.",
+    "view_all": "View all",
+    "more_events": "More events",
+    "register": "Register",
+    "category": "Conference",
+    "no_events": "No events currently organized.",
+    "check_back": "Check back later for new activities."
+  },
+  "news": {
+    "title": "Latest News.",
+    "tag": "Insight",
+    "read": "Read Article",
+    "view_all": "View all articles",
+    "items": [
+      {
+        "title": "Dev Leaders 2026 Program Applications Now Open",
+        "date": "Jan 14, 2026",
+        "tag": "Announcement",
+        "excerpt": "Registrations are now open to support young developers and tech entrepreneurs in the DRC."
+      },
+      {
+        "title": "Recap: \"Build For Africa\" Hackathon in Goma",
+        "date": "Feb 02, 2026",
+        "tag": "Event",
+        "excerpt": "Over 120 participants collaborated for 48 hours to design innovative local digital solutions."
+      },
+      {
+        "title": "Tutorial: Deploy a Next.js Application with Docker",
+        "date": "Feb 18, 2026",
+        "tag": "Tutorial",
+        "excerpt": "Learn how to containerize and quickly deploy your modern web applications to production."
+      },
+      {
+        "title": "Launch of Our DRC Open Source Community",
+        "date": "Mar 05, 2026",
+        "tag": "Community",
+        "excerpt": "A new initiative to connect open source enthusiasts across the country."
+      },
+      {
+        "title": "Top 5 Technologies to Learn in 2026",
+        "date": "Mar 16, 2026",
+        "tag": "Article",
+        "excerpt": "AI, cybersecurity, cloud, mobile, and data engineering are among the most in-demand skills."
+      },
+      {
+        "title": "Free Workshop: Introduction to Artificial Intelligence",
+        "date": "Mar 28, 2026",
+        "tag": "Training",
+        "excerpt": "A hands-on session for students and developers who want to discover the basics of machine learning."
+      }
+    ]
+  },
+  "cta": {
+    "label": "System.out.println(\"Join Us\");",
+    "title_1": "READY TO",
+    "title_2": "COMMIT?",
+    "description": "Join the Congo Developer Club and help shape the technological future of the DRC. Push your potential.",
+    "button": "Become a Member"
+  },
+  "testimonials": {
+    "title": "What they say.",
+    "items": [
+      {
+        "name": "Ir Musande Augustin",
+        "role": "Full-stack Developer",
+        "image": "/images/testimonials/Musande_Augustin.png",
+        "quote": "Congo Developers Club has been a true accelerator in my tech journey. I learned, shared my knowledge, and met passionate people who inspired me to take my projects further. It is a community that encourages growth, collaboration, and innovation."
+      },
+      {
+        "name": "Ir Baraka Kinywa",
+        "role": "Developer",
+        "image": "/images/testimonials/Baraka_Kinywa.png",
+        "quote": "Congo Developers Club opened the door to my first professional experience at EvoluData as a junior developer. It was an opportunity that marked the beginning of my journey in tech."
+      },
+      {
+        "name": "Ir Lens Mutombo",
+        "role": "Engineer & Entrepreneur",
+        "image": "/images/testimonials/Lens_Mutombo.png",
+        "quote": "Congo Developers Club is the most active tech community in the DRC, with incredible networking opportunities."
+      }
+    ]
+  }
+}

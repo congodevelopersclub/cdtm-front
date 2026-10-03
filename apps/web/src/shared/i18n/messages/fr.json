@@ -1,0 +1,282 @@
+{
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
+    "home": {
+      "title": "Accueil",
+      "description": "Rejoignez le Congo Developer Club — le hub où les talents tech congolais se retrouvent, se forment et construisent l'avenir."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "description": "Découvrez comment Congo Developer Club traite les données personnelles."
+    },
+    "terms": {
+      "title": "Mentions légales",
+      "description": "Informations légales et conditions d'utilisation du site Congo Developer Club."
+    },
+    "cookies": {
+      "title": "Politique relative aux cookies",
+      "description": "Découvrez comment le site Congo Developer Club utilise les cookies."
+    },
+    "notFound": {
+      "title": "Page introuvable",
+      "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée."
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Langue",
+    "english": "Anglais",
+    "french": "Français",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a peut-être été déplacée.",
+    "back_home": "Retour à l'accueil",
+    "join": "Nous rejoindre"
+  },
+  "nav": {
+    "home": "Accueil",
+    "activities": "Activités",
+    "contact": "Contact",
+    "join": "Nous Rejoindre"
+  },
+  "footer": {
+    "description": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",
+    "col_nav": "Navigation",
+    "col_legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Mentions légales",
+    "cookies": "Cookies",
+    "rights": "Tous droits réservés.",
+    "community_name": "Congo Developer Club",
+    "built_by_community": "Développé par la communauté Congo Developers Club",
+    "made_in": "Fait en",
+    "country": "RDC"
+  },
+  "legal": {
+    "label": "Légal",
+    "lastUpdated": "Dernière mise à jour : 3 octobre 2026",
+    "contactPrompt": "Pour toute question concernant cette page, contactez-nous à",
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "introduction": "Congo Developer Club respecte votre vie privée. Cette politique explique quelles informations peuvent être collectées sur ce site, pourquoi elles sont utilisées et quels choix s'offrent à vous.",
+      "sections": [
+        {
+          "title": "Informations collectées",
+          "paragraphs": [
+            "Nous pouvons recevoir les informations que vous choisissez de fournir lorsque vous nous contactez, vous inscrivez à une activité ou demandez à rejoindre la communauté."
+          ],
+          "items": [
+            "Les données d'identité et de contact, comme votre nom et votre adresse e-mail.",
+            "Les informations professionnelles que vous partagez volontairement.",
+            "Les données techniques nécessaires à la sécurité et au fonctionnement du site."
+          ]
+        },
+        {
+          "title": "Utilisation des informations",
+          "items": [
+            "Répondre à vos demandes et communiquer avec vous.",
+            "Organiser les programmes, activités et adhésions de la communauté.",
+            "Maintenir, protéger et améliorer notre site."
+          ]
+        },
+        {
+          "title": "Partage et conservation",
+          "paragraphs": [
+            "Nous ne vendons pas vos données personnelles. Elles peuvent uniquement être transmises aux prestataires nécessaires au fonctionnement de nos services ou lorsque la loi l'exige. Nous les conservons pendant la durée nécessaire à la finalité pour laquelle elles ont été collectées."
+          ]
+        },
+        {
+          "title": "Vos droits",
+          "paragraphs": [
+            "Vous pouvez demander l'accès, la rectification ou la suppression des données personnelles que nous détenons à votre sujet. Vous pouvez également vous opposer à certains traitements ou demander leur limitation en nous contactant."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Mentions légales",
+      "introduction": "Ce site présente Congo Developer Club, sa mission, ses activités et ses initiatives communautaires. En l'utilisant, vous acceptez les conditions ci-dessous.",
+      "sections": [
+        {
+          "title": "Éditeur du site",
+          "paragraphs": [
+            "Le site est édité par Congo Developer Club, une communauté de développeurs basée en République démocratique du Congo. L'équipe de publication peut être contactée par e-mail."
+          ]
+        },
+        {
+          "title": "Contenu et disponibilité",
+          "paragraphs": [
+            "Nous nous efforçons de publier des informations exactes et à jour, sans pouvoir garantir que chaque page est complète ou exempte d'erreurs. Les contenus et services peuvent être modifiés, suspendus ou retirés sans préavis."
+          ]
+        },
+        {
+          "title": "Propriété intellectuelle",
+          "paragraphs": [
+            "Sauf indication contraire, les textes originaux, l'identité visuelle et les autres contenus du site appartiennent à Congo Developer Club. Leur réutilisation nécessite une autorisation préalable, sauf dans les cas permis par la loi."
+          ]
+        },
+        {
+          "title": "Liens externes et responsabilité",
+          "paragraphs": [
+            "Les liens vers des sites tiers sont proposés à titre pratique. Congo Developer Club ne contrôle ni leur contenu ni leurs pratiques de confidentialité et ne peut être tenu responsable des dommages liés à leur utilisation."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Politique relative aux cookies",
+      "introduction": "Cette politique explique comment les cookies et les technologies similaires de stockage du navigateur peuvent être utilisés lorsque vous consultez le site Congo Developer Club.",
+      "sections": [
+        {
+          "title": "Qu'est-ce qu'un cookie ?",
+          "paragraphs": [
+            "Un cookie est un petit fichier texte enregistré par votre navigateur. Il peut mémoriser des informations entre les pages ou les visites et aider un site à fonctionner correctement."
+          ]
+        },
+        {
+          "title": "Cookies utilisés",
+          "items": [
+            "Les cookies essentiels nécessaires à la sécurité et au fonctionnement de base du site.",
+            "Les cookies de préférence qui mémorisent des choix comme la langue et le thème visuel."
+          ]
+        },
+        {
+          "title": "Services tiers",
+          "paragraphs": [
+            "Certains services externes liés ou intégrés au site peuvent déposer leurs propres cookies. Leur utilisation est régie par les politiques de confidentialité de ces fournisseurs."
+          ]
+        },
+        {
+          "title": "Gestion des cookies",
+          "paragraphs": [
+            "Vous pouvez consulter, bloquer ou supprimer les cookies dans les paramètres de votre navigateur. Le blocage du stockage essentiel peut empêcher certaines fonctionnalités du site de fonctionner normalement."
+          ]
+        }
+      ]
+    }
+  },
+  "hero": {
+    "badge": "La première communauté tech en RDC",
+    "title_1": "CODE LE",
+    "title_2": "FUTUR.",
+    "description": "Rassembler, former et propulser les talents congolais. Congo Developer Club est le hub où les idées deviennent du code et le code devient de l’impact.",
+    "cta_join": "Rejoindre le mouvement",
+    "cta_actions": "Découvrir nos actions",
+    "stats_developers": "Développeurs",
+    "stats_projects": "Projets",
+    "stats_events": "Événements",
+    "ecosystem_title": "Écosystème Tech",
+    "ecosystem_description": "Infrastructure & technologies modernes",
+    "growth": "Croissance de la communauté"
+  },
+  "impact": {
+    "title_part1": "Bâtir des carrières,",
+    "title_part2": "transformer le pays.",
+    "description": "Depuis notre création, notre mission est claire : créer un écosystème où l'expertise technique congolaise peut s'épanouir, collaborer et s'exporter au plus haut niveau mondial.",
+    "stat1_title": "Hackathon National 2025",
+    "stat1_desc": "300 participants, 45 solutions innovantes pour l'inclusion financière.",
+    "stat2_title": "Campus Tech Congo",
+    "stat2_desc": "+500 étudiants accompagnés vers des emplois qualifiés.",
+    "stat3_title": "Contribution Open Source",
+    "stat3_desc": "Initiation et maintenance de librairies locales (+10k stars).",
+    "members_count": "Membres Actifs"
+  },
+  "github": {
+    "title": "Top Contributeurs GitHub",
+    "subtitle": "Découvrez et suivez les développeurs congolais les plus actifs au sein de notre organisation GitHub.",
+    "profile": "Profil",
+    "contributions": "contributions",
+    "contribution_singular": "contribution",
+    "tooltips": {
+      "rank": "Position au classement selon le total des contributions sur tous les dépôts de l'organisation.",
+      "profile": "Ouvre le profil GitHub public de ce contributeur dans un nouvel onglet.",
+      "contributions": "Total des contributions (commits, pull requests, etc.) cumulées sur tous les dépôts du Congo Developers Club."
+    }
+  },
+  "events": {
+    "title": "Agenda.",
+    "view_all": "Voir tout",
+    "more_events": "Plus d'événements",
+    "register": "S'inscrire",
+    "category": "Conférence",
+    "no_events": "Aucune activité en cours d'organisation.",
+    "check_back": "Revenez plus tard pour de nouvelles activités."
+  },
+  "news": {
+    "title": "Dernières Nouvelles.",
+    "tag": "Actualité",
+    "read": "Lire l'article",
+    "view_all": "Voir tous les articles",
+    "items": [
+      {
+        "title": "Ouverture des candidatures au programme Dev Leaders 2026",
+        "date": "14 Jan 2026",
+        "tag": "Annonce",
+        "excerpt": "Les inscriptions sont désormais ouvertes pour accompagner les jeunes développeurs et entrepreneurs tech de la RDC."
+      },
+      {
+        "title": "Retour sur le Hackathon \"Build For Africa\" à Goma",
+        "date": "02 Fév 2026",
+        "tag": "Événement",
+        "excerpt": "Plus de 120 participants ont collaboré pendant 48h pour concevoir des solutions numériques locales innovantes."
+      },
+      {
+        "title": "Tutoriel : Déployer une application Next.js avec Docker",
+        "date": "18 Fév 2026",
+        "tag": "Tutoriel",
+        "excerpt": "Découvrez comment containeriser et déployer rapidement vos applications web modernes en production."
+      },
+      {
+        "title": "Lancement de notre communauté Open Source RDC",
+        "date": "05 Mar 2026",
+        "tag": "Communauté",
+        "excerpt": "Une nouvelle initiative pour connecter les développeurs passionnés d'open source à travers le pays."
+      },
+      {
+        "title": "Top 5 des technologies à apprendre en 2026",
+        "date": "16 Mar 2026",
+        "tag": "Article",
+        "excerpt": "IA, cybersécurité, cloud, mobile et data engineering figurent parmi les compétences les plus recherchées."
+      },
+      {
+        "title": "Workshop gratuit : Initiation à l'Intelligence Artificielle",
+        "date": "28 Mar 2026",
+        "tag": "Formation",
+        "excerpt": "Une session pratique dédiée aux étudiants et développeurs souhaitant découvrir les bases du machine learning."
+      }
+    ]
+  },
+  "cta": {
+    "label": "System.out.println(\"Rejoignez-nous\");",
+    "title_1": "PRÊT À",
+    "title_2": "COMMIT ?",
+    "description": "Rejoignez le Congo Developer Club et contribuez à façonner l'avenir technologique de la RDC. Révélez votre potentiel.",
+    "button": "Devenir Membre"
+  },
+  "testimonials": {
+    "title": "Ce qu'ils en disent.",
+    "items": [
+      {
+        "name": "Ir Musande Augustin",
+        "role": "Développeur Fullstack",
+        "image": "/images/testimonials/Musande_Augustin.png",
+        "quote": "Congo Developers Club a été un véritable accélérateur dans mon parcours informatique. J’y ai appris, partagé mes connaissances et rencontré des passionnés qui m’ont inspiré à aller plus loin dans mes projets. Une communauté qui favorise la croissance, la collaboration et l’innovation."
+      },
+      {
+        "name": "Ir Baraka Kinywa",
+        "role": "Developpeur",
+        "image": "/images/testimonials/Baraka_Kinywa.png",
+        "quote": "Congo Developers Club m’a ouvert les portes d’une première expérience professionnelle chez EvoluData en tant que développeur junior. Une opportunité qui a marqué le début de mon parcours dans la tech."
+      },
+      {
+        "name": "Ir Lens Mutombo",
+        "role": "Ingenieur & Entrepreneur",
+        "image": "/images/testimonials/Lens_Mutombo.png",
+        "quote": "Congo Developper Club est la communauté tech la plus active en RDC avec des opportunités de réseautage incroyables."
+      }
+    ]
+  }
+}
