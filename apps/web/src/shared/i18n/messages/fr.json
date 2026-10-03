@@ -20,6 +20,10 @@
     },
     "talentProfile": {
       "description": "{name}, {role} — profil public sur Congo Developer Club."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Contactez l'équipe du Congo Developer Club. Nous sommes à votre écoute pour échanger et collaborer."
     }
   },
   "LocaleSwitcher": {
@@ -149,5 +153,35 @@
         "quote": "Congo Developper Club est la communauté tech la plus active en RDC avec des opportunités de réseautage incroyables."
       }
     ]
+  },
+  "contact": {
+    "badge": "Contactez-nous",
+    "title": "Nous contacter",
+    "subtitle": "Une question, un retour ou un projet de partenariat ? Envoyez-nous un message et notre équipe vous répondra dans les plus brefs délais.",
+    "formSubtitle": "Remplissez le formulaire ci-dessous pour nous écrire.",
+    "infoTitle": "Restons en contact",
+    "infoDescription": "Que vous soyez un développeur souhaitant rejoindre le mouvement, un partenaire ou une organisation cherchant des talents tech.",
+    "emailLabel": "Adresse e-mail",
+    "emailValue": "hello@congodevelopers.club",
+    "fields": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+243 ...",
+      "email": "E-mail",
+      "emailPlaceholder": "nom@domaine.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Quel est l'objet de votre message ?",
+      "message": "Message",
+      "messagePlaceholder": "Comment pouvons-nous vous aider ?",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours..."
+    },
+    "alerts": {
+      "successTitle": "Message envoyé !",
+      "successDescription": "Merci pour votre message. Nous l'avons bien reçu et nous reviendrons vers vous très vite.",
+      "errorTitle": "Erreur",
+      "errorDescription": "L'envoi a échoué. Veuillez réessayer ou nous écrire directement à hello@congodevelopers.club."
+    }
   }
 }

@@ -4,7 +4,15 @@
   "globalEnv": [
     "NEXT_PUBLIC_API_URL",
     "NEXT_PUBLIC_APP_URL",
-    "API_URL"
+    "API_URL",
+    "GITHUB_TOKEN",
+    "CONTACT_TO_EMAIL",
+    "SMTP_HOST",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "SMTP_PASS",
+    "SMTP_SECURE",
+    "SMTP_FROM"
   ],
   "tasks": {
     "build": {
