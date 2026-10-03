@@ -1,4 +1,24 @@
-const CATEGORY_PATTERNS: Record<string, RegExp[]> = {
+export const TALENT_CATEGORIES = [
+  "fullstack",
+  "frontend",
+  "backend",
+  "mobile",
+  "devops",
+  "data",
+  "ai",
+  "security",
+  "design",
+  "product",
+  "marketing",
+  "sales",
+  "hr",
+  "legal",
+  "finance",
+] as const
+
+export type TalentCategory = (typeof TALENT_CATEGORIES)[number]
+
+const CATEGORY_PATTERNS: Record<TalentCategory, RegExp[]> = {
   fullstack: [/full[\s-]?stack/i],
   frontend: [/front[\s-]?end/i, /\breact\b/i, /\bvue\b/i, /\bangular\b/i, /\bnext\.?js\b/i],
   backend: [/back[\s-]?end/i, /\bnode\.?js\b/i, /\bgo\b/i, /\bjava\b/i, /\bapi\b/i],
@@ -16,7 +36,9 @@ const CATEGORY_PATTERNS: Record<string, RegExp[]> = {
   finance: [/finance/i, /fintech/i],
 }
 
-const CATEGORY_ORDER = Object.keys(CATEGORY_PATTERNS)
+export function isTalentCategory(value: string): value is TalentCategory {
+  return (TALENT_CATEGORIES as readonly string[]).includes(value)
+}
 
 export function inferTalentCategories(input: {
   title: string
@@ -27,7 +49,7 @@ export function inferTalentCategories(input: {
     .join(" ")
     .toLowerCase()
 
-  return CATEGORY_ORDER.filter((category) =>
+  return TALENT_CATEGORIES.filter((category) =>
     CATEGORY_PATTERNS[category]?.some((pattern) => pattern.test(searchableText))
   )
 }
