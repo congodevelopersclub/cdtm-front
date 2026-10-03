@@ -15,7 +15,7 @@ import {
 import { Input } from "@workspace/ui/components/input"
 
 import { useAuth } from "@/features/auth"
-import { useUpdateProfile, type TalentProfile } from "@/entities/talent"
+import { toUpdateProfileInput, useUpdateProfile, type TalentProfile } from "@/entities/talent"
 
 const STATUS_OPTIONS = ["full-time", "part-time", "feelance"] as const
 
@@ -121,6 +121,7 @@ export function ProfileEditDialog({
 
     try {
       await updateProfile.mutateAsync({
+        ...toUpdateProfileInput(profile),
         name: trimmedName,
         headline: headline.trim(),
         bio: bio.trim(),

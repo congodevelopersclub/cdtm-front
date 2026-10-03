@@ -1,17 +1,23 @@
+import { ApiError } from "@workspace/api"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 import { updateProfileAction } from "./update-profile"
 
-const { putMock, getUserMock, getSessionMock, cookieState } = vi.hoisted(() => ({
-  putMock: vi.fn(),
+const { patchMock, getUserMock, getSessionMock, ensureSkillMock, cookieState } = vi.hoisted(() => ({
+  patchMock: vi.fn(),
   getUserMock: vi.fn(),
   getSessionMock: vi.fn(),
+  ensureSkillMock: vi.fn(),
   cookieState: { token: "token" as string | undefined },
+}))
+
+vi.mock("@/entities/skill/actions/skills", () => ({
+  ensureSkillAction: ensureSkillMock,
 }))
 
 vi.mock("@/shared/api/server-client", () => ({
   createServerApiClient: () => ({
-    put: putMock,
+    patch: patchMock,
   }),
 }))
 
@@ -59,11 +65,21 @@ const profileResponse = {
 
 const input = {
   name: "tester something",
-  headline: "Forming Machine Operator updated",
+  email: "cathryn@email.com",
   bio: "updated.",
+  headline: "Forming Machine Operator updated",
   location: "goma",
   status: "part-time",
+  account_status: "PENDING_VALIDATION",
   skills: [{ name: "Laravel", proficiency: 5, years_experience: 6 }],
+  projects: [
+    {
+      id: null,
+      title: "Portfolio Website",
+      description: "A personal portfolio website built with Laravel.",
+      link: "https://portfolio.example.com",
+    },
+  ],
 }
 
 describe("updateProfileAction", () => {
@@ -75,29 +91,49 @@ describe("updateProfileAction", () => {
 
   it("updates the signed-in user's profile", async () => {
     getUserMock.mockResolvedValue({ profile: { id: "1" } })
-    putMock.mockResolvedValue(profileResponse)
+    patchMock.mockResolvedValue(profileResponse)
 
     const profile = await updateProfileAction("1", input)
 
     expect(getUserMock).toHaveBeenCalledWith("user-1", "token")
-    expect(putMock).toHaveBeenCalledWith("/profiles/1", input, {
+    expect(patchMock).toHaveBeenCalledWith("/profiles/1", input, {
       headers: { Authorization: "Bearer token" },
     })
     expect(profile.name).toBe("tester something")
     expect(profile.location).toBe("goma")
     expect(profile.skillDetails?.[0]?.name).toBe("Laravel")
+    expect(ensureSkillMock).not.toHaveBeenCalled()
+  })
+
+  it("creates a missing catalog skill and retries the profile update", async () => {
+    getUserMock.mockResolvedValue({ profile: { id: "1" } })
+    patchMock
+      .mockRejectedValueOnce(
+        new ApiError("The given data was invalid.", 422, undefined, {
+          message: "The given data was invalid.",
+          errors: {
+            "skills.0.name": ["The selected skills.0.name is invalid."],
+          },
+        })
+      )
+      .mockResolvedValueOnce(profileResponse)
+
+    await updateProfileAction("1", input, "user-1")
+
+    expect(ensureSkillMock).toHaveBeenCalledWith("Laravel")
+    expect(patchMock).toHaveBeenCalledTimes(2)
   })
 
   it("sends the access token when the session is not a jwt", async () => {
     cookieState.token = "4|plain-text-token"
     getSessionMock.mockReturnValue(null)
     getUserMock.mockResolvedValue({ profile: { id: "1" } })
-    putMock.mockResolvedValue(profileResponse)
+    patchMock.mockResolvedValue(profileResponse)
 
     await updateProfileAction("1", input, "user-1")
 
     expect(getUserMock).toHaveBeenCalledWith("user-1", "4|plain-text-token")
-    expect(putMock).toHaveBeenCalledWith("/profiles/1", input, {
+    expect(patchMock).toHaveBeenCalledWith("/profiles/1", input, {
       headers: { Authorization: "Bearer 4|plain-text-token" },
     })
   })
@@ -106,7 +142,7 @@ describe("updateProfileAction", () => {
     cookieState.token = undefined
 
     await expect(updateProfileAction("1", input, "user-1")).rejects.toThrow("Unauthorized")
-    expect(putMock).not.toHaveBeenCalled()
+    expect(patchMock).not.toHaveBeenCalled()
   })
 
   it("rejects updates to another profile", async () => {
@@ -115,6 +151,6 @@ describe("updateProfileAction", () => {
     await expect(updateProfileAction("1", input)).rejects.toThrow(
       "You can only update your own profile"
     )
-    expect(putMock).not.toHaveBeenCalled()
+    expect(patchMock).not.toHaveBeenCalled()
   })
 })

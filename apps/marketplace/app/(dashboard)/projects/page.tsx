@@ -1,4 +1,4 @@
-import { DashboardFeaturePage } from "@/pages/stub"
+import { ProjectsPage } from "@/pages/projects"
 import { createPageMetadata } from "@/shared/lib/metadata"
 
 export async function generateMetadata() {
@@ -6,5 +6,5 @@ export async function generateMetadata() {
 }
 
 export default function Page() {
-  return <DashboardFeaturePage pageKey="projects" />
+  return <ProjectsPage />
 }

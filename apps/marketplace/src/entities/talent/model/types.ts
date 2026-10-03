@@ -14,6 +14,7 @@ export type ProfileSkill = {
 }
 
 export type TalentProject = {
+  id?: string
   title: string
   description: string
   year: string

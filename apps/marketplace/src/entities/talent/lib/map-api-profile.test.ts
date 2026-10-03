@@ -56,7 +56,10 @@ describe("mapApiProfileToTalentProfile", () => {
       proficiency: 5,
       yearsExperience: 4,
     })
-    expect(profile.projects[0]?.link).toBe("https://example.com")
+    expect(profile.projects[0]).toMatchObject({
+      id: "project-1",
+      link: "https://example.com",
+    })
     expect(profile.accountStatus).toBe("VALIDATED")
     expect(profile.superpowerSkills).toEqual(["React", "Node.js"])
     expect(profile.experienceYears).toBe(6)

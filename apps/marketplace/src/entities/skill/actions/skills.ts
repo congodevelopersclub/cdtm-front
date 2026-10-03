@@ -1,8 +1,39 @@
 "use server"
 
+import { isApiError } from "@workspace/api"
+
 import type { ApiSkillResponse, ApiSkillsResponse, Skill, SkillsResult } from "../model/types"
 
 import { createServerApiClient } from "@/shared/api/server-client"
+
+function isDuplicateSkillError(error: unknown) {
+  if (!isApiError(error)) {
+    return false
+  }
+
+  const details = error.details as { errors?: Record<string, string | string[]> } | undefined
+  const nameErrors = details?.errors?.name
+  const messages = [
+    error.message,
+    ...(Array.isArray(nameErrors) ? nameErrors : nameErrors ? [nameErrors] : []),
+  ]
+
+  return messages.some((message) => /already been taken|unique/i.test(message))
+}
+
+export async function ensureSkillAction(name: string): Promise<void> {
+  const apiClient = createServerApiClient()
+
+  try {
+    await apiClient.post("/skills", { name: name.trim() })
+  } catch (error) {
+    if (isDuplicateSkillError(error)) {
+      return
+    }
+
+    throw error
+  }
+}
 
 export async function getSkillsAction(page: number): Promise<SkillsResult> {
   const apiClient = createServerApiClient()

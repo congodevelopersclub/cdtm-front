@@ -19,56 +19,60 @@ import { DashboardEmptyState, DashboardPanel } from "@/widgets/dashboard-shell"
 
 import { useAuth } from "@/features/auth"
 import {
+  toAbsoluteProjectLink,
   toUpdateProfileInput,
   useProfile,
   useUpdateProfile,
-  type UpdateProfileSkillInput,
+  type UpdateProfileProjectInput,
 } from "@/entities/talent"
 
-type SkillDraft = {
-  name: string
-  proficiency: string
-  yearsExperience: string
+type ProjectDraft = {
+  id: string | null
+  title: string
+  description: string
+  link: string
 }
 
-const EMPTY_SKILL: SkillDraft = {
-  name: "",
-  proficiency: "1",
-  yearsExperience: "0",
+const EMPTY_PROJECT: ProjectDraft = {
+  id: null,
+  title: "",
+  description: "",
+  link: "",
 }
 
-export function SkillsPage() {
-  const t = useTranslations("SkillsPage")
+export function ProjectsPage() {
+  const t = useTranslations("ProjectsPage")
   const { user, isLoading: isAuthLoading } = useAuth()
   const profileId = user?.profile?.id ?? ""
   const profileQuery = useProfile(profileId)
   const updateProfile = useUpdateProfile(profileId, user?.id)
   const profile = profileQuery.data
-  const skills = profile ? toUpdateProfileInput(profile).skills : []
+  const projects = profile ? toUpdateProfileInput(profile).projects : []
 
   const [editingIndex, setEditingIndex] = useState<number | "new" | null>(null)
-  const [draft, setDraft] = useState<SkillDraft>(EMPTY_SKILL)
+  const [draft, setDraft] = useState<ProjectDraft>(EMPTY_PROJECT)
   const [deleteIndex, setDeleteIndex] = useState<number | null>(null)
   const [formError, setFormError] = useState<string | null>(null)
   const [deleteError, setDeleteError] = useState<string | null>(null)
 
   function openCreate() {
-    setDraft(EMPTY_SKILL)
+    setDraft(EMPTY_PROJECT)
     setFormError(null)
     setEditingIndex("new")
   }
 
   function openEdit(index: number) {
-    const skill = skills[index]
+    const project = projects[index]
 
-    if (!skill) {
+    if (!project) {
       return
     }
 
     setDraft({
-      name: skill.name,
-      proficiency: String(skill.proficiency),
-      yearsExperience: String(skill.years_experience),
+      id: project.id,
+      title: project.title,
+      description: project.description,
+      link: project.link,
     })
     setFormError(null)
     setEditingIndex(index)
@@ -79,57 +83,44 @@ export function SkillsPage() {
     setFormError(null)
   }
 
-  function parseDraft(): UpdateProfileSkillInput | null {
-    const name = draft.name.trim()
+  function parseDraft(): UpdateProfileProjectInput | null {
+    const title = draft.title.trim()
 
-    if (!name) {
-      setFormError(t("nameRequired"))
-      return null
-    }
-
-    const proficiency = Number(draft.proficiency)
-    const yearsExperience = Number(draft.yearsExperience)
-
-    if (
-      !Number.isInteger(proficiency) ||
-      proficiency < 1 ||
-      proficiency > 10 ||
-      !Number.isInteger(yearsExperience) ||
-      yearsExperience < 0
-    ) {
-      setFormError(t("skillInvalid"))
+    if (!title) {
+      setFormError(t("titleRequired"))
       return null
     }
 
     return {
-      name,
-      proficiency,
-      years_experience: yearsExperience,
+      id: draft.id,
+      title,
+      description: draft.description.trim(),
+      link: toAbsoluteProjectLink(draft.link),
     }
   }
 
-  async function saveSkill() {
+  async function saveProject() {
     if (!profile) {
       return
     }
 
-    const nextSkill = parseDraft()
+    const nextProject = parseDraft()
 
-    if (!nextSkill) {
+    if (!nextProject) {
       return
     }
 
-    const nextSkills =
+    const nextProjects =
       editingIndex === "new"
-        ? [...skills, nextSkill]
-        : skills.map((skill, index) => (index === editingIndex ? nextSkill : skill))
+        ? [...projects, nextProject]
+        : projects.map((project, index) => (index === editingIndex ? nextProject : project))
 
     setFormError(null)
 
     try {
       await updateProfile.mutateAsync({
         ...toUpdateProfileInput(profile),
-        skills: nextSkills,
+        projects: nextProjects,
       })
       closeForm()
     } catch (error) {
@@ -147,7 +138,7 @@ export function SkillsPage() {
     try {
       await updateProfile.mutateAsync({
         ...toUpdateProfileInput(profile),
-        skills: skills.filter((_, index) => index !== deleteIndex),
+        projects: projects.filter((_, index) => index !== deleteIndex),
       })
       setDeleteIndex(null)
     } catch (error) {
@@ -157,9 +148,9 @@ export function SkillsPage() {
 
   if (isAuthLoading || (profileId && profileQuery.isLoading)) {
     return (
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {Array.from({ length: 4 }, (_, index) => (
-          <div key={index} className="h-36 animate-pulse rounded-2xl border border-border bg-card" />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {Array.from({ length: 2 }, (_, index) => (
+          <div key={index} className="h-40 animate-pulse rounded-2xl border border-border bg-card" />
         ))}
       </div>
     )
@@ -189,20 +180,27 @@ export function SkillsPage() {
         </Button>
       </div>
 
-      {skills.length === 0 ? (
+      {projects.length === 0 ? (
         <DashboardEmptyState title={t("emptyTitle")} description={t("emptyDescription")} />
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {skills.map((skill, index) => (
-            <Card key={`${skill.name}-${index}`} className="rounded-2xl shadow-none">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {projects.map((project, index) => (
+            <Card key={project.id ?? `${project.title}-${index}`} className="rounded-2xl shadow-none">
               <CardHeader>
-                <CardTitle className="truncate text-base">{skill.name}</CardTitle>
-                <CardDescription>
-                  {t("skillMeta", {
-                    proficiency: skill.proficiency,
-                    years: skill.years_experience,
-                  })}
-                </CardDescription>
+                <CardTitle className="text-base">{project.title}</CardTitle>
+                {project.description ? (
+                  <CardDescription className="line-clamp-3">{project.description}</CardDescription>
+                ) : null}
+                {project.link ? (
+                  <a
+                    href={toAbsoluteProjectLink(project.link)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    {t("viewProject")}
+                  </a>
+                ) : null}
               </CardHeader>
               <div className="flex gap-2 px-(--card-spacing)">
                 <Button variant="outline" size="sm" onClick={() => openEdit(index)}>
@@ -236,41 +234,37 @@ export function SkillsPage() {
             className="flex flex-col gap-3"
             onSubmit={(event) => {
               event.preventDefault()
-              void saveSkill()
+              void saveProject()
             }}
           >
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-name">
-              {t("name")}
+            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="project-title">
+              {t("title")}
               <Input
-                id="skill-name"
-                value={draft.name}
-                placeholder={t("namePlaceholder")}
-                onChange={(event) => setDraft((current) => ({ ...current, name: event.target.value }))}
+                id="project-title"
+                value={draft.title}
+                onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))}
               />
             </label>
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-proficiency">
-              {t("proficiency")}
-              <Input
-                id="skill-proficiency"
-                type="number"
-                min={1}
-                max={10}
-                value={draft.proficiency}
+            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="project-description">
+              {t("description")}
+              <textarea
+                id="project-description"
+                rows={4}
+                value={draft.description}
                 onChange={(event) =>
-                  setDraft((current) => ({ ...current, proficiency: event.target.value }))
+                  setDraft((current) => ({ ...current, description: event.target.value }))
                 }
+                className="w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm"
               />
             </label>
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-years">
-              {t("years")}
+            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="project-link">
+              {t("link")}
               <Input
-                id="skill-years"
-                type="number"
-                min={0}
-                value={draft.yearsExperience}
-                onChange={(event) =>
-                  setDraft((current) => ({ ...current, yearsExperience: event.target.value }))
-                }
+                id="project-link"
+                value={draft.link}
+                placeholder="https://"
+                autoComplete="off"
+                onChange={(event) => setDraft((current) => ({ ...current, link: event.target.value }))}
               />
             </label>
             {formError ? <p className="text-sm text-destructive">{formError}</p> : null}
@@ -300,7 +294,7 @@ export function SkillsPage() {
             <DialogTitle>{t("deleteTitle")}</DialogTitle>
             <DialogDescription>
               {t("deleteDescription", {
-                name: deleteIndex == null ? "" : (skills[deleteIndex]?.name ?? ""),
+                name: deleteIndex == null ? "" : (projects[deleteIndex]?.title ?? ""),
               })}
             </DialogDescription>
           </DialogHeader>

@@ -1,6 +1,7 @@
 export type { Skill, SkillsResult } from "./model/types"
 export {
   createSkillAction,
+  ensureSkillAction,
   deleteSkillAction,
   getSkillAction,
   getSkillsAction,

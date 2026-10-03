@@ -14,5 +14,5 @@ export function createApiClient(config: ApiClientConfig) {
   return setupInterceptors(client, config)
 }
 
-export { ApiError, isApiError } from "./errors"
+export { ApiError, apiErrorMessage, isApiError } from "./errors"
 export type { ApiClientConfig, ApiResponse, PaginatedResponse } from "./types"

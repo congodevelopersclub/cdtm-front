@@ -1,6 +1,7 @@
 import type { ApiProfile } from "../model/api-types"
 import type { TalentProfile } from "../model/types"
 import { inferTalentCategories } from "./infer-talent-categories"
+import { toAbsoluteProjectLink } from "./to-absolute-project-link"
 
 function extractYear(isoDate: string) {
   return isoDate.slice(0, 4)
@@ -46,10 +47,11 @@ export function mapApiProfileToTalentProfile(api: ApiProfile): TalentProfile {
     skills,
     skillDetails,
     projects: api.projects.map((project) => ({
+      id: String(project.id),
       title: project.title,
       description: project.description,
       year: extractYear(project.created_at),
-      link: project.link,
+      link: toAbsoluteProjectLink(project.link ?? ""),
     })),
     accountStatus: api.account_status,
     experience: [],
