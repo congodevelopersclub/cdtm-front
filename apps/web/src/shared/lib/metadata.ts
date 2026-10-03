@@ -1,7 +1,12 @@
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
-export type WebPageMetadataKey = "home" | "notFound"
+export type WebPageMetadataKey =
+  | "home"
+  | "privacy"
+  | "terms"
+  | "cookies"
+  | "notFound"
 
 export async function createRootMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata")

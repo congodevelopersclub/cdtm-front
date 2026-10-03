@@ -5,20 +5,14 @@ import { Mail } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import {
+  FOOTER_NAV_PATHS,
   LEGAL_LINKS,
-  NAV_PATHS,
   SOCIAL_LINKS,
 } from "@/shared/config/site-links"
-import {
-  CdcLogo,
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "@/shared/ui/brand-icons"
+import { CdcLogo, GithubIcon, LinkedinIcon } from "@/shared/ui/brand-icons"
 
 const SOCIAL_ICONS = {
   GitHub: GithubIcon,
-  X: TwitterIcon,
   LinkedIn: LinkedinIcon,
   Email: Mail,
 } as const
@@ -67,7 +61,7 @@ export function Footer() {
               {tFooter("col_nav")}
             </h3>
             <ul className="space-y-3">
-              {NAV_PATHS.map((link) => (
+              {FOOTER_NAV_PATHS.map((link) => (
                 <li key={link.key}>
                   <Link
                     href={link.path}
