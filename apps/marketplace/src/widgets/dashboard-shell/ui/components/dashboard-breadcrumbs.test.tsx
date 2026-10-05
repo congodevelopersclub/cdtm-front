@@ -29,7 +29,7 @@ describe("DashboardBreadcrumbs", () => {
 
   it("renders a single current page label for top-level routes", async () => {
     const { usePathname } = await import("next/navigation")
-    vi.mocked(usePathname).mockReturnValue("/jobs")
+    vi.mocked(usePathname).mockReturnValue("/projects")
 
     renderWithProviders(
       <DashboardBreadcrumbProvider>
@@ -37,7 +37,7 @@ describe("DashboardBreadcrumbs", () => {
       </DashboardBreadcrumbProvider>
     )
 
-    expect(screen.getByText("Jobs")).toBeInTheDocument()
-    expect(screen.queryByRole("link", { name: /jobs/i })?.tagName).not.toBe("A")
+    expect(screen.getByText("Projects")).toBeInTheDocument()
+    expect(screen.queryByRole("link", { name: /projects/i })?.tagName).not.toBe("A")
   })
 })

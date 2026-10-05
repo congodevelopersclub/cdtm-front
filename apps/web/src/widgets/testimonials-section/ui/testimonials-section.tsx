@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Quote } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -8,15 +9,20 @@ type TestimonialItem = {
   name: string
   role: string
   quote: string
+  image: string
 }
 
 export function TestimonialsSection() {
   const t = useTranslations("testimonials")
+
+  // Read the localized testimonial collection while keeping the item shape explicit.
   const items = t.raw("items") as TestimonialItem[]
 
   return (
-    <section className="bg-background border-border border-t py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+    // Testimonials section with a responsive three-column layout.
+    <section className="bg-background py-24">
+      <div className="page-container">
+        {/* Section label and localized heading. */}
         <div className="mb-16">
           <div className="text-primary mb-4 font-mono text-[10px] font-bold tracking-[0.3em] uppercase italic">
             /testimonials
@@ -26,8 +32,10 @@ export function TestimonialsSection() {
           </h2>
         </div>
 
+        {/* Animated testimonial cards. */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {items.map((item, index) => (
+            // Reveal each card with a small staggered delay.
             <motion.div
               key={`${item.name}-${index}`}
               initial={{ opacity: 0, y: 30 }}
@@ -36,13 +44,22 @@ export function TestimonialsSection() {
               transition={{ delay: index * 0.1 }}
               className="border-border bg-card/50 rounded-3xl border p-8"
             >
+              {/* Quotation and testimonial text. */}
               <Quote className="text-primary mb-6 h-8 w-8 opacity-50" />
               <p className="text-foreground mb-8 text-lg leading-relaxed italic">
                 &ldquo;{item.quote}&rdquo;
               </p>
+
+              {/* Contributor identity and role. */}
               <div className="flex items-center gap-4">
-                <div className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-full text-lg font-black">
-                  {item.name.charAt(0)}
+                <div className="size-16 rounded-full bg-primary/10 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div>
                   <h4 className="text-foreground font-bold">{item.name}</h4>

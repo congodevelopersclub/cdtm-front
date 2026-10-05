@@ -4,8 +4,8 @@ import { getBreadcrumbTrail } from "./get-breadcrumbs"
 
 describe("getBreadcrumbTrail", () => {
   it("returns a single segment for top-level dashboard routes", () => {
-    expect(getBreadcrumbTrail("/jobs", "talent")).toEqual([
-      { kind: "current", labelKey: "navJobs" },
+    expect(getBreadcrumbTrail("/projects", "talent")).toEqual([
+      { kind: "current", labelKey: "navProjects" },
     ])
   })
 

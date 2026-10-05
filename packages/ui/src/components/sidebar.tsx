@@ -9,13 +9,6 @@ import { cn } from "@workspace/ui/lib/utils"
 import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
 import { Separator } from "@workspace/ui/components/separator"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from "@workspace/ui/components/sheet"
 import { Skeleton } from "@workspace/ui/components/skeleton"
 import {
   Tooltip,
@@ -87,10 +80,31 @@ function SidebarProvider({
     [setOpenProp, open]
   )
 
+  const ignoreToggleUntil = React.useRef(0)
+
   // Helper to toggle the sidebar.
+  // After opening on touch devices, ignore the extra click the browser fires
+  // on whatever just appeared under the finger.
   const toggleSidebar = React.useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
-  }, [isMobile, setOpen, setOpenMobile])
+    if (Date.now() < ignoreToggleUntil.current) {
+      return
+    }
+
+    if (isMobile) {
+      setOpenMobile((current) => {
+        const next = !current
+
+        if (next) {
+          ignoreToggleUntil.current = Date.now() + 400
+        }
+
+        return next
+      })
+      return
+    }
+
+    setOpen((current) => !current)
+  }, [isMobile, setOpen])
 
   // Adds a keyboard shortcut to toggle the sidebar.
   React.useEffect(() => {
@@ -180,27 +194,15 @@ function Sidebar({
 
   if (isMobile) {
     return (
-      <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
-        <SheetContent
-          dir={dir}
-          data-sidebar="sidebar"
-          data-slot="sidebar"
-          data-mobile="true"
-          className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-          style={
-            {
-              "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-            } as React.CSSProperties
-          }
-          side={side}
-        >
-          <SheetHeader className="sr-only">
-            <SheetTitle>Sidebar</SheetTitle>
-            <SheetDescription>Displays the mobile sidebar.</SheetDescription>
-          </SheetHeader>
-          <div className="flex h-full w-full flex-col">{children}</div>
-        </SheetContent>
-      </Sheet>
+      <MobileSidebar
+        side={side}
+        dir={dir}
+        open={openMobile}
+        onOpenChange={setOpenMobile}
+        {...props}
+      >
+        {children}
+      </MobileSidebar>
     )
   }
 
@@ -247,6 +249,87 @@ function Sidebar({
         </div>
       </div>
     </div>
+  )
+}
+
+function MobileSidebar({
+  side,
+  open,
+  onOpenChange,
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"div"> & {
+  side: "left" | "right"
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}) {
+  const [interactive, setInteractive] = React.useState(false)
+
+  React.useEffect(() => {
+    if (!open) {
+      setInteractive(false)
+      return
+    }
+
+    const timeout = window.setTimeout(() => setInteractive(true), 400)
+    return () => window.clearTimeout(timeout)
+  }, [open])
+
+  React.useEffect(() => {
+    if (!open) {
+      return
+    }
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onOpenChange(false)
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [open, onOpenChange])
+
+  return (
+    <>
+      <div
+        data-slot="sidebar-backdrop"
+        aria-hidden="true"
+        onClick={() => onOpenChange(false)}
+        className={cn(
+          "fixed inset-0 z-40 bg-black/40 transition-opacity duration-200",
+          open && interactive ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+      />
+      <div
+        {...props}
+        data-sidebar="sidebar"
+        data-slot="sidebar"
+        data-mobile="true"
+        aria-hidden={!open}
+        inert={open ? undefined : true}
+        className={cn(
+          "fixed inset-y-0 z-50 flex h-svh w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground shadow-lg transition-transform duration-200 ease-linear",
+          side === "left" ? "left-0" : "right-0",
+          open
+            ? "translate-x-0"
+            : side === "left"
+              ? "-translate-x-full"
+              : "translate-x-full",
+          (!open || !interactive) && "pointer-events-none",
+          className
+        )}
+        style={
+          {
+            "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+          } as React.CSSProperties
+        }
+      >
+        <span className="sr-only">Sidebar</span>
+        {children}
+      </div>
+    </>
   )
 }
 

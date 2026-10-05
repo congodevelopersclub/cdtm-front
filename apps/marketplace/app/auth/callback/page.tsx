@@ -2,6 +2,11 @@ import { Suspense } from "react"
 import { IconLoader2 } from "@tabler/icons-react"
 
 import { AuthCallbackPage } from "@/pages/auth-callback"
+import { createPageMetadata } from "@/shared/lib/metadata"
+
+export async function generateMetadata() {
+  return createPageMetadata("authCallback")
+}
 
 export default function Page() {
   return (

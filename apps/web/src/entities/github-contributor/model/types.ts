@@ -4,9 +4,3 @@ export type GitHubContributor = {
   avatar_url: string
   totalContributions: number
 }
-
-export type GitHubContributorLabels = {
-  profile: string
-  contributions: string
-  contribution_singular: string
-}

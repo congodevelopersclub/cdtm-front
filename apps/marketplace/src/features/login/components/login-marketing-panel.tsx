@@ -8,7 +8,11 @@ import { useTranslations } from "next-intl"
 
 import { LOGIN_SLIDES } from "../config/login-slides"
 
-export function LoginMarketingPanel() {
+type LoginMarketingPanelProps = {
+  homeHref: string
+}
+
+export function LoginMarketingPanel({ homeHref }: LoginMarketingPanelProps) {
   const t = useTranslations("Login")
   const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -74,7 +78,7 @@ export function LoginMarketingPanel() {
       />
 
       <div className="relative z-10 flex h-full min-h-0 w-full flex-col justify-between p-8 xl:p-12">
-        <div className="flex items-center gap-3">
+        <a href={homeHref} className="flex w-fit items-center gap-3">
           <div className="flex size-8 items-center justify-center overflow-hidden">
             <Image
               src="/images/logo.svg"
@@ -86,7 +90,7 @@ export function LoginMarketingPanel() {
             />
           </div>
           <span className="text-sm font-semibold text-white">{t("platformName")}</span>
-        </div>
+        </a>
 
         <div className="space-y-6">
           <div className="flex gap-2" role="tablist" aria-label={t("platformName")}>

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
+import { MOCK_TALENT_PROFILE } from "@/entities/talent"
+
 import { ProfilePage } from "./profile-page"
 
 const meta = {
@@ -9,6 +11,9 @@ const meta = {
   parameters: {
     layout: "padded",
     i18n: { app: "marketplace", locale: "en" },
+  },
+  args: {
+    profile: MOCK_TALENT_PROFILE,
   },
   decorators: [
     (Story) => (

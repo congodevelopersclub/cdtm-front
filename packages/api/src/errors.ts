@@ -20,3 +20,26 @@ export class ApiError extends Error {
 export function isApiError(error: unknown): error is ApiError {
   return error instanceof ApiError
 }
+
+type ApiErrorBody = {
+  message?: string
+  errors?: Record<string, string | string[]>
+}
+
+export function apiErrorMessage(data: ApiErrorBody | undefined, fallback: string) {
+  const fieldErrors = data?.errors
+
+  if (fieldErrors && typeof fieldErrors === "object") {
+    const details = Object.entries(fieldErrors).flatMap(([field, messages]) => {
+      const list = Array.isArray(messages) ? messages : [messages]
+
+      return list.filter(Boolean).map((message) => `${field}: ${message}`)
+    })
+
+    if (details.length > 0) {
+      return details.join(" ")
+    }
+  }
+
+  return data?.message || fallback
+}

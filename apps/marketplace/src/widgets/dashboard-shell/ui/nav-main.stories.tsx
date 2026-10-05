@@ -30,11 +30,11 @@ type Story = StoryObj<typeof meta>
 
 export const TalentNav: Story = {}
 
-export const JobsActive: Story = {
+export const ProjectsActive: Story = {
   parameters: {
     nextjs: {
       navigation: {
-        pathname: "/jobs",
+        pathname: "/projects",
       },
     },
   },

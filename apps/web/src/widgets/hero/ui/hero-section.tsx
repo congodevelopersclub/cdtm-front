@@ -1,30 +1,15 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
 import {
   ArrowUpRight,
   Globe,
-  MoveRight,
   ShieldCheck,
   Sparkles,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 
-const TECHNOLOGIES = [
-  "TypeScript",
-  "Next.js",
-  "React",
-  "Node.js",
-  "GraphQL",
-  "Docker",
-  "PostgreSQL",
-  "Kubernetes",
-  "Framer Motion",
-  "Tailwind CSS",
-  "Firebase",
-  "Python",
-]
+import type { GitHubContributor } from "@/entities/github-contributor"
 
 function CloudSVG({ className }: { className?: string }) {
   return (
@@ -39,19 +24,39 @@ function CloudSVG({ className }: { className?: string }) {
   )
 }
 
-export function HeroSection() {
+// Renders the hero content and formats the live contributor count.
+export function HeroSection({
+  contributorCount,
+  projectCount,
+  contributors,
+}: {
+  contributorCount: number
+  projectCount: number
+  contributors: GitHubContributor[]
+}) {
   const t = useTranslations("hero")
 
+  // Hero metrics shown below the description.
   const stats = [
-    { label: t("stats_developers"), value: "10K+", icon: Globe },
-    { label: t("stats_projects"), value: "250+", icon: ShieldCheck },
-    { label: t("stats_events"), value: "40+", icon: Sparkles },
+    {
+      label: t("stats_developers"),
+      value: contributorCount.toLocaleString(),
+      icon: Globe,
+    },
+    {
+      label: t("stats_projects"),
+      value: projectCount.toLocaleString(),
+      icon: ShieldCheck,
+    },
   ]
 
   return (
+    // Main hero section and its decorative background layers.
     <section className="border-border bg-background relative min-h-screen overflow-hidden border-b">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.12),transparent_45%)]" />
+      {/* Radial glow behind the hero content. */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgb(60_126_169/0.12),transparent_45%)]" />
 
+      {/* Subtle grid texture. */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
         <div
           className="absolute inset-0"
@@ -63,9 +68,10 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="bg-primary/20 absolute top-[-15%] left-[-10%] h-180 w-180 rounded-full blur-[140px]" />
-      <div className="absolute right-[-10%] bottom-[-20%] h-160 w-160 rounded-full bg-emerald-500/10 blur-[140px]" />
+      <div className="bg-brand-steel-blue/20 absolute top-[-15%] left-[-10%] h-180 w-180 rounded-full blur-[140px]" />
+      <div className="bg-brand-mint/10 absolute right-[-10%] bottom-[-20%] h-160 w-160 rounded-full blur-[140px]" />
 
+      {/* Ambient animated cloud decorations. */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
           animate={{ y: [0, -25, 0], x: [0, 25, 0] }}
@@ -97,8 +103,10 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-screen-2xl px-4 pt-36 pb-24 md:px-8">
+      {/* Primary hero layout. */}
+      <div className="page-container relative z-10 pt-36 pb-24">
         <div className="grid items-center gap-16 lg:grid-cols-12">
+          {/* Copy, metrics, and calls to action. */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,7 +124,7 @@ export function HeroSection() {
 
             <h1 className="text-foreground text-5xl leading-[0.88] font-black tracking-[-0.06em] md:text-7xl lg:text-[7rem]">
               <span className="block">{t("title_1")}</span>
-              <span className="block bg-linear-to-r from-primary via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              <span className="from-brand-steel-blue via-brand-mint to-brand-orange block bg-linear-to-r bg-clip-text text-transparent">
                 {t("title_2")}
               </span>
             </h1>
@@ -125,6 +133,7 @@ export function HeroSection() {
               {t("description")}
             </p>
 
+            {/* Live contributor metric and supporting community statistics. */}
             <div className="mt-10 flex flex-wrap gap-5">
               {stats.map((item, index) => (
                 <motion.div
@@ -148,23 +157,9 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-12 flex flex-col gap-5 sm:flex-row">
-              <Link
-                href="/join"
-                className="group bg-primary text-primary-foreground inline-flex items-center justify-center gap-3 rounded-2xl px-8 py-5 text-xs font-black tracking-[0.2em] uppercase shadow-[0_20px_50px_-15px_rgba(16,185,129,0.45)] transition-all hover:scale-[1.02]"
-              >
-                <span>{t("cta_join")}</span>
-                <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/events"
-                className="border-border bg-background/60 inline-flex items-center justify-center rounded-2xl border px-8 py-5 text-xs font-black tracking-[0.2em] uppercase backdrop-blur-xl transition-all hover:border-primary hover:text-primary"
-              >
-                {t("cta_actions")}
-              </Link>
-            </div>
           </motion.div>
 
+          {/* Animated top GitHub contributors panel, hidden on smaller screens. */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -177,10 +172,10 @@ export function HeroSection() {
                 <div className="border-border flex items-center justify-between border-b px-8 py-6">
                   <div>
                     <div className="text-primary text-xs font-black tracking-[0.3em] uppercase">
-                      {t("ecosystem_title")}
+                      {t("contributors_title")}
                     </div>
                     <div className="text-muted-foreground mt-2 text-sm">
-                      {t("ecosystem_description")}
+                      {t("contributors_description")}
                     </div>
                   </div>
                   <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-2xl">
@@ -188,6 +183,7 @@ export function HeroSection() {
                   </div>
                 </div>
                 <div className="relative h-125 overflow-hidden px-8 py-8">
+                  {/* Repeated list creates a seamless vertical marquee. */}
                   <motion.div
                     className="flex flex-col gap-5"
                     animate={{ y: ["0%", "-50%"] }}
@@ -197,17 +193,19 @@ export function HeroSection() {
                       repeat: Infinity,
                     }}
                   >
-                    {[...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, index) => (
+                    {[...contributors, ...contributors].map(
+                      (contributor, index) => (
                       <div
-                        key={`${tech}-${index}`}
+                        key={`${contributor.login}-${index}`}
                         className="group border-border bg-background/40 hover:bg-primary/3 flex items-center justify-between rounded-2xl border px-5 py-4 transition-all hover:border-primary/40"
                       >
                         <span className="text-foreground font-mono text-sm font-bold tracking-[0.25em] uppercase">
-                          {tech}
+                          {contributor.login}
                         </span>
-                        <div className="bg-primary h-2 w-2 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.8)]" />
+                        <div className="bg-brand-steel-blue h-2 w-2 rounded-full shadow-primary-glow" />
                       </div>
-                    ))}
+                      )
+                    )}
                   </motion.div>
                   <div className="from-background pointer-events-none absolute top-0 right-0 left-0 h-24 bg-linear-to-b to-transparent" />
                   <div className="from-background pointer-events-none absolute right-0 bottom-0 left-0 h-24 bg-linear-to-t to-transparent" />

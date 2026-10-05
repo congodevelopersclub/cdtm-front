@@ -5,7 +5,7 @@ const SKELETON_CARDS = Array.from({ length: 6 }, (_, index) => index)
 export function GithubContributorsSkeleton() {
   return (
     <section className="border-border bg-card/30 border-y py-24">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="page-container">
         <div className="mb-12 space-y-4">
           <Skeleton className="h-10 w-72 max-w-full" />
           <Skeleton className="h-5 w-full max-w-2xl" />

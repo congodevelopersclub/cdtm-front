@@ -4,7 +4,7 @@ import type {
   InternalAxiosRequestConfig,
 } from "axios"
 
-import { ApiError } from "./errors"
+import { ApiError, apiErrorMessage } from "./errors"
 import type { ApiClientConfig } from "./types"
 
 export function setupInterceptors(
@@ -25,10 +25,12 @@ export function setupInterceptors(
 
   client.interceptors.response.use(
     (response) => response,
-    async (error: AxiosError<{ message?: string; code?: string }>) => {
+    async (error: AxiosError<{ message?: string; code?: string; errors?: Record<string, string | string[]> }>) => {
       const status = error.response?.status ?? 500
-      const message =
-        error.response?.data?.message ?? error.message ?? "Request failed"
+      const message = apiErrorMessage(
+        error.response?.data,
+        error.message || "Request failed"
+      )
       const code = error.response?.data?.code
 
       if (status === 401 && config.onUnauthorized) {

@@ -1,5 +1,16 @@
-import { DashboardFeaturePage } from "@/pages/stub"
+import { Suspense } from "react"
+
+import { SkillsPage } from "@/pages/skills"
+import { createPageMetadata } from "@/shared/lib/metadata"
+
+export async function generateMetadata() {
+  return createPageMetadata("skills")
+}
 
 export default function Page() {
-  return <DashboardFeaturePage pageKey="skills" />
+  return (
+    <Suspense>
+      <SkillsPage />
+    </Suspense>
+  )
 }

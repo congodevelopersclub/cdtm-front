@@ -1,4 +1,51 @@
 {
+  "Metadata": {
+    "siteName": "Talent Developers Marketplace",
+    "defaultDescription": "Connectez-vous avec des entreprises de premier plan, mettez en valeur vos compétences et développez votre carrière via le réseau de talents Congo Developers Club.",
+    "auth": {
+      "title": "Connexion",
+      "description": "Authentifiez-vous avec LinkedIn pour accéder à Talent Developers Marketplace."
+    },
+    "authCallback": {
+      "title": "Connexion en cours",
+      "description": "Finalisation de votre connexion à Talent Developers Marketplace."
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "description": "Votre tableau de bord Talent Developers Marketplace."
+    },
+    "profile": {
+      "title": "Profil",
+      "description": "Consultez et gérez votre profil talent sur Talent Developers Marketplace."
+    },
+    "talents": {
+      "title": "Talents",
+      "description": "Parcourez et découvrez les talents tech congolais sur Talent Developers Marketplace."
+    },
+    "talentProfile": {
+      "description": "{name} — {role} sur Talent Developers Marketplace."
+    },
+    "talentNotFound": {
+      "title": "Talent introuvable",
+      "description": "Ce profil talent a peut-être été supprimé ou le lien est incorrect."
+    },
+    "jobs": {
+      "title": "Emplois",
+      "description": "Explorez les invitations, candidatures et offres enregistrées sur Talent Developers Marketplace."
+    },
+    "skills": {
+      "title": "Compétences",
+      "description": "Gérez et mettez en valeur vos compétences sur Talent Developers Marketplace."
+    },
+    "projects": {
+      "title": "Projets",
+      "description": "Présentez vos projets et votre portfolio sur Talent Developers Marketplace."
+    },
+    "learn": {
+      "title": "Apprendre",
+      "description": "Explorez les cours, parcours d'apprentissage et certificats sur Talent Developers Marketplace."
+    }
+  },
   "HomePage": {
     "title": "Talent Developers Marketplace",
     "description": "Application produit authentifiée pour les annonces, le paiement et le tableau de bord.",
@@ -75,6 +122,7 @@
     "share": "Partager",
     "verified": "Profil vérifié",
     "myStory": "Mon parcours",
+    "myStoryDescription": "Une courte présentation avec mes propres mots.",
     "skills": "Compétences",
     "projects": "Projets",
     "experienceTab": "Expérience",
@@ -84,7 +132,30 @@
     "experienceDescription": "Mon parcours professionnel.",
     "noProjects": "Aucun projet listé pour le moment.",
     "noExperience": "Aucune expérience listée pour le moment.",
-    "noBio": "Ce talent n'a pas encore ajouté de biographie."
+    "noBio": "Ce talent n'a pas encore ajouté de biographie.",
+    "editProfile": "Modifier le profil",
+    "editDescription": "Les modifications sont enregistrées uniquement sur votre profil.",
+    "name": "Nom",
+    "nameRequired": "Saisissez votre nom.",
+    "employmentStatus": "Statut",
+    "fullTime": "Temps plein",
+    "partTime": "Temps partiel",
+    "freelance": "Freelance",
+    "pendingValidation": "En attente de validation",
+    "validated": "Validé",
+    "rejected": "Refusé",
+    "skillMeta": "Maîtrise {proficiency}/10 · {years} ans",
+    "skillName": "Compétence",
+    "proficiency": "Maîtrise",
+    "yearsExperience": "Années",
+    "addSkill": "Ajouter",
+    "removeSkill": "Retirer",
+    "skillInvalid": "La maîtrise doit être entre 1 et 10, et les années au moins 0.",
+    "viewProject": "Voir le projet",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "cancel": "Annuler",
+    "saveError": "Impossible de mettre à jour votre profil."
   },
   "Validation": {
     "invalidEmail": "Entrez une adresse e-mail valide",
@@ -237,5 +308,63 @@
     "showingFiltered": "{count} talents correspondants sur cette page",
     "filteredEmptyTitle": "Aucun talent ne correspond à vos filtres",
     "filteredEmptyDescription": "Essayez d'ajuster votre recherche ou vos filtres."
+  },
+  "SkillsPage": {
+    "subtitle": "Les compétences de votre profil.",
+    "add": "Ajouter une compétence",
+    "name": "Nom",
+    "namePlaceholder": "Nom de la compétence",
+    "nameRequired": "Saisissez un nom de compétence.",
+    "proficiency": "Maîtrise",
+    "years": "Années",
+    "skillMeta": "Maîtrise {proficiency}/10 · {years} ans",
+    "skillInvalid": "La maîtrise doit être entre 1 et 10, et les années au moins 0.",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "createTitle": "Ajouter une compétence",
+    "createDescription": "Ajoutez une compétence avec votre maîtrise et vos années d'expérience.",
+    "editTitle": "Modifier la compétence",
+    "editDescription": "Mettez à jour cette compétence sur votre profil.",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "cancel": "Annuler",
+    "deleteTitle": "Supprimer la compétence",
+    "deleteDescription": "Retirer {name} de votre profil ?",
+    "deleting": "Suppression...",
+    "emptyTitle": "Aucune compétence",
+    "emptyDescription": "Ajoutez une compétence à votre profil.",
+    "loadError": "Impossible de charger vos compétences pour le moment.",
+    "noProfile": "Votre profil n'est pas encore disponible.",
+    "retry": "Réessayer",
+    "saveError": "Impossible d'enregistrer cette compétence.",
+    "deleteError": "Impossible de supprimer cette compétence."
+  },
+  "ProjectsPage": {
+    "subtitle": "Les projets de votre profil.",
+    "add": "Ajouter un projet",
+    "title": "Titre",
+    "titleRequired": "Saisissez un titre de projet.",
+    "description": "Description",
+    "link": "Lien",
+    "viewProject": "Voir le projet",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "createTitle": "Ajouter un projet",
+    "createDescription": "Ajoutez un projet à votre profil.",
+    "editTitle": "Modifier le projet",
+    "editDescription": "Mettez à jour ce projet sur votre profil.",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "cancel": "Annuler",
+    "deleteTitle": "Supprimer le projet",
+    "deleteDescription": "Retirer {name} de votre profil ?",
+    "deleting": "Suppression...",
+    "emptyTitle": "Aucun projet",
+    "emptyDescription": "Ajoutez un projet à votre profil.",
+    "loadError": "Impossible de charger vos projets pour le moment.",
+    "noProfile": "Votre profil n'est pas encore disponible.",
+    "retry": "Réessayer",
+    "saveError": "Impossible d'enregistrer ce projet.",
+    "deleteError": "Impossible de supprimer ce projet."
   }
 }

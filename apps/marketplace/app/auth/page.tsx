@@ -2,6 +2,12 @@ import { Suspense } from "react"
 import { IconLoader2 } from "@tabler/icons-react"
 
 import { AuthPageGuard, LoginPage } from "@/pages/login"
+import { serverEnv } from "@/shared/config/env.server"
+import { createPageMetadata } from "@/shared/lib/metadata"
+
+export async function generateMetadata() {
+  return createPageMetadata("auth")
+}
 
 export default function Page() {
   return (
@@ -13,7 +19,7 @@ export default function Page() {
       }
     >
       <AuthPageGuard>
-        <LoginPage />
+        <LoginPage homeHref={serverEnv.LOGOUT_REDIRECT_URL} />
       </AuthPageGuard>
     </Suspense>
   )
