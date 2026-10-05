@@ -3,6 +3,9 @@ import { getTranslations } from "next-intl/server"
 
 export type WebPageMetadataKey =
   | "home"
+  | "privacy"
+  | "terms"
+  | "cookies"
   | "notFound"
   | "talents"
   | "talentNotFound"

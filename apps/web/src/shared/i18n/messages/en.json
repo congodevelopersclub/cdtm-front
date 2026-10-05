@@ -6,6 +6,18 @@
       "title": "Home",
       "description": "Join the Congo Developer Club — the hub where Congolese tech talents gather, train, and build the future."
     },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn how Congo Developer Club handles personal information."
+    },
+    "terms": {
+      "title": "Legal Notice",
+      "description": "Legal information and terms governing the Congo Developer Club website."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "Learn how the Congo Developer Club website uses cookies."
+    },
     "notFound": {
       "title": "Page not found",
       "description": "The page you are looking for does not exist or may have been moved."
@@ -90,7 +102,110 @@
     "community_name": "Congo Developer Club",
     "built_by_community": "Built by the Congo Developers Club community",
     "made_in": "Made in",
-    "country": "DR Congo"
+    "country": "DRC"
+  },
+  "legal": {
+    "label": "Legal",
+    "lastUpdated": "Last updated: October 3, 2026",
+    "contactPrompt": "For any question about this page, contact us at",
+    "privacy": {
+      "title": "Privacy Policy",
+      "introduction": "Congo Developer Club respects your privacy. This policy explains what information may be collected through this website, why it is used, and the choices available to you.",
+      "sections": [
+        {
+          "title": "Information we collect",
+          "paragraphs": [
+            "We may receive information that you choose to provide when you contact us, register for an activity, or apply to join the community."
+          ],
+          "items": [
+            "Identity and contact details, such as your name and email address.",
+            "Professional information that you voluntarily share.",
+            "Technical data required for the security and operation of the website."
+          ]
+        },
+        {
+          "title": "How we use information",
+          "items": [
+            "To respond to your requests and communicate with you.",
+            "To organize community programs, activities, and membership.",
+            "To maintain, protect, and improve our website."
+          ]
+        },
+        {
+          "title": "Sharing and retention",
+          "paragraphs": [
+            "We do not sell your personal information. It may be shared only with service providers needed to operate our services, or when required by law. We retain information only for as long as necessary for the purpose for which it was collected."
+          ]
+        },
+        {
+          "title": "Your rights",
+          "paragraphs": [
+            "You may ask to access, correct, or delete the personal information we hold about you. You may also object to or limit certain uses of your information by contacting us."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Legal Notice",
+      "introduction": "This website presents Congo Developer Club, its mission, activities, and community initiatives. By using it, you agree to the terms below.",
+      "sections": [
+        {
+          "title": "Website publisher",
+          "paragraphs": [
+            "The website is published by Congo Developer Club, a developer community based in the Democratic Republic of the Congo. The publication team can be contacted by email."
+          ]
+        },
+        {
+          "title": "Content and availability",
+          "paragraphs": [
+            "We strive to provide accurate and current information, but cannot guarantee that every page is complete or free from errors. Content and services may be changed, suspended, or removed without notice."
+          ]
+        },
+        {
+          "title": "Intellectual property",
+          "paragraphs": [
+            "Unless otherwise stated, the website's original text, visual identity, and other content belong to Congo Developer Club. Reuse requires prior authorization, except where applicable law permits it."
+          ]
+        },
+        {
+          "title": "External links and liability",
+          "paragraphs": [
+            "Links to third-party websites are provided for convenience. Congo Developer Club does not control their content or privacy practices and is not responsible for damage resulting from their use."
+          ]
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "introduction": "This policy explains how cookies and similar browser storage may be used when you visit the Congo Developer Club website.",
+      "sections": [
+        {
+          "title": "What is a cookie?",
+          "paragraphs": [
+            "A cookie is a small text file stored by your browser. It can remember information between pages or visits and help a website function correctly."
+          ]
+        },
+        {
+          "title": "Cookies we use",
+          "items": [
+            "Essential cookies needed for security and basic website operation.",
+            "Preference cookies used to remember choices such as language and visual theme."
+          ]
+        },
+        {
+          "title": "Third-party services",
+          "paragraphs": [
+            "Some external services linked or embedded on the website may set their own cookies. Their use is governed by the privacy policies of those providers."
+          ]
+        },
+        {
+          "title": "Managing cookies",
+          "paragraphs": [
+            "You can review, block, or delete cookies in your browser settings. Blocking essential storage may prevent some website features from working as intended."
+          ]
+        }
+      ]
+    }
   },
   "hero": {
     "badge": "The first tech community in DRC",
