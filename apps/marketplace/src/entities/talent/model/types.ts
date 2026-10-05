@@ -5,10 +5,20 @@ export type TalentProfileStatus =
   | "open_to_opportunities"
   | "not_looking"
 
+export type ProfileSkill = {
+  id: string
+  name: string
+  slug: string
+  proficiency: number
+  yearsExperience: number
+}
+
 export type TalentProject = {
+  id?: string
   title: string
   description: string
   year: string
+  link?: string
 }
 
 export type TalentExperience = {
@@ -38,7 +48,9 @@ export type TalentProfile = {
   bio: string
   superpowerSkills: string[]
   skills: string[]
+  skillDetails?: ProfileSkill[]
   projects: TalentProject[]
+  accountStatus?: string
   experience: TalentExperience[]
   socialLinks: TalentSocialLinks
   employmentStatus?: string | null

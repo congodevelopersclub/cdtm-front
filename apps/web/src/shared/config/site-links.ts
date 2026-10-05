@@ -2,7 +2,7 @@ export const JOIN_URL = "https://dev.congodevelopers.club/"
 
 export const NAV_PATHS = [
   { key: "home", path: "/" },
-  { key: "activities", path: "/activities" },
+  { key: "talents", path: "/talents" },
   { key: "contact", path: "/contact" },
 ] as const
 

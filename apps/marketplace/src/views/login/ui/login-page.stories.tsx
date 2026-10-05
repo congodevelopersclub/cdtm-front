@@ -16,6 +16,9 @@ const meta = {
       },
     },
   },
+  args: {
+    homeHref: "http://localhost:3001",
+  },
 } satisfies Meta<typeof LoginPage>
 
 export default meta

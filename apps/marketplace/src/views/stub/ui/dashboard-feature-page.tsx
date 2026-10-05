@@ -6,7 +6,7 @@ import {
   type DashboardTab,
 } from "@/widgets/dashboard-shell"
 
-type FeaturePageKey = "jobs" | "skills" | "projects" | "talents" | "learn"
+type FeaturePageKey = "jobs" | "talents" | "learn"
 
 const PAGE_CONFIG: Record<
   FeaturePageKey,
@@ -38,50 +38,6 @@ const PAGE_CONFIG: Record<
         value: "saved",
         emptyTitleKey: "savedJobsEmptyTitle",
         emptyDescriptionKey: "savedJobsEmptyDescription",
-      },
-    ],
-  },
-  skills: {
-    subNav: [
-      {
-        labelKey: "allSkills",
-        value: "all",
-        emptyTitleKey: "skillsEmptyTitle",
-        emptyDescriptionKey: "skillsEmptyDescription",
-      },
-      {
-        labelKey: "endorsed",
-        value: "endorsed",
-        emptyTitleKey: "endorsedEmptyTitle",
-        emptyDescriptionKey: "endorsedEmptyDescription",
-      },
-      {
-        labelKey: "learning",
-        value: "learning",
-        emptyTitleKey: "learningEmptyTitle",
-        emptyDescriptionKey: "learningEmptyDescription",
-      },
-    ],
-  },
-  projects: {
-    subNav: [
-      {
-        labelKey: "activeProjects",
-        value: "active",
-        emptyTitleKey: "projectsEmptyTitle",
-        emptyDescriptionKey: "projectsEmptyDescription",
-      },
-      {
-        labelKey: "completedProjects",
-        value: "completed",
-        emptyTitleKey: "completedProjectsEmptyTitle",
-        emptyDescriptionKey: "completedProjectsEmptyDescription",
-      },
-      {
-        labelKey: "draftProjects",
-        value: "drafts",
-        emptyTitleKey: "draftProjectsEmptyTitle",
-        emptyDescriptionKey: "draftProjectsEmptyDescription",
       },
     ],
   },

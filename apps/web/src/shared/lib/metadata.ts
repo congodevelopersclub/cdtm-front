@@ -7,6 +7,8 @@ export type WebPageMetadataKey =
   | "terms"
   | "cookies"
   | "notFound"
+  | "talents"
+  | "talentNotFound"
 
 export async function createRootMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata")

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl"
 import { Badge } from "@workspace/ui/components/badge"
 import { Card, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
 
+import { toAbsoluteProjectLink } from "../lib/to-absolute-project-link"
 import type { TalentProfile } from "../model/types"
 
 type ProjectsTabProps = {
@@ -41,6 +42,16 @@ export function ProjectsTab({ profile }: ProjectsTabProps) {
               <CardDescription className="text-sm leading-relaxed">
                 {project.description}
               </CardDescription>
+              {project.link ? (
+                <a
+                  href={toAbsoluteProjectLink(project.link)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex text-sm font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  {t("viewProject")}
+                </a>
+              ) : null}
             </CardHeader>
           </Card>
         ))}

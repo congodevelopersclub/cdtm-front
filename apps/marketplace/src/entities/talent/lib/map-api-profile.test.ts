@@ -51,6 +51,16 @@ describe("mapApiProfileToTalentProfile", () => {
     expect(profile.title).toBe("Full Stack Developer")
     expect(profile.verified).toBe(true)
     expect(profile.skills).toEqual(["React", "Node.js"])
+    expect(profile.skillDetails?.[0]).toMatchObject({
+      name: "React",
+      proficiency: 5,
+      yearsExperience: 4,
+    })
+    expect(profile.projects[0]).toMatchObject({
+      id: "project-1",
+      link: "https://example.com",
+    })
+    expect(profile.accountStatus).toBe("VALIDATED")
     expect(profile.superpowerSkills).toEqual(["React", "Node.js"])
     expect(profile.experienceYears).toBe(6)
     expect(profile.employmentStatus).toBe("full-time")

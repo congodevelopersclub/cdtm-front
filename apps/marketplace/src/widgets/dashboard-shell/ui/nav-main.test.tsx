@@ -22,19 +22,20 @@ describe("NavMain", () => {
     })
 
     expect(screen.getByRole("link", { name: /tableau de bord/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /emplois/i })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /projets/i })).toBeInTheDocument()
+    expect(screen.queryByRole("link", { name: /emplois/i })).not.toBeInTheDocument()
   })
 
   it("uses pathname to determine active item", async () => {
     const navigation = await import("next/navigation")
 
-    vi.mocked(navigation.usePathname).mockReturnValue("/jobs")
+    vi.mocked(navigation.usePathname).mockReturnValue("/projects")
 
     renderWithProviders(<NavMain items={getDashboardNav("talent")} />, {
       withSidebar: true,
     })
 
-    const jobsLink = screen.getByRole("link", { name: /jobs/i })
-    expect(jobsLink.className).toContain("bg-surface-nav-active")
+    const projectsLink = screen.getByRole("link", { name: /projects/i })
+    expect(projectsLink.className).toContain("bg-surface-nav-active")
   })
 })

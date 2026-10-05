@@ -26,7 +26,7 @@ type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
   user: DashboardUser
 }
 
-export function AppSidebar({ role, ...props }: AppSidebarProps) {
+export function AppSidebar({ role, user: _user, ...props }: AppSidebarProps) {
   const t = useTranslations("HomePage")
   const navItems = getDashboardNav(role)
 
