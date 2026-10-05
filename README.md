@@ -134,7 +134,6 @@ Import in apps:
 ```tsx
 import { Button } from "@workspace/ui/components/button"
 ```
-
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for full rules and architecture guidelines.
