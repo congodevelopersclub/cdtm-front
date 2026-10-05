@@ -6,9 +6,7 @@ export const NAV_PATHS = [
   { key: "contact", path: "/contact" },
 ] as const
 
-export const FOOTER_NAV_PATHS = NAV_PATHS.filter(
-  ({ key }) => key !== "activities"
-)
+export const FOOTER_NAV_PATHS = NAV_PATHS
 
 export const SOCIAL_LINKS = [
   {
