@@ -9,6 +9,7 @@ export type WebPageMetadataKey =
   | "notFound"
   | "talents"
   | "talentNotFound"
+  | "contact"
 
 export async function createRootMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata")
