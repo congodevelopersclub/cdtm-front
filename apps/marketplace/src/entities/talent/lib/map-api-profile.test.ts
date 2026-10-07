@@ -15,6 +15,7 @@ const baseApiProfile: ApiProfile = {
   location: "Kinshasa, DRC",
   status: "full-time",
   account_status: "VALIDATED",
+  category_id: 1,
   created_at: "2026-07-26T16:32:51.000000Z",
   updated_at: "2026-07-26T16:32:51.000000Z",
   skills: [
@@ -64,6 +65,7 @@ describe("mapApiProfileToTalentProfile", () => {
     expect(profile.superpowerSkills).toEqual(["React", "Node.js"])
     expect(profile.experienceYears).toBe(6)
     expect(profile.employmentStatus).toBe("full-time")
+    expect(profile.categoryId).toBe(1)
     expect(profile.showAvailabilityBadge).toBe(false)
   })
 

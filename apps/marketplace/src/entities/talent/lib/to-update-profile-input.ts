@@ -35,6 +35,7 @@ export function toUpdateProfileInput(profile: TalentProfile): UpdateProfileInput
     location: profile.location,
     status: profile.employmentStatus || "",
     account_status: profile.accountStatus ?? "",
+    category_id: profile.categoryId ?? null,
     skills,
     projects,
   }

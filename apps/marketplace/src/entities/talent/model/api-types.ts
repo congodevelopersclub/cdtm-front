@@ -33,6 +33,7 @@ export type ApiProfile = {
   location: string | null
   status: string | null
   account_status: ApiAccountStatus
+  category_id?: number | null
   created_at: string
   updated_at: string
   skills: ApiSkill[]

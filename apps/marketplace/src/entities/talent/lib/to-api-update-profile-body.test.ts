@@ -10,6 +10,7 @@ const input = {
   location: "goma",
   status: "part-time",
   account_status: "PENDING_VALIDATION",
+  category_id: 1,
   skills: [{ name: "Laravel", proficiency: 5, years_experience: 6 }],
   projects: [
     {
@@ -31,6 +32,7 @@ describe("toApiUpdateProfileBody", () => {
       location: "goma",
       status: "part-time",
       account_status: "PENDING_VALIDATION",
+      category_id: 1,
       skills: [{ name: "Laravel", proficiency: 5, years_experience: 5 }],
       projects: [
         {

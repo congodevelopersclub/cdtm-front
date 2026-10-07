@@ -80,6 +80,7 @@ export function toApiUpdateProfileBody(input: UpdateProfileInput): ApiUpdateProf
     location: input.location.trim(),
     ...(status ? { status } : {}),
     ...(accountStatus ? { account_status: accountStatus } : {}),
+    category_id: input.category_id,
     skills: toApiSkills(input.skills),
     projects: input.projects.map((project) => ({
       id: toApiProjectId(project.id),

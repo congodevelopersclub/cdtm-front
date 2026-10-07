@@ -54,6 +54,7 @@ export type TalentProfile = {
   experience: TalentExperience[]
   socialLinks: TalentSocialLinks
   employmentStatus?: string | null
+  categoryId?: number | null
   showAvailabilityBadge?: boolean
   categories?: TalentCategory[]
 }

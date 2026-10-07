@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, type ReactNode } from "react"
+import { Info } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@workspace/ui/components/button"
@@ -13,8 +14,10 @@ import {
   DialogTitle,
 } from "@workspace/ui/components/dialog"
 import { Input } from "@workspace/ui/components/input"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@workspace/ui/components/tooltip"
 
 import { useAuth } from "@/features/auth"
+import { useCategories } from "@/entities/category"
 import { skillChoices, useSkillCatalog } from "@/entities/skill"
 import { toUpdateProfileInput, useUpdateProfile, type TalentProfile } from "@/entities/talent"
 
@@ -59,11 +62,15 @@ export function ProfileEditDialog({
   const { user } = useAuth()
   const updateProfile = useUpdateProfile(profile.id, user?.id)
   const catalogQuery = useSkillCatalog()
+  const categoriesQuery = useCategories()
   const [name, setName] = useState(profile.name)
   const [headline, setHeadline] = useState(profile.title === "—" ? "" : profile.title)
   const [bio, setBio] = useState(profile.bio)
   const [location, setLocation] = useState(profile.location)
   const [status, setStatus] = useState(profile.employmentStatus || "full-time")
+  const [categoryId, setCategoryId] = useState(
+    profile.categoryId == null ? "" : String(profile.categoryId)
+  )
   const [skills, setSkills] = useState<SkillDraft[]>(() => toDrafts(profile))
   const [error, setError] = useState<string | null>(null)
 
@@ -77,6 +84,7 @@ export function ProfileEditDialog({
     setBio(profile.bio)
     setLocation(profile.location)
     setStatus(profile.employmentStatus || "full-time")
+    setCategoryId(profile.categoryId == null ? "" : String(profile.categoryId))
     setSkills(toDrafts(profile))
     setError(null)
   }, [open, profile])
@@ -130,6 +138,7 @@ export function ProfileEditDialog({
         bio: bio.trim(),
         location: location.trim(),
         status,
+        category_id: /^\d+$/.test(categoryId) ? Number(categoryId) : null,
         skills: nextSkills,
       })
       onOpenChange(false)
@@ -190,6 +199,26 @@ export function ProfileEditDialog({
               ) : null}
             </select>
           </Field>
+          <Field label={t("category")} htmlFor="profile-category">
+            <select
+              id="profile-category"
+              value={categoryId}
+              disabled={categoriesQuery.isLoading}
+              onChange={(event) => setCategoryId(event.target.value)}
+              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+            >
+              <option value="">{t("categoryEmpty")}</option>
+              {(categoriesQuery.data ?? []).map((category) => (
+                <option key={category.id} value={String(category.id)}>
+                  {category.name}
+                </option>
+              ))}
+              {categoryId &&
+              !(categoriesQuery.data ?? []).some((category) => String(category.id) === categoryId) ? (
+                <option value={categoryId}>{categoryId}</option>
+              ) : null}
+            </select>
+          </Field>
           <Field label={t("myStory")} htmlFor="profile-bio">
             <textarea
               id="profile-bio"
@@ -201,7 +230,10 @@ export function ProfileEditDialog({
           </Field>
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between gap-2">
-              <p className="text-sm font-medium">{t("skills")}</p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-sm font-medium">{t("skills")}</p>
+                <InfoTip label={t("skills")} text={t("skillsInfo")} />
+              </div>
               <Button
                 type="button"
                 variant="outline"
@@ -217,53 +249,69 @@ export function ProfileEditDialog({
               </Button>
             </div>
             {skills.map((skill, index) => (
-              <div key={index} className="grid grid-cols-[1fr_5rem_5rem_auto] gap-2">
-                <select
-                  aria-label={t("skillName")}
-                  value={skill.name}
-                  disabled={catalogQuery.isLoading}
-                  onChange={(event) => updateSkill(index, { name: event.target.value })}
-                  className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
-                >
-                  <option value="">{t("skillName")}</option>
-                  {skillChoices(
-                    catalogQuery.data ?? [],
-                    skills.filter((_, skillIndex) => skillIndex !== index).map((item) => item.name),
-                    skill.name
-                  ).map((option) => (
-                    <option key={option.id} value={option.name}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
-                <Input
-                  aria-label={t("proficiency")}
-                  type="number"
-                  min={1}
-                  max={10}
-                  value={skill.proficiency}
-                  onChange={(event) => updateSkill(index, { proficiency: event.target.value })}
-                />
-                <Input
-                  aria-label={t("yearsExperience")}
-                  type="number"
-                  min={0}
-                  max={5}
-                  value={skill.yearsExperience}
-                  onChange={(event) =>
-                    updateSkill(index, { yearsExperience: event.target.value })
-                  }
-                />
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() =>
-                    setSkills((current) => current.filter((_, skillIndex) => skillIndex !== index))
-                  }
-                >
-                  {t("removeSkill")}
-                </Button>
+              <div key={index} className="flex flex-col gap-2 rounded-lg border border-border p-2">
+                <div className="flex items-center gap-2">
+                  <select
+                    aria-label={t("skillName")}
+                    value={skill.name}
+                    disabled={catalogQuery.isLoading}
+                    onChange={(event) => updateSkill(index, { name: event.target.value })}
+                    className="h-8 min-w-0 flex-1 rounded-lg border border-input bg-transparent px-2.5 text-sm"
+                  >
+                    <option value="">{t("skillName")}</option>
+                    {skillChoices(
+                      catalogQuery.data ?? [],
+                      skills.filter((_, skillIndex) => skillIndex !== index).map((item) => item.name),
+                      skill.name
+                    ).map((option) => (
+                      <option key={option.id} value={option.name}>
+                        {option.name}
+                      </option>
+                    ))}
+                  </select>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() =>
+                      setSkills((current) => current.filter((_, skillIndex) => skillIndex !== index))
+                    }
+                  >
+                    {t("removeSkill")}
+                  </Button>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="flex flex-col gap-1 text-xs font-medium">
+                    <span className="flex items-center gap-1">
+                      {t("proficiency")}
+                      <InfoTip label={t("proficiency")} text={t("proficiencyInfo")} />
+                    </span>
+                    <Input
+                      aria-label={t("proficiency")}
+                      type="number"
+                      min={1}
+                      max={10}
+                      value={skill.proficiency}
+                      onChange={(event) => updateSkill(index, { proficiency: event.target.value })}
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium">
+                    <span className="flex items-center gap-1">
+                      {t("yearsExperience")}
+                      <InfoTip label={t("yearsExperience")} text={t("yearsInfo")} />
+                    </span>
+                    <Input
+                      aria-label={t("yearsExperience")}
+                      type="number"
+                      min={0}
+                      max={5}
+                      value={skill.yearsExperience}
+                      onChange={(event) =>
+                        updateSkill(index, { yearsExperience: event.target.value })
+                      }
+                    />
+                  </label>
+                </div>
               </div>
             ))}
           </div>
@@ -279,6 +327,23 @@ export function ProfileEditDialog({
         </form>
       </DialogContent>
     </Dialog>
+  )
+}
+
+function InfoTip({ label, text }: { label: string; text: string }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button
+          type="button"
+          className="text-muted-foreground inline-flex size-4 items-center justify-center rounded-full"
+          aria-label={label}
+        >
+          <Info className="size-3.5" />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent className="z-[60] max-w-56 text-balance">{text}</TooltipContent>
+    </Tooltip>
   )
 }
 

@@ -57,6 +57,7 @@ export function mapApiProfileToTalentProfile(api: ApiProfile): TalentProfile {
     experience: [],
     socialLinks: {},
     employmentStatus: api.status,
+    categoryId: api.category_id ?? null,
     showAvailabilityBadge: false,
     categories: inferTalentCategories({
       title: api.headline?.trim() || "",

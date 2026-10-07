@@ -36,6 +36,7 @@ export type UpdateProfileInput = {
   location: string
   status: string
   account_status: string
+  category_id: number | null
   skills: UpdateProfileSkillInput[]
   projects: UpdateProfileProjectInput[]
 }
