@@ -10,7 +10,6 @@ import {
   IconCertificate,
   IconFolder,
   IconLayoutDashboard,
-  IconSearch,
   IconUsers,
 } from "@tabler/icons-react"
 
@@ -21,14 +20,12 @@ import {
   CommandItem,
   CommandList,
 } from "@workspace/ui/components/command"
-import { Input } from "@workspace/ui/components/input"
 import {
   Popover,
   PopoverAnchor,
   PopoverContent,
 } from "@workspace/ui/components/popover"
 
-import { buildSearchIndex } from "../../lib/build-search-index"
 import type { DashboardRole } from "../../config/types"
 
 import {
@@ -100,12 +97,6 @@ export function DashboardGlobalSearch({ role }: DashboardGlobalSearchProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState("")
-
-  const index = useMemo(
-    () => buildSearchIndex(role, (key) => tShell(key)),
-    [role, tShell],
-  )
-
   const results = useMemo(() => searchPlatform(query, index), [query, index])
   const groupedResults = useMemo(() => groupResults(results), [results])
 

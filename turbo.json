@@ -4,7 +4,8 @@
   "globalEnv": [
     "NEXT_PUBLIC_API_URL",
     "NEXT_PUBLIC_APP_URL",
-    "API_URL"
+    "API_URL",
+    "LOGOUT_REDIRECT_URL"
   ],
   "tasks": {
     "build": {
