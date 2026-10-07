@@ -7,7 +7,6 @@ import { DashboardProfileCtaCard } from "./dashboard-profile-cta-card"
 import { DashboardProfileHeroCard } from "./dashboard-profile-hero-card"
 import { DashboardProfileTasksCard } from "./dashboard-profile-tasks-card"
 import { DashboardStatTile } from "./dashboard-stat-tile"
-import { DashboardUpcomingCard } from "./dashboard-upcoming-card"
 import { useAuth } from "@/features/auth"
 
 import {
@@ -105,8 +104,6 @@ export function DashboardOverviewGrid() {
           profile={profile}
           className="md:col-span-2 lg:col-span-4 lg:row-span-2"
         />
-
-        <DashboardUpcomingCard className="md:col-span-2 lg:col-span-8" />
 
         {stats.map((stat) => (
           <DashboardStatTile
