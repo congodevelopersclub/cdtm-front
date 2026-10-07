@@ -6,6 +6,7 @@ import { useCallback } from "react"
 import { logoutAction } from "../actions/logout"
 
 import { clearAuthStorage, notifyAuthSessionChanged } from "@/shared/auth"
+import { clearBrowserCookies } from "@/shared/auth/clear-browser-cookies"
 
 export function useLogout() {
   const queryClient = useQueryClient()
@@ -13,6 +14,7 @@ export function useLogout() {
   return useCallback(async () => {
     const redirectUrl = await logoutAction()
     clearAuthStorage()
+    clearBrowserCookies()
     queryClient.removeQueries({ queryKey: ["user"] })
     notifyAuthSessionChanged()
     window.location.assign(redirectUrl)

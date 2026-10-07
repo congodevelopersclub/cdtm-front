@@ -69,9 +69,9 @@ export type ProfilesPagination = {
 
 export type ProfilesQuery = {
   page: number
-  search?: string
+  location?: string
   category?: string
-  verified?: boolean
+  skills?: string
 }
 
 export type ProfilesResult = {

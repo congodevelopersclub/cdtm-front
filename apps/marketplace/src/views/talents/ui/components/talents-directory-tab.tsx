@@ -12,7 +12,7 @@ import { TalentsDirectoryFilters } from "./talents-directory-filters"
 import { TalentProfileCard } from "./talent-profile-card"
 import { TalentsPagination } from "./talents-pagination"
 import {
-  filterTalentProfiles,
+  filterProfilesByName,
   hasActiveTalentsDirectoryFilters,
 } from "../../lib/filter-talent-profiles"
 import { getTalentsGridClassName } from "../../lib/get-talents-grid-class-name"
@@ -96,10 +96,14 @@ export function TalentsDirectoryTab() {
     )
   }
 
-  const { profiles, pagination } = data
-  const visibleProfiles = filterTalentProfiles(profiles, filters)
+  const { pagination } = data
+  const profiles = filterProfilesByName(data.profiles, filters.name)
+  const nameQuery = filters.name.trim()
+  const visibleFrom = nameQuery ? (profiles.length > 0 ? 1 : 0) : pagination.from
+  const visibleTo = nameQuery ? profiles.length : pagination.to
+  const visibleTotal = nameQuery ? profiles.length : pagination.total
 
-  if (visibleProfiles.length === 0) {
+  if (profiles.length === 0) {
     return (
       <div className="flex flex-col gap-6">
         <TalentsDirectoryFilters />
@@ -111,6 +115,13 @@ export function TalentsDirectoryTab() {
               : t("emptyDescription")
           }
         />
+        {pagination.lastPage > 1 ? (
+          <TalentsPagination
+            currentPage={pagination.currentPage}
+            lastPage={pagination.lastPage}
+            total={pagination.total}
+          />
+        ) : null}
       </div>
     )
   }
@@ -120,22 +131,20 @@ export function TalentsDirectoryTab() {
       <TalentsDirectoryFilters />
 
       <p className="text-sm text-muted-foreground">
-        {hasActiveFilters
-          ? t("showingFiltered", { count: visibleProfiles.length })
-          : t("showingRange", {
-              from: pagination.from,
-              to: pagination.to,
-              total: pagination.total,
-            })}
+        {t("showingRange", {
+          from: visibleFrom,
+          to: visibleTo,
+          total: visibleTotal,
+        })}
       </p>
 
       <div className={gridClassName}>
-        {visibleProfiles.map((profile) => (
+        {profiles.map((profile) => (
           <TalentProfileCard key={profile.id} profile={profile} />
         ))}
       </div>
 
-      {!hasActiveFilters && pagination.lastPage > 1 ? (
+      {pagination.lastPage > 1 ? (
         <TalentsPagination
           currentPage={pagination.currentPage}
           lastPage={pagination.lastPage}

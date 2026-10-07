@@ -54,7 +54,7 @@ describe("getProfilesAction", () => {
 
     const result = await getProfilesAction({ page: 1 })
 
-    expect(getMock).toHaveBeenCalledWith("/profiles?page=1")
+    expect(getMock).toHaveBeenCalledWith("/profiles/search?page=1")
     expect(result.profiles).toHaveLength(1)
     expect(result.profiles[0]?.name).toBe("Demo Talent")
     expect(result.pagination).toEqual({

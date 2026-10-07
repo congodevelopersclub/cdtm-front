@@ -5,24 +5,14 @@ import { useTranslations } from "next-intl"
 import { cn } from "@workspace/ui/lib/utils"
 
 type DashboardStatTileProps = {
-  valueKey: string
+  value: string
   labelKey: string
-  deltaKey?: string
-  accent?: "mint" | "orange" | "steel"
   className?: string
 }
 
-const accentClasses = {
-  mint: "text-brand-mint",
-  orange: "text-brand-orange",
-  steel: "text-primary",
-} as const
-
 export function DashboardStatTile({
-  valueKey,
+  value,
   labelKey,
-  deltaKey,
-  accent = "mint",
   className,
 }: DashboardStatTileProps) {
   const t = useTranslations("DashboardOverview")
@@ -35,14 +25,9 @@ export function DashboardStatTile({
       )}
     >
       <p className="text-2xl font-semibold tabular-nums text-foreground sm:text-3xl">
-        {t(valueKey)}
+        {value}
       </p>
-      <div className="mt-3">
-        <p className="text-sm font-medium text-foreground">{t(labelKey)}</p>
-        {deltaKey ? (
-          <p className={cn("mt-1 text-xs", accentClasses[accent])}>{t(deltaKey)}</p>
-        ) : null}
-      </div>
+      <p className="mt-3 text-sm font-medium text-foreground">{t(labelKey)}</p>
     </div>
   )
 }

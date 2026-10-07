@@ -3,14 +3,21 @@ import { renderHook } from "@testing-library/react"
 
 import { useLogout } from "./use-logout"
 
-const { clearAuthStorageMock, notifyMock, assignMock, removeQueriesMock, logoutMock } =
-  vi.hoisted(() => ({
-    clearAuthStorageMock: vi.fn(),
-    notifyMock: vi.fn(),
-    assignMock: vi.fn(),
-    removeQueriesMock: vi.fn(),
-    logoutMock: vi.fn(),
-  }))
+const {
+  clearAuthStorageMock,
+  clearBrowserCookiesMock,
+  notifyMock,
+  assignMock,
+  removeQueriesMock,
+  logoutMock,
+} = vi.hoisted(() => ({
+  clearAuthStorageMock: vi.fn(),
+  clearBrowserCookiesMock: vi.fn(),
+  notifyMock: vi.fn(),
+  assignMock: vi.fn(),
+  removeQueriesMock: vi.fn(),
+  logoutMock: vi.fn(),
+}))
 
 vi.mock("../actions/logout", () => ({
   logoutAction: logoutMock,
@@ -19,6 +26,10 @@ vi.mock("../actions/logout", () => ({
 vi.mock("@/shared/auth", () => ({
   clearAuthStorage: clearAuthStorageMock,
   notifyAuthSessionChanged: notifyMock,
+}))
+
+vi.mock("@/shared/auth/clear-browser-cookies", () => ({
+  clearBrowserCookies: clearBrowserCookiesMock,
 }))
 
 vi.mock("@tanstack/react-query", () => ({
@@ -41,6 +52,7 @@ describe("useLogout", () => {
 
     expect(logoutMock).toHaveBeenCalled()
     expect(clearAuthStorageMock).toHaveBeenCalled()
+    expect(clearBrowserCookiesMock).toHaveBeenCalled()
     expect(removeQueriesMock).toHaveBeenCalledWith({ queryKey: ["user"] })
     expect(notifyMock).toHaveBeenCalled()
     expect(assignMock).toHaveBeenCalledWith("https://example.com/signed-out")

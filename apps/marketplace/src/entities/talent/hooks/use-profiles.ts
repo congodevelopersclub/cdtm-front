@@ -9,9 +9,9 @@ export function profilesQueryKey(query: ProfilesQuery) {
   return [
     "profiles",
     query.page,
-    query.search ?? "",
+    query.location ?? "",
     query.category ?? "",
-    query.verified ?? null,
+    query.skills ?? "",
   ] as const
 }
 

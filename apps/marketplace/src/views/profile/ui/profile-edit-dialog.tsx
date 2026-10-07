@@ -15,6 +15,7 @@ import {
 import { Input } from "@workspace/ui/components/input"
 
 import { useAuth } from "@/features/auth"
+import { skillChoices, useSkillCatalog } from "@/entities/skill"
 import { toUpdateProfileInput, useUpdateProfile, type TalentProfile } from "@/entities/talent"
 
 const STATUS_OPTIONS = ["full-time", "part-time", "feelance"] as const
@@ -57,6 +58,7 @@ export function ProfileEditDialog({
   const t = useTranslations("Profile")
   const { user } = useAuth()
   const updateProfile = useUpdateProfile(profile.id, user?.id)
+  const catalogQuery = useSkillCatalog()
   const [name, setName] = useState(profile.name)
   const [headline, setHeadline] = useState(profile.title === "—" ? "" : profile.title)
   const [bio, setBio] = useState(profile.bio)
@@ -110,7 +112,8 @@ export function ProfileEditDialog({
           skill.proficiency < 1 ||
           skill.proficiency > 10 ||
           !Number.isInteger(skill.years_experience) ||
-          skill.years_experience < 0
+          skill.years_experience < 0 ||
+          skill.years_experience > 5
       )
     ) {
       setError(t("skillInvalid"))
@@ -215,12 +218,24 @@ export function ProfileEditDialog({
             </div>
             {skills.map((skill, index) => (
               <div key={index} className="grid grid-cols-[1fr_5rem_5rem_auto] gap-2">
-                <Input
+                <select
                   aria-label={t("skillName")}
                   value={skill.name}
-                  placeholder={t("skillName")}
+                  disabled={catalogQuery.isLoading}
                   onChange={(event) => updateSkill(index, { name: event.target.value })}
-                />
+                  className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+                >
+                  <option value="">{t("skillName")}</option>
+                  {skillChoices(
+                    catalogQuery.data ?? [],
+                    skills.filter((_, skillIndex) => skillIndex !== index).map((item) => item.name),
+                    skill.name
+                  ).map((option) => (
+                    <option key={option.id} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
                 <Input
                   aria-label={t("proficiency")}
                   type="number"
@@ -233,6 +248,7 @@ export function ProfileEditDialog({
                   aria-label={t("yearsExperience")}
                   type="number"
                   min={0}
+                  max={5}
                   value={skill.yearsExperience}
                   onChange={(event) =>
                     updateSkill(index, { yearsExperience: event.target.value })

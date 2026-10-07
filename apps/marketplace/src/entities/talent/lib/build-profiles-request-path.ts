@@ -4,17 +4,17 @@ export function buildProfilesRequestPath(query: ProfilesQuery) {
   const params = new URLSearchParams()
   params.set("page", String(query.page))
 
-  if (query.search) {
-    params.set("search", query.search)
+  if (query.location) {
+    params.set("location", query.location)
   }
 
   if (query.category) {
     params.set("category", query.category)
   }
 
-  if (query.verified != null) {
-    params.set("verified", query.verified ? "1" : "0")
+  if (query.skills) {
+    params.set("skills", query.skills)
   }
 
-  return `/profiles?${params.toString()}`
+  return `/profiles/search?${params.toString()}`
 }

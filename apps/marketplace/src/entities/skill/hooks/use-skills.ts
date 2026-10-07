@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import {
   createSkillAction,
   deleteSkillAction,
+  getAllSkillsAction,
   getSkillAction,
   getSkillsAction,
   updateSkillAction,
@@ -14,8 +15,12 @@ export function skillsQueryKey(page: number) {
   return ["skills", page] as const
 }
 
-export function skillQueryKey(id: number) {
+export function skillQueryKey(id: string) {
   return ["skill", id] as const
+}
+
+export function skillCatalogQueryKey() {
+  return ["skills", "all"] as const
 }
 
 export function useSkills(page: number) {
@@ -25,11 +30,18 @@ export function useSkills(page: number) {
   })
 }
 
-export function useSkill(id: number | null) {
+export function useSkillCatalog() {
   return useQuery({
-    queryKey: skillQueryKey(id ?? 0),
+    queryKey: skillCatalogQueryKey(),
+    queryFn: () => getAllSkillsAction(),
+  })
+}
+
+export function useSkill(id: string | null) {
+  return useQuery({
+    queryKey: skillQueryKey(id ?? ""),
     queryFn: () => getSkillAction(id!),
-    enabled: id != null,
+    enabled: id != null && id !== "",
   })
 }
 
@@ -55,7 +67,7 @@ export function useUpdateSkill() {
   const invalidate = useInvalidateSkills()
 
   return useMutation({
-    mutationFn: ({ id, name }: { id: number; name: string }) =>
+    mutationFn: ({ id, name }: { id: string; name: string }) =>
       updateSkillAction(id, name),
     onSuccess: invalidate,
   })
@@ -65,7 +77,7 @@ export function useDeleteSkill() {
   const invalidate = useInvalidateSkills()
 
   return useMutation({
-    mutationFn: (id: number) => deleteSkillAction(id),
+    mutationFn: (id: string) => deleteSkillAction(id),
     onSuccess: invalidate,
   })
 }

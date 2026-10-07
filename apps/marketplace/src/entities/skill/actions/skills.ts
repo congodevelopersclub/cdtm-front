@@ -35,6 +35,14 @@ export async function ensureSkillAction(name: string): Promise<void> {
   }
 }
 
+function toSkill(skill: { id: string | number; name: string; slug: string }): Skill {
+  return {
+    id: String(skill.id),
+    name: skill.name,
+    slug: skill.slug,
+  }
+}
+
 export async function getSkillsAction(page: number): Promise<SkillsResult> {
   const apiClient = createServerApiClient()
   const { data } = await apiClient.get<ApiSkillsResponse>("/skills", {
@@ -42,7 +50,7 @@ export async function getSkillsAction(page: number): Promise<SkillsResult> {
   })
 
   return {
-    skills: data.data,
+    skills: data.data.map(toSkill),
     pagination: {
       currentPage: data.meta.current_page,
       lastPage: data.meta.last_page,
@@ -51,28 +59,43 @@ export async function getSkillsAction(page: number): Promise<SkillsResult> {
   }
 }
 
-export async function getSkillAction(id: number): Promise<Skill> {
+export async function getAllSkillsAction(): Promise<Skill[]> {
+  const skills: Skill[] = []
+  let page = 1
+  let lastPage = 1
+
+  do {
+    const result = await getSkillsAction(page)
+    skills.push(...result.skills)
+    lastPage = result.pagination.lastPage
+    page += 1
+  } while (page <= lastPage)
+
+  return skills.sort((left, right) => left.name.localeCompare(right.name))
+}
+
+export async function getSkillAction(id: string): Promise<Skill> {
   const apiClient = createServerApiClient()
   const { data } = await apiClient.get<ApiSkillResponse>(`/skills/${id}`)
 
-  return data.data
+  return toSkill(data.data)
 }
 
 export async function createSkillAction(name: string): Promise<Skill> {
   const apiClient = createServerApiClient()
   const { data } = await apiClient.post<ApiSkillResponse>("/skills", { name })
 
-  return data.data
+  return toSkill(data.data)
 }
 
-export async function updateSkillAction(id: number, name: string): Promise<Skill> {
+export async function updateSkillAction(id: string, name: string): Promise<Skill> {
   const apiClient = createServerApiClient()
   const { data } = await apiClient.put<ApiSkillResponse>(`/skills/${id}`, { name })
 
-  return data.data
+  return toSkill(data.data)
 }
 
-export async function deleteSkillAction(id: number): Promise<void> {
+export async function deleteSkillAction(id: string): Promise<void> {
   const apiClient = createServerApiClient()
   await apiClient.delete(`/skills/${id}`)
 }

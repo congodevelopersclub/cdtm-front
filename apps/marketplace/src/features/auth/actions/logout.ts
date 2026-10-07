@@ -1,13 +1,10 @@
 "use server"
 
-import { cookies } from "next/headers"
-
-import { TOKEN_COOKIE_NAME } from "@/shared/auth/constants"
+import { clearAllCookies } from "@/shared/auth/clear-all-cookies"
 import { serverEnv } from "@/shared/config/env.server"
 
 export async function logoutAction(): Promise<string> {
-  const cookieStore = await cookies()
-  cookieStore.delete(TOKEN_COOKIE_NAME)
+  await clearAllCookies()
 
   return serverEnv.LOGOUT_REDIRECT_URL
 }

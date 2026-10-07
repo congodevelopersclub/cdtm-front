@@ -42,6 +42,8 @@ export type ApiProfileResponse = {
 export type ApiProfilesPaginatedResponse = {
   current_page: number
   data: ApiProfile[]
+  from: number | null
   last_page: number
+  to: number | null
   total: number
 }

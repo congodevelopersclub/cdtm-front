@@ -13,8 +13,14 @@ export type PaginatedResponse<T> = {
   }
 }
 
+export type UnauthorizedContext = {
+  message?: string
+  url?: string
+  hadAuthorization: boolean
+}
+
 export type ApiClientConfig = {
   baseURL: string
   getToken?: () => string | null | Promise<string | null>
-  onUnauthorized?: () => void | Promise<void>
+  onUnauthorized?: (context: UnauthorizedContext) => void | Promise<void>
 }

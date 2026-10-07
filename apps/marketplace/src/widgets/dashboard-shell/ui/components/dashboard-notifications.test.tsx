@@ -12,19 +12,16 @@ describe("DashboardNotifications", () => {
     ).toBeInTheDocument()
   })
 
-  it("shows unread count badge", () => {
-    renderWithProviders(<DashboardNotifications />)
-
-    expect(screen.getByText("2")).toBeInTheDocument()
-  })
-
-  it("opens dropdown when bell is clicked", async () => {
+  it("opens an empty state when the bell is clicked", async () => {
     const user = userEvent.setup()
 
     renderWithProviders(<DashboardNotifications />)
 
+    expect(screen.queryByText("2")).not.toBeInTheDocument()
+
     await user.click(screen.getByRole("button", { name: /notifications/i }))
 
-    expect(screen.getByText("New job invite")).toBeInTheDocument()
+    expect(screen.getByText("No notifications yet")).toBeInTheDocument()
+    expect(screen.queryByText("New job invite")).not.toBeInTheDocument()
   })
 })

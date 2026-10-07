@@ -31,7 +31,7 @@ describe("toApiUpdateProfileBody", () => {
       location: "goma",
       status: "part-time",
       account_status: "PENDING_VALIDATION",
-      skills: [{ name: "Laravel", proficiency: 5, years_experience: 6 }],
+      skills: [{ name: "Laravel", proficiency: 5, years_experience: 5 }],
       projects: [
         {
           id: 4,

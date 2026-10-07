@@ -63,7 +63,7 @@ function toApiSkills(skills: UpdateProfileSkillInput[]) {
     .map((skill) => ({
       name: skill.name.trim(),
       proficiency: Math.trunc(skill.proficiency),
-      years_experience: Math.trunc(skill.years_experience),
+      years_experience: Math.min(5, Math.max(0, Math.trunc(skill.years_experience))),
     }))
     .filter((skill) => skill.name)
 }

@@ -15,4 +15,9 @@ export function createApiClient(config: ApiClientConfig) {
 }
 
 export { ApiError, apiErrorMessage, isApiError } from "./errors"
-export type { ApiClientConfig, ApiResponse, PaginatedResponse } from "./types"
+export type {
+  ApiClientConfig,
+  ApiResponse,
+  PaginatedResponse,
+  UnauthorizedContext,
+} from "./types"

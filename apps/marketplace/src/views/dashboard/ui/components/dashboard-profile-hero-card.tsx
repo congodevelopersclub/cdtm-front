@@ -49,7 +49,9 @@ export function DashboardProfileHeroCard({
             </div>
             <div className="min-w-0">
               <p className="truncate text-lg font-semibold text-white">{name}</p>
-              <p className="truncate text-sm text-white/80">{title}</p>
+              {title ? (
+                <p className="truncate text-sm text-white/80">{title}</p>
+              ) : null}
             </div>
           </div>
           {location ? (

@@ -36,7 +36,7 @@ describe("skill actions", () => {
     const result = await getSkillsAction(2)
 
     expect(getMock).toHaveBeenCalledWith("/skills", { params: { page: 2 } })
-    expect(result.skills).toEqual([{ id: 1, name: "Java", slug: "java" }])
+    expect(result.skills).toEqual([{ id: "1", name: "Java", slug: "java" }])
     expect(result.pagination).toEqual({
       currentPage: 2,
       lastPage: 3,
@@ -46,21 +46,21 @@ describe("skill actions", () => {
 
   it("creates a skill with a name", async () => {
     postMock.mockResolvedValue({
-      data: { data: { id: 22, name: "rails", slug: "rails" } },
+      data: { data: { id: "22", name: "rails", slug: "rails" } },
     })
 
     const skill = await createSkillAction("rails")
 
     expect(postMock).toHaveBeenCalledWith("/skills", { name: "rails" })
-    expect(skill).toEqual({ id: 22, name: "rails", slug: "rails" })
+    expect(skill).toEqual({ id: "22", name: "rails", slug: "rails" })
   })
 
   it("updates a skill with a name", async () => {
     putMock.mockResolvedValue({
-      data: { data: { id: 22, name: "ruby", slug: "rails" } },
+      data: { data: { id: "22", name: "ruby", slug: "rails" } },
     })
 
-    const skill = await updateSkillAction(22, "ruby")
+    const skill = await updateSkillAction("22", "ruby")
 
     expect(putMock).toHaveBeenCalledWith("/skills/22", { name: "ruby" })
     expect(skill.name).toBe("ruby")

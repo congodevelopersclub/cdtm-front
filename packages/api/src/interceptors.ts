@@ -5,7 +5,29 @@ import type {
 } from "axios"
 
 import { ApiError, apiErrorMessage } from "./errors"
-import type { ApiClientConfig } from "./types"
+import type { ApiClientConfig, UnauthorizedContext } from "./types"
+
+function headerValue(config: InternalAxiosRequestConfig | undefined, name: string) {
+  const headers = config?.headers
+
+  if (!headers) {
+    return undefined
+  }
+
+  if (typeof headers.get === "function") {
+    const value = headers.get(name)
+    return typeof value === "string" ? value : undefined
+  }
+
+  const record = headers as unknown as Record<string, unknown>
+  const value = record[name] ?? record[name.toLowerCase()]
+  return typeof value === "string" ? value : undefined
+}
+
+function hadAuthorization(config: InternalAxiosRequestConfig | undefined) {
+  const value = headerValue(config, "Authorization")
+  return typeof value === "string" && value.replace(/^Bearer\s+/i, "").trim().length > 0
+}
 
 export function setupInterceptors(
   client: AxiosInstance,
@@ -34,7 +56,12 @@ export function setupInterceptors(
       const code = error.response?.data?.code
 
       if (status === 401 && config.onUnauthorized) {
-        await config.onUnauthorized()
+        const context: UnauthorizedContext = {
+          message: error.response?.data?.message,
+          url: error.config?.url,
+          hadAuthorization: hadAuthorization(error.config),
+        }
+        await config.onUnauthorized(context)
       }
 
       throw new ApiError(message, status, code, error.response?.data)

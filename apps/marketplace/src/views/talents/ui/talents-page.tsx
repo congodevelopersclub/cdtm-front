@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 
 import { TalentsDirectoryTab } from "./components/talents-directory-tab"
+import { filterProfilesByName } from "../lib/filter-talent-profiles"
 import {
   parseTalentsDirectoryFilters,
   toProfilesQuery,
@@ -29,9 +30,14 @@ export function TalentsPage() {
   const userRole = user?.role ?? getUserSession()?.role
   const showSavedTab = userRole !== "USER"
 
+  const directoryTotal = filters.name.trim()
+    ? data
+      ? filterProfilesByName(data.profiles, filters.name).length
+      : undefined
+    : data?.pagination.total
   const directoryLabel =
-    data?.pagination.total != null
-      ? tTalents("directoryCount", { total: data.pagination.total })
+    directoryTotal != null
+      ? tTalents("directoryCount", { total: directoryTotal })
       : tShell("directory")
 
   const tabs: DashboardTab[] = [

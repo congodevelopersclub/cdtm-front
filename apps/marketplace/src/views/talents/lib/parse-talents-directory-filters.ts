@@ -1,48 +1,41 @@
 import type { TalentsDirectoryFilters } from "./talents-directory-filter-types"
-import {
-  isTalentDirectoryCategory,
-  type TalentDirectoryCategory,
-} from "./talent-directory-categories"
 
-function parseTalentCategory(value: string | null): TalentDirectoryCategory | null {
-  if (!value || !isTalentDirectoryCategory(value)) {
-    return null
+export function parseSkillList(value: string | null | undefined) {
+  const skills: string[] = []
+  const seen = new Set<string>()
+
+  for (const part of (value ?? "").split(",")) {
+    const name = part.trim()
+    const key = name.toLowerCase()
+
+    if (!name || seen.has(key)) {
+      continue
+    }
+
+    seen.add(key)
+    skills.push(name)
   }
 
-  return value
-}
-
-function parseVerifiedFilter(value: string | null) {
-  if (value === "1") {
-    return true
-  }
-
-  if (value === "0") {
-    return false
-  }
-
-  return null
+  return skills
 }
 
 export function parseTalentsDirectoryFilters(
   searchParams: URLSearchParams
 ): TalentsDirectoryFilters {
   return {
-    search: searchParams.get("q") ?? "",
-    category: parseTalentCategory(searchParams.get("category")),
-    verified: parseVerifiedFilter(searchParams.get("verified")),
+    name: searchParams.get("name")?.trim() ?? "",
+    location: searchParams.get("location")?.trim() ?? "",
+    category: searchParams.get("category")?.trim() || null,
+    skills: parseSkillList(searchParams.get("skills")),
   }
 }
 
-export function toProfilesQuery(
-  filters: TalentsDirectoryFilters,
-  page: number
-) {
+export function toProfilesQuery(filters: TalentsDirectoryFilters, page: number) {
   return {
     page,
-    search: filters.search.trim() || undefined,
+    location: filters.location.trim() || undefined,
     category: filters.category ?? undefined,
-    verified: filters.verified ?? undefined,
+    skills: filters.skills.length > 0 ? filters.skills.join(",") : undefined,
   }
 }
 
@@ -56,16 +49,20 @@ export function buildTalentsDirectorySearchParams(
     params.set("page", String(page))
   }
 
-  if (filters.search.trim()) {
-    params.set("q", filters.search.trim())
+  if (filters.name.trim()) {
+    params.set("name", filters.name.trim())
+  }
+
+  if (filters.location.trim()) {
+    params.set("location", filters.location.trim())
   }
 
   if (filters.category) {
     params.set("category", filters.category)
   }
 
-  if (filters.verified != null) {
-    params.set("verified", filters.verified ? "1" : "0")
+  if (filters.skills.length > 0) {
+    params.set("skills", filters.skills.join(","))
   }
 
   return params

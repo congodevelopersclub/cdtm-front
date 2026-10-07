@@ -18,6 +18,7 @@ import { Input } from "@workspace/ui/components/input"
 import { DashboardEmptyState, DashboardPanel } from "@/widgets/dashboard-shell"
 
 import { useAuth } from "@/features/auth"
+import { skillChoices, useSkillCatalog } from "@/entities/skill"
 import {
   toUpdateProfileInput,
   useProfile,
@@ -45,12 +46,17 @@ export function SkillsPage() {
   const updateProfile = useUpdateProfile(profileId, user?.id)
   const profile = profileQuery.data
   const skills = profile ? toUpdateProfileInput(profile).skills : []
-
+  const catalogQuery = useSkillCatalog()
   const [editingIndex, setEditingIndex] = useState<number | "new" | null>(null)
   const [draft, setDraft] = useState<SkillDraft>(EMPTY_SKILL)
   const [deleteIndex, setDeleteIndex] = useState<number | null>(null)
   const [formError, setFormError] = useState<string | null>(null)
   const [deleteError, setDeleteError] = useState<string | null>(null)
+  const skillOptions = skillChoices(
+    catalogQuery.data ?? [],
+    skills.filter((_, index) => index !== editingIndex).map((skill) => skill.name),
+    draft.name
+  )
 
   function openCreate() {
     setDraft(EMPTY_SKILL)
@@ -95,7 +101,8 @@ export function SkillsPage() {
       proficiency < 1 ||
       proficiency > 10 ||
       !Number.isInteger(yearsExperience) ||
-      yearsExperience < 0
+      yearsExperience < 0 ||
+      yearsExperience > 5
     ) {
       setFormError(t("skillInvalid"))
       return null
@@ -241,12 +248,20 @@ export function SkillsPage() {
           >
             <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-name">
               {t("name")}
-              <Input
+              <select
                 id="skill-name"
                 value={draft.name}
-                placeholder={t("namePlaceholder")}
+                disabled={catalogQuery.isLoading}
                 onChange={(event) => setDraft((current) => ({ ...current, name: event.target.value }))}
-              />
+                className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
+              >
+                <option value="">{t("namePlaceholder")}</option>
+                {skillOptions.map((skill) => (
+                  <option key={skill.id} value={skill.name}>
+                    {skill.name}
+                  </option>
+                ))}
+              </select>
             </label>
             <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-proficiency">
               {t("proficiency")}
@@ -267,6 +282,7 @@ export function SkillsPage() {
                 id="skill-years"
                 type="number"
                 min={0}
+                max={5}
                 value={draft.yearsExperience}
                 onChange={(event) =>
                   setDraft((current) => ({ ...current, yearsExperience: event.target.value }))

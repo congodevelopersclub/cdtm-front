@@ -46,7 +46,7 @@ export function DashboardProfileCtaCard({
         <p className="text-lg font-semibold text-white">{t("viewProfile")}</p>
         <p className="mt-1 text-sm text-white/80">{t("viewProfileDescription")}</p>
         <p className="mt-3 truncate text-xs text-white/70">
-          {name} · {title}
+          {title ? `${name} · ${title}` : name}
         </p>
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
           {t("viewProfile")}

@@ -5,9 +5,9 @@ import type { PublicTalentsPage } from "../model/types"
 import { getApiUrl } from "@/shared/config/env"
 
 export type PublicProfilesQuery = {
-  search?: string
+  location?: string
   category?: string
-  verified?: boolean
+  skills?: string
 }
 
 export async function getPublicProfiles(
@@ -16,19 +16,19 @@ export async function getPublicProfiles(
 ): Promise<PublicTalentsPage> {
   const params = new URLSearchParams({ page: String(page) })
 
-  if (filters.search) {
-    params.set("search", filters.search)
+  if (filters.location) {
+    params.set("location", filters.location)
   }
 
   if (filters.category) {
     params.set("category", filters.category)
   }
 
-  if (filters.verified != null) {
-    params.set("verified", filters.verified ? "1" : "0")
+  if (filters.skills) {
+    params.set("skills", filters.skills)
   }
 
-  const response = await fetch(`${getApiUrl()}/profiles?${params.toString()}`, {
+  const response = await fetch(`${getApiUrl()}/profiles/search?${params.toString()}`, {
     cache: "no-store",
   })
 
@@ -44,6 +44,8 @@ export async function getPublicProfiles(
       currentPage: data.current_page,
       lastPage: data.last_page,
       total: data.total,
+      from: data.from ?? 0,
+      to: data.to ?? 0,
     },
   }
 }

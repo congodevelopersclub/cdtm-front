@@ -1,53 +1,54 @@
 import { describe, expect, it } from "vitest"
 
-import type { TalentProfile } from "@/entities/talent"
+import {
+  filterProfilesByName,
+  hasActiveTalentsDirectoryFilters,
+} from "./filter-talent-profiles"
+import {
+  buildTalentsDirectorySearchParams,
+  parseSkillList,
+  toProfilesQuery,
+} from "./parse-talents-directory-filters"
 
-import { filterTalentProfiles } from "./filter-talent-profiles"
-
-const profile: TalentProfile = {
-  id: "profile-1",
-  name: "Demo Talent",
-  email: "demo@example.com",
-  title: "Full Stack Developer",
-  location: "Kinshasa, DRC",
-  experienceYears: 4,
-  status: "open_to_opportunities",
-  verified: true,
-  bio: "React and Node.js specialist",
-  superpowerSkills: ["React"],
-  skills: ["React", "Node.js", "TypeScript"],
-  projects: [],
-  experience: [],
-  socialLinks: {},
-  categories: ["frontend", "fullstack"],
+const filters = {
+  name: "Christian",
+  location: "Goma",
+  category: "frontend",
+  skills: ["php", "laravel"],
 }
 
-describe("filterTalentProfiles", () => {
-  it("matches search query using shared search scoring", () => {
-    const results = filterTalentProfiles([profile], {
-      search: "react",
-      category: null,
-      verified: null,
-    })
-
-    expect(results).toHaveLength(1)
+describe("talent directory search", () => {
+  it("keeps distinct skill names from a comma-separated list", () => {
+    expect(parseSkillList("php, laravel, php")).toEqual(["php", "laravel"])
   })
 
-  it("filters by category and verification", () => {
-    const results = filterTalentProfiles([profile], {
-      search: "",
+  it("sends location, category, and skills to the search query", () => {
+    expect(toProfilesQuery(filters, 2)).toEqual({
+      page: 2,
+      location: "Goma",
       category: "frontend",
-      verified: true,
+      skills: "php,laravel",
     })
+    expect(hasActiveTalentsDirectoryFilters(filters)).toBe(true)
+  })
 
-    expect(results).toHaveLength(1)
+  it("filters the loaded profiles by name", () => {
+    const profiles = [
+      { name: "Christian Siku" },
+      { name: "Patrick Nahayo" },
+      { name: "Gracieux Sikuly" },
+    ]
 
-    const emptyResults = filterTalentProfiles([profile], {
-      search: "",
-      category: "design",
-      verified: true,
-    })
+    expect(filterProfilesByName(profiles, "siku")).toEqual([
+      { name: "Christian Siku" },
+      { name: "Gracieux Sikuly" },
+    ])
+    expect(filterProfilesByName(profiles, "  ")).toEqual(profiles)
+  })
 
-    expect(emptyResults).toHaveLength(0)
+  it("keeps the filters in the page link", () => {
+    expect(buildTalentsDirectorySearchParams(filters, 2).toString()).toBe(
+      "page=2&name=Christian&location=Goma&category=frontend&skills=php%2Claravel"
+    )
   })
 })

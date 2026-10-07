@@ -5,9 +5,10 @@ import { createPageMetadata } from "@/shared/lib/metadata"
 type TalentsRouteProps = {
   searchParams: Promise<{
     page?: string
-    q?: string
+    name?: string
+    location?: string
     category?: string
-    verified?: string
+    skills?: string
   }>
 }
 

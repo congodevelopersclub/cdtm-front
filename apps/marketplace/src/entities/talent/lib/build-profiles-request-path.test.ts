@@ -4,17 +4,17 @@ import { buildProfilesRequestPath } from "./build-profiles-request-path"
 
 describe("buildProfilesRequestPath", () => {
   it("builds paginated request path", () => {
-    expect(buildProfilesRequestPath({ page: 2 })).toBe("/profiles?page=2")
+    expect(buildProfilesRequestPath({ page: 2 })).toBe("/profiles/search?page=2")
   })
 
-  it("includes search and filter params when provided", () => {
+  it("includes location, category, and comma-separated skills", () => {
     expect(
       buildProfilesRequestPath({
         page: 1,
-        search: "react",
+        location: "Goma",
         category: "frontend",
-        verified: true,
+        skills: "php,laravel",
       })
-    ).toBe("/profiles?page=1&search=react&category=frontend&verified=1")
+    ).toBe("/profiles/search?page=1&location=Goma&category=frontend&skills=php%2Claravel")
   })
 })
