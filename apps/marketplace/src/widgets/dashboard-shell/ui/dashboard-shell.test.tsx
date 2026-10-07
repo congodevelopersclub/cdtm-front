@@ -18,10 +18,10 @@ describe("DashboardShell", () => {
       screen.getByText("Dashboard child content").parentElement
     ).toHaveClass("max-w-7xl")
     expect(
-      screen.getByRole("combobox", {
+      screen.queryByRole("combobox", {
         name: /search for jobs, skills, and people/i,
       })
-    ).toBeInTheDocument()
+    ).not.toBeInTheDocument()
   })
 
   it("toggles sidebar via trigger button", async () => {

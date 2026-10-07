@@ -3,18 +3,16 @@
 import { useTranslations } from "next-intl"
 import { SidebarTrigger } from "@workspace/ui/components/sidebar"
 
-import type { DashboardRole, DashboardUser } from "../../config/types"
+import type { DashboardUser } from "../../config/types"
 
 import { DashboardNotifications } from "./dashboard-notifications"
-import { DashboardGlobalSearch } from "./dashboard-global-search"
 import { DashboardUserMenu } from "./dashboard-user-menu"
 
 type DashboardSearchHeaderProps = {
-  role: DashboardRole
   user: DashboardUser
 }
 
-export function DashboardSearchHeader({ role, user }: DashboardSearchHeaderProps) {
+export function DashboardSearchHeader({ user }: DashboardSearchHeaderProps) {
   const t = useTranslations("DashboardShell")
 
   return (
@@ -24,7 +22,6 @@ export function DashboardSearchHeader({ role, user }: DashboardSearchHeaderProps
           aria-label={t("toggleSidebar")}
           className="size-10 shrink-0 sm:size-12"
         />
-        <DashboardGlobalSearch role={role} />
       </div>
       <div className="flex shrink-0 items-center justify-end gap-2 self-end sm:self-auto">
         <DashboardNotifications />

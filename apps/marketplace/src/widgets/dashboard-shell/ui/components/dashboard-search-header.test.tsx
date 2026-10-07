@@ -6,24 +6,8 @@ import { STORY_DASHBOARD_USER } from "@/widgets/dashboard-shell/storybook/fixtur
 import { DashboardSearchHeader } from "./dashboard-search-header"
 
 describe("DashboardSearchHeader", () => {
-  it("renders search input with accessible label", () => {
-    renderWithProviders(
-      <DashboardSearchHeader role="talent" user={STORY_DASHBOARD_USER} />,
-      {
-      withSidebar: true,
-    })
-
-    expect(
-      screen.getByRole("combobox", {
-        name: /search for jobs, skills, and people/i,
-      })
-    ).toBeInTheDocument()
-  })
-
   it("renders notifications bell and user avatar", () => {
-    renderWithProviders(
-      <DashboardSearchHeader role="talent" user={STORY_DASHBOARD_USER} />,
-      {
+    renderWithProviders(<DashboardSearchHeader user={STORY_DASHBOARD_USER} />, {
       withSidebar: true,
     })
 

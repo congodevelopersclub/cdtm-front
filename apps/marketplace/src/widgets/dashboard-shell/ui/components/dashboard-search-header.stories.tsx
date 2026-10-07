@@ -15,7 +15,6 @@ const meta = {
     i18n: { app: "marketplace", locale: "en" },
   },
   args: {
-    role: "talent" as const,
     user: STORY_DASHBOARD_USER,
   },
 } satisfies Meta<typeof DashboardSearchHeader>
@@ -28,15 +27,5 @@ export const Default: Story = {}
 export const French: Story = {
   parameters: {
     i18n: { app: "marketplace", locale: "fr" },
-  },
-}
-
-export const WithQuery: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Type in the search field to see grouped platform results.",
-      },
-    },
   },
 }

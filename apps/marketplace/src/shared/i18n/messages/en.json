@@ -167,7 +167,6 @@
     "passwordMin": "Password must be at least 8 characters"
   },
   "DashboardShell": {
-    "searchPlaceholder": "Search for jobs, skills, and people...",
     "helpCenter": "Help Center",
     "profileComplete": "Your profile is {percent}% complete",
     "profileCompleteDescription": "Complete your profile to apply for jobs and get matched with opportunities.",
@@ -231,7 +230,6 @@
     "noNotificationsDescription": "When you have updates about jobs, invites, or messages they will appear here.",
     "toggleSidebar": "Toggle sidebar",
     "breadcrumbLoading": "Loading…",
-    "searchAriaLabel": "Search for jobs, skills, and people",
     "navDashboard": "Dashboard",
     "navJobs": "Jobs",
     "navSkills": "Skills",
@@ -257,17 +255,6 @@
     "statExperienceLabel": "Years of experience",
     "upcomingEmptyTitle": "Nothing scheduled",
     "upcomingEmptyDescription": "Sessions and reviews will appear here when they are on your calendar."
-  },
-  "DashboardSearch": {
-    "quickLinks": "Quick links",
-    "noResults": "No results for \"{query}\"",
-    "groupPages": "Pages",
-    "groupPeople": "People",
-    "groupJobs": "Jobs",
-    "groupSkills": "Skills",
-    "groupProjects": "Projects",
-    "groupCourses": "Learn",
-    "groupNotifications": "Notifications"
   },
   "Talents": {
     "directoryCount": "Directory ({total})",

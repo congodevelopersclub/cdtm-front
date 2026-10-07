@@ -167,7 +167,6 @@
     "passwordMin": "Le mot de passe doit contenir au moins 8 caractères"
   },
   "DashboardShell": {
-    "searchPlaceholder": "Rechercher des emplois, compétences et personnes...",
     "helpCenter": "Centre d'aide",
     "profileComplete": "Votre profil est complété à {percent} %",
     "profileCompleteDescription": "Complétez votre profil pour postuler aux emplois et être visible aux recruteurs.",
@@ -231,7 +230,6 @@
     "noNotificationsDescription": "Les mises à jour concernant les emplois, invitations ou messages apparaîtront ici.",
     "toggleSidebar": "Afficher ou masquer la barre latérale",
     "breadcrumbLoading": "Chargement…",
-    "searchAriaLabel": "Rechercher des emplois, compétences et personnes",
     "navDashboard": "Tableau de bord",
     "navJobs": "Emplois",
     "navSkills": "Compétences",
@@ -257,17 +255,6 @@
     "statExperienceLabel": "Années d'expérience",
     "upcomingEmptyTitle": "Rien de prévu",
     "upcomingEmptyDescription": "Les sessions et revues apparaîtront ici lorsqu'elles seront au calendrier."
-  },
-  "DashboardSearch": {
-    "quickLinks": "Liens rapides",
-    "noResults": "Aucun résultat pour « {query} »",
-    "groupPages": "Pages",
-    "groupPeople": "Personnes",
-    "groupJobs": "Emplois",
-    "groupSkills": "Compétences",
-    "groupProjects": "Projets",
-    "groupCourses": "Apprendre",
-    "groupNotifications": "Notifications"
   },
   "Talents": {
     "directoryCount": "Annuaire ({total})",

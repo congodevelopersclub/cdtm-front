@@ -83,7 +83,7 @@ export function DashboardShell({ role, user, children }: DashboardShellProps) {
       <AppSidebar role={role} user={user} variant="inset" />
       <SidebarInset className="bg-background">
         <DashboardBreadcrumbProvider>
-          <DashboardSearchHeader role={role} user={user} />
+          <DashboardSearchHeader user={user} />
           <DashboardBreadcrumbs role={role} />
           <div className="flex flex-1 flex-col px-4 pb-6 pt-2 sm:px-6 sm:pb-8">
             <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col 2xl:max-w-[90rem]">
