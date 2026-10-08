@@ -55,7 +55,7 @@
   },
   "talents": {
     "title": "Talents",
-    "subtitle": "Rencontrez les développeurs, designers et bâtisseurs du Congo Developer Club.",
+    "subtitle": "Rencontrez les développeurs, designers et bâtisseurs du future numérique de la RDC.",
     "directoryCount": "{total} talents",
     "showingRange": "Affichage de {from} à {to} sur {total} talents",
     "showingFiltered": "{count} talents correspondants sur cette page",
