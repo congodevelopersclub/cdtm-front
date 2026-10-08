@@ -3,6 +3,7 @@ import {
   IconCertificate,
   IconDashboard,
   IconFolder,
+  IconUser,
   IconSettings,
   IconUsers,
   IconBuildingStore,
@@ -14,6 +15,7 @@ import type { DashboardRole, NavItem } from "./types"
 
 const TALENT_NAV: NavItem[] = [
   { titleKey: "navDashboard", href: "/dashboard", icon: IconDashboard },
+  { titleKey: "navProfile", href: "/profile", icon: IconUser },
   { titleKey: "navProjects", href: "/projects", icon: IconFolder },
   { titleKey: "navSkills", href: "/skills", icon: IconCertificate },
 ]
