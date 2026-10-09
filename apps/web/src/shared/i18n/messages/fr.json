@@ -32,6 +32,10 @@
     },
     "talentProfile": {
       "description": "{name}, {role} — profil public sur Congo Developer Club."
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Contactez l'équipe de Congo Developer Club."
     }
   },
   "LocaleSwitcher": {
@@ -95,6 +99,25 @@
     "projects": "Projets",
     "projectsDescription": "Ce qu'ils ont livré.",
     "noProjects": "Aucun projet listé pour le moment."
+  },
+  "contact": {
+    "title": "Construisons ensemble.",
+    "description": "Une question, une idée ou une envie de collaborer ? Envoyez-nous un message et notre équipe vous répondra.",
+    "emailLabel": "Vous préférez l'e-mail ?",
+    "formTitle": "Envoyez-nous un message",
+    "name": "Votre nom",
+    "namePlaceholder": "Jane Doe",
+    "email": "Adresse e-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "subject": "Sujet",
+    "subjectPlaceholder": "Comment pouvons-nous vous aider ?",
+    "message": "Message",
+    "messagePlaceholder": "Dites-nous brièvement ce que vous avez en tête...",
+    "submit": "Envoyer le message",
+    "sending": "Envoi du message...",
+    "success": "Merci pour votre message. Il a bien été envoyé.",
+    "invalid": "Veuillez remplir tous les champs avec une adresse e-mail valide.",
+    "error": "Impossible d'envoyer votre message pour le moment. Veuillez réessayer plus tard."
   },
   "footer": {
     "description": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",

@@ -7,6 +7,12 @@
     "API_URL",
     "LOGOUT_REDIRECT_URL"
   ],
+  "globalPassThroughEnv": [
+    "MAILTRAP_API_TOKEN",
+    "MAILTRAP_TO",
+    "MAILTRAP_FROM_EMAIL",
+    "MAILTRAP_FROM_NAME"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
