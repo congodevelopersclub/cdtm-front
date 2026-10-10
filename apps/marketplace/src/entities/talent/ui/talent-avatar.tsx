@@ -35,6 +35,7 @@ export function TalentAvatar({
           src={imageSrc}
           alt={name}
           onError={() => setUseLogoFallback(true)}
+          className="object-cover rounded-2xl"
         />
       ) : null}
       <AvatarFallback className={fallbackClassName}>{getInitials(name)}</AvatarFallback>
