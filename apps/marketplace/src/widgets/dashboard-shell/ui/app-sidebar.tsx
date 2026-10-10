@@ -7,7 +7,6 @@ import { useTranslations } from "next-intl"
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -18,7 +17,6 @@ import {
 import type { DashboardRole, DashboardUser } from "../config/types"
 import { getDashboardNav } from "../config/menus"
 
-import { SidebarHelpLink } from "./components/sidebar-help-link"
 import { NavMain } from "./nav-main"
 
 type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
@@ -55,9 +53,6 @@ export function AppSidebar({ role, user: _user, ...props }: AppSidebarProps) {
       <SidebarContent className="px-2">
         <NavMain items={navItems} />
       </SidebarContent>
-      <SidebarFooter className="px-2 pb-4">
-        <SidebarHelpLink />
-      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

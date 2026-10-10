@@ -167,7 +167,6 @@
     "passwordMin": "Password must be at least 8 characters"
   },
   "DashboardShell": {
-    "helpCenter": "Help Center",
     "profileComplete": "Your profile is {percent}% complete",
     "profileCompleteDescription": "Complete your profile to apply for jobs and get matched with opportunities.",
     "addPrefix": "Add a",

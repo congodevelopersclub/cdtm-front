@@ -167,7 +167,6 @@
     "passwordMin": "Le mot de passe doit contenir au moins 8 caractères"
   },
   "DashboardShell": {
-    "helpCenter": "Centre d'aide",
     "profileComplete": "Votre profil est complété à {percent} %",
     "profileCompleteDescription": "Complétez votre profil pour postuler aux emplois et être visible aux recruteurs.",
     "addPrefix": "Ajouter une",
