@@ -12,7 +12,15 @@ describe("NavMain", () => {
     })
 
     const dashboardLink = screen.getByRole("link", { name: /dashboard/i })
-    expect(dashboardLink.className).toContain("bg-surface-nav-active")
+    expect(dashboardLink.className).toContain("bg-sidebar-primary")
+    expect(dashboardLink.className).toContain("text-sidebar-primary-foreground")
+    expect(dashboardLink.className).toContain("rounded-lg")
+    expect(dashboardLink.className).not.toContain("rounded-full")
+
+    const profileLink = screen.getByRole("link", { name: /profile/i })
+    expect(profileLink.className).toContain("text-sidebar-foreground")
+    expect(profileLink.className).not.toContain("bg-sidebar-primary")
+    expect(profileLink.className).toContain("rounded-lg")
   })
 
   it("renders translated labels in French locale", () => {
@@ -36,6 +44,6 @@ describe("NavMain", () => {
     })
 
     const projectsLink = screen.getByRole("link", { name: /projects/i })
-    expect(projectsLink.className).toContain("bg-surface-nav-active")
+    expect(projectsLink.className).toContain("bg-sidebar-primary")
   })
 })

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import type { ReactNode } from "react"
 import { useTranslations } from "next-intl"
 import {
   IconBrandGithub,
@@ -22,6 +23,7 @@ import type { TalentProfile } from "../model/types"
 
 type ProfileHeaderCardProps = {
   profile: TalentProfile
+  action?: ReactNode
 }
 
 function formatEmploymentStatus(
@@ -80,7 +82,7 @@ function StatusBadge({ status }: { status: TalentProfile["status"] }) {
   )
 }
 
-export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
+export function ProfileHeaderCard({ profile, action }: ProfileHeaderCardProps) {
   const t = useTranslations("Profile")
   const showAvailabilityBadge = profile.showAvailabilityBadge !== false
   const showExperienceYears = profile.experienceYears > 0
@@ -98,57 +100,72 @@ export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
   ].filter((item) => item.href)
 
   return (
-    <Card className="relative w-full min-w-0 overflow-hidden rounded-3xl border-border bg-card px-4 py-6 shadow-none ring-0 sm:px-6 sm:py-8">
-      <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start">
-        <div className="flex shrink-0 flex-col items-start gap-3">
-          <div className="relative pb-1">
-            <TalentAvatar
-              name={profile.name}
-              avatar={profile.avatar}
-              className="size-24 rounded-full sm:size-28 lg:size-32"
-              fallbackClassName="rounded-full text-xl sm:text-2xl"
-            />
-            {showAvailabilityBadge ? (
-              <div className="absolute -bottom-3 left-0">
-                <StatusBadge status={profile.status} />
-              </div>
-            ) : null}
-          </div>
-          <div className="mt-4 flex flex-col gap-1.5 text-sm text-muted-foreground">
-            {profile.location ? (
-              <div className="flex items-center gap-1.5">
-                <IconMapPin className="size-4 shrink-0" />
-                <span>{profile.location}</span>
-              </div>
-            ) : null}
-            {profile.email ? (
-              <div className="flex items-center gap-1.5">
-                <IconMail className="size-4 shrink-0" />
-                <span className="truncate">{profile.email}</span>
-              </div>
-            ) : null}
-            {profile.employmentStatus ? (
-              <span>{formatEmploymentStatus(profile.employmentStatus, t)}</span>
-            ) : null}
-            {profile.accountStatus ? (
-              <span>{formatAccountStatus(profile.accountStatus, t)}</span>
-            ) : null}
-          </div>
+    <Card className="relative w-full min-w-0 overflow-hidden rounded-3xl border border-border bg-card p-5 text-card-foreground shadow-none ring-0 sm:p-6">
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
+        <div className="relative shrink-0">
+          <TalentAvatar
+            name={profile.name}
+            avatar={profile.avatar}
+            className="size-16 rounded-2xl bg-brand-steel-blue sm:size-20"
+            fallbackClassName="rounded-2xl bg-brand-steel-blue text-xl text-primary-foreground"
+          />
+          {showAvailabilityBadge ? (
+            <div className="absolute -bottom-3 left-0">
+              <StatusBadge status={profile.status} />
+            </div>
+          ) : null}
         </div>
 
-        <div className="flex min-w-0 flex-1 flex-col gap-5">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              {profile.name}
-            </h2>
-            {profile.verified ? (
-              <span
-                className="inline-flex size-7 items-center justify-center rounded-full bg-brand-orange/15 text-brand-orange"
-                title={t("verified")}
-              >
-                <IconCheck className="size-4" />
-              </span>
-            ) : null}
+        <div className="flex min-w-0 flex-1 flex-col gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <h2 className="truncate text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                  {profile.name}
+                </h2>
+                {profile.verified ? (
+                  <span
+                    className="inline-flex size-7 items-center justify-center rounded-full bg-brand-orange/20 text-brand-orange"
+                    title={t("verified")}
+                  >
+                    <IconCheck className="size-4" />
+                  </span>
+                ) : null}
+              </div>
+              {profile.title ? (
+                <p className="mt-1 truncate text-sm text-muted-foreground">{profile.title}</p>
+              ) : null}
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                {profile.location ? (
+                  <p className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    <IconMapPin className="size-3.5" />
+                    {profile.location}
+                  </p>
+                ) : null}
+                {profile.email ? (
+                  <p className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    <IconMail className="size-3.5 shrink-0" />
+                    <span className="truncate">{profile.email}</span>
+                  </p>
+                ) : null}
+                {profile.employmentStatus ? (
+                  <p className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    {formatEmploymentStatus(profile.employmentStatus, t)}
+                  </p>
+                ) : null}
+                {profile.accountStatus ? (
+                  <p className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    {formatAccountStatus(profile.accountStatus, t)}
+                  </p>
+                ) : null}
+                {showExperienceYears ? (
+                  <p className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    {t("years", { count: profile.experienceYears })}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+            {action ? <div className="shrink-0">{action}</div> : null}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -157,7 +174,7 @@ export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
                 key={label}
                 variant="outline"
                 size="icon"
-                className="rounded-full"
+                className="rounded-xl"
                 asChild
               >
                 <Link href={href!} target="_blank" rel="noopener noreferrer">
@@ -166,44 +183,27 @@ export function ProfileHeaderCard({ profile }: ProfileHeaderCardProps) {
                 </Link>
               </Button>
             ))}
-            <Button className="w-full rounded-full px-5 sm:w-auto">
+            <Button className="rounded-xl">
               <IconMail className="size-4" />
               {t("message")}
             </Button>
             <Button
               variant="outline"
-              className="w-full rounded-full px-5 sm:w-auto"
+              className="rounded-xl"
             >
               <IconShare className="size-4" />
               {t("share")}
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:max-w-none">
-            <div className="min-w-0">
-              <p className="text-sm text-muted-foreground">{t("role")}</p>
-              <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                {profile.title}
-              </p>
-            </div>
-            {showExperienceYears ? (
-              <div className="min-w-0">
-                <p className="text-sm text-muted-foreground">{t("experience")}</p>
-                <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                  {t("years", { count: profile.experienceYears })}
-                </p>
-              </div>
-            ) : null}
-          </div>
-
           {showSuperpowerSkills ? (
-            <div className="flex min-w-0 flex-col gap-3">
-              <p className="text-sm font-medium">{t("superpowerSkills")}</p>
+            <div className="flex min-w-0 flex-col gap-2">
+              <p className="text-sm font-medium text-foreground">{t("superpowerSkills")}</p>
               <div className="flex flex-wrap gap-2">
                 {profile.superpowerSkills.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-sm"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-sm text-foreground"
                   >
                     <span className="text-brand-orange">★</span>
                     {skill}

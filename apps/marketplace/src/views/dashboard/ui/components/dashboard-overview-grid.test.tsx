@@ -31,5 +31,9 @@ describe("DashboardOverviewGrid", () => {
       "href",
       "/profile",
     )
+    expect(screen.getByRole("link", { name: /update profile/i })).toHaveAttribute(
+      "href",
+      "/profile",
+    )
   })
 })

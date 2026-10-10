@@ -45,7 +45,7 @@ export function TalentSkillsFilter({ skills, options, onChange }: TalentSkillsFi
         <Button
           type="button"
           variant="outline"
-          className="h-10 w-full justify-start rounded-full font-normal sm:w-auto sm:min-w-44"
+          className="h-10 w-full justify-start rounded-xl font-normal sm:w-auto sm:min-w-44"
         >
           <span className="truncate">
             {skills.length > 0 ? skills.join(", ") : t("skillsFilterLabel")}

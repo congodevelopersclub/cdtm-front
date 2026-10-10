@@ -12,9 +12,9 @@ export function SkillsTab({ profile }: SkillsTabProps) {
   const t = useTranslations("Profile")
 
   return (
-    <div className="flex flex-col gap-6 py-8">
+    <div className="flex flex-col gap-4 py-4">
       <div>
-        <h3 className="text-2xl font-semibold tracking-tight">
+        <h3 className="text-xl font-semibold tracking-tight">
           {t("allSkills")}
         </h3>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -22,11 +22,11 @@ export function SkillsTab({ profile }: SkillsTabProps) {
         </p>
       </div>
       {profile.skillDetails && profile.skillDetails.length > 0 ? (
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {profile.skillDetails.map((skill) => (
             <div
               key={skill.id}
-              className="rounded-2xl border border-border px-4 py-3"
+              className="rounded-3xl border border-border bg-card p-5"
             >
               <p className="font-medium">{skill.name}</p>
               <p className="mt-1 text-sm text-muted-foreground">

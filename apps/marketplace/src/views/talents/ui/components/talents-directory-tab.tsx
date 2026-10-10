@@ -76,7 +76,7 @@ export function TalentsDirectoryTab() {
         <TalentsDirectoryFilters />
         <DashboardPanel className="flex flex-col items-center justify-center gap-4 px-4 py-12 text-center sm:px-6 sm:py-16">
           <p className="text-sm text-muted-foreground">{t("loadError")}</p>
-          <Button className="rounded-full" onClick={() => refetch()}>
+          <Button className="rounded-xl" onClick={() => refetch()}>
             {t("retry")}
           </Button>
         </DashboardPanel>

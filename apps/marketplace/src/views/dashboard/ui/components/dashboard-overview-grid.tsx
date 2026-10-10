@@ -1,8 +1,10 @@
 "use client"
 
+import { IconClock, IconFolder, IconStar } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 
-import { DashboardCompletionRingCard } from "./dashboard-completion-ring-card"
+import { cn } from "@workspace/ui/lib/utils"
+
 import { DashboardProfileCtaCard } from "./dashboard-profile-cta-card"
 import { DashboardProfileHeroCard } from "./dashboard-profile-hero-card"
 import { DashboardProfileTasksCard } from "./dashboard-profile-tasks-card"
@@ -77,65 +79,64 @@ export function DashboardOverviewGrid() {
       value: String(profile.skills.length),
       labelKey: "statSkillsLabel",
       href: "/skills",
+      icon: IconStar,
     },
     {
       key: "projects",
       value: String(profile.projects.length),
       labelKey: "statProjectsLabel",
       href: "/projects",
+      icon: IconFolder,
     },
     {
       key: "experience",
       value: String(profile.experienceYears),
       labelKey: "statExperienceLabel",
+      href: undefined,
+      icon: IconClock,
     },
-  ] as const
+  ]
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+      <h1 className="text-3xl font-semibold tracking-tight text-foreground">
         {t("greeting", { name: firstName })}
       </h1>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
+      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-12">
         <DashboardProfileHeroCard
           name={profile.name}
           title={title}
           avatarUrl={profile.avatar}
           location={profile.location}
-          className={showProgress ? "md:col-span-1 lg:col-span-5" : "md:col-span-2 lg:col-span-12"}
+          className={showProgress ? "lg:col-span-8" : "lg:col-span-12"}
         />
-
-        {showProgress ? (
-          <DashboardCompletionRingCard
-            percent={percent}
-            className="md:col-span-1 lg:col-span-3"
-          />
-        ) : null}
 
         {showProgress ? (
           <DashboardProfileTasksCard
             profile={profile}
-            className="md:col-span-2 lg:col-span-4 lg:row-span-2"
+            className="lg:col-span-4 lg:row-span-2"
           />
         ) : null}
 
-        {stats.map((stat) => (
-          <DashboardStatTile
-            key={stat.key}
-            value={stat.value}
-            labelKey={stat.labelKey}
-            href={"href" in stat ? stat.href : undefined}
-            className="md:col-span-1 lg:col-span-4"
-          />
-        ))}
+        <div
+          className={cn(
+            "grid grid-cols-1 gap-4 sm:grid-cols-3",
+            showProgress ? "lg:col-span-8" : "lg:col-span-12",
+          )}
+        >
+          {stats.map((stat) => (
+            <DashboardStatTile
+              key={stat.key}
+              value={stat.value}
+              labelKey={stat.labelKey}
+              icon={stat.icon}
+              href={stat.href}
+            />
+          ))}
+        </div>
 
-        <DashboardProfileCtaCard
-          name={profile.name}
-          title={title}
-          avatarUrl={profile.avatar}
-          className="md:col-span-2 lg:col-span-4"
-        />
+        <DashboardProfileCtaCard className="lg:col-span-12" />
       </div>
     </div>
   )

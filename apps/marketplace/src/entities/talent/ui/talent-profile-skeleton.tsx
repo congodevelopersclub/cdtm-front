@@ -6,7 +6,7 @@ export function TalentProfileSkeleton() {
     <div className="flex w-full min-w-0 flex-col gap-6">
       <Card className="rounded-3xl border border-border bg-card p-6 shadow-none sm:p-8">
         <div className="flex flex-col gap-6 md:flex-row">
-          <Skeleton className="size-28 shrink-0 rounded-full" />
+          <Skeleton className="size-20 shrink-0 rounded-2xl" />
           <div className="flex flex-1 flex-col gap-4">
             <Skeleton className="h-9 w-1/2" />
             <Skeleton className="h-10 w-full max-w-md" />

@@ -39,7 +39,7 @@ export function DashboardTabbedShell({
         ))}
       </TabsList>
       {tabs.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value} className="mt-6">
+        <TabsContent key={tab.value} value={tab.value} className="mt-4">
           {tab.content}
         </TabsContent>
       ))}

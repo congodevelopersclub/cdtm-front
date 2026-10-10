@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState, type ReactNode } from "react"
-import { IconCheck, IconLoader2, IconPlus, IconTrash, IconX } from "@tabler/icons-react"
+import { useEffect, useState } from "react"
+import { IconPlus, IconTrash } from "@tabler/icons-react"
 import { Info } from "lucide-react"
 import { useTranslations } from "next-intl"
 
@@ -9,14 +9,24 @@ import { Button } from "@workspace/ui/components/button"
 import { cn } from "@workspace/ui/lib/utils"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
 } from "@workspace/ui/components/dialog"
 import { Input } from "@workspace/ui/components/input"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@workspace/ui/components/tooltip"
+
+import {
+  CancelDialogButton,
+  FormDialogBody,
+  FormDialogContent,
+  FormDialogFooter,
+  FormDialogHeader,
+  FormField,
+  mintButtonClassName,
+  SaveDialogButton,
+  selectControlClassName,
+  textareaControlClassName,
+} from "@/shared/ui/form-dialog"
 
 import { useAuth } from "@/features/auth"
 import { useCategories } from "@/entities/category"
@@ -24,9 +34,6 @@ import { skillChoices, useSkillCatalog } from "@/entities/skill"
 import { toUpdateProfileInput, useUpdateProfile, type TalentProfile } from "@/entities/talent"
 
 const STATUS_OPTIONS = ["full-time", "part-time", "feelance"] as const
-
-const selectClassName =
-  "h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50"
 
 type SkillDraft = {
   name: string
@@ -154,11 +161,11 @@ export function ProfileEditDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="flex max-h-[85vh] flex-col gap-4 overflow-hidden sm:max-w-xl">
-        <DialogHeader className="shrink-0 pr-8">
+      <FormDialogContent>
+        <FormDialogHeader>
           <DialogTitle>{t("editProfile")}</DialogTitle>
           <DialogDescription>{t("editDescription")}</DialogDescription>
-        </DialogHeader>
+        </FormDialogHeader>
         <form
           className="flex min-h-0 flex-1 flex-col"
           onSubmit={(event) => {
@@ -166,35 +173,35 @@ export function ProfileEditDialog({
             void save()
           }}
         >
-          <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto pb-4">
+          <FormDialogBody className="gap-5">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field label={t("name")} htmlFor="profile-name" className="sm:col-span-2">
+              <FormField label={t("name")} htmlFor="profile-name" className="sm:col-span-2">
                 <Input
                   id="profile-name"
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                 />
-              </Field>
-              <Field label={t("role")} htmlFor="profile-headline">
+              </FormField>
+              <FormField label={t("role")} htmlFor="profile-headline">
                 <Input
                   id="profile-headline"
                   value={headline}
                   onChange={(event) => setHeadline(event.target.value)}
                 />
-              </Field>
-              <Field label={t("location")} htmlFor="profile-location">
+              </FormField>
+              <FormField label={t("location")} htmlFor="profile-location">
                 <Input
                   id="profile-location"
                   value={location}
                   onChange={(event) => setLocation(event.target.value)}
                 />
-              </Field>
-              <Field label={t("employmentStatus")} htmlFor="profile-status">
+              </FormField>
+              <FormField label={t("employmentStatus")} htmlFor="profile-status">
                 <select
                   id="profile-status"
                   value={status}
                   onChange={(event) => setStatus(event.target.value)}
-                  className={selectClassName}
+                  className={selectControlClassName}
                 >
                   {STATUS_OPTIONS.map((option) => (
                     <option key={option} value={option}>
@@ -209,14 +216,14 @@ export function ProfileEditDialog({
                     <option value={status}>{status}</option>
                   ) : null}
                 </select>
-              </Field>
-              <Field label={t("category")} htmlFor="profile-category">
+              </FormField>
+              <FormField label={t("category")} htmlFor="profile-category">
                 <select
                   id="profile-category"
                   value={categoryId}
                   disabled={categoriesQuery.isLoading}
                   onChange={(event) => setCategoryId(event.target.value)}
-                  className={selectClassName}
+                  className={selectControlClassName}
                 >
                   <option value="">{t("categoryEmpty")}</option>
                   {(categoriesQuery.data ?? []).map((category) => (
@@ -231,16 +238,16 @@ export function ProfileEditDialog({
                     <option value={categoryId}>{categoryId}</option>
                   ) : null}
                 </select>
-              </Field>
-              <Field label={t("myStory")} htmlFor="profile-bio" className="sm:col-span-2">
+              </FormField>
+              <FormField label={t("myStory")} htmlFor="profile-bio" className="sm:col-span-2">
                 <textarea
                   id="profile-bio"
                   value={bio}
                   rows={4}
                   onChange={(event) => setBio(event.target.value)}
-                  className="min-h-24 w-full resize-y rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                  className={textareaControlClassName}
                 />
-              </Field>
+              </FormField>
             </div>
 
             <div className="flex flex-col gap-3 border-t border-border pt-5">
@@ -252,7 +259,7 @@ export function ProfileEditDialog({
                 <Button
                   type="button"
                   size="sm"
-                  className="shrink-0 bg-brand-mint text-primary-foreground hover:bg-brand-mint/90"
+                  className={cn("shrink-0", mintButtonClassName)}
                   onClick={() =>
                     setSkills((current) => [
                       ...current,
@@ -291,7 +298,7 @@ export function ProfileEditDialog({
                     value={skill.name}
                     disabled={catalogQuery.isLoading}
                     onChange={(event) => updateSkill(index, { name: event.target.value })}
-                    className={selectClassName}
+                    className={selectControlClassName}
                   >
                     <option value="">{t("skillName")}</option>
                     {skillChoices(
@@ -344,28 +351,17 @@ export function ProfileEditDialog({
               ))}
             </div>
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
-          </div>
-          <DialogFooter className="shrink-0">
-            <Button
-              type="button"
-              variant="outline"
-              className="border-brand-steel-blue/40 text-brand-steel-blue hover:bg-brand-steel-blue/10"
-              onClick={() => onOpenChange(false)}
-            >
-              <IconX />
+          </FormDialogBody>
+          <FormDialogFooter>
+            <CancelDialogButton onClick={() => onOpenChange(false)}>
               {t("cancel")}
-            </Button>
-            <Button
-              type="submit"
-              className="bg-brand-steel-blue text-primary-foreground hover:bg-brand-steel-blue/90"
-              disabled={updateProfile.isPending}
-            >
-              {updateProfile.isPending ? <IconLoader2 className="animate-spin" /> : <IconCheck />}
-              {updateProfile.isPending ? t("saving") : t("save")}
-            </Button>
-          </DialogFooter>
+            </CancelDialogButton>
+            <SaveDialogButton pending={updateProfile.isPending} pendingLabel={t("saving")}>
+              {t("save")}
+            </SaveDialogButton>
+          </FormDialogFooter>
         </form>
-      </DialogContent>
+      </FormDialogContent>
     </Dialog>
   )
 }
@@ -387,21 +383,3 @@ function InfoTip({ label, text }: { label: string; text: string }) {
   )
 }
 
-function Field({
-  label,
-  htmlFor,
-  className,
-  children,
-}: {
-  label: string
-  htmlFor: string
-  className?: string
-  children: ReactNode
-}) {
-  return (
-    <label className={cn("flex flex-col gap-2 text-sm font-medium", className)} htmlFor={htmlFor}>
-      <span className="leading-none">{label}</span>
-      {children}
-    </label>
-  )
-}

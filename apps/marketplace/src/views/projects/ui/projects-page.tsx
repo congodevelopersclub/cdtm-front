@@ -1,18 +1,31 @@
 "use client"
 
 import { useState } from "react"
+import { IconPencil, IconPlus, IconTrash } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@workspace/ui/components/button"
+import { cn } from "@workspace/ui/lib/utils"
 import { Card, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
 } from "@workspace/ui/components/dialog"
+
+import {
+  CancelDialogButton,
+  DeleteDialogButton,
+  FormDialogBody,
+  FormDialogContent,
+  FormDialogFooter,
+  FormDialogHeader,
+  FormField,
+  mintButtonClassName,
+  SaveDialogButton,
+  steelOutlineClassName,
+  textareaControlClassName,
+} from "@/shared/ui/form-dialog"
 import { Input } from "@workspace/ui/components/input"
 
 import { DashboardEmptyState, DashboardPanel } from "@/widgets/dashboard-shell"
@@ -42,6 +55,7 @@ const EMPTY_PROJECT: ProjectDraft = {
 
 export function ProjectsPage() {
   const t = useTranslations("ProjectsPage")
+  const tNav = useTranslations("DashboardShell")
   const { user, isLoading: isAuthLoading } = useAuth()
   const profileId = user?.profile?.id ?? ""
   const profileQuery = useProfile(profileId)
@@ -150,7 +164,7 @@ export function ProjectsPage() {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {Array.from({ length: 2 }, (_, index) => (
-          <div key={index} className="h-40 animate-pulse rounded-2xl border border-border bg-card" />
+          <div key={index} className="h-40 animate-pulse rounded-3xl border border-border bg-card" />
         ))}
       </div>
     )
@@ -163,7 +177,7 @@ export function ProjectsPage() {
           {profileQuery.isError ? t("loadError") : t("noProfile")}
         </p>
         {profileQuery.isError ? (
-          <Button className="rounded-full" onClick={() => profileQuery.refetch()}>
+          <Button className="rounded-xl" onClick={() => profileQuery.refetch()}>
             {t("retry")}
           </Button>
         ) : null}
@@ -172,10 +186,19 @@ export function ProjectsPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
-        <Button className="rounded-full" onClick={openCreate}>
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+            {tNav("navProjects")}
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">{t("subtitle")}</p>
+        </div>
+        <Button
+          className={cn("rounded-xl", mintButtonClassName)}
+          onClick={openCreate}
+        >
+          <IconPlus />
           {t("add")}
         </Button>
       </div>
@@ -185,7 +208,7 @@ export function ProjectsPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {projects.map((project, index) => (
-            <Card key={project.id ?? `${project.title}-${index}`} className="rounded-2xl shadow-none">
+            <Card key={project.id ?? `${project.title}-${index}`} className="rounded-3xl border border-border bg-card shadow-none ring-0">
               <CardHeader>
                 <CardTitle className="text-base">{project.title}</CardTitle>
                 {project.description ? (
@@ -203,17 +226,24 @@ export function ProjectsPage() {
                 ) : null}
               </CardHeader>
               <div className="flex gap-2 px-(--card-spacing)">
-                <Button variant="outline" size="sm" onClick={() => openEdit(index)}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className={steelOutlineClassName}
+                  onClick={() => openEdit(index)}
+                >
+                  <IconPencil />
                   {t("edit")}
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="destructive"
                   size="sm"
                   onClick={() => {
                     setDeleteError(null)
                     setDeleteIndex(index)
                   }}
                 >
+                  <IconTrash />
                   {t("delete")}
                 </Button>
               </div>
@@ -223,61 +253,58 @@ export function ProjectsPage() {
       )}
 
       <Dialog open={editingIndex != null} onOpenChange={(open) => !open && closeForm()}>
-        <DialogContent>
-          <DialogHeader>
+        <FormDialogContent>
+          <FormDialogHeader>
             <DialogTitle>{editingIndex === "new" ? t("createTitle") : t("editTitle")}</DialogTitle>
             <DialogDescription>
               {editingIndex === "new" ? t("createDescription") : t("editDescription")}
             </DialogDescription>
-          </DialogHeader>
+          </FormDialogHeader>
           <form
-            className="flex flex-col gap-3"
+            className="flex min-h-0 flex-1 flex-col"
             onSubmit={(event) => {
               event.preventDefault()
               void saveProject()
             }}
           >
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="project-title">
-              {t("title")}
-              <Input
-                id="project-title"
-                value={draft.title}
-                onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))}
-              />
-            </label>
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="project-description">
-              {t("description")}
-              <textarea
-                id="project-description"
-                rows={4}
-                value={draft.description}
-                onChange={(event) =>
-                  setDraft((current) => ({ ...current, description: event.target.value }))
-                }
-                className="w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm"
-              />
-            </label>
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="project-link">
-              {t("link")}
-              <Input
-                id="project-link"
-                value={draft.link}
-                placeholder="https://"
-                autoComplete="off"
-                onChange={(event) => setDraft((current) => ({ ...current, link: event.target.value }))}
-              />
-            </label>
-            {formError ? <p className="text-sm text-destructive">{formError}</p> : null}
-            <DialogFooter>
-              <Button type="button" variant="outline" onClick={closeForm}>
-                {t("cancel")}
-              </Button>
-              <Button type="submit" disabled={updateProfile.isPending}>
-                {updateProfile.isPending ? t("saving") : t("save")}
-              </Button>
-            </DialogFooter>
+            <FormDialogBody>
+              <FormField label={t("title")} htmlFor="project-title">
+                <Input
+                  id="project-title"
+                  value={draft.title}
+                  onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))}
+                />
+              </FormField>
+              <FormField label={t("description")} htmlFor="project-description">
+                <textarea
+                  id="project-description"
+                  rows={4}
+                  value={draft.description}
+                  onChange={(event) =>
+                    setDraft((current) => ({ ...current, description: event.target.value }))
+                  }
+                  className={textareaControlClassName}
+                />
+              </FormField>
+              <FormField label={t("link")} htmlFor="project-link">
+                <Input
+                  id="project-link"
+                  value={draft.link}
+                  placeholder="https://"
+                  autoComplete="off"
+                  onChange={(event) => setDraft((current) => ({ ...current, link: event.target.value }))}
+                />
+              </FormField>
+              {formError ? <p className="text-sm text-destructive">{formError}</p> : null}
+            </FormDialogBody>
+            <FormDialogFooter>
+              <CancelDialogButton onClick={closeForm}>{t("cancel")}</CancelDialogButton>
+              <SaveDialogButton pending={updateProfile.isPending} pendingLabel={t("saving")}>
+                {t("save")}
+              </SaveDialogButton>
+            </FormDialogFooter>
           </form>
-        </DialogContent>
+        </FormDialogContent>
       </Dialog>
 
       <Dialog
@@ -289,30 +316,29 @@ export function ProjectsPage() {
           }
         }}
       >
-        <DialogContent>
-          <DialogHeader>
+        <FormDialogContent className="sm:max-w-md">
+          <FormDialogHeader>
             <DialogTitle>{t("deleteTitle")}</DialogTitle>
             <DialogDescription>
               {t("deleteDescription", {
                 name: deleteIndex == null ? "" : (projects[deleteIndex]?.title ?? ""),
               })}
             </DialogDescription>
-          </DialogHeader>
+          </FormDialogHeader>
           {deleteError ? <p className="text-sm text-destructive">{deleteError}</p> : null}
-          <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => setDeleteIndex(null)}>
+          <FormDialogFooter>
+            <CancelDialogButton onClick={() => setDeleteIndex(null)}>
               {t("cancel")}
-            </Button>
-            <Button
-              type="button"
-              variant="destructive"
-              disabled={updateProfile.isPending}
+            </CancelDialogButton>
+            <DeleteDialogButton
+              pending={updateProfile.isPending}
+              pendingLabel={t("deleting")}
               onClick={() => void confirmDelete()}
             >
-              {updateProfile.isPending ? t("deleting") : t("delete")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
+              {t("delete")}
+            </DeleteDialogButton>
+          </FormDialogFooter>
+        </FormDialogContent>
       </Dialog>
     </div>
   )

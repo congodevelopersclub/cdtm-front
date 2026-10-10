@@ -15,13 +15,13 @@ export function MyStoryTab({ profile }: MyStoryTabProps) {
   const paragraphs = profile.bio.split("\n\n").filter(Boolean)
 
   return (
-    <div className="flex flex-col gap-6 py-8">
+    <div className="flex flex-col gap-4 py-4">
       <div>
-        <h3 className="text-2xl font-semibold tracking-tight">{t("myStory")}</h3>
+        <h3 className="text-xl font-semibold tracking-tight">{t("myStory")}</h3>
         <p className="mt-1 text-sm text-muted-foreground">{t("myStoryDescription")}</p>
       </div>
       {paragraphs.length > 0 ? (
-        <Card className="rounded-2xl px-6 py-5 ring-0">
+        <Card className="rounded-3xl border border-border bg-card px-5 py-5 shadow-none ring-0 sm:px-6">
           <CardHeader className="px-0">
             <CardDescription className="flex flex-col gap-4 text-sm leading-relaxed">
               {paragraphs.map((paragraph) => (

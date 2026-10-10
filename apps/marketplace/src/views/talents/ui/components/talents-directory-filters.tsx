@@ -82,7 +82,7 @@ function DebouncedFilterInput({
         onChange={(event) => setFieldValue(event.target.value)}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        className={withIcon ? "h-10 rounded-full bg-background pl-9" : "h-10 rounded-full bg-background"}
+        className={withIcon ? "h-10 rounded-xl bg-background pl-9" : "h-10 rounded-xl bg-background"}
       />
     </div>
   )
@@ -116,7 +116,7 @@ export function TalentsDirectoryFilters() {
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-border bg-background/80 p-3 sm:p-4">
+    <div className="flex flex-col gap-3 rounded-3xl border border-border bg-card p-4 sm:p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <DebouncedFilterInput
           key={`name-${filters.name}`}
@@ -148,7 +148,7 @@ export function TalentsDirectoryFilters() {
           }
         >
           <SelectTrigger
-            className="w-full rounded-full sm:w-auto sm:min-w-44"
+            className="w-full rounded-xl sm:w-auto sm:min-w-44"
             aria-label={t("categoryFilterLabel")}
           >
             <SelectValue placeholder={t("categoryFilterLabel")} />
@@ -173,7 +173,7 @@ export function TalentsDirectoryFilters() {
           <Button
             type="button"
             variant="ghost"
-            className="rounded-full"
+            className="rounded-xl"
             onClick={clearFilters}
           >
             <IconX className="size-4" />

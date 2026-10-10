@@ -13,14 +13,14 @@ export function ExperienceTab({ profile }: ExperienceTabProps) {
 
   if (profile.experience.length === 0) {
     return (
-      <p className="py-8 text-sm text-muted-foreground">{t("noExperience")}</p>
+      <p className="py-4 text-sm text-muted-foreground">{t("noExperience")}</p>
     )
   }
 
   return (
-    <div className="flex flex-col gap-6 py-8">
+    <div className="flex flex-col gap-4 py-4">
       <div>
-        <h3 className="text-2xl font-semibold tracking-tight">
+        <h3 className="text-xl font-semibold tracking-tight">
           {t("experienceTab")}
         </h3>
         <p className="mt-1 text-sm text-muted-foreground">

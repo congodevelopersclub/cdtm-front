@@ -34,17 +34,19 @@ export function AppSidebar({ role, user: _user, ...props }: AppSidebarProps) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="h-auto p-0 hover:bg-transparent">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="flex size-8 items-center justify-center overflow-hidden">
+              <Link href="/" className="flex items-center gap-3">
+                <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl">
                   <Image
                     src="/images/logo.svg"
                     alt="Congo developers club Logo"
-                    width={32}
-                    height={32}
+                    width={40}
+                    height={40}
                     className="size-full object-contain"
                   />
                 </div>
-                <span className="text-sm font-semibold">{t("title")}</span>
+                <p className="text-sm leading-tight font-semibold whitespace-normal">
+                  {t("title")}
+                </p>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -1,5 +1,11 @@
-import Image from "next/image"
+"use client"
 
+import Image from "next/image"
+import Link from "next/link"
+import { IconMapPin } from "@tabler/icons-react"
+import { useTranslations } from "next-intl"
+
+import { Button } from "@workspace/ui/components/button"
 import { cn } from "@workspace/ui/lib/utils"
 
 import { getInitials } from "@/entities/talent"
@@ -19,58 +25,46 @@ export function DashboardProfileHeroCard({
   location,
   className,
 }: DashboardProfileHeroCardProps) {
+  const t = useTranslations("DashboardOverview")
   const initials = getInitials(name)
 
   return (
     <div
       className={cn(
-        "relative min-h-[180px] overflow-hidden rounded-3xl border border-border bg-card sm:min-h-[220px] lg:min-h-[260px]",
+        "flex flex-col gap-5 rounded-3xl border border-border bg-card p-5 sm:flex-row sm:items-center sm:gap-6 sm:p-6",
         className,
       )}
     >
-      {avatarUrl ? (
-        <Image
-          src={avatarUrl}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 40vw"
-          priority
-        />
-      ) : (
-        <div className="absolute inset-0 bg-linear-to-br from-brand-steel-blue to-brand-mint" />
-      )}
-      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-        <div className="inline-flex max-w-full flex-col gap-1 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md">
-          <div className="flex items-center gap-3">
-            <div className="relative size-14 shrink-0 overflow-hidden rounded-full ring-2 ring-white">
-              {avatarUrl ? (
-                <Image
-                  src={avatarUrl}
-                  alt={name}
-                  fill
-                  className="object-cover"
-                  sizes="56px"
-                />
-              ) : (
-                <div className="flex size-full items-center justify-center bg-brand-steel-blue text-sm font-semibold text-white">
-                  {initials}
-                </div>
-              )}
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-lg font-semibold text-white">{name}</p>
-              {title ? (
-                <p className="truncate text-sm text-white/80">{title}</p>
-              ) : null}
-            </div>
-          </div>
-          {location ? (
-            <p className="text-xs text-white/70">{location}</p>
-          ) : null}
-        </div>
+      <div className="relative flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-brand-steel-blue text-xl font-semibold text-primary-foreground sm:size-20">
+        {avatarUrl ? (
+          <Image
+            src={avatarUrl}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="80px"
+            priority
+          />
+        ) : (
+          initials
+        )}
       </div>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-xl font-semibold text-foreground sm:text-2xl">{name}</p>
+        {title ? <p className="mt-1 truncate text-sm text-muted-foreground">{title}</p> : null}
+        {location ? (
+          <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+            <IconMapPin className="size-3.5" />
+            {location}
+          </p>
+        ) : null}
+      </div>
+      <Button
+        asChild
+        className="shrink-0 self-start rounded-xl sm:self-center"
+      >
+        <Link href="/profile">{t("viewProfile")}</Link>
+      </Button>
     </div>
   )
 }

@@ -17,14 +17,14 @@ export function ProjectsTab({ profile }: ProjectsTabProps) {
 
   if (profile.projects.length === 0) {
     return (
-      <p className="py-8 text-sm text-muted-foreground">{t("noProjects")}</p>
+      <p className="py-4 text-sm text-muted-foreground">{t("noProjects")}</p>
     )
   }
 
   return (
-    <div className="flex flex-col gap-6 py-8">
+    <div className="flex flex-col gap-4 py-4">
       <div>
-        <h3 className="text-2xl font-semibold tracking-tight">
+        <h3 className="text-xl font-semibold tracking-tight">
           {t("projects")}
         </h3>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -33,7 +33,7 @@ export function ProjectsTab({ profile }: ProjectsTabProps) {
       </div>
       <div className="grid gap-4">
         {profile.projects.map((project) => (
-          <Card key={project.title} className="rounded-2xl px-6 py-5 ring-0">
+          <Card key={project.title} className="rounded-3xl border border-border bg-card px-5 py-5 shadow-none ring-0 sm:px-6">
             <CardHeader className="px-0">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <CardTitle className="text-lg">{project.title}</CardTitle>

@@ -39,9 +39,9 @@ export function NavMain({ items }: { items: NavItem[] }) {
                   href={item.href}
                   onClick={() => setOpenMobile(false)}
                   className={cn(
-                    "flex h-12 w-full items-center gap-3 rounded-full px-4 text-sm transition-colors",
+                    "flex h-12 w-full items-center gap-3 rounded-lg px-4 text-sm transition-colors",
                     isActive
-                      ? "bg-surface-nav-active font-medium text-sidebar-accent-foreground"
+                      ? "bg-sidebar-primary font-medium text-sidebar-primary-foreground"
                       : "text-sidebar-foreground hover:bg-muted/60"
                   )}
                 >

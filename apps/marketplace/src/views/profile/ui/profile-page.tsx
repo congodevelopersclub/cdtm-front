@@ -50,19 +50,21 @@ export function ProfilePage({ profile: providedProfile }: ProfilePageProps) {
   const canEdit = !providedProfile
 
   return (
-    <div className="flex w-full min-w-0 flex-col gap-6">
-      {canEdit ? (
-        <div className="flex justify-end">
-          <Button
-            className="rounded-full bg-brand-orange text-accent-foreground hover:bg-brand-orange/90"
-            onClick={() => setIsEditing(true)}
-          >
-            <IconPencil />
-            {tProfile("editProfile")}
-          </Button>
-        </div>
-      ) : null}
-      <ProfileHeaderCard profile={profile} />
+    <div className="flex w-full min-w-0 flex-col gap-4">
+      <ProfileHeaderCard
+        profile={profile}
+        action={
+          canEdit ? (
+            <Button
+              className="rounded-xl"
+              onClick={() => setIsEditing(true)}
+            >
+              <IconPencil />
+              {tProfile("editProfile")}
+            </Button>
+          ) : null
+        }
+      />
       <ProfileTabs profile={profile} />
       {canEdit ? (
         <ProfileEditDialog

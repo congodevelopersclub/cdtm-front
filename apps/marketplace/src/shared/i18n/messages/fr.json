@@ -168,7 +168,7 @@
   },
   "DashboardShell": {
     "profileComplete": "Votre profil est complété à {percent} %",
-    "profileCompleteDescription": "Complétez votre profil pour postuler aux emplois et être visible aux recruteurs.",
+    "profileCompleteDescription": "Terminez votre profil pour postuler à des emplois et être mis en relation.",
     "addPrefix": "Ajouter une",
     "addLocation": "Localisation",
     "addRole": "Rôle",
@@ -245,6 +245,9 @@
     "platformStatsTitle": "La plateforme en un coup d'œil",
     "viewProfile": "Voir le profil",
     "viewProfileDescription": "Mettez à jour votre parcours, compétences et expérience.",
+    "keepSharpTitle": "Gardez votre profil au top",
+    "keepSharpDescription": "Mettez à jour votre parcours, vos compétences et votre expérience pour de meilleures correspondances.",
+    "updateProfile": "Mettre à jour le profil",
     "statSkillsLabel": "Compétences",
     "statProjectsLabel": "Projets",
     "statExperienceLabel": "Années d'expérience",

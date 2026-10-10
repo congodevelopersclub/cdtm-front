@@ -110,6 +110,7 @@ export async function DashboardFeaturePage({
 
   return (
     <DashboardPageShell
+      title={t(pageKey === "jobs" ? "navJobs" : pageKey === "learn" ? "navLearn" : "navTalents")}
       tabs={tabs}
       defaultTab={config.subNav[0]!.value}
     />

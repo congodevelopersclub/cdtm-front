@@ -72,5 +72,7 @@ export function TalentsPage() {
     },
   ]
 
-  return <DashboardPageShell tabs={tabs} defaultTab="directory" />
+  return (
+    <DashboardPageShell title={tShell("navTalents")} tabs={tabs} defaultTab="directory" />
+  )
 }

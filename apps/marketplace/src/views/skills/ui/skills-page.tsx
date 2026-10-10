@@ -1,18 +1,31 @@
 "use client"
 
 import { useState } from "react"
+import { IconPencil, IconPlus, IconTrash } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@workspace/ui/components/button"
+import { cn } from "@workspace/ui/lib/utils"
 import { Card, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
 } from "@workspace/ui/components/dialog"
+
+import {
+  CancelDialogButton,
+  DeleteDialogButton,
+  FormDialogBody,
+  FormDialogContent,
+  FormDialogFooter,
+  FormDialogHeader,
+  FormField,
+  mintButtonClassName,
+  SaveDialogButton,
+  selectControlClassName,
+  steelOutlineClassName,
+} from "@/shared/ui/form-dialog"
 import { Input } from "@workspace/ui/components/input"
 
 import { DashboardEmptyState, DashboardPanel } from "@/widgets/dashboard-shell"
@@ -40,6 +53,7 @@ const EMPTY_SKILL: SkillDraft = {
 
 export function SkillsPage() {
   const t = useTranslations("SkillsPage")
+  const tNav = useTranslations("DashboardShell")
   const { user, isLoading: isAuthLoading } = useAuth()
   const profileId = user?.profile?.id ?? ""
   const profileQuery = useProfile(profileId)
@@ -166,7 +180,7 @@ export function SkillsPage() {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {Array.from({ length: 4 }, (_, index) => (
-          <div key={index} className="h-36 animate-pulse rounded-2xl border border-border bg-card" />
+          <div key={index} className="h-36 animate-pulse rounded-3xl border border-border bg-card" />
         ))}
       </div>
     )
@@ -179,7 +193,7 @@ export function SkillsPage() {
           {profileQuery.isError ? t("loadError") : t("noProfile")}
         </p>
         {profileQuery.isError ? (
-          <Button className="rounded-full" onClick={() => profileQuery.refetch()}>
+          <Button className="rounded-xl" onClick={() => profileQuery.refetch()}>
             {t("retry")}
           </Button>
         ) : null}
@@ -188,10 +202,19 @@ export function SkillsPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
-        <Button className="rounded-full" onClick={openCreate}>
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+            {tNav("navSkills")}
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">{t("subtitle")}</p>
+        </div>
+        <Button
+          className={cn("rounded-xl", mintButtonClassName)}
+          onClick={openCreate}
+        >
+          <IconPlus />
           {t("add")}
         </Button>
       </div>
@@ -201,7 +224,7 @@ export function SkillsPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((skill, index) => (
-            <Card key={`${skill.name}-${index}`} className="rounded-2xl shadow-none">
+            <Card key={`${skill.name}-${index}`} className="rounded-3xl border border-border bg-card shadow-none ring-0">
               <CardHeader>
                 <CardTitle className="truncate text-base">{skill.name}</CardTitle>
                 <CardDescription>
@@ -212,17 +235,24 @@ export function SkillsPage() {
                 </CardDescription>
               </CardHeader>
               <div className="flex gap-2 px-(--card-spacing)">
-                <Button variant="outline" size="sm" onClick={() => openEdit(index)}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className={steelOutlineClassName}
+                  onClick={() => openEdit(index)}
+                >
+                  <IconPencil />
                   {t("edit")}
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="destructive"
                   size="sm"
                   onClick={() => {
                     setDeleteError(null)
                     setDeleteIndex(index)
                   }}
                 >
+                  <IconTrash />
                   {t("delete")}
                 </Button>
               </div>
@@ -232,74 +262,73 @@ export function SkillsPage() {
       )}
 
       <Dialog open={editingIndex != null} onOpenChange={(open) => !open && closeForm()}>
-        <DialogContent>
-          <DialogHeader>
+        <FormDialogContent>
+          <FormDialogHeader>
             <DialogTitle>{editingIndex === "new" ? t("createTitle") : t("editTitle")}</DialogTitle>
             <DialogDescription>
               {editingIndex === "new" ? t("createDescription") : t("editDescription")}
             </DialogDescription>
-          </DialogHeader>
+          </FormDialogHeader>
           <form
-            className="flex flex-col gap-3"
+            className="flex min-h-0 flex-1 flex-col"
             onSubmit={(event) => {
               event.preventDefault()
               void saveSkill()
             }}
           >
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-name">
-              {t("name")}
-              <select
-                id="skill-name"
-                value={draft.name}
-                disabled={catalogQuery.isLoading}
-                onChange={(event) => setDraft((current) => ({ ...current, name: event.target.value }))}
-                className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
-              >
-                <option value="">{t("namePlaceholder")}</option>
-                {skillOptions.map((skill) => (
-                  <option key={skill.id} value={skill.name}>
-                    {skill.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-proficiency">
-              {t("proficiency")}
-              <Input
-                id="skill-proficiency"
-                type="number"
-                min={1}
-                max={10}
-                value={draft.proficiency}
-                onChange={(event) =>
-                  setDraft((current) => ({ ...current, proficiency: event.target.value }))
-                }
-              />
-            </label>
-            <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor="skill-years">
-              {t("years")}
-              <Input
-                id="skill-years"
-                type="number"
-                min={0}
-                max={5}
-                value={draft.yearsExperience}
-                onChange={(event) =>
-                  setDraft((current) => ({ ...current, yearsExperience: event.target.value }))
-                }
-              />
-            </label>
-            {formError ? <p className="text-sm text-destructive">{formError}</p> : null}
-            <DialogFooter>
-              <Button type="button" variant="outline" onClick={closeForm}>
-                {t("cancel")}
-              </Button>
-              <Button type="submit" disabled={updateProfile.isPending}>
-                {updateProfile.isPending ? t("saving") : t("save")}
-              </Button>
-            </DialogFooter>
+            <FormDialogBody>
+              <FormField label={t("name")} htmlFor="skill-name">
+                <select
+                  id="skill-name"
+                  value={draft.name}
+                  disabled={catalogQuery.isLoading}
+                  onChange={(event) => setDraft((current) => ({ ...current, name: event.target.value }))}
+                  className={selectControlClassName}
+                >
+                  <option value="">{t("namePlaceholder")}</option>
+                  {skillOptions.map((skill) => (
+                    <option key={skill.id} value={skill.name}>
+                      {skill.name}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <FormField label={t("proficiency")} htmlFor="skill-proficiency">
+                  <Input
+                    id="skill-proficiency"
+                    type="number"
+                    min={1}
+                    max={10}
+                    value={draft.proficiency}
+                    onChange={(event) =>
+                      setDraft((current) => ({ ...current, proficiency: event.target.value }))
+                    }
+                  />
+                </FormField>
+                <FormField label={t("years")} htmlFor="skill-years">
+                  <Input
+                    id="skill-years"
+                    type="number"
+                    min={0}
+                    max={5}
+                    value={draft.yearsExperience}
+                    onChange={(event) =>
+                      setDraft((current) => ({ ...current, yearsExperience: event.target.value }))
+                    }
+                  />
+                </FormField>
+              </div>
+              {formError ? <p className="text-sm text-destructive">{formError}</p> : null}
+            </FormDialogBody>
+            <FormDialogFooter>
+              <CancelDialogButton onClick={closeForm}>{t("cancel")}</CancelDialogButton>
+              <SaveDialogButton pending={updateProfile.isPending} pendingLabel={t("saving")}>
+                {t("save")}
+              </SaveDialogButton>
+            </FormDialogFooter>
           </form>
-        </DialogContent>
+        </FormDialogContent>
       </Dialog>
 
       <Dialog
@@ -311,30 +340,29 @@ export function SkillsPage() {
           }
         }}
       >
-        <DialogContent>
-          <DialogHeader>
+        <FormDialogContent className="sm:max-w-md">
+          <FormDialogHeader>
             <DialogTitle>{t("deleteTitle")}</DialogTitle>
             <DialogDescription>
               {t("deleteDescription", {
                 name: deleteIndex == null ? "" : (skills[deleteIndex]?.name ?? ""),
               })}
             </DialogDescription>
-          </DialogHeader>
+          </FormDialogHeader>
           {deleteError ? <p className="text-sm text-destructive">{deleteError}</p> : null}
-          <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => setDeleteIndex(null)}>
+          <FormDialogFooter>
+            <CancelDialogButton onClick={() => setDeleteIndex(null)}>
               {t("cancel")}
-            </Button>
-            <Button
-              type="button"
-              variant="destructive"
-              disabled={updateProfile.isPending}
+            </CancelDialogButton>
+            <DeleteDialogButton
+              pending={updateProfile.isPending}
+              pendingLabel={t("deleting")}
               onClick={() => void confirmDelete()}
             >
-              {updateProfile.isPending ? t("deleting") : t("delete")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
+              {t("delete")}
+            </DeleteDialogButton>
+          </FormDialogFooter>
+        </FormDialogContent>
       </Dialog>
     </div>
   )

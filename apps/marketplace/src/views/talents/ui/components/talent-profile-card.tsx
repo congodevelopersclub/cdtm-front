@@ -79,7 +79,7 @@ export function TalentProfileCard({ profile }: TalentProfileCardProps) {
     getProfileCategoryLabels(profile.categories)
 
   return (
-    <Card className="group relative flex h-full flex-col gap-3 rounded-2xl border border-border bg-white p-2 shadow-none transition-colors hover:border-primary/30 hover:bg-muted/30 focus-within:ring-2 focus-within:ring-ring/50">
+    <Card className="group relative flex h-full flex-col gap-3 rounded-3xl border border-border bg-card p-3 shadow-none transition-colors hover:border-primary/30 hover:bg-muted/30 focus-within:ring-2 focus-within:ring-ring/50 sm:p-4">
       <TooltipProvider delayDuration={200}>
         <Link
           href={`/talents/${profile.id}`}

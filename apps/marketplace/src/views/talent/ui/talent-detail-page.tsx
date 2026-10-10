@@ -35,7 +35,7 @@ export function TalentDetailPage() {
           title={t("notFound")}
           description={t("notFoundDescription")}
         />
-        <Button className="w-fit rounded-full" asChild>
+        <Button className="w-fit rounded-xl" asChild>
           <Link href="/talents">{t("backToDirectory")}</Link>
         </Button>
       </div>
@@ -43,7 +43,7 @@ export function TalentDetailPage() {
   }
 
   return (
-    <div className="flex w-full min-w-0 flex-col gap-6">
+    <div className="flex w-full min-w-0 flex-col gap-4">
       <ProfileHeaderCard profile={profile} />
       <ProfileTabs profile={profile} />
     </div>

@@ -168,7 +168,7 @@
   },
   "DashboardShell": {
     "profileComplete": "Your profile is {percent}% complete",
-    "profileCompleteDescription": "Complete your profile to apply for jobs and get matched with opportunities.",
+    "profileCompleteDescription": "Finish your profile to apply for jobs and get matched.",
     "addPrefix": "Add a",
     "addLocation": "Location",
     "addRole": "Role",
@@ -245,6 +245,9 @@
     "platformStatsTitle": "Platform at a glance",
     "viewProfile": "View profile",
     "viewProfileDescription": "Update your story, skills, and experience.",
+    "keepSharpTitle": "Keep your profile sharp",
+    "keepSharpDescription": "Update your story, skills, and experience to get better matches.",
+    "updateProfile": "Update profile",
     "statSkillsLabel": "Skills",
     "statProjectsLabel": "Projects",
     "statExperienceLabel": "Years of experience",

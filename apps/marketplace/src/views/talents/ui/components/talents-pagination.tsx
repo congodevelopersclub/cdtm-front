@@ -35,7 +35,7 @@ export function TalentsPagination({
     >
       <Button
         variant="outline"
-        className="h-8 min-w-8 rounded-full sm:h-10 sm:min-w-10"
+        className="h-8 min-w-8 rounded-xl sm:h-10 sm:min-w-10"
         disabled={currentPage <= 1}
         onClick={() => goToPage(currentPage - 1)}
       >
@@ -55,7 +55,7 @@ export function TalentsPagination({
           <Button
             key={page}
             variant={page === currentPage ? "default" : "outline"}
-            className="h-8 min-w-8 rounded-full sm:h-10 sm:min-w-10"
+            className="h-8 min-w-8 rounded-xl sm:h-10 sm:min-w-10"
             onClick={() => goToPage(page)}
           >
             {page}
@@ -65,7 +65,7 @@ export function TalentsPagination({
 
       <Button
         variant="outline"
-        className="h-8 min-w-8 rounded-full sm:h-10 sm:min-w-10"
+        className="h-8 min-w-8 rounded-xl sm:h-10 sm:min-w-10"
         disabled={currentPage >= lastPage}
         onClick={() => goToPage(currentPage + 1)}
       >
