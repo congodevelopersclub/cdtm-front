@@ -10,13 +10,18 @@ import {
   IconCheck,
   IconMail,
   IconMapPin,
-  IconShare,
   IconWorld,
 } from "@tabler/icons-react"
 
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { Card } from "@workspace/ui/components/card"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@workspace/ui/components/tooltip"
 
 import { TalentAvatar } from "./talent-avatar"
 import type { TalentProfile } from "../model/types"
@@ -64,6 +69,53 @@ function formatAccountStatus(
   return status
 }
 
+function isConfiguredLink(href?: string): href is string {
+  return Boolean(href?.trim())
+}
+
+function SocialLinkButton({
+  href,
+  icon: Icon,
+  label,
+  unavailableLabel,
+}: {
+  href?: string
+  icon: typeof IconBrandLinkedin
+  label: string
+  unavailableLabel: string
+}) {
+  if (isConfiguredLink(href)) {
+    return (
+      <Button variant="outline" size="icon" className="rounded-xl" asChild>
+        <Link href={href} target="_blank" rel="noopener noreferrer">
+          <Icon className="size-4" />
+          <span className="sr-only">{label}</span>
+        </Link>
+      </Button>
+    )
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <span tabIndex={0} className="inline-flex rounded-xl">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="pointer-events-none rounded-xl"
+            disabled
+            aria-label={label}
+          >
+            <Icon className="size-4" />
+          </Button>
+        </span>
+      </TooltipTrigger>
+      <TooltipContent>{unavailableLabel}</TooltipContent>
+    </Tooltip>
+  )
+}
+
 function StatusBadge({ status }: { status: TalentProfile["status"] }) {
   const t = useTranslations("Profile")
 
@@ -88,16 +140,22 @@ export function ProfileHeaderCard({ profile, action }: ProfileHeaderCardProps) {
   const showExperienceYears = profile.experienceYears > 0
   const showSuperpowerSkills = profile.superpowerSkills.length > 0
 
-  const socialItems = [
-    { href: profile.socialLinks.website, icon: IconWorld, label: "Website" },
-    { href: profile.socialLinks.twitter, icon: IconBrandX, label: "Twitter" },
+  const optionalSocialItems = [
+    { href: profile.socialLinks.website, icon: IconWorld, label: t("website") },
+    { href: profile.socialLinks.twitter, icon: IconBrandX, label: t("twitter") },
+  ].filter((item) => isConfiguredLink(item.href))
+  const profileLinks = [
     {
       href: profile.socialLinks.linkedin,
       icon: IconBrandLinkedin,
-      label: "LinkedIn",
+      label: t("linkedin"),
     },
-    { href: profile.socialLinks.github, icon: IconBrandGithub, label: "GitHub" },
-  ].filter((item) => item.href)
+    {
+      href: profile.socialLinks.github,
+      icon: IconBrandGithub,
+      label: t("github"),
+    },
+  ]
 
   return (
     <Card className="relative w-full min-w-0 overflow-hidden rounded-3xl border border-border bg-card p-5 text-card-foreground shadow-none ring-0 sm:p-6">
@@ -167,34 +225,28 @@ export function ProfileHeaderCard({ profile, action }: ProfileHeaderCardProps) {
             </div>
             {action ? <div className="shrink-0">{action}</div> : null}
           </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            {socialItems.map(({ href, icon: Icon, label }) => (
-              <Button
-                key={label}
-                variant="outline"
-                size="icon"
-                className="rounded-xl"
-                asChild
-              >
-                <Link href={href!} target="_blank" rel="noopener noreferrer">
-                  <Icon className="size-4" />
-                  <span className="sr-only">{label}</span>
-                </Link>
-              </Button>
-            ))}
-            <Button className="rounded-xl">
-              <IconMail className="size-4" />
-              {t("message")}
-            </Button>
-            <Button
-              variant="outline"
-              className="rounded-xl"
-            >
-              <IconShare className="size-4" />
-              {t("share")}
-            </Button>
-          </div>
+          <TooltipProvider delayDuration={200}>
+            <div className="flex flex-wrap items-center gap-2">
+              {optionalSocialItems.map(({ href, icon, label }) => (
+                <SocialLinkButton
+                  key={label}
+                  href={href}
+                  icon={icon}
+                  label={label}
+                  unavailableLabel={t("notConfigured")}
+                />
+              ))}
+              {profileLinks.map(({ href, icon, label }) => (
+                <SocialLinkButton
+                  key={label}
+                  href={href}
+                  icon={icon}
+                  label={label}
+                  unavailableLabel={t("notConfigured")}
+                />
+              ))}
+            </div>
+          </TooltipProvider>
 
           {showSuperpowerSkills ? (
             <div className="flex min-w-0 flex-col gap-2">
