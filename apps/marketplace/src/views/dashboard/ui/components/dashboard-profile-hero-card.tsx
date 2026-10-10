@@ -44,8 +44,20 @@ export function DashboardProfileHeroCard({
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
         <div className="inline-flex max-w-full flex-col gap-1 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-steel-blue text-sm font-semibold text-white">
-              {initials}
+            <div className="relative size-14 shrink-0 overflow-hidden rounded-full ring-2 ring-white">
+              {avatarUrl ? (
+                <Image
+                  src={avatarUrl}
+                  alt={name}
+                  fill
+                  className="object-cover"
+                  sizes="56px"
+                />
+              ) : (
+                <div className="flex size-full items-center justify-center bg-brand-steel-blue text-sm font-semibold text-white">
+                  {initials}
+                </div>
+              )}
             </div>
             <div className="min-w-0">
               <p className="truncate text-lg font-semibold text-white">{name}</p>

@@ -22,6 +22,10 @@ export function ProfileCompletionPanel({
   const { percent, items } = getProfileCompletion(profile)
   const isDashboard = variant === "dashboard"
 
+  if (percent >= 100) {
+    return null
+  }
+
   return (
     <div
       className={cn(

@@ -25,31 +25,23 @@ function profile(overrides: Partial<TalentProfile> = {}): TalentProfile {
 }
 
 describe("getProfileCompletion", () => {
-  it("scores location, role, top skills, and experience out of 100", () => {
+  it("scores location, role, and top skills out of 100", () => {
     const { percent, items } = getProfileCompletion(
       profile({
         location: "Goma",
         title: "Developer",
         superpowerSkills: ["React", "TypeScript", "Node.js"],
-        experience: [
-          { role: "Developer", company: "CDC", period: "2024", description: "Built apps" },
-        ],
       })
     )
 
-    expect(items.map((item) => item.key)).toEqual([
-      "location",
-      "role",
-      "topSkills",
-      "experience",
-    ])
-    expect(items.map((item) => item.percent)).toEqual([20, 40, 20, 20])
+    expect(items.map((item) => item.key)).toEqual(["location", "role", "topSkills"])
+    expect(items.map((item) => item.percent)).toEqual([25, 50, 25])
     expect(percent).toBe(100)
   })
 
   it("counts only the completed items", () => {
     const { percent } = getProfileCompletion(profile({ location: "Goma" }))
 
-    expect(percent).toBe(20)
+    expect(percent).toBe(25)
   })
 })

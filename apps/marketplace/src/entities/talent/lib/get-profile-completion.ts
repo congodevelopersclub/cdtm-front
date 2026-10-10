@@ -18,30 +18,23 @@ export function getProfileCompletion(profile: TalentProfile): ProfileCompletion 
     {
       key: "location",
       labelKey: "addLocation",
-      percent: 20,
+      percent: 25,
       href: "/profile",
-      done: Boolean(profile.location),
+      done: Boolean(profile.location.trim()),
     },
     {
       key: "role",
       labelKey: "addRole",
-      percent: 40,
+      percent: 50,
       href: "/profile",
-      done: Boolean(profile.title),
+      done: Boolean(profile.title.trim()) && profile.title.trim() !== "—",
     },
     {
       key: "topSkills",
       labelKey: "addTopSkills",
-      percent: 20,
+      percent: 25,
       href: "/profile",
       done: profile.superpowerSkills.length >= 3,
-    },
-    {
-      key: "experience",
-      labelKey: "addExperience",
-      percent: 20,
-      href: "/profile",
-      done: profile.experience.length >= 1,
     },
   ]
 

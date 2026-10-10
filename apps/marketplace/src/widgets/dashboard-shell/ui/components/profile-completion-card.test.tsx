@@ -4,11 +4,10 @@ import { renderWithProviders, screen } from "@/test/render"
 import { ProfileCompletionCard } from "./profile-completion-card"
 
 describe("ProfileCompletionCard", () => {
-  it("renders completion percent and checklist links", () => {
+  it("stays hidden when the profile is already complete", () => {
     renderWithProviders(<ProfileCompletionCard />)
 
-    expect(screen.getByText(/your profile is/i)).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /location/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /role/i })).toBeInTheDocument()
+    expect(screen.queryByText(/your profile is/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole("link", { name: /work experience/i })).not.toBeInTheDocument()
   })
 })

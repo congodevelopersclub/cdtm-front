@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useState, type ReactNode } from "react"
+import { IconCheck, IconLoader2, IconPlus, IconTrash, IconX } from "@tabler/icons-react"
 import { Info } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@workspace/ui/components/button"
+import { cn } from "@workspace/ui/lib/utils"
 import {
   Dialog,
   DialogContent,
@@ -22,6 +24,9 @@ import { skillChoices, useSkillCatalog } from "@/entities/skill"
 import { toUpdateProfileInput, useUpdateProfile, type TalentProfile } from "@/entities/talent"
 
 const STATUS_OPTIONS = ["full-time", "part-time", "feelance"] as const
+
+const selectClassName =
+  "h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50"
 
 type SkillDraft = {
   name: string
@@ -149,119 +154,151 @@ export function ProfileEditDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
-        <DialogHeader>
+      <DialogContent className="flex max-h-[85vh] flex-col gap-4 overflow-hidden sm:max-w-xl">
+        <DialogHeader className="shrink-0 pr-8">
           <DialogTitle>{t("editProfile")}</DialogTitle>
           <DialogDescription>{t("editDescription")}</DialogDescription>
         </DialogHeader>
         <form
-          className="flex flex-col gap-3"
+          className="flex min-h-0 flex-1 flex-col"
           onSubmit={(event) => {
             event.preventDefault()
             void save()
           }}
         >
-          <Field label={t("name")} htmlFor="profile-name">
-            <Input id="profile-name" value={name} onChange={(event) => setName(event.target.value)} />
-          </Field>
-          <Field label={t("role")} htmlFor="profile-headline">
-            <Input
-              id="profile-headline"
-              value={headline}
-              onChange={(event) => setHeadline(event.target.value)}
-            />
-          </Field>
-          <Field label={t("location")} htmlFor="profile-location">
-            <Input
-              id="profile-location"
-              value={location}
-              onChange={(event) => setLocation(event.target.value)}
-            />
-          </Field>
-          <Field label={t("employmentStatus")} htmlFor="profile-status">
-            <select
-              id="profile-status"
-              value={status}
-              onChange={(event) => setStatus(event.target.value)}
-              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
-            >
-              {STATUS_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option === "full-time"
-                    ? t("fullTime")
-                    : option === "part-time"
-                      ? t("partTime")
-                      : t("freelance")}
-                </option>
-              ))}
-              {status && !STATUS_OPTIONS.includes(status as (typeof STATUS_OPTIONS)[number]) ? (
-                <option value={status}>{status}</option>
-              ) : null}
-            </select>
-          </Field>
-          <Field label={t("category")} htmlFor="profile-category">
-            <select
-              id="profile-category"
-              value={categoryId}
-              disabled={categoriesQuery.isLoading}
-              onChange={(event) => setCategoryId(event.target.value)}
-              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm"
-            >
-              <option value="">{t("categoryEmpty")}</option>
-              {(categoriesQuery.data ?? []).map((category) => (
-                <option key={category.id} value={String(category.id)}>
-                  {category.name}
-                </option>
-              ))}
-              {categoryId &&
-              !(categoriesQuery.data ?? []).some((category) => String(category.id) === categoryId) ? (
-                <option value={categoryId}>{categoryId}</option>
-              ) : null}
-            </select>
-          </Field>
-          <Field label={t("myStory")} htmlFor="profile-bio">
-            <textarea
-              id="profile-bio"
-              value={bio}
-              rows={4}
-              onChange={(event) => setBio(event.target.value)}
-              className="w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm"
-            />
-          </Field>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5">
-                <p className="text-sm font-medium">{t("skills")}</p>
-                <InfoTip label={t("skills")} text={t("skillsInfo")} />
-              </div>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  setSkills((current) => [
-                    ...current,
-                    { name: "", proficiency: "1", yearsExperience: "0" },
-                  ])
-                }
-              >
-                {t("addSkill")}
-              </Button>
+          <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto pb-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Field label={t("name")} htmlFor="profile-name" className="sm:col-span-2">
+                <Input
+                  id="profile-name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
+              </Field>
+              <Field label={t("role")} htmlFor="profile-headline">
+                <Input
+                  id="profile-headline"
+                  value={headline}
+                  onChange={(event) => setHeadline(event.target.value)}
+                />
+              </Field>
+              <Field label={t("location")} htmlFor="profile-location">
+                <Input
+                  id="profile-location"
+                  value={location}
+                  onChange={(event) => setLocation(event.target.value)}
+                />
+              </Field>
+              <Field label={t("employmentStatus")} htmlFor="profile-status">
+                <select
+                  id="profile-status"
+                  value={status}
+                  onChange={(event) => setStatus(event.target.value)}
+                  className={selectClassName}
+                >
+                  {STATUS_OPTIONS.map((option) => (
+                    <option key={option} value={option}>
+                      {option === "full-time"
+                        ? t("fullTime")
+                        : option === "part-time"
+                          ? t("partTime")
+                          : t("freelance")}
+                    </option>
+                  ))}
+                  {status && !STATUS_OPTIONS.includes(status as (typeof STATUS_OPTIONS)[number]) ? (
+                    <option value={status}>{status}</option>
+                  ) : null}
+                </select>
+              </Field>
+              <Field label={t("category")} htmlFor="profile-category">
+                <select
+                  id="profile-category"
+                  value={categoryId}
+                  disabled={categoriesQuery.isLoading}
+                  onChange={(event) => setCategoryId(event.target.value)}
+                  className={selectClassName}
+                >
+                  <option value="">{t("categoryEmpty")}</option>
+                  {(categoriesQuery.data ?? []).map((category) => (
+                    <option key={category.id} value={String(category.id)}>
+                      {category.name}
+                    </option>
+                  ))}
+                  {categoryId &&
+                  !(categoriesQuery.data ?? []).some(
+                    (category) => String(category.id) === categoryId
+                  ) ? (
+                    <option value={categoryId}>{categoryId}</option>
+                  ) : null}
+                </select>
+              </Field>
+              <Field label={t("myStory")} htmlFor="profile-bio" className="sm:col-span-2">
+                <textarea
+                  id="profile-bio"
+                  value={bio}
+                  rows={4}
+                  onChange={(event) => setBio(event.target.value)}
+                  className="min-h-24 w-full resize-y rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                />
+              </Field>
             </div>
-            {skills.map((skill, index) => (
-              <div key={index} className="flex flex-col gap-2 rounded-lg border border-border p-2">
-                <div className="flex items-center gap-2">
+
+            <div className="flex flex-col gap-3 border-t border-border pt-5">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-1.5">
+                  <p className="text-sm font-medium">{t("skills")}</p>
+                  <InfoTip label={t("skills")} text={t("skillsInfo")} />
+                </div>
+                <Button
+                  type="button"
+                  size="sm"
+                  className="shrink-0 bg-brand-mint text-primary-foreground hover:bg-brand-mint/90"
+                  onClick={() =>
+                    setSkills((current) => [
+                      ...current,
+                      { name: "", proficiency: "1", yearsExperience: "0" },
+                    ])
+                  }
+                >
+                  <IconPlus />
+                  {t("addSkill")}
+                </Button>
+              </div>
+              {skills.map((skill, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col gap-3 rounded-xl border border-border bg-muted/40 p-3 sm:p-4"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-sm font-medium">{t("skillName")}</p>
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="sm"
+                      className="shrink-0"
+                      onClick={() =>
+                        setSkills((current) =>
+                          current.filter((_, skillIndex) => skillIndex !== index)
+                        )
+                      }
+                    >
+                      <IconTrash />
+                      {t("removeSkill")}
+                    </Button>
+                  </div>
                   <select
                     aria-label={t("skillName")}
                     value={skill.name}
                     disabled={catalogQuery.isLoading}
                     onChange={(event) => updateSkill(index, { name: event.target.value })}
-                    className="h-8 min-w-0 flex-1 rounded-lg border border-input bg-transparent px-2.5 text-sm"
+                    className={selectClassName}
                   >
                     <option value="">{t("skillName")}</option>
                     {skillChoices(
                       catalogQuery.data ?? [],
-                      skills.filter((_, skillIndex) => skillIndex !== index).map((item) => item.name),
+                      skills
+                        .filter((_, skillIndex) => skillIndex !== index)
+                        .map((item) => item.name),
                       skill.name
                     ).map((option) => (
                       <option key={option.id} value={option.name}>
@@ -269,58 +306,61 @@ export function ProfileEditDialog({
                       </option>
                     ))}
                   </select>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() =>
-                      setSkills((current) => current.filter((_, skillIndex) => skillIndex !== index))
-                    }
-                  >
-                    {t("removeSkill")}
-                  </Button>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <label className="flex flex-col gap-2 text-sm font-medium">
+                      <span className="flex items-center gap-1.5 leading-none">
+                        {t("proficiency")}
+                        <InfoTip label={t("proficiency")} text={t("proficiencyInfo")} />
+                      </span>
+                      <Input
+                        aria-label={t("proficiency")}
+                        type="number"
+                        min={1}
+                        max={10}
+                        value={skill.proficiency}
+                        onChange={(event) =>
+                          updateSkill(index, { proficiency: event.target.value })
+                        }
+                      />
+                    </label>
+                    <label className="flex flex-col gap-2 text-sm font-medium">
+                      <span className="flex items-center gap-1.5 leading-none">
+                        {t("yearsExperience")}
+                        <InfoTip label={t("yearsExperience")} text={t("yearsInfo")} />
+                      </span>
+                      <Input
+                        aria-label={t("yearsExperience")}
+                        type="number"
+                        min={0}
+                        max={5}
+                        value={skill.yearsExperience}
+                        onChange={(event) =>
+                          updateSkill(index, { yearsExperience: event.target.value })
+                        }
+                      />
+                    </label>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <label className="flex flex-col gap-1 text-xs font-medium">
-                    <span className="flex items-center gap-1">
-                      {t("proficiency")}
-                      <InfoTip label={t("proficiency")} text={t("proficiencyInfo")} />
-                    </span>
-                    <Input
-                      aria-label={t("proficiency")}
-                      type="number"
-                      min={1}
-                      max={10}
-                      value={skill.proficiency}
-                      onChange={(event) => updateSkill(index, { proficiency: event.target.value })}
-                    />
-                  </label>
-                  <label className="flex flex-col gap-1 text-xs font-medium">
-                    <span className="flex items-center gap-1">
-                      {t("yearsExperience")}
-                      <InfoTip label={t("yearsExperience")} text={t("yearsInfo")} />
-                    </span>
-                    <Input
-                      aria-label={t("yearsExperience")}
-                      type="number"
-                      min={0}
-                      max={5}
-                      value={skill.yearsExperience}
-                      onChange={(event) =>
-                        updateSkill(index, { yearsExperience: event.target.value })
-                      }
-                    />
-                  </label>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            {error ? <p className="text-sm text-destructive">{error}</p> : null}
           </div>
-          {error ? <p className="text-sm text-destructive">{error}</p> : null}
-          <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+          <DialogFooter className="shrink-0">
+            <Button
+              type="button"
+              variant="outline"
+              className="border-brand-steel-blue/40 text-brand-steel-blue hover:bg-brand-steel-blue/10"
+              onClick={() => onOpenChange(false)}
+            >
+              <IconX />
               {t("cancel")}
             </Button>
-            <Button type="submit" disabled={updateProfile.isPending}>
+            <Button
+              type="submit"
+              className="bg-brand-steel-blue text-primary-foreground hover:bg-brand-steel-blue/90"
+              disabled={updateProfile.isPending}
+            >
+              {updateProfile.isPending ? <IconLoader2 className="animate-spin" /> : <IconCheck />}
               {updateProfile.isPending ? t("saving") : t("save")}
             </Button>
           </DialogFooter>
@@ -350,15 +390,17 @@ function InfoTip({ label, text }: { label: string; text: string }) {
 function Field({
   label,
   htmlFor,
+  className,
   children,
 }: {
   label: string
   htmlFor: string
+  className?: string
   children: ReactNode
 }) {
   return (
-    <label className="flex flex-col gap-1.5 text-sm font-medium" htmlFor={htmlFor}>
-      {label}
+    <label className={cn("flex flex-col gap-2 text-sm font-medium", className)} htmlFor={htmlFor}>
+      <span className="leading-none">{label}</span>
       {children}
     </label>
   )

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { IconPencil } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 
 import { Button } from "@workspace/ui/components/button"
@@ -52,7 +53,11 @@ export function ProfilePage({ profile: providedProfile }: ProfilePageProps) {
     <div className="flex w-full min-w-0 flex-col gap-6">
       {canEdit ? (
         <div className="flex justify-end">
-          <Button className="rounded-full" onClick={() => setIsEditing(true)}>
+          <Button
+            className="rounded-full bg-brand-orange text-accent-foreground hover:bg-brand-orange/90"
+            onClick={() => setIsEditing(true)}
+          >
+            <IconPencil />
             {tProfile("editProfile")}
           </Button>
         </div>

@@ -69,10 +69,21 @@ export function DashboardOverviewGrid() {
 
   const title = displayTitle(profile.title)
   const { percent } = getProfileCompletion(profile)
+  const showProgress = percent < 100
   const firstName = getFirstName(profile.name)
   const stats = [
-    { key: "skills", value: String(profile.skills.length), labelKey: "statSkillsLabel" },
-    { key: "projects", value: String(profile.projects.length), labelKey: "statProjectsLabel" },
+    {
+      key: "skills",
+      value: String(profile.skills.length),
+      labelKey: "statSkillsLabel",
+      href: "/skills",
+    },
+    {
+      key: "projects",
+      value: String(profile.projects.length),
+      labelKey: "statProjectsLabel",
+      href: "/projects",
+    },
     {
       key: "experience",
       value: String(profile.experienceYears),
@@ -92,24 +103,29 @@ export function DashboardOverviewGrid() {
           title={title}
           avatarUrl={profile.avatar}
           location={profile.location}
-          className="md:col-span-1 lg:col-span-5"
+          className={showProgress ? "md:col-span-1 lg:col-span-5" : "md:col-span-2 lg:col-span-12"}
         />
 
-        <DashboardCompletionRingCard
-          percent={percent}
-          className="md:col-span-1 lg:col-span-3"
-        />
+        {showProgress ? (
+          <DashboardCompletionRingCard
+            percent={percent}
+            className="md:col-span-1 lg:col-span-3"
+          />
+        ) : null}
 
-        <DashboardProfileTasksCard
-          profile={profile}
-          className="md:col-span-2 lg:col-span-4 lg:row-span-2"
-        />
+        {showProgress ? (
+          <DashboardProfileTasksCard
+            profile={profile}
+            className="md:col-span-2 lg:col-span-4 lg:row-span-2"
+          />
+        ) : null}
 
         {stats.map((stat) => (
           <DashboardStatTile
             key={stat.key}
             value={stat.value}
             labelKey={stat.labelKey}
+            href={"href" in stat ? stat.href : undefined}
             className="md:col-span-1 lg:col-span-4"
           />
         ))}

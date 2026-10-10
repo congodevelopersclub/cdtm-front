@@ -1,6 +1,10 @@
 import { cn } from "@workspace/ui/lib/utils"
 
-import { ProfileCompletionPanel, type TalentProfile } from "@/entities/talent"
+import {
+  getProfileCompletion,
+  ProfileCompletionPanel,
+  type TalentProfile,
+} from "@/entities/talent"
 
 type DashboardProfileTasksCardProps = {
   profile: TalentProfile
@@ -11,6 +15,10 @@ export function DashboardProfileTasksCard({
   profile,
   className,
 }: DashboardProfileTasksCardProps) {
+  if (getProfileCompletion(profile).percent >= 100) {
+    return null
+  }
+
   return (
     <div
       className={cn(
