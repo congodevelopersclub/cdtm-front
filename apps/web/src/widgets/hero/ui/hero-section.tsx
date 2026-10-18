@@ -24,23 +24,21 @@ function CloudSVG({ className }: { className?: string }) {
   )
 }
 
-// Renders the hero content and formats the live contributor count.
 export function HeroSection({
-  contributorCount,
+  developerCount,
   projectCount,
   contributors,
 }: {
-  contributorCount: number
+  developerCount: number
   projectCount: number
   contributors: GitHubContributor[]
 }) {
   const t = useTranslations("hero")
 
-  // Hero metrics shown below the description.
   const stats = [
     {
       label: t("stats_developers"),
-      value: contributorCount.toLocaleString(),
+      value: developerCount.toLocaleString(),
       icon: Globe,
     },
     {
