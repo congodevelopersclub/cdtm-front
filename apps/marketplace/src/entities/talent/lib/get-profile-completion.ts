@@ -13,6 +13,25 @@ export type ProfileCompletion = {
   items: ProfileCompletionItem[]
 }
 
+function hasLocation(profile: TalentProfile) {
+  return Boolean(profile.location.trim())
+}
+
+function hasRole(profile: TalentProfile) {
+  const title = profile.title.trim()
+  return Boolean(title) && title !== "—"
+}
+
+function hasTopSkills(profile: TalentProfile) {
+  const count = Math.max(
+    profile.skillDetails?.length ?? 0,
+    profile.skills.length,
+    profile.superpowerSkills.length
+  )
+
+  return count >= 3
+}
+
 export function getProfileCompletion(profile: TalentProfile): ProfileCompletion {
   const items: ProfileCompletionItem[] = [
     {
@@ -20,21 +39,21 @@ export function getProfileCompletion(profile: TalentProfile): ProfileCompletion 
       labelKey: "addLocation",
       percent: 25,
       href: "/profile",
-      done: Boolean(profile.location.trim()),
+      done: hasLocation(profile),
     },
     {
       key: "role",
       labelKey: "addRole",
       percent: 50,
       href: "/profile",
-      done: Boolean(profile.title.trim()) && profile.title.trim() !== "—",
+      done: hasRole(profile),
     },
     {
       key: "topSkills",
       labelKey: "addTopSkills",
       percent: 25,
-      href: "/profile",
-      done: profile.superpowerSkills.length >= 3,
+      href: "/skills",
+      done: hasTopSkills(profile),
     },
   ]
 

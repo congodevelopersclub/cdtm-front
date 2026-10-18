@@ -41,27 +41,29 @@ export function ProfileCompletionPanel({
             )}
             <span
               className={cn(
-                "inline-flex min-w-0 items-center gap-1.5",
+                "inline-flex min-w-0 max-w-full items-center gap-1.5",
                 !item.done &&
                   isDashboard &&
-                  "rounded-full bg-brand-orange px-3 py-1 text-accent-foreground",
+                  "rounded-full bg-brand-orange px-3 py-1 text-accent-foreground"
               )}
             >
               {!item.done && isDashboard ? (
                 <IconCircle className="size-4 shrink-0" />
               ) : null}
-              {!item.done ? <span>{t("addPrefix")}</span> : null}
+              {!item.done ? (
+                <span className="shrink-0">{t("addPrefix")}</span>
+              ) : null}
               <Link
                 href={item.href}
                 className={cn(
-                  "underline-offset-2 hover:underline",
+                  "truncate underline-offset-2 hover:underline",
                   item.done
                     ? isDashboard
                       ? "text-foreground"
                       : "text-surface-elevated-dark-muted line-through"
                     : isDashboard
                       ? "text-accent-foreground"
-                      : "rounded-full hover:text-brand-orange",
+                      : "rounded-full hover:text-brand-orange"
                 )}
               >
                 {t(item.labelKey)}
@@ -71,10 +73,14 @@ export function ProfileCompletionPanel({
           <span
             className={cn(
               "shrink-0 tabular-nums",
-              isDashboard ? "text-muted-foreground" : "text-surface-elevated-dark-muted",
+              item.done
+                ? "font-medium text-brand-mint"
+                : isDashboard
+                  ? "text-muted-foreground"
+                  : "text-surface-elevated-dark-muted"
             )}
           >
-            {item.percent}%
+            {item.done ? `+${item.percent}%` : `${item.percent}%`}
           </span>
         </li>
       ))}
