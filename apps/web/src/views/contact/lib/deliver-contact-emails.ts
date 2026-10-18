@@ -4,7 +4,7 @@ import en from "@/shared/i18n/messages/en.json"
 import fr from "@/shared/i18n/messages/fr.json"
 
 const MAILTRAP_SEND_URL = "https://send.api.mailtrap.io/api/send"
-export const DEFAULT_CONTACT_INBOX = "hello@congodevelopers.club"
+export const DEFAULT_CONTACT_INBOX = "info@congodevelopers.club"
 
 type ContactCopy = {
   confirmationEmailSubject: string

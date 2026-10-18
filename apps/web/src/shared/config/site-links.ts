@@ -18,7 +18,7 @@ export const SOCIAL_LINKS = [
     label: "LinkedIn",
   },
   {
-    href: "mailto:hello@congodevelopers.club",
+    href: "mailto:info@congodevelopers.club",
     label: "Email",
   },
 ] as const
