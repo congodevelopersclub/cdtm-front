@@ -7,6 +7,7 @@ export type WebPageMetadataKey =
   | "terms"
   | "cookies"
   | "notFound"
+  | "contact"
   | "talents"
   | "talentNotFound"
 
