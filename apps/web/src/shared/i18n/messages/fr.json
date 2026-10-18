@@ -117,7 +117,9 @@
     "sending": "Envoi du message...",
     "success": "Merci pour votre message. Il a bien été envoyé.",
     "invalid": "Veuillez remplir tous les champs avec une adresse e-mail valide.",
-    "error": "Impossible d'envoyer votre message pour le moment. Veuillez réessayer plus tard."
+    "error": "Impossible d'envoyer votre message pour le moment. Veuillez réessayer plus tard.",
+    "confirmationEmailSubject": "Nous avons bien reçu votre message",
+    "confirmationEmailText": "Bonjour {name},\n\nMerci d'avoir contacté Congo Developers Club. Nous avons bien reçu votre message et nous vous répondrons dès que possible.\n\nCordialement,\nCongo Developers Club"
   },
   "footer": {
     "description": "La communauté de référence pour les développeurs en République Démocratique du Congo. Ensemble, bâtissons l'écosystème tech de demain.",

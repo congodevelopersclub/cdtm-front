@@ -117,7 +117,9 @@
     "sending": "Sending message...",
     "success": "Thanks for reaching out. Your message has been sent.",
     "invalid": "Please complete every field with a valid email address.",
-    "error": "We couldn't send your message right now. Please try again later."
+    "error": "We couldn't send your message right now. Please try again later.",
+    "confirmationEmailSubject": "We received your message",
+    "confirmationEmailText": "Hi {name},\n\nThanks for contacting Congo Developers Club. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nCongo Developers Club"
   },
   "footer": {
     "description": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
