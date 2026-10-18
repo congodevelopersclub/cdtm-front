@@ -62,9 +62,9 @@ export async function LegalPage({ page }: LegalPageProps) {
           {t("contactPrompt")}{" "}
           <a
             className="font-medium text-primary underline underline-offset-4"
-            href="mailto:hello@congodevelopers.club"
+            href="mailto:info@congodevelopers.club"
           >
-            hello@congodevelopers.club
+            info@congodevelopers.club
           </a>
         </p>
       </div>
