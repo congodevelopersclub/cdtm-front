@@ -1,4 +1,5 @@
 export const JOIN_URL = "https://dev.congodevelopers.club/"
+export const GITHUB_ORG_URL = "https://github.com/congodevelopersclub"
 
 export const NAV_PATHS = [
   { key: "home", path: "/" },
@@ -10,7 +11,7 @@ export const FOOTER_NAV_PATHS = NAV_PATHS
 
 export const SOCIAL_LINKS = [
   {
-    href: "https://github.com/congodevelopersclub",
+    href: GITHUB_ORG_URL,
     label: "GitHub",
   },
   {

@@ -10,6 +10,7 @@ import {
 import { useTranslations } from "next-intl"
 
 import type { GitHubContributor } from "@/entities/github-contributor"
+import { GITHUB_ORG_URL } from "@/shared/config/site-links"
 
 function CloudSVG({ className }: { className?: string }) {
   return (
@@ -35,16 +36,23 @@ export function HeroSection({
 }) {
   const t = useTranslations("hero")
 
-  const stats = [
+  const stats: {
+    label: string
+    value: string
+    icon: typeof Globe
+    href?: string
+  }[] = [
     {
       label: t("stats_developers"),
       value: developerCount.toLocaleString(),
       icon: Globe,
+      href: "/talents",
     },
     {
       label: t("stats_projects"),
       value: projectCount.toLocaleString(),
       icon: ShieldCheck,
+      href: GITHUB_ORG_URL,
     },
   ]
 
@@ -133,26 +141,47 @@ export function HeroSection({
 
             {/* Live contributor metric and supporting community statistics. */}
             <div className="mt-10 flex flex-wrap gap-5">
-              {stats.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1 }}
-                  className="group border-border bg-card/70 min-w-37.5 rounded-2xl border px-5 py-4 backdrop-blur-xl transition-all hover:border-primary/40"
-                >
-                  <div className="mb-3 flex items-center justify-between">
-                    <item.icon className="text-primary h-4 w-4" />
-                    <ArrowUpRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
-                  </div>
-                  <div className="text-foreground text-2xl font-black">
-                    {item.value}
-                  </div>
-                  <div className="text-muted-foreground mt-1 text-xs tracking-[0.2em] uppercase">
-                    {item.label}
-                  </div>
-                </motion.div>
-              ))}
+              {stats.map((item, index) => {
+                const cardClassName =
+                  "group border-border bg-card/70 min-w-37.5 rounded-2xl border px-5 py-4 backdrop-blur-xl transition-all hover:border-primary/40"
+                const content = (
+                  <>
+                    <div className="mb-3 flex items-center justify-between">
+                      <item.icon className="text-primary h-4 w-4" />
+                      <ArrowUpRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                    </div>
+                    <div className="text-foreground text-2xl font-black">
+                      {item.value}
+                    </div>
+                    <div className="text-muted-foreground mt-1 text-xs tracking-[0.2em] uppercase">
+                      {item.label}
+                    </div>
+                  </>
+                )
+
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + index * 0.1 }}
+                  >
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${cardClassName} block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50`}
+                        aria-label={`${item.label}: ${item.value}`}
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div className={cardClassName}>{content}</div>
+                    )}
+                  </motion.div>
+                )
+              })}
             </div>
 
           </motion.div>
