@@ -33,6 +33,14 @@ import { DashboardEmptyState, DashboardPanel } from "@/widgets/dashboard-shell"
 import { useAuth } from "@/features/auth"
 import { skillChoices, useSkillCatalog } from "@/entities/skill"
 import {
+  clampSkillProficiency,
+  clampSkillYears,
+  isValidSkillProficiency,
+  isValidSkillYears,
+  SKILL_PROFICIENCY_MAX,
+  SKILL_PROFICIENCY_MIN,
+  SKILL_YEARS_MAX,
+  SKILL_YEARS_MIN,
   toUpdateProfileInput,
   useProfile,
   useUpdateProfile,
@@ -47,8 +55,8 @@ type SkillDraft = {
 
 const EMPTY_SKILL: SkillDraft = {
   name: "",
-  proficiency: "1",
-  yearsExperience: "0",
+  proficiency: String(SKILL_PROFICIENCY_MIN),
+  yearsExperience: String(SKILL_YEARS_MIN),
 }
 
 export function SkillsPage() {
@@ -87,8 +95,8 @@ export function SkillsPage() {
 
     setDraft({
       name: skill.name,
-      proficiency: String(skill.proficiency),
-      yearsExperience: String(skill.years_experience),
+      proficiency: String(clampSkillProficiency(skill.proficiency)),
+      yearsExperience: String(clampSkillYears(skill.years_experience)),
     })
     setFormError(null)
     setEditingIndex(index)
@@ -111,12 +119,8 @@ export function SkillsPage() {
     const yearsExperience = Number(draft.yearsExperience)
 
     if (
-      !Number.isInteger(proficiency) ||
-      proficiency < 1 ||
-      proficiency > 10 ||
-      !Number.isInteger(yearsExperience) ||
-      yearsExperience < 0 ||
-      yearsExperience > 5
+      !isValidSkillProficiency(proficiency) ||
+      !isValidSkillYears(yearsExperience)
     ) {
       setFormError(t("skillInvalid"))
       return null
@@ -298,8 +302,8 @@ export function SkillsPage() {
                   <Input
                     id="skill-proficiency"
                     type="number"
-                    min={1}
-                    max={10}
+                    min={SKILL_PROFICIENCY_MIN}
+                    max={SKILL_PROFICIENCY_MAX}
                     value={draft.proficiency}
                     onChange={(event) =>
                       setDraft((current) => ({ ...current, proficiency: event.target.value }))
@@ -310,8 +314,8 @@ export function SkillsPage() {
                   <Input
                     id="skill-years"
                     type="number"
-                    min={0}
-                    max={5}
+                    min={SKILL_YEARS_MIN}
+                    max={SKILL_YEARS_MAX}
                     value={draft.yearsExperience}
                     onChange={(event) =>
                       setDraft((current) => ({ ...current, yearsExperience: event.target.value }))

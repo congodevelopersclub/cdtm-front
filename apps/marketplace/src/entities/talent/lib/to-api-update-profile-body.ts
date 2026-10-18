@@ -3,6 +3,7 @@ import type {
   UpdateProfileProjectInput,
   UpdateProfileSkillInput,
 } from "../actions/update-profile"
+import { clampSkillProficiency, clampSkillYears } from "./skill-bounds"
 import { toAbsoluteProjectLink } from "./to-absolute-project-link"
 
 export type ApiUpdateProfileBody = Omit<
@@ -62,8 +63,8 @@ function toApiSkills(skills: UpdateProfileSkillInput[]) {
   return skills
     .map((skill) => ({
       name: skill.name.trim(),
-      proficiency: Math.trunc(skill.proficiency),
-      years_experience: Math.min(5, Math.max(0, Math.trunc(skill.years_experience))),
+      proficiency: clampSkillProficiency(skill.proficiency),
+      years_experience: clampSkillYears(skill.years_experience),
     }))
     .filter((skill) => skill.name)
 }

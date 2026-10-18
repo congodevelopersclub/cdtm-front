@@ -31,7 +31,19 @@ import {
 import { useAuth } from "@/features/auth"
 import { useCategories } from "@/entities/category"
 import { skillChoices, useSkillCatalog } from "@/entities/skill"
-import { toUpdateProfileInput, useUpdateProfile, type TalentProfile } from "@/entities/talent"
+import {
+  clampSkillProficiency,
+  clampSkillYears,
+  isValidSkillProficiency,
+  isValidSkillYears,
+  SKILL_PROFICIENCY_MAX,
+  SKILL_PROFICIENCY_MIN,
+  SKILL_YEARS_MAX,
+  SKILL_YEARS_MIN,
+  toUpdateProfileInput,
+  useUpdateProfile,
+  type TalentProfile,
+} from "@/entities/talent"
 
 const STATUS_OPTIONS = ["full-time", "part-time", "feelance"] as const
 
@@ -53,15 +65,15 @@ function toDrafts(profile: TalentProfile): SkillDraft[] {
   if (details.length > 0) {
     return details.map((skill) => ({
       name: skill.name,
-      proficiency: String(skill.proficiency),
-      yearsExperience: String(skill.yearsExperience),
+      proficiency: String(clampSkillProficiency(skill.proficiency)),
+      yearsExperience: String(clampSkillYears(skill.yearsExperience)),
     }))
   }
 
   return profile.skills.map((skill) => ({
     name: skill,
-    proficiency: "1",
-    yearsExperience: "0",
+    proficiency: String(SKILL_PROFICIENCY_MIN),
+    yearsExperience: String(SKILL_YEARS_MIN),
   }))
 }
 
@@ -128,12 +140,8 @@ export function ProfileEditDialog({
     if (
       nextSkills.some(
         (skill) =>
-          !Number.isInteger(skill.proficiency) ||
-          skill.proficiency < 1 ||
-          skill.proficiency > 10 ||
-          !Number.isInteger(skill.years_experience) ||
-          skill.years_experience < 0 ||
-          skill.years_experience > 5
+          !isValidSkillProficiency(skill.proficiency) ||
+          !isValidSkillYears(skill.years_experience)
       )
     ) {
       setError(t("skillInvalid"))
@@ -263,7 +271,11 @@ export function ProfileEditDialog({
                   onClick={() =>
                     setSkills((current) => [
                       ...current,
-                      { name: "", proficiency: "1", yearsExperience: "0" },
+                      {
+                        name: "",
+                        proficiency: String(SKILL_PROFICIENCY_MIN),
+                        yearsExperience: String(SKILL_YEARS_MIN),
+                      },
                     ])
                   }
                 >
@@ -322,8 +334,8 @@ export function ProfileEditDialog({
                       <Input
                         aria-label={t("proficiency")}
                         type="number"
-                        min={1}
-                        max={10}
+                        min={SKILL_PROFICIENCY_MIN}
+                        max={SKILL_PROFICIENCY_MAX}
                         value={skill.proficiency}
                         onChange={(event) =>
                           updateSkill(index, { proficiency: event.target.value })
@@ -338,8 +350,8 @@ export function ProfileEditDialog({
                       <Input
                         aria-label={t("yearsExperience")}
                         type="number"
-                        min={0}
-                        max={5}
+                        min={SKILL_YEARS_MIN}
+                        max={SKILL_YEARS_MAX}
                         value={skill.yearsExperience}
                         onChange={(event) =>
                           updateSkill(index, { yearsExperience: event.target.value })

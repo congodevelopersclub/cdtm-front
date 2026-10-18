@@ -17,7 +17,7 @@ export function toUpdateProfileInput(profile: TalentProfile): UpdateProfileInput
       : profile.skills.map((name) => ({
           name,
           proficiency: 1,
-          years_experience: 0,
+          years_experience: 1,
         }))
 
   const projects: UpdateProfileProjectInput[] = profile.projects.map((project) => ({

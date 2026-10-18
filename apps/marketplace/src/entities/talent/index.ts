@@ -6,6 +6,16 @@ export { TalentProfileSkeleton } from "./ui/talent-profile-skeleton"
 export { mapApiProfileToTalentProfile } from "./lib/map-api-profile"
 export { toUpdateProfileInput } from "./lib/to-update-profile-input"
 export { toAbsoluteProjectLink } from "./lib/to-absolute-project-link"
+export {
+  clampSkillProficiency,
+  clampSkillYears,
+  isValidSkillProficiency,
+  isValidSkillYears,
+  SKILL_PROFICIENCY_MAX,
+  SKILL_PROFICIENCY_MIN,
+  SKILL_YEARS_MAX,
+  SKILL_YEARS_MIN,
+} from "./lib/skill-bounds"
 export { useProfiles } from "./hooks/use-profiles"
 export { useProfile } from "./hooks/use-profile"
 export { getInitials } from "./lib/get-initials"
