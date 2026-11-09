@@ -81,7 +81,7 @@ export function LoginMarketingPanel({ homeHref }: LoginMarketingPanelProps) {
         <a href={homeHref} className="flex w-fit items-center gap-3">
           <div className="flex size-8 items-center justify-center overflow-hidden">
             <Image
-              src="/images/logo.svg"
+              src="/images/cdc-logo-2.jpeg"
               alt=""
               width={32}
               height={32}

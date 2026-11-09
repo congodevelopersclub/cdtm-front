@@ -10,7 +10,7 @@ import {
 
 import { getInitials } from "../lib/get-initials"
 
-const LOGO_FALLBACK = "/images/logo.svg"
+const LOGO_FALLBACK = "/images/cdc-logo-2.jpeg"
 
 type TalentAvatarProps = {
   name: string
