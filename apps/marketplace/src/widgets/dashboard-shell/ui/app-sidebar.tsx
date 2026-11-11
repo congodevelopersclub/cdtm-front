@@ -37,7 +37,7 @@ export function AppSidebar({ role, user: _user, ...props }: AppSidebarProps) {
               <Link href="/" className="flex items-center gap-3">
                 <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl">
                   <Image
-                    src="/images/cdc-logo-2.jpeg"
+                    src="/images/cdc_logo_full_colors.svg"
                     alt="Congo developers club Logo"
                     width={40}
                     height={40}

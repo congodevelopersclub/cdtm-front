@@ -15,7 +15,7 @@ export function CdcLogo({ size = 40, className, priority = false }: CdcLogoProps
       className={cn("shrink-0", className)}
       height={size}
       priority={priority}
-      src="/images/cdc-logo-2.svg"
+      src="/images/cdc_logo_full_colors.svg"
       width={size}
     />
   )

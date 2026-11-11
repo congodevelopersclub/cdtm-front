@@ -11,7 +11,7 @@ export function LoginBrandHeader() {
       <div className="flex items-center gap-3">
         <div className="flex size-10 items-center justify-center overflow-hidden">
           <Image
-            src="/images/cdc-logo-2.jpeg"
+            src="/images/cdc_logo_full_colors.svg"
             alt=""
             width={40}
             height={40}
