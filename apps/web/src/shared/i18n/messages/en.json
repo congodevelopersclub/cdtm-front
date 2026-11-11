@@ -1,0 +1,198 @@
+{
+  "Metadata": {
+    "siteName": "Congo Developer Club",
+    "defaultDescription": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
+    "home": {
+      "title": "Home",
+      "description": "Join the Congo Developer Club — the hub where Congolese tech talents gather, train, and build the future."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn how Congo Developer Club handles personal information."
+    },
+    "terms": {
+      "title": "Legal Notice",
+      "description": "Legal information and terms governing the Congo Developer Club website."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "Learn how the Congo Developer Club website uses cookies."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for does not exist or may have been moved."
+    },
+    "talents": {
+      "title": "Talents",
+      "description": "Browse Congolese tech talents from the Congo Developer Club."
+    },
+    "talentNotFound": {
+      "title": "Talent not found",
+      "description": "This talent profile does not exist or may have been removed."
+    },
+    "talentProfile": {
+      "description": "{name}, {role} — public profile on Congo Developer Club."
+    },
+    "contact": {
+      "title": "Contact us",
+      "description": "Get in touch with the Congo Developer Club team."
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "french": "French",
+    "shortEnglish": "En",
+    "shortFrench": "Fr"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or may have been moved.",
+    "back_home": "Back to home",
+    "join": "Join us"
+  },
+  "nav": {
+    "home": "Home",
+    "talents": "Talents",
+    "contact": "Contact",
+    "join": "Join Us"
+  },
+  "talents": {
+    "title": "Talents",
+    "subtitle": "Meet the developers, designers, and builders of the future digital ecosystem of the DRC.",
+    "directoryCount": "{total} talents",
+    "showingRange": "Showing {from}–{to} of {total} talents",
+    "showingFiltered": "Showing {count} matching talents on this page",
+    "searchPlaceholder": "Search by name",
+    "searchAriaLabel": "Search talents by name",
+    "locationPlaceholder": "Location",
+    "locationAriaLabel": "Filter by location",
+    "skillsFilterLabel": "Skills",
+    "skillsFilterEmpty": "No skills available",
+    "categoryFilterLabel": "Category",
+    "allCategories": "All categories",
+    "verifiedFilterLabel": "Verification status",
+    "allProfiles": "All profiles",
+    "verifiedOnly": "Verified only",
+    "unverifiedOnly": "Unverified only",
+    "clearFilters": "Clear filters",
+    "filteredEmptyTitle": "No talents match your filters",
+    "filteredEmptyDescription": "Try adjusting your search or filters.",
+    "viewProfileFor": "View profile for {name}",
+    "verified": "Verified",
+    "skillsOverflowTooltip": "More skills: {skills}",
+    "loadError": "Talents could not be loaded. Please try again.",
+    "empty": "No talents to show yet.",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {lastPage}",
+    "backToDirectory": "Back to talents",
+    "role": "Role",
+    "experience": "Experience",
+    "years": "{count, plural, one {# year} other {# years}}",
+    "superpowerSkills": "Superpower skills",
+    "story": "My story",
+    "noBio": "This talent has not added a story yet.",
+    "skills": "Skills",
+    "skillsDescription": "Technologies and disciplines they work with.",
+    "noSkills": "No skills listed yet.",
+    "projects": "Projects",
+    "projectsDescription": "Work they have shipped.",
+    "noProjects": "No projects listed yet."
+  },
+  "contact": {
+    "title": "Let's build something together.",
+    "description": "Have a question, an idea, or want to collaborate? Send us a message and our team will get back to you.",
+    "emailLabel": "Prefer email?",
+    "formTitle": "Send us a message",
+    "name": "Your name",
+    "namePlaceholder": "Jane Doe",
+    "email": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "How can we help?",
+    "message": "Message",
+    "messagePlaceholder": "Tell us a little about what you have in mind...",
+    "submit": "Send message",
+    "sending": "Sending message...",
+    "success": "Thanks for reaching out. Your message has been sent.",
+    "invalid": "Please complete every field with a valid email address.",
+    "error": "We couldn't send your message right now. Please try again later.",
+    "confirmationEmailSubject": "We received your message",
+    "confirmationEmailText": "Hi {name},\n\nThanks for contacting Congo Developers Club. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nCongo Developers Club"
+  },
+  "footer": {
+    "description": "The reference community for developers in the Democratic Republic of Congo. Together, let's build the tech ecosystem of tomorrow.",
+    "col_nav": "Navigation",
+    "col_legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Legal Notice",
+    "cookies": "Cookies",
+    "rights": "All rights reserved.",
+    "community_name": "Congo Developer Club",
+    "built_by_community": "Built by the Congo Developers Club community",
+    "made_in": "Made in",
+    "country": "DRC"
+  },
+  "legal": {
+    "label": "Legal"
+  },
+  "hero": {
+    "badge": "The first tech community in DRC",
+    "title_1": "CODE THE",
+    "title_2": "FUTURE.",
+    "description": "Gather, train, and propel Congolese talents. Congo Developer Club is the hub where ideas become code, and code becomes impact.",
+    "cta_join": "Join the Movement",
+    "cta_actions": "Discover our actions",
+    "stats_developers": "Developers",
+    "stats_projects": "Projects",
+    "stats_events": "Events",
+    "contributors_title": "Top Contributors",
+    "contributors_description": "A community of builders",
+    "growth": "Community Growth"
+  },
+ 
+  "github": {
+    "title": "Top GitHub Contributors",
+    "subtitle": "Discover and follow the most active Congolese developers contributing to our GitHub organization.",
+    "profile": "Profile",
+    "contributions": "contributions",
+    "contribution_singular": "contribution",
+    "tooltips": {
+      "rank": "Leaderboard position based on total contributions across all organization repositories.",
+      "profile": "Opens this contributor's public GitHub profile in a new tab.",
+      "contributions": "Total contributions (commits, pull requests, and more) summed across all Congo Developers Club repositories."
+    }
+  },
+ 
+  "cta": {
+    "label": "System.out.println(\"Join Us\");",
+    "title_1": "READY TO",
+    "title_2": "COMMIT?",
+    "description": "Join the Congo Developer Club and help shape the technological future of the DRC. Push your potential.",
+    "button": "Become a Member"
+  },
+  "testimonials": {
+    "title": "What they say.",
+    "items": [
+      {
+        "name": "Ir Musande Augustin",
+        "role": "Full-stack Developer",
+        "image": "/images/testimonials/Musande_Augustin.png",
+        "quote": "Congo Developers Club has been a true accelerator in my tech journey. I learned, shared my knowledge, and met passionate people who inspired me to take my projects further. It is a community that encourages growth, collaboration, and innovation."
+      },
+      {
+        "name": "Ir Baraka Kinywa",
+        "role": "Developer",
+        "image": "/images/testimonials/Baraka_Kinywa.png",
+        "quote": "Congo Developers Club opened the door to my first professional experience at EvoluData as a junior developer. It was an opportunity that marked the beginning of my journey in tech."
+      },
+      {
+        "name": "Ir Lens Mutombo",
+        "role": "Engineer & Entrepreneur",
+        "image": "/images/testimonials/Lens_Mutombo.png",
+        "quote": "Congo Developers Club is the most active tech community in the DRC, with incredible networking opportunities."
+      }
+    ]
+  }
+}

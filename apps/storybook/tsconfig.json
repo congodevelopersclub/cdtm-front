@@ -1,0 +1,17 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@workspace/ui/*": ["../../packages/ui/src/*"],
+      "@workspace/i18n": ["../../packages/i18n/src/index.ts"],
+      "@workspace/i18n/*": ["../../packages/i18n/src/*"]
+    }
+  },
+  "include": [".storybook/**/*", "mocks/**/*"],
+  "exclude": ["node_modules", "storybook-static"]
+}

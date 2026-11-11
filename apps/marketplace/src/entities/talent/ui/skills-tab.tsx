@@ -1,0 +1,55 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+
+import type { TalentProfile } from "../model/types"
+
+type SkillsTabProps = {
+  profile: TalentProfile
+}
+
+export function SkillsTab({ profile }: SkillsTabProps) {
+  const t = useTranslations("Profile")
+
+  return (
+    <div className="flex flex-col gap-4 py-4">
+      <div>
+        <h3 className="text-xl font-semibold tracking-tight">
+          {t("allSkills")}
+        </h3>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {t("allSkillsDescription")}
+        </p>
+      </div>
+      {profile.skillDetails && profile.skillDetails.length > 0 ? (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {profile.skillDetails.map((skill) => (
+            <div
+              key={skill.id}
+              className="rounded-3xl border border-border bg-card p-5"
+            >
+              <p className="font-medium">{skill.name}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {t("skillMeta", {
+                  proficiency: skill.proficiency,
+                  years: skill.yearsExperience,
+                })}
+              </p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-2">
+          {profile.skills.map((skill) => (
+            <span
+              key={skill}
+              className="inline-flex items-center rounded-full bg-muted px-4 py-2 text-sm font-medium"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}

@@ -1,0 +1,34 @@
+/* CDC Marketplace brand tokens for Storybook (layers on @workspace/ui/globals.css) */
+
+@theme inline {
+  --color-brand-white: #ffffff;
+  --color-brand-steel-blue: #3c7ea9;
+  --color-brand-mint: #50aa79;
+  --color-brand-orange: #f5a623;
+  --color-surface-nav-active: var(--surface-nav-active);
+  --color-surface-elevated-dark: var(--surface-elevated-dark);
+  --color-surface-elevated-dark-foreground: var(--surface-elevated-dark-foreground);
+  --color-surface-elevated-dark-muted: var(--surface-elevated-dark-muted);
+}
+
+:root {
+  --primary: #3c7ea9;
+  --primary-foreground: #ffffff;
+  --accent: #f5a623;
+  --ring: #3c7ea9;
+  --surface-nav-active: #e9e7e4;
+  --surface-elevated-dark: #3b3b3b;
+  --surface-elevated-dark-foreground: #ffffff;
+  --surface-elevated-dark-muted: rgba(255, 255, 255, 0.75);
+  --progress-track: rgba(233, 231, 228, 0.2);
+  --sidebar-primary: #3c7ea9;
+  --sidebar-accent: #e9e7e4;
+}
+
+.dark {
+  --surface-nav-active: #2a2a2e;
+  --surface-elevated-dark: #2a2a2e;
+  --surface-elevated-dark-foreground: #f5f4f2;
+  --surface-elevated-dark-muted: rgba(245, 244, 242, 0.7);
+  --progress-track: rgba(255, 255, 255, 0.12);
+}

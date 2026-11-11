@@ -1,0 +1,32 @@
+{
+  "name": "@workspace/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./base.js",
+    "./next-js": "./next.js",
+    "./next-typechecked": "./next-typechecked.js",
+    "./react-internal": "./react-internal.js",
+    "./fsd": "./fsd.js",
+    "./fsd-lint": "./fsd-lint.js",
+    "./architecture": "./architecture.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "@next/eslint-plugin-next": "^16.2.6",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-fsd-lint": "^1.2.1",
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-turbo": "^2.9.15",
+    "globals": "^17.6.0",
+    "typescript": "^5",
+    "typescript-eslint": "^8.60.0"
+  }
+}
